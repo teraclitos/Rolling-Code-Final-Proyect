@@ -1,0 +1,10 @@
+.background-footer {
+    background: linear-gradient(to right, #001253, #1986a0, #003172);
+}
+.copyright {
+    color: rgb(245, 112, 3);
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: 'Roboto', sans-serif;
+    padding: 1.5%;
+    width: 100%;
+}

@@ -1,8 +1,12 @@
+import Footer from './componentes/Footer';
+
+
 function App() {
   return (
     <div>
-      <h1>Blog grupo 2</h1>
-      <h1>Rama probandonp</h1>
+       <Footer/>
+     
+      
     </div>
   );
 }
