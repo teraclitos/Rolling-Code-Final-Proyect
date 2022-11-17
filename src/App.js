@@ -1,5 +1,5 @@
-import Navbar from "../components/Navbar";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Navbar from "../src/components/Navbar";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFutbol } from "@fortawesome/free-solid-svg-icons";
 

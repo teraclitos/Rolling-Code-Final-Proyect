@@ -28,7 +28,7 @@ const Navbar = () => {
           {" "}
           <img
             alt=""
-            src="\logo-removebg-preview.png"
+            src="\logoRollingneta.png"
             width="75"
             height="75"
             className="d-inline-block align-top"
