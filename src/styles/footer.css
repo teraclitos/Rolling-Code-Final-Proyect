@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+/* footer {
+    background-image : url('https://img.freepik.com/foto-gratis/herramientas-deportivas_53876-138077.jpg?w=1380&t=st=1668605444~exp=1668606044~hmac=8db2df7e55bb06ba375a09af73963a00867e732ee219229e9e36898c3c9e0ae7');
+    background-size: cover;
+    background-position: top;
+} */
+
+footer {
+    background-color: rgba(17, 17, 17, 0.829);
+    display: flex;
+    justify-content: center;
+} 
+
+/* footer>div {
+    background-color: rgba(17, 17, 17, 0.829);
+    display: flex;
+    justify-content: center;
+} */
+ .background-footer {
+    background: linear-gradient(to right, #001253, #1986a0, #003172);
+} 
+.copyright {
+    color: rgb(245, 112, 3);
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: 'Roboto', sans-serif;
+    padding: 1.5%;
+    width: 100%;
+}
+ .btn-footer {
+        
+        border: 5px;
+     
+    }
