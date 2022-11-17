@@ -1,4 +1,5 @@
 import React from "react";
+
 import Container from "react-bootstrap/Container";
 import BSNavbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -27,7 +28,7 @@ const Navbar = () => {
           {" "}
           <img
             alt=""
-            src="\logo-removebg-preview.png"
+            src="\logoRollingneta.png"
             width="75"
             height="75"
             className="d-inline-block align-top"
