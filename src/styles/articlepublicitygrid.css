@@ -9,3 +9,21 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 1em;
 }
+@media (max-width: 991.98px) {
+  .grid-articles-publicity {
+    grid-template-columns: 1fr;
+  }
+  .grid-articles {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 767.98px) {
+  .grid-articles {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 575.98px) {
+  .grid-articles {
+    grid-template-columns: 1fr;
+  }
+}
