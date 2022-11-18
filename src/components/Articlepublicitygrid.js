@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/articlepublicitygrid.css";
 import Card from "react-bootstrap/Card";
+import Categorias from "../components/Categorias";
 
 const Articlepublicitygrid = () => {
   return (
@@ -260,7 +261,11 @@ const Articlepublicitygrid = () => {
           </Card>
         </div>
       </div>
-      <div className="grid-publicity"></div>
+      <div className="grid-publicity">
+        <div>
+          <Categorias />
+        </div>
+      </div>
     </div>
   );
 };
