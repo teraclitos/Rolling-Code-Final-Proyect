@@ -1,0 +1,11 @@
+.grid-articles-publicity {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+
+  gap: 2em;
+}
+.grid-articles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1em;
+}
