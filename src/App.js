@@ -2,13 +2,14 @@ import Navbar from "../src/components/Navbar";
 import Footer from '../src/components/Footer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFutbol } from "@fortawesome/free-solid-svg-icons";
+import Publicidad from "./components/Publicidad";
+import Contact from "./components/Contact";
 
 function App() {
   return (
     <div>
       <Navbar />
-      <h1 className="mb-5 mt-5 fs-1">Blog grupo 2</h1>
-      <FontAwesomeIcon icon={faFutbol} />
+      <Contact />
       <Footer />
 
     </div>

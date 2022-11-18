@@ -13,13 +13,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
+import '../styles/navbar.css';
 const Navbar = () => {
   return (
-    <BSNavbar
+    <BSNavbar className="bg-nav"
       collapseOnSelect
       expand="lg"
-      bg="dark"
       variant="dark"
       sticky="top"
     >
