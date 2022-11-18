@@ -13,10 +13,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import '../styles/navbar.css';
+import "../styles/navbar.css";
+import Badge from "react-bootstrap/Badge";
 const Navbar = () => {
   return (
-    <BSNavbar className="bg-nav"
+    <BSNavbar
+      className="bg-nav"
       collapseOnSelect
       expand="lg"
       variant="dark"
@@ -42,6 +44,8 @@ const Navbar = () => {
             <Nav.Link href="#home">
               Favoritos
               <FontAwesomeIcon icon={faHeart} className="mx-2" />
+              <Badge bg="primary">9</Badge>
+              <span className="visually-hidden">Favoritos</span>
             </Nav.Link>
             <Nav.Link href="">
               Destacados
