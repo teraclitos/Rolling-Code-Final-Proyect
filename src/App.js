@@ -4,7 +4,6 @@ import Articlepublicitygrid from "../src/components/Articlepublicitygrid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Publicidad from "./components/Publicidad";
 import Contact from "./components/Contact";
-import Categorias from "./components/Categorias";
 
 function App() {
   return (
@@ -12,7 +11,6 @@ function App() {
       <Navbar />
       <Articlepublicitygrid />
       <Contact />
-      <Categorias />
       <Footer />
     </div>
   );
