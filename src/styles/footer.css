@@ -18,7 +18,7 @@ footer {
     justify-content: center;
 } */
  .background-footer {
-    background: linear-gradient(to right, #001253, #1986a0, #003172);
+    background: linear-gradient(to right, #001253, #1986a0);
 } 
 .copyright {
     color: rgb(245, 112, 3);
