@@ -14,7 +14,7 @@ const Categorias = () => {
       <Col>
         <Row>
           <Button
-            size="sm"
+            variant="outline-secondary"
             onClick={() => setOpen(!open)}
             aria-controls="example-collapse-text"
             aria-expanded={open}
@@ -23,16 +23,17 @@ const Categorias = () => {
           </Button>
           <Collapse in={open}>
             <div id="example-collapse-text">
-              <ListGroup defaultActiveKey="#link1" className="list-unstyled">
-                <ListGroup.Item action href="#link1">
-                  Fútbol
-                </ListGroup.Item>
-                <ListGroup.Item action href="#link2">
-                  Tenis
-                </ListGroup.Item>
-                <ListGroup.Item action href="#link3">
-                  Rugby
-                </ListGroup.Item>
+              <ListGroup>
+                <ListGroup.Item>Fútbol</ListGroup.Item>
+                <ListGroup.Item>Tenis</ListGroup.Item>
+                <ListGroup.Item>Rugby</ListGroup.Item>
+                <ListGroup.Item>Atletismo</ListGroup.Item>
+                <ListGroup.Item>Boxeo</ListGroup.Item>
+                <ListGroup.Item>Voley</ListGroup.Item>
+                <ListGroup.Item>Básquet</ListGroup.Item>
+                <ListGroup.Item>Handball</ListGroup.Item>
+                <ListGroup.Item>Polo</ListGroup.Item>
+                <ListGroup.Item>Otros</ListGroup.Item>
               </ListGroup>
             </div>
           </Collapse>
