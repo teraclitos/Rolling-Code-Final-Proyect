@@ -1,54 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 
 body {
-    min-height: 100vh;
-    margin: 0;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 @media (max-width: 729px) {
-    main {
-        background-position: right;
-    }
+  main {
+    background-position: right;
+  }
 }
 
 .titulo-contacto {
-    text-align: center;
-    font-family: 'Anton', sans-serif;
+  text-align: center;
+  font-family: "Anton", sans-serif;
+  color: white;
+  /* margin-bottom: 30%; */
 }
+
+/* .input-contacto {
+  margin-bottom: 40%;
+} */
 
 .body-contacto {
-    
-    background-image: url('https://s.france24.com/media/display/6aca8d1a-7783-11ea-9cf2-005056bf87d6/w:1024/p:16x9/WEB%2005ABR%20DEPORTES%20PORTADA%20FOTO.webp');
-    /* background-color: rgba(14, 12, 12, 0.726);  */
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    
-     
-} 
+  background-image: url("https://s.france24.com/media/display/6aca8d1a-7783-11ea-9cf2-005056bf87d6/w:1024/p:16x9/WEB%2005ABR%20DEPORTES%20PORTADA%20FOTO.webp");
+  /* background-color: rgba(14, 12, 12, 0.726);  */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .bgcontact {
-
-    background-color: rgba(17, 17, 17, 0.829);
-    display:flex;
-    justify-content: center;
-    margin-top: 5%;
-    /* box-shadow: 4px 4px 4px 4px rgb(12, 73, 32); */
+  background-color: rgba(17, 17, 17, 0.829);
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  /* box-shadow: 4px 4px 4px 4px rgb(12, 73, 32); */
 }
 
-
 .contactanos {
-
-    background: rgb(245, 112, 3);
-    /* margin-top: -80px; */
-    font-family: Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-    color: rgb(0, 0, 0);
-    font-size: 30px;
-   
+  background: rgb(245, 112, 3);
+  /* margin-top: -80px; */
+  font-family: Impact, Haettenschweiler, "Arial Narrow", sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 30px;
 }
 
 .mapa {
-    width: 100%;
-    border-radius: 5px;
+  width: 100%;
+  border-radius: 5px;
 }
