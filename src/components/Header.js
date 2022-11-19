@@ -6,7 +6,7 @@ const Header = () => {
     <div className="container-fluid containerbg grid-header pt-4 ">
       <div className="fs-1 ">1</div>
       <div className=" text-center d-flex justify-content-center align-items-center ">
-        <h3 className="text-header ">
+        <h3 className="text-header  d-none d-md-block">
           Potenciamos
           <br />
           tu pasión
