@@ -81,8 +81,14 @@ const Contact = () => {
                     }) => (
                       <Form>
                         <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon1">
-                            @
+                          <span
+                            class="input-group-text color-span"
+                            id="basic-addon1"
+                          >
+                            <FontAwesomeIcon
+                              style={{ fontSize: "2em", color: "#1986a0" }}
+                              icon={faUser}
+                            />
                           </span>
                           <Field
                             id="name"
@@ -104,8 +110,14 @@ const Contact = () => {
                           )}
                         />
                         <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon1">
-                            @
+                          <span
+                            class="input-group-text color-span"
+                            id="basic-addon1"
+                          >
+                            <FontAwesomeIcon
+                              style={{ fontSize: "2em", color: "#1986a0" }}
+                              icon={faEnvelope}
+                            />
                           </span>
                           <Field
                             id="mail"
@@ -129,16 +141,22 @@ const Contact = () => {
                         {/* {touched.mail && errors.mail && (
                           <div className="error">{errors.mail}</div>
                         )} */}
-                        <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon1">
-                            @
+                        <div className="input-group mb-3">
+                          <span
+                            className="input-group-text color-span"
+                            id="basic-addon1"
+                          >
+                            <FontAwesomeIcon
+                              style={{ fontSize: "2em", color: "#1986a0" }}
+                              icon={faPenToSquare}
+                            />
                           </span>
                           <Field
                             id="comment"
                             name="comment"
                             as="textarea"
                             class="form-control"
-                            placeholder="Username"
+                            placeholder=""
                             // aria-label="Username"
                             // aria-describedby="basic-addon1"
                             // value={values.comment}
@@ -155,7 +173,9 @@ const Contact = () => {
                         {/* {touched.comment && errors.comment && (
                           <div className="error">{errors.comment}</div>
                         )} */}
-                        <button type="submit">Enviar</button>
+                        <button className="btn-contact" type="submit">
+                          Enviar
+                        </button>
                         {formEnviado && <p className="exito">Form enviado</p>}
                       </Form>
                     )}
