@@ -25,14 +25,32 @@
   .grid-articles {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+  .grid-header {
+    font-size: 12px;
+  }
+  .img-header-container {
+    font-size: 30px;
+  }
 }
 @media (max-width: 767.98px) {
   .grid-articles {
     grid-template-columns: 1fr 1fr;
   }
+  .grid-header {
+    font-size: 8px;
+  }
+  .img-header-container {
+    font-size: 20px;
+  }
 }
 @media (max-width: 575.98px) {
   .grid-articles {
     grid-template-columns: 1fr;
+  }
+  .grid-header {
+    font-size: 6px;
+  }
+  .img-header-container {
+    font-size: 16px;
   }
 }
