@@ -18,7 +18,7 @@ import Badge from "react-bootstrap/Badge";
 const Navbar = () => {
   return (
     <BSNavbar
-      className="bg-nav"
+      className="bg-nav "
       collapseOnSelect
       expand="lg"
       variant="dark"
