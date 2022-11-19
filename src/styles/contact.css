@@ -20,10 +20,6 @@ body {
   /* margin-bottom: 30%; */
 }
 
-/* .input-contacto {
-  margin-bottom: 40%;
-} */
-
 .body-contacto {
   background-image: url("https://s.france24.com/media/display/6aca8d1a-7783-11ea-9cf2-005056bf87d6/w:1024/p:16x9/WEB%2005ABR%20DEPORTES%20PORTADA%20FOTO.webp");
   /* background-color: rgba(14, 12, 12, 0.726);  */
@@ -46,6 +42,26 @@ body {
   font-size: 30px;
 }
 
+.btn-contact {
+  background-color: #1986a0;
+  border: 0;
+  color: black;
+  border-radius: 8px;
+  font-family: "Anton";
+  padding: 1%;
+  padding-left: 6%;
+  padding-right: 6%;
+  margin-left: 30%;
+}
+
+.btn-contact:hover {
+  background-color: #fd841f;
+}
+
+.color-span {
+  background-color: #fd841f;
+  border: 0;
+}
 .mapa {
   width: 100%;
   border-radius: 5px;
