@@ -349,7 +349,7 @@ const Articlepublicitygrid = () => {
           </Card>
         </div>
       </div>
-      <div className="grid-publicity d-none d-lg-grid">
+      <div className="grid-publicity ">
         <div>
           <Categorias />
         </div>
