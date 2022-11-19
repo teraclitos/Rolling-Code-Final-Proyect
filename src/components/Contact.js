@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/contact.css";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-import { Formik } from "formik";
+// import Form from "react-bootstrap/Form";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
@@ -11,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Contact = () => {
+  const [formEnviado, cambiarformEnviado] = useState(false);
   return (
     <div>
       <body className="body-contacto">
@@ -22,8 +22,8 @@ const Contact = () => {
                   <iframe
                     class="mapa mt-3"
                     src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3348.3570491657824!2d-60.65922018439898!3d-32.94158147896277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1656623430770!5m2!1ses!2sar"
-                    width="300"
-                    height="300"
+                    width="400"
+                    height="400"
                     allowfullscreen=""
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
@@ -34,42 +34,132 @@ const Contact = () => {
               <div className="col-12 col-md-6 d-flex flex-column justify-content-center mt-5">
                 <div className="row align-items-stretch">
                   <h3 className="titulo-contacto">CONTACTO</h3>
-                  <InputGroup className="mb-3 ">
-                    <InputGroup.Text id="basic-addon1">
-                      <FontAwesomeIcon
-                        style={{ fontSize: "1em", color: " #1986a0" }}
-                        icon={faUser}
-                      />
-                    </InputGroup.Text>
-                    <Form.Control
-                      placeholder="Ingresa tu nombre"
-                      aria-label="Username"
-                      aria-describedby="basic-addon1"
-                    />
-                  </InputGroup>
+                  <Formik
+                    initialValues={{
+                      name: "",
+                      mail: "",
+                      comment: "",
+                    }}
+                    validate={(valores) => {
+                      let errores = {};
+                      if (!valores.name) {
+                        errores.name = "por faov intro nombre";
+                      } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.name)) {
+                        errores.name =
+                          "el nombre solo puede contener letras y espacios";
+                      }
 
-                  <InputGroup className="mb-3">
-                    <InputGroup.Text id="basic-addon2">
-                      <FontAwesomeIcon
-                        style={{ fontSize: "1em", color: " #1986a0" }}
-                        icon={faEnvelope}
-                      />
-                    </InputGroup.Text>
-                    <Form.Control
-                      placeholder=" Ingresa tu Email"
-                      aria-label="Recipient's username"
-                      aria-describedby="basic-addon2"
-                    />
-                  </InputGroup>
-                  <InputGroup>
-                    <InputGroup.Text>
-                      <FontAwesomeIcon
-                        style={{ fontSize: "1em", color: " #1986a0" }}
-                        icon={faPenToSquare}
-                      />
-                    </InputGroup.Text>
-                    <Form.Control as="textarea" aria-label="With textarea" />
-                  </InputGroup>
+                      //validacion mail
+                      if (!valores.mail) {
+                        errores.mail = "por faov intro mail";
+                      } else if (
+                        !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
+                          valores.mail
+                        )
+                      ) {
+                        errores.mail =
+                          "el nombre solo puede contener letras y espacios";
+                      }
+                      if (!valores.comment) {
+                        errores.comment = "por faov intro mail";
+                      }
+                      return errores;
+                    }}
+                    onSubmit={(valores, { resetForm }) => {
+                      resetForm();
+                      console.log("form enviado");
+                      cambiarformEnviado(true);
+                      setTimeout(() => cambiarformEnviado(false), 3000);
+                    }}
+                  >
+                    {({
+                      values,
+                      errors,
+                      touched,
+                      handleChange,
+                      handleBlur,
+                    }) => (
+                      <Form>
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">
+                            @
+                          </span>
+                          <Field
+                            id="name"
+                            name="name"
+                            // value={values.name}
+                            // onChange={handleChange}
+                            // onBlur={handleBlur}
+                            type="text"
+                            class="form-control"
+                            placeholder="Introduce tu nombre"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                          />
+                        </div>
+                        <ErrorMessage
+                          name="name"
+                          component={() => (
+                            <div className="error">{errors.name}</div>
+                          )}
+                        />
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">
+                            @
+                          </span>
+                          <Field
+                            id="mail"
+                            name="mail"
+                            type="mail"
+                            class="form-control"
+                            placeholder="Introduce tu mail"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                            // value={values.mail}
+                            // onChange={handleChange}
+                            // onBlur={handleBlur}
+                          />
+                        </div>
+                        <ErrorMessage
+                          name="mail"
+                          component={() => (
+                            <div className="error">{errors.mail}</div>
+                          )}
+                        />
+                        {/* {touched.mail && errors.mail && (
+                          <div className="error">{errors.mail}</div>
+                        )} */}
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1">
+                            @
+                          </span>
+                          <Field
+                            id="comment"
+                            name="comment"
+                            as="textarea"
+                            class="form-control"
+                            placeholder="Username"
+                            // aria-label="Username"
+                            // aria-describedby="basic-addon1"
+                            // value={values.comment}
+                            // onChange={handleChange}
+                            // onBlur={handleBlur}
+                          />
+                        </div>
+                        <ErrorMessage
+                          name="comment"
+                          component={() => (
+                            <div className="error">{errors.comment}</div>
+                          )}
+                        />
+                        {/* {touched.comment && errors.comment && (
+                          <div className="error">{errors.comment}</div>
+                        )} */}
+                        <button type="submit">Enviar</button>
+                        {formEnviado && <p className="exito">Form enviado</p>}
+                      </Form>
+                    )}
+                  </Formik>
                 </div>
               </div>
             </div>
