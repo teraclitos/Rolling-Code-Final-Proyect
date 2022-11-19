@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import "../styles/articlepublicitygrid.css";
+.grid-header {
+  width: 100%;
+  background-image: url("https://img.freepik.com/foto-gratis/herramientas-deportivas_53876-138077.jpg?w=1380&t=st=1668605444~exp=1668606044~hmac=8db2df7e55bb06ba375a09af73963a00867e732ee219229e9e36898c3c9e0ae7");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+  opacity: 0.9;
+  filter: brightness(80%);
+}
+
+.grid-center-header {
+  display: grid;
+  grid-template-rows: auto auto auto;
+}
+
+.img-header {
+  width: 7em;
+  user-select: none;
+}
+.text-header {
+  color: #fff;
+
+  font-size: 2.3em;
+  font-family: "Anton";
+  letter-spacing: 1px;
+  user-select: none;
+}
+.searcher {
+  height: 10em;
+}
