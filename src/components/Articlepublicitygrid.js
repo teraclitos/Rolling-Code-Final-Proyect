@@ -5,7 +5,7 @@ import { Button, Card, Pagination } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-const Articlepublicitygrid = () => {
+const Articlepublicitygrid = ({ data, add }) => {
   let active = 1;
   let items = [];
   for (let number = 1; number <= 2; number++) {
@@ -28,7 +28,9 @@ const Articlepublicitygrid = () => {
               <h3 className="category-title fs-6 mt-1 mb-0">Fútbol</h3>
               <Card.Title className="mt-1 mb-0">Mundial</Card.Title>
               <Card.Text className="mt-1 mb-0">
-                This is a wider card with supporting text below...
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
               </Card.Text>
             </Card.Body>
             <Card.Footer className="d-flex justify-content-between p-0 px-1 border-0 mt-2 bg-white ">
