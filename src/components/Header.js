@@ -3,7 +3,7 @@ import "../styles/header.css";
 
 const Header = () => {
   return (
-    <div className="container-fluid grid-header pt-4 ">
+    <div className="container-fluid containerbg grid-header pt-4 ">
       <div className="fs-1 ">1</div>
       <div className=" text-center d-flex justify-content-center align-items-center ">
         <h3 className="text-header ">
