@@ -12,6 +12,10 @@
 .category-title {
   color: #fd841f;
 }
+.card-title {
+  height: 2.6em;
+  overflow: hidden;
+}
 .btn-color {
   background-color: #0d4c92;
 }
@@ -55,6 +59,8 @@
     width: 10em;
     height: 10em;
     padding: 5px;
+    max-width: 90%;
+    max-height: 100%;
   }
   /* .grid-header {
     font-size: 8px;
