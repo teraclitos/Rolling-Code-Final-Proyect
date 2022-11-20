@@ -23,8 +23,8 @@ const Articlepublicitygrid = ({ data }) => {
             <Card className="border-0 h-100 card">
               <Card.Img src={d.image} variant="top" className=" img-card" />
               <Card.Body className="p-0 ps-1 card-body  ">
-                <h3 className="category-title fs-6 mt-1 mb-0">Fútbol</h3>
-                <Card.Title className="mt-1 mb-0 card-title">
+                <h3 className="category-title fs-6 mt-2 mb-0">Fútbol</h3>
+                <Card.Title className="mt-2 mb-0 card-title">
                   {d.title}
                 </Card.Title>
                 <Card.Text className="mt-1 mb-0 text-card-container ">
@@ -42,13 +42,18 @@ const Articlepublicitygrid = ({ data }) => {
           </div>
         ))}
       </div>
-      <div className="grid-publicity ">
+      <div className="grid-publicity d-none d-lg-grid ">
         <div>
           <Categorias />
         </div>
       </div>
       <div className="d-flex  justify-content-center mt-1">
         <Pagination>{items}</Pagination>
+      </div>
+      <div className="grid-publicity d-grid d-lg-none ">
+        <div>
+          <Categorias />
+        </div>
       </div>
     </div>
   );
