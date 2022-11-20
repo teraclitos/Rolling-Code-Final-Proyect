@@ -2,6 +2,7 @@ import Navbar from "../src/components/Navbar";
 import Footer from "../src/components/Footer";
 import Articlepublicitygrid from "../src/components/Articlepublicitygrid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import Publicidad from "./components/Publicidad";
 import Contact from "./components/Contact";
 import { useEffect, useState } from "react";
@@ -35,8 +36,6 @@ function App() {
 
   const clear = () => {};
   //para navbar
-
-  const total = () => {};
 
   return (
     <div>
