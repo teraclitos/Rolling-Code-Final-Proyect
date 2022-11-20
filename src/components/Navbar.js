@@ -15,7 +15,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../styles/navbar.css";
 import Badge from "react-bootstrap/Badge";
-const Navbar = () => {
+const Navbar = ({ cart }) => {
   return (
     <BSNavbar
       className="bg-nav "
@@ -44,7 +44,7 @@ const Navbar = () => {
             <Nav.Link href="#home">
               Favoritos
               <FontAwesomeIcon icon={faHeart} className="mx-2" />
-              <Badge bg="primary">9</Badge>
+              <Badge bg="primary">{cart.length}</Badge>
               <span className="visually-hidden">Favoritos</span>
             </Nav.Link>
             <Nav.Link href="">
