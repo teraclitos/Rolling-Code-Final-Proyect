@@ -42,9 +42,9 @@ function App() {
     <div>
       <Navbar cart={cart} />
       <Header />
-      <ArticleDetailContainer />
-      {/* <Articlepublicitygrid data={data} /> */}
-      {/* <Contact /> */}
+      {/* <ArticleDetailContainer /> */}
+      <Articlepublicitygrid data={data} />
+      <Contact />
       <Footer />
       {/* <BrowserRouter>
         <Routes>
