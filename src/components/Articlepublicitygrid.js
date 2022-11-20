@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const Articlepublicitygrid = ({ data }) => {
-  let active = 1;
+  let active = 2;
   let items = [];
-  for (let number = 1; number <= 2; number++) {
+  for (let number = 1; number <= 3; number++) {
     items.push(
       <Pagination.Item key={number} active={number === active}>
         {number}
