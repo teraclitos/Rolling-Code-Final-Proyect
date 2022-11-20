@@ -18,6 +18,20 @@
 .btn-color:hover {
   background-color: #0e185f;
 }
+.text-card-container {
+  height: 4.8em;
+  overflow: hidden;
+}
+
+.img-card {
+  height: 5em;
+  width: 5em;
+}
+.card {
+  max-width: 100%;
+  width: 10em;
+}
+
 @media (max-width: 991.98px) {
   .grid-articles-publicity {
     grid-template-columns: 1fr;
