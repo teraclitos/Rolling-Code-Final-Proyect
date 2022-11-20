@@ -4,7 +4,7 @@ import ArticleDetail from "./ArticleDetail";
 const ArticleDetailContainer = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://fakestoreapi.com/products/1")
       .then((res) => res.json())
       .then((json) => setData(json));
   }, []);

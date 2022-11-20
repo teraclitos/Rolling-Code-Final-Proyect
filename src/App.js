@@ -1,9 +1,8 @@
 import Navbar from "../src/components/Navbar";
 import Footer from "../src/components/Footer";
 import Articlepublicitygrid from "../src/components/Articlepublicitygrid";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
-import Publicidad from "./components/Publicidad";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import Contact from "./components/Contact";
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
@@ -41,9 +40,9 @@ function App() {
     <div>
       <Navbar cart={cart} />
       <Header />
-      {/* <ArticleDetailContainer /> */}
-      <Articlepublicitygrid data={data} />
-      <Contact />
+      <ArticleDetailContainer data={data} />
+      {/* <Articlepublicitygrid data={data} /> */}
+      {/* <Contact /> */}
       <Footer />
       {/* <BrowserRouter>
         <Routes>
