@@ -11,23 +11,16 @@
   filter: brightness(80%);
 }
 
-.grid-center-header {
-  display: grid;
-  grid-template-rows: auto auto auto;
-}
-
 .img-header {
   width: 7em;
   user-select: none;
 }
 .text-header {
   color: #fff;
-
-  font-size: 2.3em;
   font-family: "Anton";
   letter-spacing: 1px;
   user-select: none;
 }
-.searcher {
-  height: 10em;
+.grid-center-header {
+  margin: 4em 0;
 }
