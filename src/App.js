@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
+import ArticleDetailContainer from "./components/ArticleDetailContainer";
 
 function App() {
   const [data, setData] = useState([]);
@@ -41,8 +42,9 @@ function App() {
     <div>
       <Navbar cart={cart} />
       <Header />
-      <Articlepublicitygrid data={data} />
-      <Contact />
+      <ArticleDetailContainer />
+      {/* <Articlepublicitygrid data={data} /> */}
+      {/* <Contact /> */}
       <Footer />
       {/* <BrowserRouter>
         <Routes>
