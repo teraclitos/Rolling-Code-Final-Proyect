@@ -28,7 +28,7 @@
   width: 5em;
 }
 .card {
-  max-width: 100%;
+  min-width: 100%;
   width: 10em;
 }
 
@@ -49,6 +49,11 @@
 @media (max-width: 767.98px) {
   .grid-articles {
     grid-template-columns: 1fr 1fr;
+  }
+  .img-card {
+    height: auto;
+    width: auto;
+    padding: 5px;
   }
   /* .grid-header {
     font-size: 8px;
