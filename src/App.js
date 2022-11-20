@@ -40,18 +40,16 @@ function App() {
   return (
     <div>
       <Navbar cart={cart} />
-      <Articlepublicitygrid data={data} add={add} />
+      <Header />
+      <Articlepublicitygrid data={data} />
       <Contact />
       <Footer />
-      <BrowserRouter>
-        <Navbar />
-        <Header />
+      {/* <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Articlepublicitygrid />} />
+          <Route path="/" element={<Articlepublicitygrid data={data} />} />
           <Route path="/contacto" element={<Contact />} />
         </Routes>
-        <Footer />
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   );
 }
