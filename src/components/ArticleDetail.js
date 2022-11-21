@@ -76,10 +76,12 @@ const ArticleDetail = ({ data }) => {
           </div>
           {/* VISTA ADMIN */}
           <div className="col-12 col-md-3">
-            <Button className="mt-5 btn-admin" onClick={handleShow}>
-              Launch demo modal
+            {/* {auth.role === "admin" && ( */}
+            <Button className=" btn-detail" onClick={handleShow}>
+              EDITAR
             </Button>
-
+            {/* )} */}
+            {/* {auth.role === "admin" ? ( */}
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
                 <Modal.Title>Modal heading</Modal.Title>
@@ -107,6 +109,7 @@ const ArticleDetail = ({ data }) => {
                 </Form>
               </Modal.Body>
               <Modal.Footer>
+                {/* )} */}
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
@@ -116,7 +119,7 @@ const ArticleDetail = ({ data }) => {
               </Modal.Footer>
             </Modal>
             {/* aca reemplazar por el contador de favoritos de andre */}
-            <Button className=" mt-5 mb-5 text-danger" variant="warning">
+            <Button className=" mt-5 mb-5" variant="warning">
               Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
             </Button>
             <Categorias />

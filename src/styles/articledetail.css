@@ -4,7 +4,7 @@
   color: rgb(245, 112, 3);
   background-color: #001253;
   width: auto;
-  height: 30x;
+  height: 50px;
   border: 0;
 }
 .detail-author {
@@ -43,14 +43,20 @@
   padding-left: 20px;
 }
 
-.btn-admin {
+.btn-detail {
   background-color: #1986a0;
-  border: 2;
+  border: 0;
   color: black;
-  border-radius: 8px;
+  border-radius: 4px;
   font-family: "Anton";
+  width: 100px;
+  padding: 1%;
+  /* padding-left: 6%; */
+  padding-right: 6%;
+  margin-left: 20%;
+  margin-top: 20%;
 }
-.btn-admin:hover {
+.btn-detail:hover {
   background-color: #fd841f;
 }
 /* .detail-author {
