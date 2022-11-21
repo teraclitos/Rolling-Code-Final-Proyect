@@ -1,10 +1,10 @@
 .title-section {
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 400;
   color: rgb(245, 112, 3);
   background-color: #001253;
   width: auto;
-  height: 30x;
+  height: 50px;
   border: 0;
 }
 .detail-author {
@@ -42,6 +42,44 @@
   margin-right: 20px;
   padding-left: 20px;
 }
+
+.btn-detail {
+  background-color: #1986a0;
+  border: 0;
+  color: black;
+  border-radius: 4px;
+  font-family: "Anton";
+  width: 100px;
+  padding: 1%;
+  /* padding-left: 6%; */
+  padding-right: 6%;
+  margin-left: 20%;
+  margin-top: 20%;
+}
+.btn-detail:hover {
+  background-color: #fd841f;
+}
+
+.btn-save {
+  background-color: #1986a0;
+  border: 0;
+  color: black;
+  border-radius: 4px;
+  font-family: "Anton";
+}
+
+.btn-save:hover {
+  background-color: #fd841f;
+}
+.title-crud {
+  color: #001253;
+  font-family: "Anton";
+}
+
+.card-crud {
+  background-color: #70a3af;
+  border: 0;
+}
 /* .detail-author {
   display: flex;
   align-items: center;
@@ -49,7 +87,7 @@
   margin: 20px 0;
 }
 
-.detail-author > p {
+/* .detail-author > p {
   font-size: 20px;
   text-transform: capitalize;
   margin-right: 5px;
@@ -74,10 +112,4 @@
 
 .description-art {
   margin: 40px 0;
-}
-.linea-style {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border: 0;
-  border-top: 1px solid #1986a0;
 } */

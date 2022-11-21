@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { Button, Card, Container, Row, Col, Pagination } from "react-bootstrap";
-import { faHashtag, faHeart } from "@fortawesome/free-solid-svg-icons";
+// import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import {
+  Button,
+  Card,
+  Container,
+  Row,
+  Modal,
+  Form,
+  Col,
+  Pagination,
+} from "react-bootstrap";
+import {
+  faCommentAlt,
+  faHashtag,
+  faHeart,
+  faHeartCircleBolt,
+  faSeedling,
+} from "@fortawesome/free-solid-svg-icons";
 import Categorias from "./Categorias";
 import "../styles/articledetail.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
 const ArticleDetail = ({ data }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div>
-      <Container>
+      <Container className="container-fluid">
         <Row xs={1} md={2} className="g-5">
           <div className="col-12 col-md-9">
             <Card border="0" className="mt-5">
@@ -27,16 +45,24 @@ const ArticleDetail = ({ data }) => {
                 <Card.Text>
                   <div className="social-media">
                     <div className="red-social">
-                      <FontAwesomeIcon icon={faHashtag} />
+                      <FontAwesomeIcon
+                        style={{ fontSize: "2em", color: "#1986a0" }}
+                        icon={faHeartCircleBolt}
+                      />
                     </div>
                     <div className="red-social">
-                      <FontAwesomeIcon icon={faHashtag} />
+                      <FontAwesomeIcon
+                        icon={faCommentAlt}
+                        style={{ fontSize: "2em", color: "#1986a0" }}
+                      />
                     </div>
                     <div className="red-social">
-                      <FontAwesomeIcon icon={faHashtag} />
+                      <FontAwesomeIcon
+                        style={{ fontSize: "2em", color: "#1986a0" }}
+                        icon={faSeedling}
+                      />
                     </div>
                   </div>
-
                   <div className="col-12 linea-style" />
                 </Card.Text>
                 <Card.Title className="text-center">{data.title}</Card.Title>
@@ -63,17 +89,62 @@ const ArticleDetail = ({ data }) => {
               </Card.Body>
             </Card>
           </div>
+          {/* VISTA ADMIN */}
           <div className="col-12 col-md-3">
+            {/* {auth.role === "admin" && ( */}
+            <Button className=" btn-detail" onClick={handleShow}>
+              EDITAR
+            </Button>
+            {/* )} */}
+            {/* {auth.role === "admin" ? ( */}
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header className="card-crud" closeButton>
+                <Modal.Title className="title-crud">CRUD ARTICULOS</Modal.Title>
+              </Modal.Header>
+              <Modal.Body className="card-crud">
+                <Form>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlInput1"
+                  >
+                    {/* data.section */}
+                    <Form.Label>section</Form.Label>
+                    <Form.Control
+                      type="email"
+                      placeholder="name@example.com"
+                      autoFocus
+                    />
+                    {/* data.author */}
+                    <Form.Label>Author</Form.Label>
+                    <Form.Control type="text" placeholder="" autoFocus />
+                    {/* data.title */}
+                    <Form.Label>titulo</Form.Label>
+                    <Form.Control type="text" placeholder="" autoFocus />
+                    {/* data.image */}
+                    <Form.Label>URL</Form.Label>
+                    <Form.Control type="email" placeholder="" autoFocus />
+                    {/* data.subtitulo */}
+                    <Form.Label>Subtitulo</Form.Label>
+                    <Form.Control type="email" placeholder="" autoFocus />
+                    {/* data.description */}
+                    <Form.Label>description</Form.Label>
+                    <Form.Control type="email" placeholder="" autoFocus />
+                  </Form.Group>
+                </Form>
+              </Modal.Body>
+              <Modal.Footer className="card-crud">
+                {/* )} */}
+
+                <Button className="btn-save" onClick={handleClose}>
+                  Guardar cambios
+                </Button>
+              </Modal.Footer>
+            </Modal>
             {/* aca reemplazar por el contador de favoritos de andre */}
-            <Button className=" mt-5 mb-5 text-danger" variant="warning">
+            <Button className="mt-5 mb-5" variant="warning">
               Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
             </Button>
             <Categorias />
-            {/* {data.description} */}
-            {/* </section> */}
-            {/* <section className="colum-right">
-           <Categorias />
-        </section> */}
           </div>
         </Row>
       </Container>
