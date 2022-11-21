@@ -24,8 +24,19 @@ import { Route, Routes, Link, useParams } from "react-router-dom";
 
 const ArticleDetail = ({ data, add }) => {
   const [show, setShow] = useState(false);
+  const [title, setTitle] = useState("");
+  const [section, setSection] = useState("");
+  const [image, setimage] = useState("");
+  const [sybtitulo, setSubtitulo] = useState("");
+  const [author, setAuthor] = useState("");
+  const [description, setDescription] = useState("");
+  const [edition, setEdition] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleEdition = () => {
+    setEdition(!edition);
+  };
+
   return (
     <div>
       <Container fluid>
@@ -92,10 +103,10 @@ const ArticleDetail = ({ data, add }) => {
           {/* VISTA ADMIN */}
           <div className="col-12 col-md-3">
             {/* {auth.role === "admin" && ( */}
-            <Button className=" btn-detail" onClick={handleShow}>
+            <Button className=" btn-detail" onClick={() => handleEdition()}>
               EDITAR
             </Button>
-            {/* )} */}
+            {/* )}  cierro parentesis de admin boton*/}
             {/* {auth.role === "admin" ? ( */}
             <Modal show={show} onHide={handleClose}>
               <Modal.Header className="card-crud" closeButton>
@@ -133,13 +144,22 @@ const ArticleDetail = ({ data, add }) => {
                 </Form>
               </Modal.Body>
               <Modal.Footer className="card-crud">
-                {/* )} */}
-
                 <Button className="btn-save" onClick={handleClose}>
                   Guardar cambios
                 </Button>
               </Modal.Footer>
             </Modal>
+            <Form.Group
+              className="mb-3 btn-detail"
+              controlId="formBasicCheckbox"
+            >
+              <Form.Check type="checkbox" label="Destacar" />
+            </Form.Group>
+            <Button className=" btn-detail" onClick={handleShow}>
+              ELIMINAR
+            </Button>
+
+            {/* ) parentesis que cierra vista admin */}
             {/* aca reemplazar por el contador de favoritos de andre */}
             <Button
               className="mt-5 mb-5"

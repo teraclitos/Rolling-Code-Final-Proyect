@@ -10,6 +10,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import ArticleDetailContainer from "./components/ArticleDetailContainer";
 import Highlights from "../src/components/Highlights";
+import Advertising from "./components/Advertising";
 
 function App() {
   const [data, setData] = useState([]);
@@ -42,6 +43,7 @@ function App() {
       <BrowserRouter>
         <Navbar cart={cart} />
         <Header />
+        {/* <Advertising /> */}
         {/* <ArticleDetailContainer data={data} /> */}
         {/* <Articlepublicitygrid data={data} /> */}
         {/* <Contact /> */}

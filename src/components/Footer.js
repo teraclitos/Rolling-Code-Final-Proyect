@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faTwitter,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
+// import {
+//   faFacebook,
+//   faTwitter,
+//   faInstagram,
+// } from "@fortawesome/free-brands-svg-icons";
 import { faHashtag } from "@fortawesome/free-solid-svg-icons";
 const Footer = () => {
   return (
@@ -29,15 +29,15 @@ const Footer = () => {
                   </div>
                   <div className="col-3 btn-footer">
                     {/* agregar link a icono */}
-                    <FontAwesomeIcon className="icon" icon={faFacebook} />
+                    {/* <FontAwesomeIcon className="icon" icon={faFacebook} /> */}
                   </div>
                   <div className="col-3 btn-footer">
                     {/* agregar link a icono */}
-                    <FontAwesomeIcon className="icon" icon={faInstagram} />
+                    {/* <FontAwesomeIcon className="icon" icon={faInstagram} /> */}
                   </div>
                   <div class="col-3 btn-footer">
                     {/* agregar link a icono */}
-                    <FontAwesomeIcon className="icon" icon={faTwitter} />
+                    {/* <FontAwesomeIcon className="icon" icon={faTwitter} /> */}
                   </div>
                 </div>
               </div>
