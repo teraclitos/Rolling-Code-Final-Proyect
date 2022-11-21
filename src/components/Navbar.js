@@ -1,9 +1,9 @@
-import React from "react";
-import { Route, Routes, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import BSNavbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Contact from "./Contact";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,6 +19,10 @@ import Button from "react-bootstrap/Button";
 import "../styles/navbar.css";
 import Badge from "react-bootstrap/Badge";
 const Navbar = ({ cart }) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <BSNavbar
       className="bg-nav "
@@ -46,12 +50,20 @@ const Navbar = ({ cart }) => {
           className="justify-content-end"
         >
           <Nav>
-            <Nav.Link>
+            <Nav.Link onClick={handleShow}>
               Favoritos
               <FontAwesomeIcon icon={faHeart} className="mx-2" />
               <Badge bg="primary">{cart.length}</Badge>
               <span className="visually-hidden">Favoritos</span>
             </Nav.Link>
+
+            <Offcanvas show={show} onHide={handleClose}>
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title>Mis favoritos ({cart.length})</Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>{cart.length}</Offcanvas.Body>
+            </Offcanvas>
+
             <Nav.Link>
               <Link to="/highlights">
                 Destacados
