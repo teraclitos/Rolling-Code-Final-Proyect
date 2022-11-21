@@ -18,7 +18,7 @@ const ArticleDetail = ({ data }) => {
               {/* data.section */}
               <Card.Body>
                 <div className="detail-author">
-                  <Card.Img variant="top" src="./logoheader.png" width={70} />
+                  <Card.Img variant="top" src="./logoRollingneta" width={70} />
                   <Card.Title className="mt-4">Marina Bianconi</Card.Title>
                 </div>
                 {/* data.author */}
@@ -34,14 +34,6 @@ const ArticleDetail = ({ data }) => {
                     </div>
                     <div className="red-social">
                       <FontAwesomeIcon icon={faHashtag} />
-                    </div>
-                    <div className="red-social">
-                      <Button
-                        className=" ml-5 mb-5 text-danger"
-                        variant="warning"
-                      >
-                        Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
-                      </Button>
                     </div>
                   </div>
 
