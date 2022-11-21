@@ -33,6 +33,14 @@
   border: 0;
   border-top: 1px solid #1986a0;
 }
+
+.line-style {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 400px;
+  border: 0;
+  border-top: 1px solid #001253;
+}
 .social-media {
   display: flex;
   margin-bottom: 20px;

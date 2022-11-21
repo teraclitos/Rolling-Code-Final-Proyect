@@ -41,8 +41,9 @@ const Highlights = ({ data, add }) => {
     <div>
       <Container fluid>
         <Row xs={1} md={2}>
+          <h2 className="title.news text-center">Noticias de la Semana</h2>
           {Array.from({ length: 3 }).map((_, idx) => (
-            <div className="col-12 col-md-9">
+            <div className="col-12 col-md-12">
               <Card border="0" className="mt-5">
                 <Card.Header className="title-section">MUNDIAL</Card.Header>
                 {/* data.section */}
@@ -104,8 +105,20 @@ const Highlights = ({ data, add }) => {
                   {/* data.description */}
                 </Card.Body>
               </Card>
+
+              <Button
+                className="mt-5 mb-5"
+                variant="warning"
+                onClick={() => add(data)}
+              >
+                Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
+              </Button>
+              <div className="col-12 line-style" />
             </div>
           ))}
+          {/* <div className="col-12 col-md-9">
+            <Categorias />
+          </div> */}
         </Row>
       </Container>
     </div>
