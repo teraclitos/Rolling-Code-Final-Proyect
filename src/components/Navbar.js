@@ -65,7 +65,7 @@ const Navbar = ({ cart }) => {
             </Offcanvas>
 
             <Nav.Link>
-              <Link to="/highlights">
+              <Link to="/highlights" style={{ textDecoration: "none" }}>
                 Destacados
                 <FontAwesomeIcon icon={faStar} className="mx-2" />
               </Link>
