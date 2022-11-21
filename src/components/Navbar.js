@@ -1,8 +1,10 @@
 import React from "react";
-
+import { Route, Routes, Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import BSNavbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Contact from "./Contact";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStar,
@@ -25,23 +27,25 @@ const Navbar = () => {
       sticky="top"
     >
       <Container fluid>
-        <BSNavbar.Brand href="#home">
-          {" "}
-          <img
-            alt=""
-            src="\logoRollingneta.png"
-            width="75"
-            height="75"
-            className="d-inline-block align-top"
-          />{" "}
-        </BSNavbar.Brand>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <BSNavbar.Brand>
+            {" "}
+            <img
+              alt=""
+              src="\logoRollingneta.png"
+              width="75"
+              height="75"
+              className="d-inline-block align-top"
+            />{" "}
+          </BSNavbar.Brand>
+        </Link>
         <BSNavbar.Toggle aria-controls="responsive-navbar-nav" />
         <BSNavbar.Collapse
           id="responsive-navbar-nav"
           className="justify-content-end"
         >
           <Nav>
-            <Nav.Link href="#home">
+            <Nav.Link>
               Favoritos
               <FontAwesomeIcon icon={faHeart} className="mx-2" />
               <Badge bg="primary">9</Badge>
@@ -51,10 +55,14 @@ const Navbar = () => {
               Destacados
               <FontAwesomeIcon icon={faStar} className="mx-2" />
             </Nav.Link>
-            <Nav.Link href="">
-              Contacto
-              <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
+
+            <Nav.Link>
+              <Link to="/contacto" style={{ textDecoration: "none" }}>
+                Contacto
+                <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
+              </Link>
             </Nav.Link>
+
             <Nav.Link href="">
               Iniciar sesión
               <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
