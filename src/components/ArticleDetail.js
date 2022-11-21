@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { Button, Card, Container, Row, Col, Pagination } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Container,
+  Row,
+  Modal,
+  Form,
+  Col,
+  Pagination,
+} from "react-bootstrap";
 import { faHashtag, faHeart } from "@fortawesome/free-solid-svg-icons";
 import Categorias from "./Categorias";
 import "../styles/articledetail.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
 const ArticleDetail = ({ data }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div>
-      <Container>
+      <Container className="container-fluid">
         <Row xs={1} md={2} className="g-5">
           <div className="col-12 col-md-9">
             <Card border="0" className="mt-5">
@@ -36,7 +48,6 @@ const ArticleDetail = ({ data }) => {
                       <FontAwesomeIcon icon={faHashtag} />
                     </div>
                   </div>
-
                   <div className="col-12 linea-style" />
                 </Card.Text>
                 <Card.Title className="text-center">{data.title}</Card.Title>
@@ -63,17 +74,52 @@ const ArticleDetail = ({ data }) => {
               </Card.Body>
             </Card>
           </div>
+          {/* VISTA ADMIN */}
           <div className="col-12 col-md-3">
+            <Button className="mt-5 btn-admin" onClick={handleShow}>
+              Launch demo modal
+            </Button>
+
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Modal heading</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Form>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlInput1"
+                  >
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control
+                      type="email"
+                      placeholder="name@example.com"
+                      autoFocus
+                    />
+                  </Form.Group>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlTextarea1"
+                  >
+                    <Form.Label>Example textarea</Form.Label>
+                    <Form.Control as="textarea" rows={3} />
+                  </Form.Group>
+                </Form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
             {/* aca reemplazar por el contador de favoritos de andre */}
             <Button className=" mt-5 mb-5 text-danger" variant="warning">
               Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
             </Button>
             <Categorias />
-            {/* {data.description} */}
-            {/* </section> */}
-            {/* <section className="colum-right">
-           <Categorias />
-        </section> */}
           </div>
         </Row>
       </Container>
