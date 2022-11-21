@@ -103,7 +103,7 @@ const ArticleDetail = ({ data, add }) => {
           {/* VISTA ADMIN */}
           <div className="col-12 col-md-3">
             {/* {auth.role === "admin" && ( */}
-            <Button className=" btn-detail" onClick={() => handleEdition()}>
+            <Button className=" btn-detail" onClick={handleShow}>
               EDITAR
             </Button>
             {/* )}  cierro parentesis de admin boton*/}
@@ -121,8 +121,9 @@ const ArticleDetail = ({ data, add }) => {
                     {/* data.section */}
                     <Form.Label>section</Form.Label>
                     <Form.Control
-                      type="email"
-                      placeholder="name@example.com"
+                      type="text"
+                      value={section}
+                      onInput={(e) => setSection(e.target.value)}
                       autoFocus
                     />
                     {/* data.author */}
@@ -155,9 +156,6 @@ const ArticleDetail = ({ data, add }) => {
             >
               <Form.Check type="checkbox" label="Destacar" />
             </Form.Group>
-            <Button className=" btn-detail" onClick={handleShow}>
-              ELIMINAR
-            </Button>
 
             {/* ) parentesis que cierra vista admin */}
             {/* aca reemplazar por el contador de favoritos de andre */}

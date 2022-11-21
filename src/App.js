@@ -48,7 +48,7 @@ function App() {
         {/* <Articlepublicitygrid data={data} /> */}
         {/* <Contact /> */}
         <Routes>
-          <Route path="/highlights" element={<Highlights />} />
+          <Route path="/highlights" element={<Highlights add={add} />} />
           <Route
             path="/"
             element={<Articlepublicitygrid data={data} add={add} />}

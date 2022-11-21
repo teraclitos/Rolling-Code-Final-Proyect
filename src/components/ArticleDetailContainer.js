@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ArticleDetail from "./ArticleDetail";
 import { Route, Routes, Link, useParams } from "react-router-dom";
+import Highlights from "./Highlights";
 const ArticleDetailContainer = ({ add }) => {
   const params = useParams();
   console.log(params);
@@ -14,6 +15,7 @@ const ArticleDetailContainer = ({ add }) => {
   return (
     <div>
       <ArticleDetail data={data} add={add} />;
+      <Highlights data={data} add={add} />;
     </div>
   );
 };
