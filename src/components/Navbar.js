@@ -8,6 +8,7 @@ import Contact from "./Contact";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStar,
+  faUser,
   faHeart,
   faEnvelope,
   faRightToBracket,
@@ -17,7 +18,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../styles/navbar.css";
 import Badge from "react-bootstrap/Badge";
-const Navbar = () => {
+const Navbar = ({ cart }) => {
   return (
     <BSNavbar
       className="bg-nav "
@@ -48,12 +49,14 @@ const Navbar = () => {
             <Nav.Link>
               Favoritos
               <FontAwesomeIcon icon={faHeart} className="mx-2" />
-              <Badge bg="primary">9</Badge>
+              <Badge bg="primary">{cart.length}</Badge>
               <span className="visually-hidden">Favoritos</span>
             </Nav.Link>
-            <Nav.Link href="">
-              Destacados
-              <FontAwesomeIcon icon={faStar} className="mx-2" />
+            <Nav.Link>
+              <Link to="/highlights">
+                Destacados
+                <FontAwesomeIcon icon={faStar} className="mx-2" />
+              </Link>
             </Nav.Link>
 
             <Nav.Link>
@@ -66,6 +69,10 @@ const Navbar = () => {
             <Nav.Link href="">
               Iniciar sesión
               <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
+            </Nav.Link>
+            <Nav.Link href="">
+              Regístrate
+              <FontAwesomeIcon icon={faUser} className="mx-2" />
             </Nav.Link>
           </Nav>
           <Form className="d-flex d-xl-none d-lg-none">

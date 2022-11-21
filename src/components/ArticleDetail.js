@@ -28,8 +28,8 @@ const ArticleDetail = ({ data }) => {
   const handleShow = () => setShow(true);
   return (
     <div>
-      <Container className="container-fluid">
-        <Row xs={1} md={2} className="g-5">
+      <Container fluid>
+        <Row xs={1} md={2}>
           <div className="col-12 col-md-9">
             <Card border="0" className="mt-5">
               <Card.Header className="title-section">MUNDIAL</Card.Header>

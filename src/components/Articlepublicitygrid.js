@@ -5,11 +5,11 @@ import { Button, Card, Pagination } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Route, Routes, Link, useParams } from "react-router-dom";
-// import {
-//   faFacebook,
-//   faTwitter,
-//   faInstagram,
-// } from "@fortawesome/free-brands-svg-icons";
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Articlepublicitygrid = ({ data }) => {
   let active = 2;
