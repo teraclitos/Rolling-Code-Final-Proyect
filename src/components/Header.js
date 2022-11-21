@@ -30,7 +30,7 @@ const Header = () => {
           tu pasión
         </h3>
       </div>
-      <div className="fs-1 "></div>
+      <div></div>
     </div>
   );
 };
