@@ -141,7 +141,7 @@ const ArticleDetail = ({ data }) => {
               </Modal.Footer>
             </Modal>
             {/* aca reemplazar por el contador de favoritos de andre */}
-            <Button className=" mt-5 mb-5" variant="warning">
+            <Button className="mt-5 mb-5" variant="warning">
               Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
             </Button>
             <Categorias />
