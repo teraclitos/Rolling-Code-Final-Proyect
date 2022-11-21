@@ -15,7 +15,6 @@ const ArticleDetailContainer = ({ add }) => {
   return (
     <div>
       <ArticleDetail data={data} add={add} />;
-      <Highlights data={data} add={add} />;
     </div>
   );
 };

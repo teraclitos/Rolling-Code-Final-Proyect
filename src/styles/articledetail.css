@@ -88,6 +88,12 @@
   background-color: #70a3af;
   border: 0;
 }
+
+.title-news {
+  font-family: "Anton";
+  margin-top: 30px;
+  background-color: #fd841f;
+}
 /* .detail-author {
   display: flex;
   align-items: center;

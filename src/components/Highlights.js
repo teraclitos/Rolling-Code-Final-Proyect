@@ -40,8 +40,8 @@ const Highlights = ({ data, add }) => {
   return (
     <div>
       <Container fluid>
+        <h2 className="title-news text-center">Noticias de la Semana</h2>
         <Row xs={1} md={2}>
-          <h2 className="title.news text-center">Noticias de la Semana</h2>
           {Array.from({ length: 3 }).map((_, idx) => (
             <div className="col-12 col-md-12">
               <Card border="0" className="mt-5">
