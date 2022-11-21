@@ -5,6 +5,7 @@ import Container from "react-bootstrap/esm/Container";
 import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 import ListGroup from "react-bootstrap/ListGroup";
+import "../styles/articlepublicitygrid.css";
 
 const Categorias = () => {
   const [open, setOpen] = useState(false);
@@ -12,10 +13,10 @@ const Categorias = () => {
   return (
     <Container>
       <Col>
-        <Row>
+        <Row className="d-flex justify-content-center">
           <Button
-            className="mb-3 "
-            variant="outline-secondary"
+            className="mb-3   btn-categories"
+            variant="outline-secondary "
             onClick={() => setOpen(!open)}
             aria-controls="example-collapse-text"
             aria-expanded={open}
@@ -23,18 +24,38 @@ const Categorias = () => {
             Categorías
           </Button>
           <Collapse in={open}>
-            <div id="example-collapse-text">
-              <ListGroup className=" mb-5">
-                <ListGroup.Item className="border-0 ">Fútbol</ListGroup.Item>
-                <ListGroup.Item className="border-0 ">Tenis</ListGroup.Item>
-                <ListGroup.Item className="border-0">Rugby</ListGroup.Item>
-                <ListGroup.Item className="border-0">Atletismo</ListGroup.Item>
-                <ListGroup.Item className="border-0">Boxeo</ListGroup.Item>
-                <ListGroup.Item className="border-0">Voley</ListGroup.Item>
-                <ListGroup.Item className="border-0">Básquet</ListGroup.Item>
-                <ListGroup.Item className="border-0">Handball</ListGroup.Item>
-                <ListGroup.Item className="border-0">Polo</ListGroup.Item>
-                <ListGroup.Item className="border-0">Otros</ListGroup.Item>
+            <div id="example-collapse-text  ">
+              <ListGroup className=" mb-5 list-categories">
+                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                  Fútbol
+                </ListGroup.Item>
+                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto ">
+                  Tenis
+                </ListGroup.Item>
+                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                  Rugby
+                </ListGroup.Item>
+                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                  Atletismo
+                </ListGroup.Item>
+                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                  Boxeo
+                </ListGroup.Item>
+                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                  Voley
+                </ListGroup.Item>
+                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                  Básquet
+                </ListGroup.Item>
+                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                  Handball
+                </ListGroup.Item>
+                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                  Polo
+                </ListGroup.Item>
+                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                  Otros
+                </ListGroup.Item>
               </ListGroup>
             </div>
           </Collapse>
