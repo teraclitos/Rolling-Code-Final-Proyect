@@ -3,6 +3,8 @@ import { Route, Routes, Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import BSNavbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Contact from "./Contact";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStar,
@@ -17,16 +19,16 @@ import "../styles/navbar.css";
 import Badge from "react-bootstrap/Badge";
 const Navbar = () => {
   return (
-    <Link to="/" style={{ textDecoration: "none" }}>
-      <BSNavbar
-        className="bg-nav "
-        collapseOnSelect
-        expand="lg"
-        variant="dark"
-        sticky="top"
-      >
-        <Container fluid>
-          <BSNavbar.Brand href="#home">
+    <BSNavbar
+      className="bg-nav "
+      collapseOnSelect
+      expand="lg"
+      variant="dark"
+      sticky="top"
+    >
+      <Container fluid>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <BSNavbar.Brand>
             {" "}
             <img
               alt=""
@@ -36,47 +38,51 @@ const Navbar = () => {
               className="d-inline-block align-top"
             />{" "}
           </BSNavbar.Brand>
-          <BSNavbar.Toggle aria-controls="responsive-navbar-nav" />
-          <BSNavbar.Collapse
-            id="responsive-navbar-nav"
-            className="justify-content-end"
-          >
-            <Nav>
-              <Nav.Link href="#home">
-                Favoritos
-                <FontAwesomeIcon icon={faHeart} className="mx-2" />
-                <Badge bg="primary">9</Badge>
-                <span className="visually-hidden">Favoritos</span>
-              </Nav.Link>
-              <Nav.Link href="">
-                Destacados
-                <FontAwesomeIcon icon={faStar} className="mx-2" />
-              </Nav.Link>
-              <Nav.Link href="">
+        </Link>
+        <BSNavbar.Toggle aria-controls="responsive-navbar-nav" />
+        <BSNavbar.Collapse
+          id="responsive-navbar-nav"
+          className="justify-content-end"
+        >
+          <Nav>
+            <Nav.Link>
+              Favoritos
+              <FontAwesomeIcon icon={faHeart} className="mx-2" />
+              <Badge bg="primary">9</Badge>
+              <span className="visually-hidden">Favoritos</span>
+            </Nav.Link>
+            <Nav.Link href="">
+              Destacados
+              <FontAwesomeIcon icon={faStar} className="mx-2" />
+            </Nav.Link>
+
+            <Nav.Link>
+              <Link to="/contacto" style={{ textDecoration: "none" }}>
                 Contacto
                 <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
-              </Nav.Link>
-              <Nav.Link href="">
-                Iniciar sesión
-                <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
-              </Nav.Link>
-            </Nav>
-            <Form className="d-flex d-xl-none d-lg-none">
-              <Form.Control
-                type="search"
-                placeholder="Buscar"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-secondary">
-                {" "}
-                <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
-              </Button>
-            </Form>
-          </BSNavbar.Collapse>
-        </Container>
-      </BSNavbar>
-    </Link>
+              </Link>
+            </Nav.Link>
+
+            <Nav.Link href="">
+              Iniciar sesión
+              <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
+            </Nav.Link>
+          </Nav>
+          <Form className="d-flex d-xl-none d-lg-none">
+            <Form.Control
+              type="search"
+              placeholder="Buscar"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-secondary">
+              {" "}
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
+            </Button>
+          </Form>
+        </BSNavbar.Collapse>
+      </Container>
+    </BSNavbar>
   );
 };
 

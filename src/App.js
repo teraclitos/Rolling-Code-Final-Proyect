@@ -47,7 +47,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Articlepublicitygrid data={data} />} />
           <Route path="/contacto" element={<Contact />} />
-          <Route path="/ArticleDetail" element={<ArticleDetailContainer />} />
+          <Route
+            path="/ArticleDetailContainer/:id"
+            element={<ArticleDetailContainer />}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>

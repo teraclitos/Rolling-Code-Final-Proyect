@@ -5,6 +5,7 @@ import { Button, Card, Container, Row, Col, Pagination } from "react-bootstrap";
 import { faHashtag, faHeart } from "@fortawesome/free-solid-svg-icons";
 import Categorias from "./Categorias";
 import "../styles/articledetail.css";
+import { Route, Routes, Link, useParams } from "react-router-dom";
 
 const ArticleDetail = ({ data }) => {
   return (
@@ -17,11 +18,7 @@ const ArticleDetail = ({ data }) => {
               {/* data.section */}
               <Card.Body>
                 <div className="detail-author">
-                  <Card.Img
-                    variant="top"
-                    src="./logoRollingneta.png"
-                    width={70}
-                  />
+                  <Card.Img variant="top" src="./logoheader.png" width={70} />
                   <Card.Title className="mt-4">Marina Bianconi</Card.Title>
                 </div>
                 {/* data.author */}
@@ -55,7 +52,7 @@ const ArticleDetail = ({ data }) => {
               </Card.Body>
             </Card>
             <Card border="0" style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={data.image} />
+              <Card.Img src={data.image} />
               <Card.Body>
                 <Card.Title>{data.description}</Card.Title>
                 {/* data.subtitulo */}
