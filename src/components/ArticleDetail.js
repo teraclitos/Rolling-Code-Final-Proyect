@@ -75,6 +75,7 @@ const ArticleDetail = ({ data }) => {
             </Card>
           </div>
           <div className="col-12 col-md-3">
+            {/* aca reemplazar por el contador de favoritos de andre */}
             <Button className=" mt-5 mb-5 text-danger" variant="warning">
               Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
             </Button>
