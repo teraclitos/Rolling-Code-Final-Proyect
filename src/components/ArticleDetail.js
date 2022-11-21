@@ -22,7 +22,7 @@ import Categorias from "./Categorias";
 import "../styles/articledetail.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
-const ArticleDetail = ({ data }) => {
+const ArticleDetail = ({ data, add }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -141,7 +141,11 @@ const ArticleDetail = ({ data }) => {
               </Modal.Footer>
             </Modal>
             {/* aca reemplazar por el contador de favoritos de andre */}
-            <Button className="mt-5 mb-5" variant="warning">
+            <Button
+              className="mt-5 mb-5"
+              variant="warning"
+              onClick={() => add(data)}
+            >
               Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
             </Button>
             <Categorias />

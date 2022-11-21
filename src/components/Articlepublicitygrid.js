@@ -11,7 +11,7 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 
-const Articlepublicitygrid = ({ data }) => {
+const Articlepublicitygrid = ({ data, add }) => {
   let active = 2;
   let items = [];
   for (let number = 1; number <= 3; number++) {
@@ -41,10 +41,12 @@ const Articlepublicitygrid = ({ data }) => {
                 <Link to={`/ArticleDetailContainer/${d.id}`}>
                   <Button className="py-1 px-2 btn-color ">Leer más</Button>
                 </Link>
-                <FontAwesomeIcon
-                  className="align-self-center fs-5 text-danger"
-                  icon={faHeart}
-                />
+                <Button onClick={() => add(d)}>
+                  <FontAwesomeIcon
+                    className="align-self-center fs-5 text-danger"
+                    icon={faHeart}
+                  />
+                </Button>
               </Card.Footer>
             </Card>
           </div>

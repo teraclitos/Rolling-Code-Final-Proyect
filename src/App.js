@@ -47,11 +47,14 @@ function App() {
         {/* <Contact /> */}
         <Routes>
           <Route path="/highlights" element={<Highlights />} />
-          <Route path="/" element={<Articlepublicitygrid data={data} />} />
+          <Route
+            path="/"
+            element={<Articlepublicitygrid data={data} add={add} />}
+          />
           <Route path="/contacto" element={<Contact />} />
           <Route
             path="/ArticleDetailContainer/:id"
-            element={<ArticleDetailContainer />}
+            element={<ArticleDetailContainer add={add} />}
           />
         </Routes>
         <Footer />
