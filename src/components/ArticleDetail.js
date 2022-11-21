@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+// import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import {
   Button,
   Card,
@@ -11,7 +11,13 @@ import {
   Col,
   Pagination,
 } from "react-bootstrap";
-import { faHashtag, faHeart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCommentAlt,
+  faHashtag,
+  faHeart,
+  faHeartCircleBolt,
+  faSeedling,
+} from "@fortawesome/free-solid-svg-icons";
 import Categorias from "./Categorias";
 import "../styles/articledetail.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
@@ -39,13 +45,22 @@ const ArticleDetail = ({ data }) => {
                 <Card.Text>
                   <div className="social-media">
                     <div className="red-social">
-                      <FontAwesomeIcon icon={faHashtag} />
+                      <FontAwesomeIcon
+                        style={{ fontSize: "2em", color: "#1986a0" }}
+                        icon={faHeartCircleBolt}
+                      />
                     </div>
                     <div className="red-social">
-                      <FontAwesomeIcon icon={faHashtag} />
+                      <FontAwesomeIcon
+                        icon={faCommentAlt}
+                        style={{ fontSize: "2em", color: "#1986a0" }}
+                      />
                     </div>
                     <div className="red-social">
-                      <FontAwesomeIcon icon={faHashtag} />
+                      <FontAwesomeIcon
+                        style={{ fontSize: "2em", color: "#1986a0" }}
+                        icon={faSeedling}
+                      />
                     </div>
                   </div>
                   <div className="col-12 linea-style" />
@@ -83,38 +98,45 @@ const ArticleDetail = ({ data }) => {
             {/* )} */}
             {/* {auth.role === "admin" ? ( */}
             <Modal show={show} onHide={handleClose}>
-              <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+              <Modal.Header className="card-crud" closeButton>
+                <Modal.Title className="title-crud">CRUD ARTICULOS</Modal.Title>
               </Modal.Header>
-              <Modal.Body>
+              <Modal.Body className="card-crud">
                 <Form>
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
-                    <Form.Label>Email address</Form.Label>
+                    {/* data.section */}
+                    <Form.Label>section</Form.Label>
                     <Form.Control
                       type="email"
                       placeholder="name@example.com"
                       autoFocus
                     />
-                  </Form.Group>
-                  <Form.Group
-                    className="mb-3"
-                    controlId="exampleForm.ControlTextarea1"
-                  >
-                    <Form.Label>Example textarea</Form.Label>
-                    <Form.Control as="textarea" rows={3} />
+                    {/* data.author */}
+                    <Form.Label>Author</Form.Label>
+                    <Form.Control type="text" placeholder="" autoFocus />
+                    {/* data.title */}
+                    <Form.Label>titulo</Form.Label>
+                    <Form.Control type="text" placeholder="" autoFocus />
+                    {/* data.image */}
+                    <Form.Label>URL</Form.Label>
+                    <Form.Control type="email" placeholder="" autoFocus />
+                    {/* data.subtitulo */}
+                    <Form.Label>Subtitulo</Form.Label>
+                    <Form.Control type="email" placeholder="" autoFocus />
+                    {/* data.description */}
+                    <Form.Label>description</Form.Label>
+                    <Form.Control type="email" placeholder="" autoFocus />
                   </Form.Group>
                 </Form>
               </Modal.Body>
-              <Modal.Footer>
+              <Modal.Footer className="card-crud">
                 {/* )} */}
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-                <Button variant="primary" onClick={handleClose}>
-                  Save Changes
+
+                <Button className="btn-save" onClick={handleClose}>
+                  Guardar cambios
                 </Button>
               </Modal.Footer>
             </Modal>

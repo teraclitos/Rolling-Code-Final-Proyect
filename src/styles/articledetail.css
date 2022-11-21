@@ -1,6 +1,6 @@
 .title-section {
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 400;
   color: rgb(245, 112, 3);
   background-color: #001253;
   width: auto;
@@ -58,6 +58,27 @@
 }
 .btn-detail:hover {
   background-color: #fd841f;
+}
+
+.btn-save {
+  background-color: #1986a0;
+  border: 0;
+  color: black;
+  border-radius: 4px;
+  font-family: "Anton";
+}
+
+.btn-save:hover {
+  background-color: #fd841f;
+}
+.title-crud {
+  color: #001253;
+  font-family: "Anton";
+}
+
+.card-crud {
+  background-color: #70a3af;
+  border: 0;
 }
 /* .detail-author {
   display: flex;
