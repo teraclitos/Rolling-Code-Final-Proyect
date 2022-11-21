@@ -2,7 +2,7 @@
 @import "../styles/articlepublicitygrid.css";
 .grid-header {
   width: 100%;
-  background-image: url("https://img.freepik.com/foto-gratis/herramientas-deportivas_53876-138077.jpg?w=1380&t=st=1668605444~exp=1668606044~hmac=8db2df7e55bb06ba375a09af73963a00867e732ee219229e9e36898c3c9e0ae7");
+  background-image: url("https://s03.s3c.es/imag/_v0/770x419/e/b/d/futbol-general-dreams.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   display: grid;
@@ -23,5 +23,13 @@
 }
 .grid-center-header {
   margin-top: 1em;
-  margin-bottom: 4em;
+  margin-bottom: 2em;
+  gap: 1em;
+}
+.icon-container {
+  color: #fff;
+  gap: 0.5em;
+}
+.icon {
+  cursor: pointer;
 }

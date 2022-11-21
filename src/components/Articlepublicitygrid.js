@@ -4,6 +4,12 @@ import Categorias from "../components/Categorias";
 import { Button, Card, Pagination } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { Route, Routes, Link, useParams } from "react-router-dom";
+// import {
+//   faFacebook,
+//   faTwitter,
+//   faInstagram,
+// } from "@fortawesome/free-brands-svg-icons";
 
 const Articlepublicitygrid = ({ data }) => {
   let active = 2;
@@ -32,7 +38,9 @@ const Articlepublicitygrid = ({ data }) => {
                 </Card.Text>
               </Card.Body>
               <Card.Footer className="d-flex justify-content-between p-0 px-1 border-0 mt-2 bg-white card-footer ">
-                <Button className="py-1 px-2 btn-color ">Leer más</Button>
+                <Link to={`/ArticleDetailContainer/${d.id}`}>
+                  <Button className="py-1 px-2 btn-color ">Leer más</Button>
+                </Link>
                 <FontAwesomeIcon
                   className="align-self-center fs-5 text-danger"
                   icon={faHeart}

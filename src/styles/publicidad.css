@@ -1,9 +1,8 @@
 .advertising {
-    width: 300px;
-    height: 300 px;
-    border: 3px solid black;
+  width: 300px;
+  height: 300px;
+  border: 3px solid black;
 
-    background-image: url('https://www.adlatina.com/uploads/img/gatorade.jpg');
-    background-size: 100% 100%;
-
+  background-image: url("https://www.adlatina.com/uploads/img/gatorade.jpg");
+  background-size: 100% 100%;
 }
