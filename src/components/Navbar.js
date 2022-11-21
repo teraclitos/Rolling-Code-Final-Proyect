@@ -8,6 +8,7 @@ import Contact from "./Contact";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStar,
+  faUser,
   faHeart,
   faEnvelope,
   faRightToBracket,
@@ -51,9 +52,11 @@ const Navbar = ({ cart }) => {
               <Badge bg="primary">{cart.length}</Badge>
               <span className="visually-hidden">Favoritos</span>
             </Nav.Link>
-            <Nav.Link href="">
-              Destacados
-              <FontAwesomeIcon icon={faStar} className="mx-2" />
+            <Nav.Link>
+              <Link to="/highlights">
+                Destacados
+                <FontAwesomeIcon icon={faStar} className="mx-2" />
+              </Link>
             </Nav.Link>
 
             <Nav.Link>
@@ -66,6 +69,10 @@ const Navbar = ({ cart }) => {
             <Nav.Link href="">
               Iniciar sesión
               <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
+            </Nav.Link>
+            <Nav.Link href="">
+              Regístrate
+              <FontAwesomeIcon icon={faUser} className="mx-2" />
             </Nav.Link>
           </Nav>
           <Form className="d-flex d-xl-none d-lg-none">

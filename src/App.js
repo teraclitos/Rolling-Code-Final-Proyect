@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import ArticleDetailContainer from "./components/ArticleDetailContainer";
+import Highlights from "../src/components/Highlights";
 
 function App() {
   const [data, setData] = useState([]);
@@ -45,6 +46,7 @@ function App() {
         {/* <Articlepublicitygrid data={data} /> */}
         {/* <Contact /> */}
         <Routes>
+          <Route path="/highlights" element={<Highlights />} />
           <Route path="/" element={<Articlepublicitygrid data={data} />} />
           <Route path="/contacto" element={<Contact />} />
           <Route
