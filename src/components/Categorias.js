@@ -15,7 +15,7 @@ const Categorias = () => {
       <Col>
         <Row className="d-flex justify-content-center">
           <Button
-            className="mb-3   btn-categories"
+            className="mb-3 mt-5  btn-categories"
             variant="outline-secondary "
             onClick={() => setOpen(!open)}
             aria-controls="example-collapse-text"
@@ -26,34 +26,34 @@ const Categorias = () => {
           <Collapse in={open}>
             <div id="example-collapse-text  ">
               <ListGroup className=" mb-5 list-categories">
-                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                <ListGroup.Item className="item-list-categories ">
                   Fútbol
                 </ListGroup.Item>
-                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto ">
+                <ListGroup.Item className="item-list-categories  ">
                   Tenis
                 </ListGroup.Item>
-                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                <ListGroup.Item className="item-list-categories ">
                   Rugby
                 </ListGroup.Item>
-                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                <ListGroup.Item className="item-list-categories ">
                   Atletismo
                 </ListGroup.Item>
-                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                <ListGroup.Item className="item-list-categories ">
                   Boxeo
                 </ListGroup.Item>
-                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                <ListGroup.Item className="item-list-categories ">
                   Voley
                 </ListGroup.Item>
-                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                <ListGroup.Item className="item-list-categories ">
                   Básquet
                 </ListGroup.Item>
-                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                <ListGroup.Item className="item-list-categories ">
                   Handball
                 </ListGroup.Item>
-                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                <ListGroup.Item className="item-list-categories ">
                   Polo
                 </ListGroup.Item>
-                <ListGroup.Item className="border-0 item-list-categories ms-auto me-auto">
+                <ListGroup.Item className="item-list-categories ">
                   Otros
                 </ListGroup.Item>
               </ListGroup>
@@ -65,7 +65,7 @@ const Categorias = () => {
             alt=""
             src="https://scontent.fsla2-1.fna.fbcdn.net/v/t39.30808-6/294684783_3093572800893449_8540717541029371986_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9267fe&_nc_eui2=AeEi0kXI4ndCV-73m5Nqcbgz_P3M2DTuwRH8_czYNO7BEdFcYvdt-kn6DIVGcV1EFO0&_nc_ohc=TY0hluuDUs4AX9WrNAf&_nc_oc=AQl7EjHG04FtQTzuyoG__BV1kbdK7KHSeS6z9H6JFts0EOA5v3LA11sA1z2E6_jYRi4&_nc_ht=scontent.fsla2-1.fna&oh=00_AfAq7M5TcGzmt6Fpt8ppb-_jQH2gfhhEpQ1ogEN8Rawfqg&oe=637BD06C"
             width="50"
-            className="d-inline-block align-top "
+            className="d-inline-block align-top publicity"
           />
         </Row>
       </Col>
