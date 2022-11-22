@@ -23,8 +23,9 @@ const Articlepublicitygrid = ({ data, add }) => {
     );
   }
   return (
-    <div>
+    <>
       <Advertising />
+
       <div className="container grid-articles-publicity mt-5 px-5 px-sm-2 px-md-0 ">
         <div className="grid-articles">
           {data.map((d, i) => (
@@ -69,7 +70,7 @@ const Articlepublicitygrid = ({ data, add }) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
