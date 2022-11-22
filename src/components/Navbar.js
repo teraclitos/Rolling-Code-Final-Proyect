@@ -51,8 +51,14 @@ const Navbar = ({ cart }) => {
         >
           <Nav>
             <Nav.Link onClick={handleShow}>
-              Favoritos
-              <FontAwesomeIcon icon={faHeart} className="mx-2" />
+              <Link
+                to="/"
+                className="link-nav"
+                style={{ textDecoration: "none" }}
+              >
+                Favoritos
+                <FontAwesomeIcon icon={faHeart} className="mx-2" />
+              </Link>
               <Badge bg="primary">{cart.length}</Badge>
               <span className="visually-hidden">Favoritos</span>
             </Nav.Link>
@@ -65,26 +71,46 @@ const Navbar = ({ cart }) => {
             </Offcanvas>
 
             <Nav.Link>
-              <Link to="/highlights" style={{ textDecoration: "none" }}>
+              <Link
+                to="/highlights"
+                className="link-nav"
+                style={{ textDecoration: "none" }}
+              >
                 Destacados
                 <FontAwesomeIcon icon={faStar} className="mx-2" />
               </Link>
             </Nav.Link>
 
             <Nav.Link>
-              <Link to="/contacto" style={{ textDecoration: "none" }}>
+              <Link
+                to="/contacto"
+                className="link-nav"
+                style={{ textDecoration: "none" }}
+              >
                 Contacto
                 <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
               </Link>
             </Nav.Link>
 
-            <Nav.Link href="">
-              Iniciar sesión
-              <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
+            <Nav.Link>
+              <Link
+                to="/"
+                className="link-nav"
+                style={{ textDecoration: "none" }}
+              >
+                Iniciar sesión
+                <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
+              </Link>
             </Nav.Link>
-            <Nav.Link href="">
-              Regístrate
-              <FontAwesomeIcon icon={faUser} className="mx-2" />
+            <Nav.Link>
+              <Link
+                to="/"
+                className="link-nav"
+                style={{ textDecoration: "none" }}
+              >
+                Regístrate
+                <FontAwesomeIcon icon={faUser} className="mx-2" />
+              </Link>
             </Nav.Link>
           </Nav>
           <Form className="d-flex d-xl-none d-lg-none">
