@@ -44,7 +44,7 @@ const Categorias = () => {
                 <ListGroup.Item className="item-list-categories link-category">
                   Voley
                 </ListGroup.Item>
-                <ListGroup.Item className="item-list-categories link-nav">
+                <ListGroup.Item className="item-list-categories link-category">
                   Básquet
                 </ListGroup.Item>
                 <ListGroup.Item className="item-list-categories link-category">
