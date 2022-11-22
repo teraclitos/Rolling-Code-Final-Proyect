@@ -28,20 +28,21 @@ function App() {
   //CART
   const add = (p) => {
     setCart([...cart, p]);
-    console.log("hola");
   };
 
   const del = (p) => {
     console.log(p);
+    setCart(cart.filter((c) => c.id !== p.id));
   };
 
-  const clear = () => {};
-  //para navbar
+  const clear = () => {
+    setCart([]);
+  };
 
   return (
     <div>
       <BrowserRouter>
-        <Navbar cart={cart} />
+        <Navbar cart={cart} del={del} clear={clear} />
         <Header />
         {/* <Advertising /> */}
         {/* <ArticleDetailContainer data={data} /> */}

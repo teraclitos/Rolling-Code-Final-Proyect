@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+import { Row, Col } from "react-bootstrap";
 import BSNavbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -18,7 +19,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../styles/navbar.css";
 import Badge from "react-bootstrap/Badge";
-const Navbar = ({ cart }) => {
+const Navbar = ({ cart, del, clear }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -66,8 +67,27 @@ const Navbar = ({ cart }) => {
             <Offcanvas show={show} onHide={handleClose}>
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Mis favoritos ({cart.length})</Offcanvas.Title>
+                {cart.length > 0 && (
+                  <Button variant="danger" onClick={() => clear()}>
+                    Limpiar favoritos
+                  </Button>
+                )}
               </Offcanvas.Header>
-              <Offcanvas.Body>{cart.length}</Offcanvas.Body>
+              <Offcanvas.Body>
+                {cart.length
+                  ? cart.map((c, i) => (
+                      <Row key={i}>
+                        <Col>{c.title}</Col>
+                        <Col>{c.price}</Col>
+                        <Col>
+                          <Button variant="danger" onClick={() => del(c)}>
+                            Borrar
+                          </Button>
+                        </Col>
+                      </Row>
+                    ))
+                  : "Sin favoritos"}
+              </Offcanvas.Body>
             </Offcanvas>
 
             <Nav.Link>
