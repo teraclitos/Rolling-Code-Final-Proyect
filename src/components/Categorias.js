@@ -23,7 +23,7 @@ const Categorias = () => {
           >
             Categorías
           </Button>
-          <Collapse className="collapse" in={open}>
+          <Collapse className="collapse-estilos" in={open}>
             <div id="example-collapse-text  ">
               <ListGroup className=" mb-5 list-categories">
                 <ListGroup.Item className="item-list-categories link-category ">
