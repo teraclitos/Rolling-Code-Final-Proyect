@@ -34,6 +34,10 @@
 .card {
   min-width: 100%;
   width: 10em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  box-shadow: 2px 2px 2px 0 #3f3f3f, -5px -5px 5px 0 rgb(19, 19, 19),
+    5px 5px 15px 0 rgb(255, 255, 255);
 }
 
 .item-list-categories {
@@ -93,4 +97,30 @@
     width: 20em;
     height: 20em;
   }
+}
+
+.link-category {
+  text-decoration: none;
+  color: #0e185f !important;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  position: relative;
+}
+
+.link-category:after {
+  content: "";
+  width: 0;
+  height: 4px;
+  background-color: #fd841f;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transition: all 0.5s;
+  will-change: width;
+}
+
+.link-category:hover::after {
+  width: 100%;
+  right: 0;
 }

@@ -23,37 +23,37 @@ const Categorias = () => {
           >
             Categorías
           </Button>
-          <Collapse in={open}>
+          <Collapse className="collapse-estilos" in={open}>
             <div id="example-collapse-text  ">
               <ListGroup className=" mb-5 list-categories">
-                <ListGroup.Item className="item-list-categories ">
+                <ListGroup.Item className="item-list-categories link-category ">
                   Fútbol
                 </ListGroup.Item>
-                <ListGroup.Item className="item-list-categories  ">
+                <ListGroup.Item className="item-list-categories link-category ">
                   Tenis
                 </ListGroup.Item>
-                <ListGroup.Item className="item-list-categories ">
+                <ListGroup.Item className="item-list-categories link-category">
                   Rugby
                 </ListGroup.Item>
-                <ListGroup.Item className="item-list-categories ">
+                <ListGroup.Item className="item-list-categories link-category">
                   Atletismo
                 </ListGroup.Item>
-                <ListGroup.Item className="item-list-categories ">
+                <ListGroup.Item className="item-list-categories link-category">
                   Boxeo
                 </ListGroup.Item>
-                <ListGroup.Item className="item-list-categories ">
+                <ListGroup.Item className="item-list-categories link-category">
                   Voley
                 </ListGroup.Item>
-                <ListGroup.Item className="item-list-categories ">
+                <ListGroup.Item className="item-list-categories link-category">
                   Básquet
                 </ListGroup.Item>
-                <ListGroup.Item className="item-list-categories ">
+                <ListGroup.Item className="item-list-categories link-category">
                   Handball
                 </ListGroup.Item>
-                <ListGroup.Item className="item-list-categories ">
+                <ListGroup.Item className="item-list-categories link-category">
                   Polo
                 </ListGroup.Item>
-                <ListGroup.Item className="item-list-categories ">
+                <ListGroup.Item className="item-list-categories link-category">
                   Otros
                 </ListGroup.Item>
               </ListGroup>
