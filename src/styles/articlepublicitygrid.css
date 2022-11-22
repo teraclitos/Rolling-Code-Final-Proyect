@@ -40,17 +40,6 @@
     5px 5px 15px 0 rgb(255, 255, 255);
 }
 
-.item-list-categories {
-  color: #fd841f;
-  cursor: pointer;
-  border-bottom: 1px solid #aa5814;
-  border-top: 0;
-  border-right: 0;
-  border-left: 0;
-}
-.item-list-categories:hover {
-  color: #aa5814;
-}
 .btn-categories:hover {
   border: #0e185f solid 1px;
   color: #0e185f;
@@ -100,6 +89,8 @@
 }
 
 .link-category {
+  cursor: pointer;
+  border: 0;
   text-decoration: none;
   color: #0e185f !important;
   padding: 10px;

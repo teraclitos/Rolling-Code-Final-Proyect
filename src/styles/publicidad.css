@@ -15,30 +15,43 @@ body {
   width: 100%;
   height: 100vh;
   background: rgb(0, 0, 0, 0.8);
-  z-index: 40;
-  top: 0;
-  left: 0;
+  position: fixed;
   display: flex;
-  z-index: 20;
-  animation: modal 3s 2s;
-  visibility: hidden;
-  opacity: 0;
+  justify-content: center;
+  align-items: center;
+
+  animation-name: modal;
+  animation-delay: 3s;
+  animation-duration: 1s;
+
+  opacity: 1;
 }
 
 .contenido {
-  margin: auto;
-  margin-right: 40%;
-  z-index: 10;
-  width: 40%;
-  height: 40%;
-  background: white;
   border-radius: 10px;
+  position: relative;
+}
+.img-modal-publicity {
+  width: 60vw;
 }
 
-#cerrar {
-  display: none;
+.btn-cerrar {
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+  opacity: 0.5;
+  border-radius: 5px;
+}
+.btn-cerrar:hover {
+  background-color: rgb(77, 64, 64);
+  color: #fff;
 }
 
+@keyframes modal {
+  100% {
+    opacity: 0;
+  }
+}
 /* #cerrar + label {
   position: absolute;
   color: #fff;
@@ -61,10 +74,3 @@ body {
 #cerrar:checked ~ .modal {
   display: none;
 } */
-
-@keyframes modal {
-  100% {
-    visibility: visible;
-    opacity: 1;
-  }
-}
