@@ -94,3 +94,29 @@
     height: 20em;
   }
 }
+
+.link-nav {
+  text-decoration: none;
+  color: rgb(255, 255, 255) !important;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  position: relative;
+}
+
+.link-nav:after {
+  content: "";
+  width: 0;
+  height: 4px;
+  background-color: #fd841f;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transition: all 0.5s;
+  will-change: width;
+}
+
+.link-nav:hover::after {
+  width: 100%;
+  right: 0;
+}
