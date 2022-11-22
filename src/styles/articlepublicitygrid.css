@@ -102,7 +102,7 @@
 .link-category:after {
   content: "";
   width: 0;
-  height: 4px;
+  height: 2px;
   background-color: #fd841f;
   position: absolute;
   bottom: 0;
