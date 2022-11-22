@@ -22,7 +22,7 @@ import Categorias from "./Categorias";
 import "../styles/articledetail.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
-const ArticleDetail = ({ data, add }) => {
+const ArticleDetail = ({ data, add, cart }) => {
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState("");
   const [section, setSection] = useState("");
@@ -163,6 +163,7 @@ const ArticleDetail = ({ data, add }) => {
               className="mt-5 mb-5"
               variant="warning"
               onClick={() => add(data)}
+              disabled={cart.includes(data)}
             >
               Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
             </Button>

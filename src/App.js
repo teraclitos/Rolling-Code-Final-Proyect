@@ -52,12 +52,12 @@ function App() {
           <Route path="/highlights" element={<Highlights add={add} />} />
           <Route
             path="/"
-            element={<Articlepublicitygrid data={data} add={add} />}
+            element={<Articlepublicitygrid data={data} add={add} cart={cart} />}
           />
           <Route path="/contacto" element={<Contact />} />
           <Route
             path="/ArticleDetailContainer/:id"
-            element={<ArticleDetailContainer add={add} />}
+            element={<ArticleDetailContainer add={add} cart={cart} />}
           />
         </Routes>
         <Footer />
