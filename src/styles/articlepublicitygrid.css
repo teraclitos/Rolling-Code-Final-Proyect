@@ -31,7 +31,7 @@
   height: 5em;
   width: 5em;
 }
-.card {
+.card-grid {
   min-width: 100%;
   width: 10em;
   box-decoration-break: clone;
