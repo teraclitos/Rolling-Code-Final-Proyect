@@ -2,6 +2,22 @@
   background: linear-gradient(to right, #001253, #1986a0);
 }
 
+.btn-trash {
+  background: transparent;
+  border-color: red;
+}
+
+.btn-trash:hover {
+  background: transparent;
+  border-color: transparent;
+  border-color: red;
+}
+
+.btn-trash:active {
+  background: white;
+  border-color: transparent;
+  border-color: red;
+}
 .link-nav {
   text-decoration: none;
   color: white !important;

@@ -9,6 +9,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStar,
+  faTrash,
   faUser,
   faHeart,
   faEnvelope,
@@ -59,16 +60,18 @@ const Navbar = ({ cart, del, clear }) => {
               >
                 Favoritos
                 <FontAwesomeIcon icon={faHeart} className="mx-2" />
+                <Badge bg="none">{cart.length}</Badge>
               </Link>
-              <Badge bg="primary">{cart.length}</Badge>
-              <span className="visually-hidden">Favoritos</span>
             </Nav.Link>
 
             <Offcanvas show={show} onHide={handleClose}>
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Mis favoritos ({cart.length})</Offcanvas.Title>
                 {cart.length > 0 && (
-                  <Button variant="danger" onClick={() => clear()}>
+                  <Button
+                    className="btn-trash text-danger"
+                    onClick={() => clear()}
+                  >
                     Limpiar favoritos
                   </Button>
                 )}
@@ -80,8 +83,11 @@ const Navbar = ({ cart, del, clear }) => {
                         <Col>{c.title}</Col>
                         <Col>{c.price}</Col>
                         <Col>
-                          <Button variant="danger" onClick={() => del(c)}>
-                            Borrar
+                          <Button className="btn-trash" onClick={() => del(c)}>
+                            <FontAwesomeIcon
+                              className="text-danger"
+                              icon={faTrash}
+                            />
                           </Button>
                         </Col>
                       </Row>

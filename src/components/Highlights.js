@@ -22,7 +22,7 @@ import Categorias from "./Categorias";
 import "../styles/articledetail.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
-const Highlights = ({ data, add }) => {
+const Highlights = ({ data, add, cart }) => {
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState("");
   const [section, setSection] = useState("");
