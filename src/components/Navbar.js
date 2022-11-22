@@ -50,7 +50,7 @@ const Navbar = ({ cart }) => {
           className="justify-content-end"
         >
           <Nav>
-            <Nav.Link onClick={handleShow}>
+            <Nav.Link className="link-nav" onClick={handleShow}>
               Favoritos
               <FontAwesomeIcon icon={faHeart} className="mx-2" />
               <Badge bg="primary">{cart.length}</Badge>
@@ -65,24 +65,32 @@ const Navbar = ({ cart }) => {
             </Offcanvas>
 
             <Nav.Link>
-              <Link to="/highlights" style={{ textDecoration: "none" }}>
+              <Link
+                to="/highlights"
+                className="link-nav"
+                style={{ textDecoration: "none" }}
+              >
                 Destacados
                 <FontAwesomeIcon icon={faStar} className="mx-2" />
               </Link>
             </Nav.Link>
 
             <Nav.Link>
-              <Link to="/contacto" style={{ textDecoration: "none" }}>
+              <Link
+                to="/contacto"
+                className="link-nav"
+                style={{ textDecoration: "none" }}
+              >
                 Contacto
                 <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
               </Link>
             </Nav.Link>
 
-            <Nav.Link href="">
+            <Nav.Link className="link-nav">
               Iniciar sesión
               <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
             </Nav.Link>
-            <Nav.Link href="">
+            <Nav.Link className="link-nav">
               Regístrate
               <FontAwesomeIcon icon={faUser} className="mx-2" />
             </Nav.Link>
