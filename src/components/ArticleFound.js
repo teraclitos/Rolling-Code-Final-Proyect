@@ -9,37 +9,37 @@ const ArticleFound = ({ data }) => {
 
   let handleChange = (e) => {
     setSearch(e.target.value);
+    console.log("array found al principio:" + found);
     console.log("Busqueda:" + e.target.value);
-    const hallados = filterArticle(e.target.value);
-    <Container>
-      {hallados.map((f, i) => {
-        <Row>
-          <Col>{f.title}</Col>
-          <Col>{f.price}</Col>
-        </Row>;
-      })}
-    </Container>;
+    filterArticle(e.target.value);
+    console.log("array found al final:" + found);
   };
 
   let filterArticle = (entrada) => {
-    let encontrados = [];
-    data.forEach((element) => {
-      // console.log("entro");
-      // console.log("Titulo" + element.title);
-      // console.log("Search:" + entrada);
-      console.log("array found al principio:" + found);
+    // let encontrados = [];
+    // data.forEach((element) => {
+    //   // console.log("entro");
+    //   // console.log("Titulo" + element.title);
+    //   // console.log("Search:" + entrada);
+    //   console.log("array found al principio:" + found);
+    //   if (element.title.toUpperCase().includes(entrada.toUpperCase())) {
+    //     // setFound([...found, element]);
+    //     encontrados = encontrados.push(element);
+    //     console.log("Hay coincidencias: " + element.title + " = " + entrada);
+    //     console.log("array found al final:" + found);
+    //   }
+    // });
+
+    let encontrados = data.filter((element) => {
       if (element.title.toUpperCase().includes(entrada.toUpperCase())) {
-        // setFound([...found, element]);
-        encontrados = encontrados.push(element);
-        console.log("Hay coincidencias: " + element.title + " = " + entrada);
-        console.log("array found al final:" + found);
+        return element;
       }
     });
-    return encontrados;
+    setFound(encontrados);
   };
+
   return (
     <div>
-      Resultados de Búsqueda
       <Form className="d-flex d-xl-none d-lg-none">
         <Form.Control
           type="search"
@@ -60,6 +60,16 @@ const ArticleFound = ({ data }) => {
           </Button>
         </Link>
       </Form>
+      <Container>
+        Resultados de Búsqueda
+        {found.map((f, i) => {
+          <Row>
+            <Col>{f.title}</Col>
+            <Col>{f.price}</Col>
+          </Row>;
+        })}
+      </Container>
+      ;
     </div>
   );
 };
