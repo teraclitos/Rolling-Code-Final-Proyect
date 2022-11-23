@@ -138,7 +138,7 @@ const ArticleDetail = ({ data, add, cart }) => {
                   >
                     {/* data.section */}
 
-                    <Form.Label>section</Form.Label>
+                    <Form.Label className="style-crud">Seccion</Form.Label>
                     <Form.Control
                       type="text"
                       // value={section}
@@ -152,7 +152,7 @@ const ArticleDetail = ({ data, add, cart }) => {
                       className="mb-3"
                       controlId="exampleForm.ControlInput1"
                     >
-                      <Form.Label>Author</Form.Label>
+                      <Form.Label className="style-crud">Autor</Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Nombre del autor"
@@ -167,7 +167,7 @@ const ArticleDetail = ({ data, add, cart }) => {
                       className="mb-3"
                       controlId="exampleForm.ControlInput1"
                     >
-                      <Form.Label>titulo</Form.Label>
+                      <Form.Label className="style-crud">Titulo</Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Ingrese titulo del articulo"
@@ -182,7 +182,7 @@ const ArticleDetail = ({ data, add, cart }) => {
                       className="mb-3"
                       controlId="exampleForm.ControlInput1"
                     >
-                      <Form.Label>URL</Form.Label>
+                      <Form.Label className="style-crud">URL</Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Ingrese URL de imagen"
@@ -197,7 +197,7 @@ const ArticleDetail = ({ data, add, cart }) => {
                       className="mb-3"
                       controlId="exampleForm.ControlInput1"
                     >
-                      <Form.Label>Subtitulo</Form.Label>
+                      <Form.Label className="style-crud">Subtitulo</Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Ingrese subtitulo"
@@ -212,7 +212,9 @@ const ArticleDetail = ({ data, add, cart }) => {
                       className="mb-3"
                       controlId="exampleForm.ControlInput1"
                     >
-                      <Form.Label>description</Form.Label>
+                      <Form.Label className="style-crud">
+                        Descripcion
+                      </Form.Label>
                       <Form.Control
                         type="textarea"
                         placeholder=""
@@ -233,11 +235,11 @@ const ArticleDetail = ({ data, add, cart }) => {
                       controlId="formBasicCheckbox"
                     >
                       <Button
-                        className="mb-5 mr-5 btn-detail"
+                        className="mb-5 mr-5 btn-save"
                         type="submit"
                         onClick={(e) => handleSubmit(e)}
                       >
-                        Submit
+                        Guardar cambios
                       </Button>
                     </Form.Group>
                   </Form.Group>
