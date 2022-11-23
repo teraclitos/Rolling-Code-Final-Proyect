@@ -22,14 +22,16 @@ import "../styles/navbar.css";
 import Badge from "react-bootstrap/Badge";
 import Modal from "react-bootstrap/Modal";
 import ModalRegister from "./ModalRegister";
+import ModalLogin from "./ModalLogin";
 const Navbar = ({ cart, del, clear, data }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [showRegister, setShowRegister] = useState(false);
-  const handleCloseRegister = () => setShowRegister(false);
   const handleShowRegister = () => setShowRegister(true);
+  const [showLogin, setShowLogin] = useState(false);
+  const handleShowLogin = () => setShowLogin(true);
 
   return (
     <>
@@ -130,7 +132,7 @@ const Navbar = ({ cart, del, clear, data }) => {
                 </Link>
               </Nav.Link>
 
-              <Nav.Link>
+              <Nav.Link onClick={handleShowLogin}>
                 <Link
                   to="/"
                   className="link-nav"
@@ -178,6 +180,7 @@ const Navbar = ({ cart, del, clear, data }) => {
         showRegister={showRegister}
         setShowRegister={setShowRegister}
       />
+      <ModalLogin showLogin={showLogin} setShowLogin={setShowLogin} />
     </>
   );
 };
