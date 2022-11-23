@@ -8,11 +8,10 @@ const ModalLogin = ({ showLogin, setShowLogin }) => {
   return (
     <div>
       <Modal centered show={showLogin} onHide={handleCloseLogin}>
-        <Modal.Header closeButton>
+        <Modal.Header className="border-0" closeButton>
           <Modal.Title>Iniciar sesión</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {" "}
           <Form>
             <Form.Group
               className="mb-3 d-flex flex-column align-items-start"

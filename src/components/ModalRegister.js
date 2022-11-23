@@ -8,7 +8,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
 
   return (
     <Modal centered show={showRegister} onHide={handleCloseRegister}>
-      <Modal.Header closeButton>
+      <Modal.Header className="border-0" closeButton>
         <Modal.Title>Regístrate</Modal.Title>
       </Modal.Header>
       <Modal.Body>
