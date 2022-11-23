@@ -62,30 +62,30 @@ const Categorias = () => {
           </Collapse>
         </Row>
         <Row className="d-none d-lg-block">
-          <Carousel>
-            <Carousel.Item interval={1000}>
+          <Carousel controls={false} indicators={false} slide={false}>
+            <Carousel.Item interval={1500}>
               <img
                 className="d-block w-100"
                 src="https://www.latinspots.com/files/notas/Gpowerade_beijing_08_web.jpg"
                 alt="First slide"
-              />
-              <Carousel.Caption></Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item interval={100}>
+              />{" "}
+              <Carousel.Caption></Carousel.Caption>{" "}
+            </Carousel.Item>{" "}
+            <Carousel.Item interval={1500}>
               <img
                 className="d-block w-100"
                 src="https://media.informabtl.com/wp-content/uploads/2011/03/Puma-Social-768x512.jpg"
                 alt="Second slide"
-              />
-              <Carousel.Caption></Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
+              />{" "}
+              <Carousel.Caption></Carousel.Caption>{" "}
+            </Carousel.Item>{" "}
+            <Carousel.Item interval={1500}>
               <img
                 className="d-block w-100"
                 src="https://p4.wallpaperbetter.com/wallpaper/529/666/472/advertising-logo-nike-poster-wallpaper-preview.jpg"
                 alt="Third slide"
-              />
-            </Carousel.Item>
+              />{" "}
+            </Carousel.Item>{" "}
           </Carousel>
         </Row>
       </Col>
