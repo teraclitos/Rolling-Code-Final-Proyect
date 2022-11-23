@@ -20,11 +20,13 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../styles/navbar.css";
 import Badge from "react-bootstrap/Badge";
-const Navbar = ({ cart, del, clear }) => {
+import Modal from "react-bootstrap/Modal";
+const Navbar = ({ cart, del, clear, data }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   return (
     <BSNavbar
       className="bg-nav "
@@ -142,14 +144,22 @@ const Navbar = ({ cart, del, clear }) => {
           <Form className="d-flex d-xl-none d-lg-none">
             <Form.Control
               type="search"
-              placeholder="Buscar"
+              // value={search}
+              placeholder="Buscar por nombre o categoría"
               className="me-2"
               aria-label="Search"
-            />
-            <Button variant="outline-secondary">
-              {" "}
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
-            </Button>
+              // onInput={(e) => setSearch(e.target.value)}
+              // onChange={handleChange}
+            />{" "}
+            <Link to="/articlefound" style={{ textDecoration: "none" }}>
+              <Button variant="outline-light">
+                {" "}
+                <FontAwesomeIcon
+                  icon={faMagnifyingGlass}
+                  className="text-white mx-2"
+                />
+              </Button>
+            </Link>
           </Form>
         </BSNavbar.Collapse>
       </Container>
