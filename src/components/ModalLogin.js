@@ -5,14 +5,19 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import "../styles/navbar.css";
 import "../styles/articlepublicitygrid.css";
+import { Formik } from "formik";
 
 const ModalLogin = ({ showLogin, setShowLogin }) => {
   const handleCloseLogin = () => setShowLogin(false);
   return (
     <div>
       <Modal centered show={showLogin} onHide={handleCloseLogin}>
-        <Modal.Header className="border-0  modal-background" closeButton>
-          <Modal.Title>Iniciar sesión</Modal.Title>
+        <Modal.Header
+          className="border-0 modal-titles modal-background"
+          closeButton
+        >
+          <div></div>
+          <Modal.Title className="text-center">Iniciar sesión</Modal.Title>
         </Modal.Header>
         <Modal.Body className="modal-background ">
           <Form>
