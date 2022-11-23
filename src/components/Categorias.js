@@ -61,12 +61,14 @@ const Categorias = () => {
             </div>
           </Collapse>
         </Row>
-        <Row className="d-none d-lg-block">
+        <Row className="d-none d-lg-block carrousel-advertisement">
           <Carousel
-            className="carrousel-advertisement"
+            className=""
             controls={false}
             indicators={false}
             slide={false}
+            touch={false}
+            pause={false}
           >
             <Carousel.Item interval={1500}>
               <img
