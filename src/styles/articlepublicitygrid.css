@@ -67,7 +67,7 @@
   color: #0e185f !important;
 }
 .carrousel-advertisement {
-  pointer-events: none;
+  cursor: pointer;
 }
 @media (max-width: 991.98px) {
   .grid-articles-publicity {

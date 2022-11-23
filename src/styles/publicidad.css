@@ -29,6 +29,7 @@ body {
 }
 .img-modal-publicity {
   width: 60vw;
+  cursor: pointer;
 }
 
 .btn-cerrar {
