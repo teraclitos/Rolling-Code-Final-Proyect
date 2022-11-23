@@ -1,8 +1,3 @@
 .card-highlights {
-  /* min-width: 100%;
-  width: 10em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  box-shadow: 2px 2px 2px 0 #3f3f3f, -5px -5px 5px 0 rgb(19, 19, 19),
-    5px 5px 15px 0 rgb(255, 255, 255); */
+  border-bottom: 4mm ridge rgba(211, 220, 50, 0.6);
 }
