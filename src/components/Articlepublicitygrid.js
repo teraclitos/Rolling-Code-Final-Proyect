@@ -30,7 +30,7 @@ const Articlepublicitygrid = ({ data, add, cart }) => {
         <div className="grid-articles">
           {data.map((d, i) => (
             <div className="mb-3  ">
-              <Card className="border-0 h-100 card">
+              <Card className="border-0 h-100 card-grid">
                 <Card.Img src={d.image} variant="top" className=" img-card" />
                 <Card.Body className="p-0 ps-1 card-body  ">
                   <h3 className="category-title fs-6 mt-2 mb-0">Fútbol</h3>
@@ -45,7 +45,11 @@ const Articlepublicitygrid = ({ data, add, cart }) => {
                   <Link to={`/ArticleDetailContainer/${d.id}`}>
                     <Button className="py-1 px-2 btn-color ">Leer más</Button>
                   </Link>
-                  <Button onClick={() => add(d)} disabled={cart.includes(d)}>
+                  <Button
+                    onClick={() => add(d)}
+                    disabled={cart.includes(d)}
+                    className="btn-favorite"
+                  >
                     <FontAwesomeIcon
                       className="align-self-center fs-5 text-danger"
                       icon={faHeart}

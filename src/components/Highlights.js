@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../styles/highlights.css";
 // import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import {
   Button,
@@ -44,7 +45,7 @@ const Highlights = ({ data, add }) => {
         <Row xs={1} md={2}>
           {Array.from({ length: 3 }).map((_, idx) => (
             <div className="col-12 col-md-12">
-              <Card border="0" className="mt-5">
+              <Card border="0" className="mt-5 card-highlights">
                 <Card.Header className="title-section">MUNDIAL</Card.Header>
                 {/* data.section */}
                 <Card.Body>
@@ -85,7 +86,7 @@ const Highlights = ({ data, add }) => {
                   {/* data.title */}
                 </Card.Body>
               </Card>
-              <Card border="0" style={{ width: "18rem" }}>
+              <Card border="0">
                 <Card.Img src="./logoheader" />
                 {/* data.image */}
                 <Card.Body>
@@ -116,9 +117,6 @@ const Highlights = ({ data, add }) => {
               <div className="col-12 line-style" />
             </div>
           ))}
-          {/* <div className="col-12 col-md-9">
-            <Categorias />
-          </div> */}
         </Row>
       </Container>
     </div>

@@ -24,19 +24,37 @@ import { Route, Routes, Link, useParams } from "react-router-dom";
 
 const ArticleDetail = ({ data, add, cart }) => {
   const [show, setShow] = useState(false);
-  const [title, setTitle] = useState("");
-  const [section, setSection] = useState("");
-  const [image, setimage] = useState("");
-  const [sybtitulo, setSubtitulo] = useState("");
-  const [author, setAuthor] = useState("");
-  const [description, setDescription] = useState("");
-  const [edition, setEdition] = useState(false);
+  const [editSection, setEditSection] = useState(data.section);
+  const [editAuthor, setEditAuthor] = useState(data.author);
+  const [editImage, setEditImage] = useState(data.image);
+  const [editTitle, setEditTitle] = useState(data.title);
+  const [editSubtitulo, setEditSubtitulo] = useState(data.subtitulo);
+  const [editDescription, setEditDescription] = useState(data.description);
+  const [submitOk, setSubmitOk] = useState(null);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleEdition = () => {
-    setEdition(!edition);
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    // setSubmitOk(null);
+    // fetch("https://rcs-3i-api-node.vercel.app/products/update/" + product._id, {
+    //   method: "PUT",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     category: product.category,
+    //     description: editDescription,
+    //     image:
+    //       "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+    //     price: editPrice,
+    //     title: editName,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((json) => setSubmitOk(true))
+    //   .catch((error) => setSubmitOk(false));
   };
-
   return (
     <div>
       <Container fluid>
@@ -80,7 +98,7 @@ const ArticleDetail = ({ data, add, cart }) => {
                 {/* data.title */}
               </Card.Body>
             </Card>
-            <Card border="0" style={{ width: "18rem" }}>
+            <Card border="0">
               <Card.Img src={data.image} />
               <Card.Body>
                 <Card.Title>{data.description}</Card.Title>
@@ -119,43 +137,118 @@ const ArticleDetail = ({ data, add, cart }) => {
                     controlId="exampleForm.ControlInput1"
                   >
                     {/* data.section */}
+
                     <Form.Label>section</Form.Label>
                     <Form.Control
                       type="text"
-                      value={section}
-                      onInput={(e) => setSection(e.target.value)}
+                      // value={section}
+                      defaultValue={editSection}
+                      onChange={(e) => setEditSection(e.target.value)}
                       autoFocus
                     />
+                    <Form.Group />
                     {/* data.author */}
-                    <Form.Label>Author</Form.Label>
-                    <Form.Control type="text" placeholder="" autoFocus />
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>Author</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Nombre del autor"
+                        defaultValue={editAuthor}
+                        value={editAuthor}
+                        onChange={(e) => setEditAuthor(e.target.value)}
+                        autoFocus
+                      />
+                    </Form.Group>
                     {/* data.title */}
-                    <Form.Label>titulo</Form.Label>
-                    <Form.Control type="text" placeholder="" autoFocus />
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>titulo</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Ingrese titulo del articulo"
+                        defaultValue={editTitle}
+                        value={editTitle}
+                        onChange={(e) => setEditTitle(e.target.value)}
+                        autoFocus
+                      />
+                    </Form.Group>
                     {/* data.image */}
-                    <Form.Label>URL</Form.Label>
-                    <Form.Control type="email" placeholder="" autoFocus />
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>URL</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Ingrese URL de imagen"
+                        defaultValue={setEditImage}
+                        value={editImage}
+                        onChange={(e) => setEditImage(e.target.value)}
+                        autoFocus
+                      />
+                    </Form.Group>
                     {/* data.subtitulo */}
-                    <Form.Label>Subtitulo</Form.Label>
-                    <Form.Control type="email" placeholder="" autoFocus />
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>Subtitulo</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Ingrese subtitulo"
+                        defaultValue={setEditSubtitulo}
+                        value={editSubtitulo}
+                        onChange={(e) => setEditSubtitulo(e.target.value)}
+                        autoFocus
+                      />
+                    </Form.Group>
                     {/* data.description */}
-                    <Form.Label>description</Form.Label>
-                    <Form.Control type="email" placeholder="" autoFocus />
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>description</Form.Label>
+                      <Form.Control
+                        type="textarea"
+                        placeholder=""
+                        defaultValue={setEditDescription}
+                        value={editDescription}
+                        onChange={(e) => setEditDescription(e.target.value)}
+                        autoFocus
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3 mt-5 btn-detail"
+                      controlId="formBasicCheckbox"
+                    >
+                      <Form.Check type="checkbox" label="Destacar" />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3 mt-5"
+                      controlId="formBasicCheckbox"
+                    >
+                      <Button
+                        className="mb-5 mr-5 btn-detail"
+                        type="submit"
+                        onClick={(e) => handleSubmit(e)}
+                      >
+                        Submit
+                      </Button>
+                    </Form.Group>
                   </Form.Group>
                 </Form>
               </Modal.Body>
               <Modal.Footer className="card-crud">
                 <Button className="btn-save" onClick={handleClose}>
-                  Guardar cambios
+                  Cerrar
                 </Button>
               </Modal.Footer>
             </Modal>
-            <Form.Group
-              className="mb-3 btn-detail"
-              controlId="formBasicCheckbox"
-            >
-              <Form.Check type="checkbox" label="Destacar" />
-            </Form.Group>
 
             {/* ) parentesis que cierra vista admin */}
             {/* aca reemplazar por el contador de favoritos de andre */}
