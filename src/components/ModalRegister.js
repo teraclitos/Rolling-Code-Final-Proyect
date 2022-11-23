@@ -2,16 +2,17 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-
+import "../styles/navbar.css";
+import "../styles/articlepublicitygrid.css";
 const ModalRegister = ({ showRegister, setShowRegister }) => {
   const handleCloseRegister = () => setShowRegister(false);
 
   return (
     <Modal centered show={showRegister} onHide={handleCloseRegister}>
-      <Modal.Header className="border-0" closeButton>
+      <Modal.Header className="border-0 modal-background" closeButton>
         <Modal.Title>Regístrate</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="modal-background">
         <Form>
           <Form.Group
             className="mb-3 d-flex flex-column align-items-start"
@@ -65,11 +66,12 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               label="Acepto los terminos y condiciones."
             />
           </Form.Group>
-          <Button variant="success" type="submit">
+          <Button className="mt-3 btn-color" type="submit">
             Regístrate
           </Button>
         </Form>
       </Modal.Body>
+      <Modal.Footer className="modal-background border-0"></Modal.Footer>
     </Modal>
   );
 };
