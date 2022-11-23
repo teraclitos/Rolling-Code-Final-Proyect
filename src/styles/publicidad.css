@@ -20,10 +20,6 @@ body {
   justify-content: center;
   align-items: center;
 
-  animation-name: modal;
-  animation-delay: 3s;
-  animation-duration: 1s;
-
   opacity: 1;
 }
 
