@@ -45,7 +45,11 @@ const Articlepublicitygrid = ({ data, add, cart }) => {
                   <Link to={`/ArticleDetailContainer/${d.id}`}>
                     <Button className="py-1 px-2 btn-color ">Leer más</Button>
                   </Link>
-                  <Button onClick={() => add(d)} disabled={cart.includes(d)}>
+                  <Button
+                    onClick={() => add(d)}
+                    disabled={cart.includes(d)}
+                    className="btn-favorite"
+                  >
                     <FontAwesomeIcon
                       className="align-self-center fs-5 text-danger"
                       icon={faHeart}

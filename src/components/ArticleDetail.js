@@ -24,18 +24,14 @@ import { Route, Routes, Link, useParams } from "react-router-dom";
 
 const ArticleDetail = ({ data, add, cart }) => {
   const [show, setShow] = useState(false);
-  const [title, setTitle] = useState("");
-  const [section, setSection] = useState("");
-  const [image, setimage] = useState("");
-  const [sybtitulo, setSubtitulo] = useState("");
-  const [author, setAuthor] = useState("");
-  const [description, setDescription] = useState("");
-  const [edition, setEdition] = useState(false);
+  const [editSection, setEditSection] = useState(data.section);
+  const [editAuthor, setEditAuthor] = useState(data.author);
+  const [editImage, setEditImage] = useState(data.image);
+  const [editTitle, setEditTitle] = useState(data.title);
+  const [editSubtitulo, setEditSubtitulo] = useState(data.subtitulo);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleEdition = () => {
-    setEdition(!edition);
-  };
 
   return (
     <div>
@@ -80,7 +76,7 @@ const ArticleDetail = ({ data, add, cart }) => {
                 {/* data.title */}
               </Card.Body>
             </Card>
-            <Card border="0" style={{ width: "18rem" }}>
+            <Card border="0">
               <Card.Img src={data.image} />
               <Card.Body>
                 <Card.Title>{data.description}</Card.Title>
@@ -119,25 +115,70 @@ const ArticleDetail = ({ data, add, cart }) => {
                     controlId="exampleForm.ControlInput1"
                   >
                     {/* data.section */}
+
                     <Form.Label>section</Form.Label>
                     <Form.Control
                       type="text"
-                      value={section}
-                      onInput={(e) => setSection(e.target.value)}
+                      // value={section}
+                      defaultValue={editSection}
+                      onChange={(e) => setEditSection(e.target.value)}
                       autoFocus
                     />
+                    <Form.Group />
                     {/* data.author */}
-                    <Form.Label>Author</Form.Label>
-                    <Form.Control type="text" placeholder="" autoFocus />
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>Author</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Nombre del autor"
+                        defaultValue={editAuthor}
+                        value={editAuthor}
+                        onChange={(e) => setEditAuthor(e.target.value)}
+                        autoFocus
+                      />
+                    </Form.Group>
                     {/* data.title */}
-                    <Form.Label>titulo</Form.Label>
-                    <Form.Control type="text" placeholder="" autoFocus />
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>titulo</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Ingrese titulo del articulo"
+                        defaultValue={editTitle}
+                        value={editTitle}
+                        onChange={(e) => setEditTitle(e.target.value)}
+                        autoFocus
+                      />
+                    </Form.Group>
                     {/* data.image */}
-                    <Form.Label>URL</Form.Label>
-                    <Form.Control type="email" placeholder="" autoFocus />
+                    <Form.Group>
+                      <Form.Label>URL</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Ingrese URL de imagen"
+                        defaultValue={setEditImage}
+                        value={editImage}
+                        onChange={(e) => setEditImage(e.target.value)}
+                        autoFocus
+                      />
+                    </Form.Group>
                     {/* data.subtitulo */}
-                    <Form.Label>Subtitulo</Form.Label>
-                    <Form.Control type="email" placeholder="" autoFocus />
+                    <Form.Group>
+                      <Form.Label>Subtitulo</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Ingrese subtitulo"
+                        defaultValue={setEditSubtitulo}
+                        value={editSubtitulo}
+                        onChange={(e) => setEditSubtitulo(e.target.value)}
+                        autoFocus
+                      />
+                    </Form.Group>
                     {/* data.description */}
                     <Form.Label>description</Form.Label>
                     <Form.Control type="email" placeholder="" autoFocus />
