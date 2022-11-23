@@ -61,9 +61,9 @@ const Categorias = () => {
             </div>
           </Collapse>
         </Row>
-        <Row className="d-none d-lg-block carrousel-advertisement">
+        <Row className="d-none d-lg-block ">
           <Carousel
-            className=""
+            className="carrousel-advertisement"
             controls={false}
             indicators={false}
             slide={false}
