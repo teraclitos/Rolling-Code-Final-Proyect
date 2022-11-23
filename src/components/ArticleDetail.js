@@ -29,10 +29,32 @@ const ArticleDetail = ({ data, add, cart }) => {
   const [editImage, setEditImage] = useState(data.image);
   const [editTitle, setEditTitle] = useState(data.title);
   const [editSubtitulo, setEditSubtitulo] = useState(data.subtitulo);
+  const [editDescription, setEditDescription] = useState(data.description);
+  const [submitOk, setSubmitOk] = useState(null);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    // setSubmitOk(null);
+    // fetch("https://rcs-3i-api-node.vercel.app/products/update/" + product._id, {
+    //   method: "PUT",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     category: product.category,
+    //     description: editDescription,
+    //     image:
+    //       "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+    //     price: editPrice,
+    //     title: editName,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((json) => setSubmitOk(true))
+    //   .catch((error) => setSubmitOk(false));
+  };
   return (
     <div>
       <Container fluid>
@@ -156,7 +178,10 @@ const ArticleDetail = ({ data, add, cart }) => {
                       />
                     </Form.Group>
                     {/* data.image */}
-                    <Form.Group>
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
                       <Form.Label>URL</Form.Label>
                       <Form.Control
                         type="text"
@@ -168,7 +193,10 @@ const ArticleDetail = ({ data, add, cart }) => {
                       />
                     </Form.Group>
                     {/* data.subtitulo */}
-                    <Form.Group>
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
                       <Form.Label>Subtitulo</Form.Label>
                       <Form.Control
                         type="text"
@@ -180,23 +208,47 @@ const ArticleDetail = ({ data, add, cart }) => {
                       />
                     </Form.Group>
                     {/* data.description */}
-                    <Form.Label>description</Form.Label>
-                    <Form.Control type="email" placeholder="" autoFocus />
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>description</Form.Label>
+                      <Form.Control
+                        type="textarea"
+                        placeholder=""
+                        defaultValue={setEditDescription}
+                        value={editDescription}
+                        onChange={(e) => setEditDescription(e.target.value)}
+                        autoFocus
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3 mt-5 btn-detail"
+                      controlId="formBasicCheckbox"
+                    >
+                      <Form.Check type="checkbox" label="Destacar" />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3 mt-5"
+                      controlId="formBasicCheckbox"
+                    >
+                      <Button
+                        className="mb-5 mr-5 btn-detail"
+                        type="submit"
+                        onClick={(e) => handleSubmit(e)}
+                      >
+                        Submit
+                      </Button>
+                    </Form.Group>
                   </Form.Group>
                 </Form>
               </Modal.Body>
               <Modal.Footer className="card-crud">
                 <Button className="btn-save" onClick={handleClose}>
-                  Guardar cambios
+                  Cerrar
                 </Button>
               </Modal.Footer>
             </Modal>
-            <Form.Group
-              className="mb-3 btn-detail"
-              controlId="formBasicCheckbox"
-            >
-              <Form.Check type="checkbox" label="Destacar" />
-            </Form.Group>
 
             {/* ) parentesis que cierra vista admin */}
             {/* aca reemplazar por el contador de favoritos de andre */}
