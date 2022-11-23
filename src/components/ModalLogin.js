@@ -7,37 +7,33 @@ const ModalLogin = ({ showLogin, setShowLogin }) => {
   const handleCloseLogin = () => setShowLogin(false);
   return (
     <div>
-      <Modal show={showLogin} onHide={handleCloseLogin}>
+      <Modal centered show={showLogin} onHide={handleCloseLogin}>
         <Modal.Header closeButton>
-          <Modal.Title>Login</Modal.Title>
+          <Modal.Title>Iniciar sesión</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {" "}
           <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
-              />
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Email o usuario</Form.Label>
+              <Form.Control type="mail" placeholder="" />
+
+              {/* <Form.Text className="text-danger">Ingrese su mail.</Form.Text> */}
             </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label>Example textarea</Form.Label>
-              <Form.Control as="textarea" rows={3} />
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Contraseña</Form.Label>
+              <Form.Control type="password" />
+
+              {/* <Form.Text className="text-danger">
+              Ingrese su contraseña.
+            </Form.Text> */}
             </Form.Group>
+
+            <Button variant="success" type="submit">
+              Iniciar sesión
+            </Button>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseLogin}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleCloseLogin}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
       </Modal>
     </div>
   );
