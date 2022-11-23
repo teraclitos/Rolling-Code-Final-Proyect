@@ -21,156 +21,164 @@ import Button from "react-bootstrap/Button";
 import "../styles/navbar.css";
 import Badge from "react-bootstrap/Badge";
 import Modal from "react-bootstrap/Modal";
+import ModalRegister from "./ModalRegister";
 const Navbar = ({ cart, del, clear, data }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [showRegister, setShowRegister] = useState(false);
+  const handleCloseRegister = () => setShowRegister(false);
+  const handleShowRegister = () => setShowRegister(true);
 
   return (
-    <BSNavbar
-      className="bg-nav "
-      collapseOnSelect
-      expand="lg"
-      variant="dark"
-      sticky="top"
-    >
-      <Container fluid>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <BSNavbar.Brand>
-            {" "}
-            <img
-              alt=""
-              src="\logoRollingneta.png"
-              width="75"
-              height="75"
-              className="d-inline-block align-top"
-            />{" "}
-          </BSNavbar.Brand>
-        </Link>
-        <BSNavbar.Toggle aria-controls="responsive-navbar-nav" />
-        <BSNavbar.Collapse
-          id="responsive-navbar-nav"
-          className="justify-content-end"
-        >
-          <Nav>
-            <Nav.Link onClick={handleShow}>
-              <Link
-                to="/"
-                className="link-nav"
-                style={{ textDecoration: "none" }}
+    <>
+      <BSNavbar
+        className="bg-nav "
+        collapseOnSelect
+        expand="lg"
+        variant="dark"
+        sticky="top"
+      >
+        <Container fluid>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <BSNavbar.Brand>
+              <img
+                alt=""
+                src="\logoRollingneta.png"
+                width="75"
+                height="75"
+                className="d-inline-block align-top"
+              />
+            </BSNavbar.Brand>
+          </Link>
+          <BSNavbar.Toggle aria-controls="responsive-navbar-nav" />
+          <BSNavbar.Collapse
+            id="responsive-navbar-nav"
+            className="justify-content-end"
+          >
+            <Nav>
+              <Nav.Link onClick={handleShow}>
+                <Link
+                  to="/"
+                  className="link-nav"
+                  style={{ textDecoration: "none" }}
+                >
+                  Favoritos
+                  <FontAwesomeIcon icon={faHeart} className="mx-2" />
+                  <Badge bg="none">{cart.length}</Badge>
+                </Link>
+              </Nav.Link>
+
+              <Offcanvas
+                className="bg-offcanvas"
+                show={show}
+                onHide={handleClose}
               >
-                Favoritos
-                <FontAwesomeIcon icon={faHeart} className="mx-2" />
-                <Badge bg="none">{cart.length}</Badge>
+                <Offcanvas.Header closeButton>
+                  <Offcanvas.Title className="style-favorite">
+                    Mis favoritos ({cart.length})
+                  </Offcanvas.Title>
+                  {cart.length > 0 && (
+                    <Button className="btn-favorite" onClick={() => clear()}>
+                      Limpiar favoritos
+                    </Button>
+                  )}
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                  {cart.length
+                    ? cart.map((c, i) => (
+                        <Row key={i}>
+                          <Col>{c.title}</Col>
+                          <Col>{c.price}</Col>
+                          <Col>
+                            <Button
+                              className="btn-trash"
+                              onClick={() => del(c)}
+                            >
+                              <FontAwesomeIcon
+                                className="text-danger"
+                                icon={faTrash}
+                              />
+                            </Button>
+                          </Col>
+                        </Row>
+                      ))
+                    : "Sin favoritos"}
+                </Offcanvas.Body>
+              </Offcanvas>
+
+              <Nav.Link>
+                <Link
+                  to="/highlights"
+                  className="link-nav"
+                  style={{ textDecoration: "none" }}
+                >
+                  Destacados
+                  <FontAwesomeIcon icon={faStar} className="mx-2" />
+                </Link>
+              </Nav.Link>
+
+              <Nav.Link>
+                <Link
+                  to="/contacto"
+                  className="link-nav"
+                  style={{ textDecoration: "none" }}
+                >
+                  Contacto
+                  <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
+                </Link>
+              </Nav.Link>
+
+              <Nav.Link>
+                <Link
+                  to="/"
+                  className="link-nav"
+                  style={{ textDecoration: "none" }}
+                >
+                  Iniciar sesión
+                  <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
+                </Link>
+              </Nav.Link>
+              <Nav.Link onClick={handleShowRegister}>
+                <Link
+                  to="/"
+                  className="link-nav"
+                  style={{ textDecoration: "none" }}
+                >
+                  Regístrate
+                  <FontAwesomeIcon icon={faUser} className="mx-2" />
+                </Link>
+              </Nav.Link>
+            </Nav>
+            <Form className="d-flex d-xl-none d-lg-none">
+              <Form.Control
+                type="search"
+                // value={search}
+                placeholder="Buscar por nombre o categoría"
+                className="me-2"
+                aria-label="Search"
+                // onInput={(e) => setSearch(e.target.value)}
+                // onChange={handleChange}
+              />
+              <Link to="/articlefound" style={{ textDecoration: "none" }}>
+                <Button variant="outline-light">
+                  <FontAwesomeIcon
+                    icon={faMagnifyingGlass}
+                    className="text-white mx-2"
+                  />
+                </Button>
               </Link>
-            </Nav.Link>
+            </Form>
+          </BSNavbar.Collapse>
+        </Container>
+      </BSNavbar>
 
-            <Offcanvas
-              className="bg-offcanvas"
-              show={show}
-              onHide={handleClose}
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title className="style-favorite">
-                  Mis favoritos ({cart.length})
-                </Offcanvas.Title>
-                {cart.length > 0 && (
-
-                  <Button className="btn-favorite" onClick={() => clear()}>
-
-                    Limpiar favoritos
-                  </Button>
-                )}
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                {cart.length
-                  ? cart.map((c, i) => (
-                      <Row key={i}>
-                        <Col>{c.title}</Col>
-                        <Col>{c.price}</Col>
-                        <Col>
-
-                          <Button className="btn-trash" onClick={() => del(c)}>
-                            <FontAwesomeIcon
-                              className="text-danger"
-                              icon={faTrash}
-                            />
-
-                          </Button>
-                        </Col>
-                      </Row>
-                    ))
-                  : "Sin favoritos"}
-              </Offcanvas.Body>
-            </Offcanvas>
-
-            <Nav.Link>
-              <Link
-                to="/highlights"
-                className="link-nav"
-                style={{ textDecoration: "none" }}
-              >
-                Destacados
-                <FontAwesomeIcon icon={faStar} className="mx-2" />
-              </Link>
-            </Nav.Link>
-
-            <Nav.Link>
-              <Link
-                to="/contacto"
-                className="link-nav"
-                style={{ textDecoration: "none" }}
-              >
-                Contacto
-                <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
-              </Link>
-            </Nav.Link>
-
-            <Nav.Link>
-              <Link
-                to="/"
-                className="link-nav"
-                style={{ textDecoration: "none" }}
-              >
-                Iniciar sesión
-                <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
-              </Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link
-                to="/"
-                className="link-nav"
-                style={{ textDecoration: "none" }}
-              >
-                Regístrate
-                <FontAwesomeIcon icon={faUser} className="mx-2" />
-              </Link>
-            </Nav.Link>
-          </Nav>
-          <Form className="d-flex d-xl-none d-lg-none">
-            <Form.Control
-              type="search"
-              // value={search}
-              placeholder="Buscar por nombre o categoría"
-              className="me-2"
-              aria-label="Search"
-              // onInput={(e) => setSearch(e.target.value)}
-              // onChange={handleChange}
-            />{" "}
-            <Link to="/articlefound" style={{ textDecoration: "none" }}>
-              <Button variant="outline-light">
-                {" "}
-                <FontAwesomeIcon
-                  icon={faMagnifyingGlass}
-                  className="text-white mx-2"
-                />
-              </Button>
-            </Link>
-          </Form>
-        </BSNavbar.Collapse>
-      </Container>
-    </BSNavbar>
+      <ModalRegister
+        showRegister={showRegister}
+        setShowRegister={setShowRegister}
+      />
+    </>
   );
 };
 
