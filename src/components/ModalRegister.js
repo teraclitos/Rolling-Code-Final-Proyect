@@ -13,7 +13,10 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group
+            className="mb-3 d-flex flex-column align-items-start"
+            controlId="formBasicEmail"
+          >
             <Form.Label>Nombre completo</Form.Label>
             <Form.Control type="text" placeholder="Francisco Terán" />
 
@@ -21,7 +24,10 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               Ingrese su nombre y apellido.
             </Form.Text> */}
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group
+            className="mb-3 d-flex flex-column align-items-start"
+            controlId="formBasicEmail"
+          >
             <Form.Label>Nombre de usuario</Form.Label>
             <Form.Control type="text" placeholder="" />
 
@@ -30,13 +36,19 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             </Form.Text> */}
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group
+            className="mb-3 d-flex flex-column align-items-start"
+            controlId="formBasicPassword"
+          >
             <Form.Label>Email</Form.Label>
             <Form.Control type="mail" placeholder="fran@gmail.com" />
 
             {/* <Form.Text className="text-danger">Ingrese su mail.</Form.Text> */}
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group
+            className="mb-3 d-flex flex-column align-items-start"
+            controlId="formBasicPassword"
+          >
             <Form.Label>Contraseña</Form.Label>
             <Form.Control type="password" />
 
@@ -44,7 +56,10 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               Ingrese su contraseña.
             </Form.Text> */}
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Group
+            className="mb-3 d-flex flex-column align-items-center"
+            controlId="formBasicCheckbox"
+          >
             <Form.Check
               type="checkbox"
               label="Acepto los terminos y condiciones."

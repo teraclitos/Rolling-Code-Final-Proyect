@@ -14,13 +14,19 @@ const ModalLogin = ({ showLogin, setShowLogin }) => {
         <Modal.Body>
           {" "}
           <Form>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group
+              className="mb-3 d-flex flex-column align-items-start"
+              controlId="formBasicPassword"
+            >
               <Form.Label>Email o usuario</Form.Label>
               <Form.Control type="mail" placeholder="" />
 
               {/* <Form.Text className="text-danger">Ingrese su mail.</Form.Text> */}
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group
+              className="mb-3 d-flex flex-column align-items-start"
+              controlId="formBasicPassword"
+            >
               <Form.Label>Contraseña</Form.Label>
               <Form.Control type="password" />
 
