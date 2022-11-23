@@ -110,7 +110,7 @@ const Highlights = ({ data, add, cart }) => {
               <Button
                 className="mt-5 mb-5"
                 variant="warning"
-                onClick={() => add(data)}
+                // onClick={() => add(data)}
               >
                 Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
               </Button>
