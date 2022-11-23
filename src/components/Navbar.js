@@ -5,7 +5,12 @@ import { Row, Col } from "react-bootstrap";
 import BSNavbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
+import Badge from "react-bootstrap/Badge";
+import ModalRegister from "./ModalRegister";
+import ModalLogin from "./ModalLogin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStar,
@@ -16,13 +21,8 @@ import {
   faRightToBracket,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import "../styles/navbar.css";
-import Badge from "react-bootstrap/Badge";
-import Modal from "react-bootstrap/Modal";
-import ModalRegister from "./ModalRegister";
-import ModalLogin from "./ModalLogin";
+
 const Navbar = ({ cart, del, clear, data }) => {
   const [show, setShow] = useState(false);
 

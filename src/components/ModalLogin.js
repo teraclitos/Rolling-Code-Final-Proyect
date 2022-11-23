@@ -1,17 +1,20 @@
 import React from "react";
+import { ModalFooter } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import "../styles/navbar.css";
+import "../styles/articlepublicitygrid.css";
 
 const ModalLogin = ({ showLogin, setShowLogin }) => {
   const handleCloseLogin = () => setShowLogin(false);
   return (
     <div>
       <Modal centered show={showLogin} onHide={handleCloseLogin}>
-        <Modal.Header className="border-0" closeButton>
+        <Modal.Header className="border-0  modal-background" closeButton>
           <Modal.Title>Iniciar sesión</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="modal-background ">
           <Form>
             <Form.Group
               className="mb-3 d-flex flex-column align-items-start"
@@ -34,11 +37,12 @@ const ModalLogin = ({ showLogin, setShowLogin }) => {
             </Form.Text> */}
             </Form.Group>
 
-            <Button variant="success" type="submit">
+            <Button className="mt-3 btn-color" type="submit">
               Iniciar sesión
             </Button>
           </Form>
         </Modal.Body>
+        <ModalFooter className="modal-background border-0"></ModalFooter>
       </Modal>
     </div>
   );
