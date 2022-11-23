@@ -4,11 +4,11 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 const ModalRegister = ({ showRegister, setShowRegister }) => {
   const handleCloseRegister = () => setShowRegister(false);
-  const handleShowRegister = () => setShowRegister(true);
+
   return (
     <Modal show={showRegister} onHide={handleCloseRegister}>
       <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
+        <Modal.Title>Regístrate</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
