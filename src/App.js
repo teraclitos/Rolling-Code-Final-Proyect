@@ -10,6 +10,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import ArticleDetailContainer from "./components/ArticleDetailContainer";
 import Highlights from "../src/components/Highlights";
+import ArticleFound from "../src/components/ArticleFound";
 import Advertising from "./components/Advertising";
 
 function App() {
@@ -42,14 +43,18 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navbar cart={cart} del={del} clear={clear} />
+        <Navbar cart={cart} del={del} clear={clear} data={data} />
         <Header />
         {/* <Advertising /> */}
         {/* <ArticleDetailContainer data={data} /> */}
         {/* <Articlepublicitygrid data={data} /> */}
         {/* <Contact /> */}
         <Routes>
-          <Route path="/highlights" element={<Highlights add={add} />} />
+          <Route
+            path="/highlights"
+            element={<Highlights add={add} cart={cart} />}
+          />
+          <Route path="/articlefound" element={<ArticleFound data={data} />} />
           <Route
             path="/"
             element={<Articlepublicitygrid data={data} add={add} cart={cart} />}
