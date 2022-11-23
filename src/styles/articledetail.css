@@ -57,12 +57,10 @@
   color: black;
   border-radius: 4px;
   font-family: "Anton";
-  width: 100px;
+  width: 110px;
   padding: 1%;
   /* padding-left: 6%; */
   padding-right: 6%;
-  margin-left: 20%;
-  margin-top: 20%;
 }
 .btn-detail:hover {
   background-color: #fd841f;
@@ -93,6 +91,11 @@
   font-family: "Anton";
   margin-top: 30px;
   background-color: #fd841f;
+}
+
+.style-crud {
+  font-family: "Anton";
+  margin-block-start: 20px;
 }
 /* .detail-author {
   display: flex;
