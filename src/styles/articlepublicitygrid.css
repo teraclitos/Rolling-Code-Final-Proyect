@@ -23,6 +23,22 @@
 .btn-color:hover {
   background-color: #0e185f;
 }
+
+.btn-like {
+  background: transparent;
+  border: 0;
+}
+.btn-like:hover {
+  background-color: white;
+}
+.btn-like:active {
+  color: white;
+  background-color: white;
+}
+.btn-like:disabled {
+  color: transparent;
+  background-color: #fff;
+}
 .text-card-container {
   height: 4.8em;
   overflow: hidden;
