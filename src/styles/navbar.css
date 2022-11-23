@@ -27,3 +27,22 @@
   width: 100%;
   right: 0;
 }
+
+.bg-offcanvas {
+  background-color: #eaf4f7;
+}
+
+.style-favorite {
+  font-family: "Anton";
+}
+
+.btn-favorite {
+  background-color: #1986a0;
+  border: 0;
+  color: black;
+  border-radius: 4px;
+}
+
+.btn-favorite:hover {
+  background-color: #fd841f;
+}

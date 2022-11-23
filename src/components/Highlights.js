@@ -89,7 +89,7 @@ const Highlights = ({ data, add }) => {
               <Card border="0">
                 <Card.Img src="./logoheader" />
                 {/* data.image */}
-                <Card.Body>
+                <Card.Body className="card-destacado">
                   <Card.Title>soy subtitulo</Card.Title>
                   {/* data.subtitulo */}
                   <Card.Text>

@@ -64,11 +64,17 @@ const Navbar = ({ cart, del, clear }) => {
               <span className="visually-hidden">Favoritos</span>
             </Nav.Link>
 
-            <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas
+              className="bg-offcanvas"
+              show={show}
+              onHide={handleClose}
+            >
               <Offcanvas.Header closeButton>
-                <Offcanvas.Title>Mis favoritos ({cart.length})</Offcanvas.Title>
+                <Offcanvas.Title className="style-favorite">
+                  Mis favoritos ({cart.length})
+                </Offcanvas.Title>
                 {cart.length > 0 && (
-                  <Button variant="danger" onClick={() => clear()}>
+                  <Button className="btn-favorite" onClick={() => clear()}>
                     Limpiar favoritos
                   </Button>
                 )}
@@ -80,7 +86,10 @@ const Navbar = ({ cart, del, clear }) => {
                         <Col>{c.title}</Col>
                         <Col>{c.price}</Col>
                         <Col>
-                          <Button variant="danger" onClick={() => del(c)}>
+                          <Button
+                            className="btn-favorite"
+                            onClick={() => del(c)}
+                          >
                             Borrar
                           </Button>
                         </Col>
