@@ -8,14 +8,7 @@ import "../styles/articlepublicitygrid.css";
 import { Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 
-const ModalLogin = ({
-  showLogin,
-  setShowLogin,
-  auth,
-  validate,
-  login,
-  logout,
-}) => {
+const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
   const handleCloseLogin = () => setShowLogin(false);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,6 +23,7 @@ const ModalLogin = ({
   const handleLogin = (u, p) => {
     if (validate(u, p)) {
       login(u);
+      navigate("/");
     }
   };
   return (

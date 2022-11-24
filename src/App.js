@@ -42,9 +42,9 @@ function App() {
 
   //Login
 
-  useEffect(() => {
-    console.log(auth);
-  }, [auth]);
+  // useEffect(() => {
+  //   console.log(auth);
+  // }, [auth]);
 
   const [auth, setAuth] = useState({
     user: "",
