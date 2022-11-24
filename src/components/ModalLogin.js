@@ -1,12 +1,12 @@
-import React from "react";
-import { ModalFooter } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { ModalFooter, Toast } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import "../styles/navbar.css";
 import "../styles/articlepublicitygrid.css";
 import { Formik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ModalLogin = ({
   showLogin,
@@ -17,6 +17,21 @@ const ModalLogin = ({
   logout,
 }) => {
   const handleCloseLogin = () => setShowLogin(false);
+  const [mail, setMail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    console.log(mail);
+    console.log(password);
+  }, [mail, password]);
+
+  const navigate = useNavigate();
+
+  const handleLogin = (u, p) => {
+    if (validate(u, p)) {
+      login(u);
+    }
+  };
   return (
     <div>
       <Modal centered show={showLogin} onHide={handleCloseLogin}>
@@ -34,7 +49,11 @@ const ModalLogin = ({
               controlId="formBasicPassword"
             >
               <Form.Label>Email o usuario</Form.Label>
-              <Form.Control type="mail" placeholder="" />
+              <Form.Control
+                type="mail"
+                placeholder=""
+                onInput={(e) => setMail(e.target.value)}
+              />
 
               {/* <Form.Text className="text-danger">Ingrese su mail.</Form.Text> */}
             </Form.Group>
@@ -43,23 +62,30 @@ const ModalLogin = ({
               controlId="formBasicPassword"
             >
               <Form.Label>Contraseña</Form.Label>
-              <Form.Control type="password" />
+              <Form.Control
+                type="password"
+                onInput={(e) => setPassword(e.target.value)}
+              />
 
               {/* <Form.Text className="text-danger">
               Ingrese su contraseña.
             </Form.Text> */}
+              <span className="mt-2">
+                Si no recuerda su contraseña, ingrese{" "}
+                <Link to="/home">aquí</Link>
+              </span>
             </Form.Group>
 
-            <Button className="mt-3 btn-color" type="submit">
+            <Button
+              className="mt-3 btn-color"
+              type="submit"
+              onClick={() => handleLogin(mail, password)}
+            >
               Iniciar sesión
             </Button>
           </Form>
         </Modal.Body>
-        <ModalFooter className="modal-background border-0">
-          <span>
-            Si no recuerda su contraseña, ingrese <Link>aquí</Link>
-          </span>
-        </ModalFooter>
+        <ModalFooter className="modal-background border-0"></ModalFooter>
       </Modal>
     </div>
   );
