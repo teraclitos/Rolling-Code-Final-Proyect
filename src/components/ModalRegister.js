@@ -12,6 +12,12 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
     setFirstValidationUser(true);
     setFirstValidationPassword(true);
     setFirstValidationRepeatPassword(true);
+    setConditions(false);
+    setMails("");
+    setName("");
+    setUser("");
+    setPassword("");
+    setRepeatPassword("");
   };
   const [mails, setMails] = useState("");
   const [firstValidationMail, setFirstValidationMail] = useState(true);
