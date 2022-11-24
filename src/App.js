@@ -41,15 +41,13 @@ function App() {
   };
 
   //Login
-
-  useEffect(() => {
-    console.log(auth);
-  }, [auth]);
-
   const [auth, setAuth] = useState({
     user: "",
     role: "",
   });
+  useEffect(() => {
+    console.log(auth);
+  }, [auth]);
 
   const USERS = [
     { user: "admin", pass: "admin", role: "admin" },
