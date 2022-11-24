@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 import ModalRegister from "./ModalRegister";
 import ModalLogin from "./ModalLogin";
+import { OffcanvasFav } from "./OffcanvasFav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStar,
@@ -72,44 +73,6 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
                   <Badge bg="none">{cart.length}</Badge>
                 </Link>
               </Nav.Link>
-
-              <Offcanvas
-                className="bg-offcanvas"
-                show={show}
-                onHide={handleClose}
-              >
-                <Offcanvas.Header closeButton>
-                  <Offcanvas.Title className="style-favorite">
-                    Mis favoritos ({cart.length})
-                  </Offcanvas.Title>
-                  {cart.length > 0 && (
-                    <Button className="btn-favorite" onClick={() => clear()}>
-                      Limpiar favoritos
-                    </Button>
-                  )}
-                </Offcanvas.Header>
-                <Offcanvas.Body>
-                  {cart.length
-                    ? cart.map((c, i) => (
-                        <Row key={i}>
-                          <Col>{c.title}</Col>
-                          <Col>{c.price}</Col>
-                          <Col>
-                            <Button
-                              className="btn-trash"
-                              onClick={() => del(c)}
-                            >
-                              <FontAwesomeIcon
-                                className="text-danger"
-                                icon={faTrash}
-                              />
-                            </Button>
-                          </Col>
-                        </Row>
-                      ))
-                    : "Sin favoritos"}
-                </Offcanvas.Body>
-              </Offcanvas>
 
               <Nav.Link>
                 <Link
@@ -204,6 +167,13 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
         validate={validate}
         login={login}
         logout={logout}
+      />
+      <OffcanvasFav
+        cart={cart}
+        del={del}
+        clear={clear}
+        show={show}
+        setShow={setShow}
       />
     </>
   );
