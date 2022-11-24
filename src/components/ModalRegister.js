@@ -13,11 +13,6 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
     setFirstValidationPassword(true);
     setFirstValidationRepeatPassword(true);
     setConditions(false);
-    setMails("");
-    setName("");
-    setUser("");
-    setPassword("");
-    setRepeatPassword("");
   };
   const [mails, setMails] = useState("");
   const [firstValidationMail, setFirstValidationMail] = useState(true);
@@ -132,6 +127,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
           >
             <Form.Label>Nombre completo</Form.Label>
             <Form.Control
+              value={name}
               autoComplete="off"
               onInput={(e) => setName(e.target.value)}
               onBlur={() => setFirstValidationName(false)}
@@ -148,6 +144,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
           >
             <Form.Label>Nombre de usuario</Form.Label>
             <Form.Control
+              value={user}
               autoComplete="off"
               onInput={(e) => setUser(e.target.value)}
               onBlur={() => setFirstValidationUser(false)}
@@ -165,6 +162,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
           >
             <Form.Label>Email</Form.Label>
             <Form.Control
+              value={mails}
               autoComplete="off"
               name="email"
               onInput={(e) => setMails(e.target.value)}
@@ -182,6 +180,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
           >
             <Form.Label>Contraseña</Form.Label>
             <Form.Control
+              value={password}
               autoComplete="off"
               onInput={(e) => setPassword(e.target.value)}
               onBlur={() => setFirstValidationPassword(false)}
@@ -199,6 +198,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
           >
             <Form.Label>Repita contraseña</Form.Label>
             <Form.Control
+              value={repeatPassword}
               autoComplete="off"
               onInput={(e) => setRepeatPassword(e.target.value)}
               onBlur={() => setFirstValidationRepeatPassword(false)}
@@ -239,6 +239,11 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               ) {
                 if (conditions) {
                   alert("se ha registrado correctamente");
+                  setMails("");
+                  setName("");
+                  setUser("");
+                  setPassword("");
+                  setRepeatPassword("");
                   e.submit();
                 } else {
                   alert("acepte los terminos y condiciones");
