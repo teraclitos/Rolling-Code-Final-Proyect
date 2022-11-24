@@ -76,6 +76,12 @@
 .wrong {
   color: rgb(201, 2, 2);
 }
+.wrong-border {
+  border: 2px solid rgb(201, 2, 2);
+}
+.correct-border {
+  border: 2px solid rgb(30, 107, 30);
+}
 @media (max-width: 991.98px) {
   .grid-articles-publicity {
     grid-template-columns: 1fr;
