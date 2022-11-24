@@ -238,12 +238,17 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 validateRepeatPassword(repeatPassword) === true
               ) {
                 if (conditions) {
-                  alert("se ha registrado correctamente");
                   setMails("");
                   setName("");
                   setUser("");
                   setPassword("");
                   setRepeatPassword("");
+                  setFirstValidationMail(true);
+                  setFirstValidationName(true);
+                  setFirstValidationUser(true);
+                  setFirstValidationPassword(true);
+                  setFirstValidationRepeatPassword(true);
+                  alert("se ha registrado correctamente");
                   e.submit();
                 } else {
                   alert("acepte los terminos y condiciones");
