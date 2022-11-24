@@ -24,6 +24,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [firstValidationRepeatPassword, setFirstValidationRepeatPassword] =
     useState(true);
+  const [conditions, setConditions] = useState(false);
   const validateEmail = (value) => {
     let error;
     if (!value) {
@@ -32,6 +33,8 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value.trim())
     ) {
       error = "Email incorrecto";
+    } else {
+      error = false;
     }
     return error;
   };
@@ -46,6 +49,8 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       error = "Debe tener menos de 30 caracteres";
     } else if (!/^[a-zA-ZÀ-ÿ\s]{3,30}$/i.test(value.trim())) {
       error = "Sólo puede llevar letras";
+    } else {
+      error = false;
     }
     return error;
   };
@@ -67,6 +72,8 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       error = "Sólo guiones como símbolos";
     } else if (!/^[\S]{3,30}$/i.test(value.trim())) {
       error = "No debe llevar espacios ";
+    } else {
+      error = false;
     }
     return error;
   };
@@ -85,6 +92,8 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
     ) {
       error =
         "Debe llevar al menos una mayúscula, un caracter especial y un dígito";
+    } else {
+      error = false;
     }
     return error;
   };
@@ -94,6 +103,8 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       error = "Campo obligatorio";
     } else if (repeatPassword !== password) {
       error = "Las contraseñas deben coincidir";
+    } else {
+      error = false;
     }
     return error;
   };
@@ -201,9 +212,38 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             <Form.Check
               type="checkbox"
               label="Acepto los terminos y condiciones."
+              onClick={(e) => {
+                if (!conditions) {
+                  setConditions(true);
+                } else {
+                  setConditions(false);
+                }
+              }}
             />
           </Form.Group>
-          <Button className="mt-3 btn-color" type="submit">
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              if (
+                validateEmail(mails) === false &&
+                validateName(name) === false &&
+                validateUser(user) === false &&
+                validatePassword(password) === false &&
+                validateRepeatPassword(repeatPassword) === false
+              ) {
+                if (conditions) {
+                  alert("se ha registrado correctamente");
+                  e.submit();
+                } else {
+                  alert("acepte los terminos y condiciones");
+                }
+              } else {
+                alert("debe completar correctamente todos los campos");
+              }
+            }}
+            className="mt-3 btn-color"
+            type="submit"
+          >
             Regístrate
           </Button>
         </Form>
