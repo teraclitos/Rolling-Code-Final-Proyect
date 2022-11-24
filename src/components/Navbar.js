@@ -23,7 +23,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/navbar.css";
 
-const Navbar = ({ cart, del, clear, data }) => {
+const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -180,7 +180,14 @@ const Navbar = ({ cart, del, clear, data }) => {
         showRegister={showRegister}
         setShowRegister={setShowRegister}
       />
-      <ModalLogin showLogin={showLogin} setShowLogin={setShowLogin} />
+      <ModalLogin
+        showLogin={showLogin}
+        setShowLogin={setShowLogin}
+        auth={auth}
+        validate={validate}
+        login={login}
+        logout={logout}
+      />
     </>
   );
 };

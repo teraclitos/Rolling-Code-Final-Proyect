@@ -40,11 +40,48 @@ function App() {
     setCart([]);
   };
 
+  //Login
+  const [auth, setAuth] = useState({
+    user: "",
+    role: "",
+  });
+
+  const USERS = [
+    { user: "admin", pass: "admin", role: "admin" },
+    { user: "user", pass: "user", role: "user" },
+  ];
+
+  const validate = (u, p) => {
+    const userFound = USERS.find((user) => user.user === u);
+    const passOk = p === userFound.pass;
+    return userFound && passOk;
+  };
+
+  const login = (u) => {
+    const userFound = USERS.find((user) => user.user === u);
+    setAuth({
+      user: userFound.user,
+      role: userFound.role,
+    });
+  };
+
+  const logout = () => {
+    setAuth({ user: "", role: "" });
+  };
+
   return (
     <div>
       <BrowserRouter>
-        <Navbar cart={cart} del={del} clear={clear} data={data} />
-
+        <Navbar
+          cart={cart}
+          del={del}
+          clear={clear}
+          data={data}
+          auth={auth}
+          validate={validate}
+          login={login}
+          logout={logout}
+        />
         <Header />
         {/* <Advertising /> */}
         {/* <ArticleDetailContainer data={data} /> */}
@@ -58,12 +95,31 @@ function App() {
           <Route path="/articlefound" element={<ArticleFound data={data} />} />
           <Route
             path="/"
-            element={<Articlepublicitygrid data={data} add={add} cart={cart} />}
+            element={
+              <Articlepublicitygrid
+                data={data}
+                add={add}
+                cart={cart}
+                auth={auth}
+                validate={validate}
+                login={login}
+                logout={logout}
+              />
+            }
           />
           <Route path="/contacto" element={<Contact />} />
           <Route
             path="/ArticleDetailContainer/:id"
-            element={<ArticleDetailContainer add={add} cart={cart} />}
+            element={
+              <ArticleDetailContainer
+                add={add}
+                cart={cart}
+                auth={auth}
+                validate={validate}
+                login={login}
+                logout={logout}
+              />
+            }
           />
         </Routes>
         <Footer />

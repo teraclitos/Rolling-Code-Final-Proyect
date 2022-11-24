@@ -6,8 +6,16 @@ import Modal from "react-bootstrap/Modal";
 import "../styles/navbar.css";
 import "../styles/articlepublicitygrid.css";
 import { Formik } from "formik";
+import { Link } from "react-router-dom";
 
-const ModalLogin = ({ showLogin, setShowLogin }) => {
+const ModalLogin = ({
+  showLogin,
+  setShowLogin,
+  auth,
+  validate,
+  login,
+  logout,
+}) => {
   const handleCloseLogin = () => setShowLogin(false);
   return (
     <div>
@@ -47,7 +55,11 @@ const ModalLogin = ({ showLogin, setShowLogin }) => {
             </Button>
           </Form>
         </Modal.Body>
-        <ModalFooter className="modal-background border-0"></ModalFooter>
+        <ModalFooter className="modal-background border-0">
+          <span>
+            Si no recuerda su contraseña, ingrese <Link>aquí</Link>
+          </span>
+        </ModalFooter>
       </Modal>
     </div>
   );
