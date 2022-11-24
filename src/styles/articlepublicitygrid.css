@@ -77,11 +77,20 @@
   color: rgb(201, 2, 2);
 }
 .wrong-border {
-  border: 2px solid rgb(201, 2, 2);
+  border: 2px solid rgb(201, 2, 2) !important;
 }
 .correct-border {
   border: 2px solid rgb(30, 107, 30);
 }
+.outline-input {
+  box-shadow: none !important;
+  border: rgb(145, 140, 140);
+}
+/* .outline-input:focus {
+  box-shadow: none !important;
+  outline: none !important;
+} */
+
 @media (max-width: 991.98px) {
   .grid-articles-publicity {
     grid-template-columns: 1fr;
