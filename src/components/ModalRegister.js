@@ -1,12 +1,102 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import "../styles/navbar.css";
 import "../styles/articlepublicitygrid.css";
-import { Formik } from "formik";
 const ModalRegister = ({ showRegister, setShowRegister }) => {
-  const handleCloseRegister = () => setShowRegister(false);
+  const handleCloseRegister = () => {
+    setShowRegister(false);
+    setFirstValidationMail(true);
+    setFirstValidationName(true);
+    setFirstValidationUser(true);
+    setFirstValidationPassword(true);
+    setFirstValidationRepeatPassword(true);
+  };
+  const [mails, setMails] = useState("");
+  const [firstValidationMail, setFirstValidationMail] = useState(true);
+  const [name, setName] = useState("");
+  const [firstValidationName, setFirstValidationName] = useState(true);
+  const [user, setUser] = useState("");
+  const [firstValidationUser, setFirstValidationUser] = useState(true);
+  const [password, setPassword] = useState("");
+  const [firstValidationPassword, setFirstValidationPassword] = useState(true);
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const [firstValidationRepeatPassword, setFirstValidationRepeatPassword] =
+    useState(true);
+  const validateEmail = (value) => {
+    let error;
+    if (!value) {
+      error = "Campo obligatorio";
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value.trim())
+    ) {
+      error = "Email incorrecto";
+    }
+    return error;
+  };
+
+  const validateName = (value) => {
+    let error;
+    if (!value) {
+      error = "Campo obligatorio";
+    } else if (value.trim().length < 3) {
+      error = "Debe tener al menos 3 caracteres";
+    } else if (value.trim().length > 30) {
+      error = "Debe tener menos de 30 caracteres";
+    } else if (!/^[a-zA-ZÀ-ÿ\s]{3,30}$/i.test(value.trim())) {
+      error = "Sólo puede llevar letras";
+    }
+    return error;
+  };
+  const validateUser = (value) => {
+    let error;
+    if (!value) {
+      error = "Campo obligatorio";
+    } else if (value.trim().length < 3) {
+      error = "Debe tener al menos 3 caracteres";
+    } else if (value.trim().length > 30) {
+      error = "Debe tener menos de 30 caracteres";
+    } else if (!/^[a-zA-ZÀ-ÿ]{1}$/i.test(value.trim().charAt(0))) {
+      error = "El primer caracter debe ser una letra";
+    } else if (
+      !/^[a-zA-ZÀ-ÿ\s0-9-_]{3,30}$/i.test(
+        value.trim().slice(1, value.trim().length)
+      )
+    ) {
+      error = "Sólo guiones como símbolos";
+    } else if (!/^[\S]{3,30}$/i.test(value.trim())) {
+      error = "No debe llevar espacios ";
+    }
+    return error;
+  };
+  const validatePassword = (value) => {
+    let error;
+    if (!value) {
+      error = "Campo obligatorio";
+    } else if (value.length < 9) {
+      error = "Debe tener al menos 8 caracteres";
+    } else if (value.length > 30) {
+      error = "Debe tener menos de 30 caracteres";
+    } else if (
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,30}$/i.test(
+        value
+      )
+    ) {
+      error =
+        "Debe llevar al menos una mayúscula, un caracter especial y un dígito";
+    }
+    return error;
+  };
+  const validateRepeatPassword = (value) => {
+    let error;
+    if (!value) {
+      error = "Campo obligatorio";
+    } else if (repeatPassword !== password) {
+      error = "Las contraseñas deben coincidir";
+    }
+    return error;
+  };
 
   return (
     <Modal centered show={showRegister} onHide={handleCloseRegister}>
@@ -24,22 +114,32 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicEmail"
           >
             <Form.Label>Nombre completo</Form.Label>
-            <Form.Control type="text" placeholder="Francisco Terán" />
-
-            {/* <Form.Text className="text-danger">
-              Ingrese su nombre y apellido.
-            </Form.Text> */}
+            <Form.Control
+              autoComplete="off"
+              onInput={(e) => setName(e.target.value)}
+              onBlur={() => setFirstValidationName(false)}
+              type="text"
+              placeholder="Francisco Terán"
+            />
+            {validateName(name) && !firstValidationName && (
+              <Form.Text className="wrong ">{validateName(name)}</Form.Text>
+            )}
           </Form.Group>
           <Form.Group
             className="mb-3 d-flex flex-column align-items-start"
             controlId="formBasicEmail"
           >
             <Form.Label>Nombre de usuario</Form.Label>
-            <Form.Control type="text" placeholder="" />
-
-            {/* <Form.Text className="text-danger">
-              Ingrese su nombre y apellido.
-            </Form.Text> */}
+            <Form.Control
+              autoComplete="off"
+              onInput={(e) => setUser(e.target.value)}
+              onBlur={() => setFirstValidationUser(false)}
+              type="text"
+              placeholder=""
+            />
+            {validateUser(user) && !firstValidationUser && (
+              <Form.Text className="wrong ">{validateUser(user)}</Form.Text>
+            )}
           </Form.Group>
 
           <Form.Group
@@ -47,20 +147,52 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicPassword"
           >
             <Form.Label>Email</Form.Label>
-            <Form.Control type="mail" placeholder="fran@gmail.com" />
-
-            {/* <Form.Text className="text-danger">Ingrese su mail.</Form.Text> */}
+            <Form.Control
+              autoComplete="off"
+              name="email"
+              onInput={(e) => setMails(e.target.value)}
+              onBlur={() => setFirstValidationMail(false)}
+              type="mail"
+              placeholder="fran@gmail.com"
+            />
+            {validateEmail(mails) && !firstValidationMail && (
+              <Form.Text className="wrong ">{validateEmail(mails)}</Form.Text>
+            )}
           </Form.Group>
           <Form.Group
             className="mb-3 d-flex flex-column align-items-start"
             controlId="formBasicPassword"
           >
             <Form.Label>Contraseña</Form.Label>
-            <Form.Control type="password" />
-
-            {/* <Form.Text className="text-danger">
-              Ingrese su contraseña.
-            </Form.Text> */}
+            <Form.Control
+              autoComplete="off"
+              onInput={(e) => setPassword(e.target.value)}
+              onBlur={() => setFirstValidationPassword(false)}
+              type="password"
+            />
+            {validatePassword(password) && !firstValidationPassword && (
+              <Form.Text className="wrong ">
+                {validatePassword(password)}
+              </Form.Text>
+            )}
+          </Form.Group>
+          <Form.Group
+            className="mb-3 d-flex flex-column align-items-start"
+            controlId="formBasicPassword"
+          >
+            <Form.Label>Repita contraseña</Form.Label>
+            <Form.Control
+              autoComplete="off"
+              onInput={(e) => setRepeatPassword(e.target.value)}
+              onBlur={() => setFirstValidationRepeatPassword(false)}
+              type="password"
+            />
+            {validateRepeatPassword(repeatPassword) &&
+              !firstValidationRepeatPassword && (
+                <Form.Text className="wrong ">
+                  {validateRepeatPassword(repeatPassword)}
+                </Form.Text>
+              )}
           </Form.Group>
           <Form.Group
             className="mb-3 d-flex flex-column align-items-center"
