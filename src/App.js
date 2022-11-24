@@ -41,6 +41,11 @@ function App() {
   };
 
   //Login
+
+  useEffect(() => {
+    console.log(auth);
+  }, [auth]);
+
   const [auth, setAuth] = useState({
     user: "",
     role: "",
@@ -52,9 +57,11 @@ function App() {
   ];
 
   const validate = (u, p) => {
-    const userFound = USERS.find((user) => user.user === u);
-    const passOk = p === userFound.pass;
-    return userFound && passOk;
+    let userOk = true;
+    let passOk = false;
+    let user = USERS.find((user) => user.user === u);
+    user ? (passOk = user.pass === p) : (userOk = false);
+    return userOk && passOk;
   };
 
   const login = (u) => {
