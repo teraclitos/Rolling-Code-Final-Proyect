@@ -123,47 +123,47 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
   };
 
   const wrongMail = () => {
-    let border = "";
+    let border = "outline-input";
     if (wrongBorderMail) {
-      border = "wrong-border";
+      border = "outline-input wrong-border";
     } else {
-      border = "";
+      border = "outline-input";
     }
     return border;
   };
   const wrongName = () => {
-    let border = "";
+    let border = "outline-input";
     if (wrongBorderName) {
-      border = "wrong-border";
+      border = "outline-input wrong-border";
     } else {
-      border = "";
+      border = "outline-input";
     }
     return border;
   };
   const wrongUser = () => {
-    let border = "";
+    let border = "outline-input";
     if (wrongBorderUser) {
-      border = "wrong-border";
+      border = "outline-input wrong-border";
     } else {
-      border = "";
+      border = "outline-input";
     }
     return border;
   };
   const wrongPassword = () => {
-    let border = "";
+    let border = "outline-input";
     if (wrongBorderPassword) {
-      border = "wrong-border";
+      border = "outline-input wrong-border";
     } else {
-      border = "";
+      border = "outline-input";
     }
     return border;
   };
   const wrongRepeatPassword = () => {
-    let border = "";
+    let border = "outline-input";
     if (wrongBorderrepeatPassword) {
-      border = "wrong-border";
+      border = "outline-input wrong-border";
     } else {
-      border = "";
+      border = "outline-input";
     }
     return border;
   };
