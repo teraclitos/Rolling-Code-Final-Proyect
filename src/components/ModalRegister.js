@@ -12,6 +12,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
     setFirstValidationUser(true);
     setFirstValidationPassword(true);
     setFirstValidationRepeatPassword(true);
+    setConditions(false);
   };
   const [mails, setMails] = useState("");
   const [firstValidationMail, setFirstValidationMail] = useState(true);
@@ -24,6 +25,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [firstValidationRepeatPassword, setFirstValidationRepeatPassword] =
     useState(true);
+  const [conditions, setConditions] = useState(false);
   const validateEmail = (value) => {
     let error;
     if (!value) {
@@ -32,6 +34,8 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value.trim())
     ) {
       error = "Email incorrecto";
+    } else {
+      error = true;
     }
     return error;
   };
@@ -46,6 +50,8 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       error = "Debe tener menos de 30 caracteres";
     } else if (!/^[a-zA-ZÀ-ÿ\s]{3,30}$/i.test(value.trim())) {
       error = "Sólo puede llevar letras";
+    } else {
+      error = true;
     }
     return error;
   };
@@ -67,6 +73,8 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       error = "Sólo guiones como símbolos";
     } else if (!/^[\S]{3,30}$/i.test(value.trim())) {
       error = "No debe llevar espacios ";
+    } else {
+      error = true;
     }
     return error;
   };
@@ -85,6 +93,8 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
     ) {
       error =
         "Debe llevar al menos una mayúscula, un caracter especial y un dígito";
+    } else {
+      error = true;
     }
     return error;
   };
@@ -94,6 +104,8 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       error = "Campo obligatorio";
     } else if (repeatPassword !== password) {
       error = "Las contraseñas deben coincidir";
+    } else {
+      error = true;
     }
     return error;
   };
@@ -115,6 +127,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
           >
             <Form.Label>Nombre completo</Form.Label>
             <Form.Control
+              value={name}
               autoComplete="off"
               onInput={(e) => setName(e.target.value)}
               onBlur={() => setFirstValidationName(false)}
@@ -131,6 +144,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
           >
             <Form.Label>Nombre de usuario</Form.Label>
             <Form.Control
+              value={user}
               autoComplete="off"
               onInput={(e) => setUser(e.target.value)}
               onBlur={() => setFirstValidationUser(false)}
@@ -148,6 +162,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
           >
             <Form.Label>Email</Form.Label>
             <Form.Control
+              value={mails}
               autoComplete="off"
               name="email"
               onInput={(e) => setMails(e.target.value)}
@@ -165,6 +180,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
           >
             <Form.Label>Contraseña</Form.Label>
             <Form.Control
+              value={password}
               autoComplete="off"
               onInput={(e) => setPassword(e.target.value)}
               onBlur={() => setFirstValidationPassword(false)}
@@ -182,6 +198,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
           >
             <Form.Label>Repita contraseña</Form.Label>
             <Form.Control
+              value={repeatPassword}
               autoComplete="off"
               onInput={(e) => setRepeatPassword(e.target.value)}
               onBlur={() => setFirstValidationRepeatPassword(false)}
@@ -201,9 +218,48 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             <Form.Check
               type="checkbox"
               label="Acepto los terminos y condiciones."
+              onClick={(e) => {
+                if (!conditions) {
+                  setConditions(true);
+                } else {
+                  setConditions(false);
+                }
+              }}
             />
           </Form.Group>
-          <Button className="mt-3 btn-color" type="submit">
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              if (
+                validateEmail(mails) === true &&
+                validateName(name) === true &&
+                validateUser(user) === true &&
+                validatePassword(password) === true &&
+                validateRepeatPassword(repeatPassword) === true
+              ) {
+                if (conditions) {
+                  setMails("");
+                  setName("");
+                  setUser("");
+                  setPassword("");
+                  setRepeatPassword("");
+                  setFirstValidationMail(true);
+                  setFirstValidationName(true);
+                  setFirstValidationUser(true);
+                  setFirstValidationPassword(true);
+                  setFirstValidationRepeatPassword(true);
+                  alert("se ha registrado correctamente");
+                  e.submit();
+                } else {
+                  alert("acepte los terminos y condiciones");
+                }
+              } else {
+                alert("debe completar correctamente todos los campos");
+              }
+            }}
+            className="mt-3 btn-color"
+            type="submit"
+          >
             Regístrate
           </Button>
         </Form>
