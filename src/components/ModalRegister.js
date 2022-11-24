@@ -26,6 +26,13 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
   const [firstValidationRepeatPassword, setFirstValidationRepeatPassword] =
     useState(true);
   const [conditions, setConditions] = useState(false);
+  const [wrongBorderMail, setWrongBorderMail] = useState(false);
+  const [wrongBorderName, setWrongBorderName] = useState(false);
+  const [wrongBorderUser, setWrongBorderUser] = useState(false);
+  const [wrongBorderPassword, setWrongBorderPassword] = useState(false);
+  const [wrongBorderrepeatPassword, setWrongBorderrepeatPassword] =
+    useState(false);
+  useState(false);
   const validateEmail = (value) => {
     let error;
     if (!value) {
@@ -36,6 +43,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       error = "Email incorrecto";
     } else {
       error = true;
+      // setWrongBorderMail(false);
     }
     return error;
   };
@@ -52,6 +60,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       error = "Sólo puede llevar letras";
     } else {
       error = true;
+      // setWrongBorderName(false);
     }
     return error;
   };
@@ -75,6 +84,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       error = "No debe llevar espacios ";
     } else {
       error = true;
+      // setWrongBorderUser(false);
     }
     return error;
   };
@@ -95,6 +105,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
         "Debe llevar al menos una mayúscula, un caracter especial y un dígito";
     } else {
       error = true;
+      // setWrongBorderPassword(false);
     }
     return error;
   };
@@ -106,10 +117,79 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       error = "Las contraseñas deben coincidir";
     } else {
       error = true;
+      // setWrongBorderrepeatPassword(false);
     }
     return error;
   };
 
+  const wrongMail = () => {
+    let border = "";
+    if (wrongBorderMail) {
+      border = "wrong-border";
+    } else {
+      border = "";
+    }
+    return border;
+  };
+  const wrongName = () => {
+    let border = "";
+    if (wrongBorderName) {
+      border = "wrong-border";
+    } else {
+      border = "";
+    }
+    return border;
+  };
+  const wrongUser = () => {
+    let border = "";
+    if (wrongBorderUser) {
+      border = "wrong-border";
+    } else {
+      border = "";
+    }
+    return border;
+  };
+  const wrongPassword = () => {
+    let border = "";
+    if (wrongBorderPassword) {
+      border = "wrong-border";
+    } else {
+      border = "";
+    }
+    return border;
+  };
+  const wrongRepeatPassword = () => {
+    let border = "";
+    if (wrongBorderrepeatPassword) {
+      border = "wrong-border";
+    } else {
+      border = "";
+    }
+    return border;
+  };
+  useEffect(() => {
+    if (validateEmail(mails) === true) {
+      setWrongBorderMail(false);
+    }
+    if (validateName(name) === true) {
+      setWrongBorderName(false);
+    }
+    if (validateUser(user) === true) {
+      setWrongBorderUser(false);
+    }
+    if (validatePassword(password) === true) {
+      setWrongBorderPassword(false);
+    }
+    if (validateRepeatPassword(repeatPassword) === true) {
+      setWrongBorderrepeatPassword(false);
+    }
+  }, [
+    validateEmail(mails),
+    validateName(name),
+    validateUser(user),
+    validatePassword(password),
+    validateRepeatPassword(repeatPassword),
+  ]);
   return (
     <Modal centered show={showRegister} onHide={handleCloseRegister}>
       <Modal.Header
@@ -133,6 +213,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               onBlur={() => setFirstValidationName(false)}
               type="text"
               placeholder="Francisco Terán"
+              className={wrongName()}
             />
             {validateName(name) && !firstValidationName && (
               <Form.Text className="wrong ">{validateName(name)}</Form.Text>
@@ -150,6 +231,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               onBlur={() => setFirstValidationUser(false)}
               type="text"
               placeholder=""
+              className={wrongUser()}
             />
             {validateUser(user) && !firstValidationUser && (
               <Form.Text className="wrong ">{validateUser(user)}</Form.Text>
@@ -169,8 +251,9 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               onBlur={() => setFirstValidationMail(false)}
               type="mail"
               placeholder="fran@gmail.com"
+              className={wrongMail()}
             />
-            {validateEmail(mails) && !firstValidationMail && (
+            {validateEmail(mails) !== true && !firstValidationMail && (
               <Form.Text className="wrong ">{validateEmail(mails)}</Form.Text>
             )}
           </Form.Group>
@@ -185,6 +268,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               onInput={(e) => setPassword(e.target.value)}
               onBlur={() => setFirstValidationPassword(false)}
               type="password"
+              className={wrongPassword()}
             />
             {validatePassword(password) && !firstValidationPassword && (
               <Form.Text className="wrong ">
@@ -203,6 +287,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               onInput={(e) => setRepeatPassword(e.target.value)}
               onBlur={() => setFirstValidationRepeatPassword(false)}
               type="password"
+              className={wrongRepeatPassword()}
             />
             {validateRepeatPassword(repeatPassword) &&
               !firstValidationRepeatPassword && (
@@ -255,6 +340,21 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 }
               } else {
                 alert("debe completar correctamente todos los campos");
+                if (validateEmail(mails) !== true) {
+                  setWrongBorderMail(true);
+                }
+                if (validateName(name) !== true) {
+                  setWrongBorderName(true);
+                }
+                if (validateUser(user) !== true) {
+                  setWrongBorderUser(true);
+                }
+                if (validatePassword(password) !== true) {
+                  setWrongBorderPassword(true);
+                }
+                if (validateRepeatPassword(repeatPassword) !== true) {
+                  setWrongBorderrepeatPassword(true);
+                }
               }
             }}
             className="mt-3 btn-color"
