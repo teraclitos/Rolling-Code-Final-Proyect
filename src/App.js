@@ -118,14 +118,26 @@ function App() {
           <Route
             path="/ArticleDetailContainer/:id"
             element={
-              <ArticleDetailContainer
-                add={add}
-                cart={cart}
-                auth={auth}
-                validate={validate}
-                login={login}
-                logout={logout}
-              />
+              auth.user ? (
+                <ArticleDetailContainer
+                  add={add}
+                  cart={cart}
+                  auth={auth}
+                  validate={validate}
+                  login={login}
+                  logout={logout}
+                />
+              ) : (
+                <Articlepublicitygrid
+                  data={data}
+                  add={add}
+                  cart={cart}
+                  auth={auth}
+                  validate={validate}
+                  login={login}
+                  logout={logout}
+                />
+              )
             }
           />
         </Routes>

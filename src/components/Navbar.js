@@ -19,7 +19,7 @@ import {
   faHeart,
   faEnvelope,
   faRightToBracket,
-  faPersonToDoor,
+  faRightFromBracket,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/navbar.css";
@@ -135,9 +135,12 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
 
               <Nav.Link>
                 {auth.user ? (
-                  <Button className="btn-danger">
+                  <Button className="btn-danger" onclick={() => logout()}>
                     {auth.user}
-                    <FontAwesomeIcon icon={faPersonToDoor} className="mx-2" />
+                    <FontAwesomeIcon
+                      icon={faRightFromBracket}
+                      className="mx-2"
+                    />
                   </Button>
                 ) : (
                   <Button onClick={handleShowLogin}>
