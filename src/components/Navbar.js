@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 import ModalRegister from "./ModalRegister";
 import ModalLogin from "./ModalLogin";
+import OffcanvasFav from "./OffcanvasFav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStar,
@@ -19,6 +20,7 @@ import {
   faHeart,
   faEnvelope,
   faRightToBracket,
+  faRightFromBracket,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/navbar.css";
@@ -72,44 +74,6 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
                 </Link>
               </Nav.Link>
 
-              <Offcanvas
-                className="bg-offcanvas"
-                show={show}
-                onHide={handleClose}
-              >
-                <Offcanvas.Header closeButton>
-                  <Offcanvas.Title className="style-favorite">
-                    Mis favoritos ({cart.length})
-                  </Offcanvas.Title>
-                  {cart.length > 0 && (
-                    <Button className="btn-favorite" onClick={() => clear()}>
-                      Limpiar favoritos
-                    </Button>
-                  )}
-                </Offcanvas.Header>
-                <Offcanvas.Body>
-                  {cart.length
-                    ? cart.map((c, i) => (
-                        <Row key={i}>
-                          <Col>{c.title}</Col>
-                          <Col>{c.price}</Col>
-                          <Col>
-                            <Button
-                              className="btn-trash"
-                              onClick={() => del(c)}
-                            >
-                              <FontAwesomeIcon
-                                className="text-danger"
-                                icon={faTrash}
-                              />
-                            </Button>
-                          </Col>
-                        </Row>
-                      ))
-                    : "Sin favoritos"}
-                </Offcanvas.Body>
-              </Offcanvas>
-
               <Nav.Link>
                 <Link
                   to="/highlights"
@@ -132,16 +96,32 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
                 </Link>
               </Nav.Link>
 
-              <Nav.Link onClick={handleShowLogin}>
-                <Link
-                  to="/"
-                  className="link-nav"
-                  style={{ textDecoration: "none" }}
-                >
-                  Iniciar sesión
-                  <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
-                </Link>
+              <Nav.Link>
+                {auth.user ? (
+                  <Button className="btn-danger" onclick={() => logout()}>
+                    {auth.user}
+                    <FontAwesomeIcon
+                      icon={faRightFromBracket}
+                      className="mx-2"
+                    />
+                  </Button>
+                ) : (
+                  <Button onClick={() => handleShowLogin()}>
+                    <Link
+                      to="/"
+                      className="link-nav"
+                      style={{ textDecoration: "none" }}
+                    >
+                      Iniciar sesión
+                      <FontAwesomeIcon
+                        icon={faRightToBracket}
+                        className="mx-2"
+                      />
+                    </Link>
+                  </Button>
+                )}
               </Nav.Link>
+
               <Nav.Link onClick={handleShowRegister}>
                 <Link
                   to="/"
@@ -187,6 +167,14 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
         validate={validate}
         login={login}
         logout={logout}
+      />
+      <OffcanvasFav
+        cart={cart}
+        del={del}
+        clear={clear}
+        show={show}
+        setShow={setShow}
+        handleClose={handleClose}
       />
     </>
   );

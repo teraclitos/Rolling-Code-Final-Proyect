@@ -29,6 +29,7 @@ function App() {
   //CART
   const add = (p) => {
     setCart([...cart, p]);
+    console.log("funcion auth" + auth.user);
   };
 
   const del = (p) => {
@@ -41,13 +42,18 @@ function App() {
   };
 
   //Login
+
+
+  // useEffect(() => {
+  //   console.log(auth);
+  // }, [auth]);
+
+
   const [auth, setAuth] = useState({
     user: "",
     role: "",
   });
-  useEffect(() => {
-    console.log(auth);
-  }, [auth]);
+
 
   const USERS = [
     { user: "admin", pass: "admin", role: "admin" },
@@ -68,6 +74,7 @@ function App() {
       user: userFound.user,
       role: userFound.role,
     });
+    console.log("funcion login auth" + auth);
   };
 
   const logout = () => {
@@ -116,14 +123,26 @@ function App() {
           <Route
             path="/ArticleDetailContainer/:id"
             element={
-              <ArticleDetailContainer
-                add={add}
-                cart={cart}
-                auth={auth}
-                validate={validate}
-                login={login}
-                logout={logout}
-              />
+              auth.user ? (
+                <ArticleDetailContainer
+                  add={add}
+                  cart={cart}
+                  auth={auth}
+                  validate={validate}
+                  login={login}
+                  logout={logout}
+                />
+              ) : (
+                <Articlepublicitygrid
+                  data={data}
+                  add={add}
+                  cart={cart}
+                  auth={auth}
+                  validate={validate}
+                  login={login}
+                  logout={logout}
+                />
+              )
             }
           />
         </Routes>
