@@ -34,7 +34,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
     ) {
       error = "Email incorrecto";
     } else {
-      error = false;
+      error = true;
     }
     return error;
   };
@@ -50,7 +50,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
     } else if (!/^[a-zA-ZÀ-ÿ\s]{3,30}$/i.test(value.trim())) {
       error = "Sólo puede llevar letras";
     } else {
-      error = false;
+      error = true;
     }
     return error;
   };
@@ -73,7 +73,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
     } else if (!/^[\S]{3,30}$/i.test(value.trim())) {
       error = "No debe llevar espacios ";
     } else {
-      error = false;
+      error = true;
     }
     return error;
   };
@@ -93,7 +93,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       error =
         "Debe llevar al menos una mayúscula, un caracter especial y un dígito";
     } else {
-      error = false;
+      error = true;
     }
     return error;
   };
@@ -104,7 +104,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
     } else if (repeatPassword !== password) {
       error = "Las contraseñas deben coincidir";
     } else {
-      error = false;
+      error = true;
     }
     return error;
   };
@@ -225,11 +225,11 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             onClick={(e) => {
               e.preventDefault();
               if (
-                validateEmail(mails) === false &&
-                validateName(name) === false &&
-                validateUser(user) === false &&
-                validatePassword(password) === false &&
-                validateRepeatPassword(repeatPassword) === false
+                validateEmail(mails) === true &&
+                validateName(name) === true &&
+                validateUser(user) === true &&
+                validatePassword(password) === true &&
+                validateRepeatPassword(repeatPassword) === true
               ) {
                 if (conditions) {
                   alert("se ha registrado correctamente");
