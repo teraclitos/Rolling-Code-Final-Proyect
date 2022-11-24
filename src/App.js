@@ -40,6 +40,22 @@ function App() {
     setCart([]);
   };
 
+  //Login
+  const [auth, setAuth] = useState({
+    user: "",
+    role: "",
+  });
+  const USERS = [
+    { user: "admin", pass: "admin", role: "admin" },
+    { user: "user", pass: "user", role: "user" },
+  ];
+
+  const validate = (u, p) => {
+    const userFound = USERS.find((user) => user.user === u);
+    const passOk = p === userFound.pass;
+    return userFound && passOk;
+  };
+
   return (
     <div>
       <BrowserRouter>
