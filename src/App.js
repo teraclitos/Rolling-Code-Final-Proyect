@@ -44,6 +44,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Navbar cart={cart} del={del} clear={clear} data={data} />
+
         <Header />
         {/* <Advertising /> */}
         {/* <ArticleDetailContainer data={data} /> */}
