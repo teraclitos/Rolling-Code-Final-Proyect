@@ -29,6 +29,7 @@ function App() {
   //CART
   const add = (p) => {
     setCart([...cart, p]);
+    console.log("funcion auth" + auth.user);
   };
 
   const del = (p) => {
@@ -70,6 +71,7 @@ function App() {
       user: userFound.user,
       role: userFound.role,
     });
+    console.log("funcion login auth" + auth);
   };
 
   const logout = () => {

@@ -1,19 +1,12 @@
 import React from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { Row, Col } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "../styles/navbar.css";
 
-const OffcanvasFav = ({
-  clear,
-  del,
-  cart,
-  show,
-  handleClose,
-  show,
-  setShow,
-}) => {
+const OffcanvasFav = ({ clear, del, cart, handleClose, show, setShow }) => {
   return (
     <div>
       <Offcanvas className="bg-offcanvas" show={show} onHide={handleClose}>

@@ -12,7 +12,7 @@ import { Route, Routes, Link, useParams } from "react-router-dom";
 // } from "@fortawesome/free-brands-svg-icons";
 import Advertising from "./Advertising";
 
-const Articlepublicitygrid = ({ data, add, cart }) => {
+const Articlepublicitygrid = ({ data, add, cart, auth }) => {
   let active = 2;
   let items = [];
   for (let number = 1; number <= 3; number++) {
@@ -47,7 +47,7 @@ const Articlepublicitygrid = ({ data, add, cart }) => {
                   </Link>
                   <Button
                     onClick={() => add(d)}
-                    disabled={cart.includes(d)}
+                    disabled={cart.includes(d) && auth.user !== " "}
                     className="btn-like"
                   >
                     <FontAwesomeIcon

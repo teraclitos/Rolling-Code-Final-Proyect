@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 import ModalRegister from "./ModalRegister";
 import ModalLogin from "./ModalLogin";
-import { OffcanvasFav } from "./OffcanvasFav";
+import OffcanvasFav from "./OffcanvasFav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStar,
@@ -106,7 +106,7 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
                     />
                   </Button>
                 ) : (
-                  <Button onClick={handleShowLogin}>
+                  <Button onClick={() => handleShowLogin()}>
                     <Link
                       to="/"
                       className="link-nav"
@@ -174,6 +174,7 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
         clear={clear}
         show={show}
         setShow={setShow}
+        handleClose={handleClose}
       />
     </>
   );

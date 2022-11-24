@@ -7,6 +7,7 @@ import "../styles/navbar.css";
 import "../styles/articlepublicitygrid.css";
 import { Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
+import Alert from "react-bootstrap/Alert";
 
 const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
   const handleCloseLogin = () => setShowLogin(false);
@@ -24,6 +25,9 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
     if (validate(u, p)) {
       login(u);
       navigate("/");
+      console.log("login correcto" + auth.user);
+    } else {
+      console.log("login incorrecto" + auth.user);
     }
   };
   return (
@@ -40,7 +44,7 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
           <Form>
             <Form.Group
               className="mb-3 d-flex flex-column align-items-start"
-              controlId="formBasicPassword"
+              controlId="formBasicMail"
             >
               <Form.Label>Email o usuario</Form.Label>
               <Form.Control
