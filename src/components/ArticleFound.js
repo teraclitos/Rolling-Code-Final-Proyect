@@ -4,14 +4,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const ArticleFound = () => {
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setData(json));
-  }, []);
-
-  const [data, setData] = useState([]);
+const ArticleFound = ({ data }) => {
   const [stock, setStock] = useState([]);
   const [search, setSearch] = useState("");
 
