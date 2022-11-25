@@ -215,7 +215,11 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               value={name}
               autoComplete="off"
               onInput={(e) => setName(e.target.value)}
-              onBlur={() => setFirstValidationName(false)}
+              onBlur={() => {
+                setTimeout(() => {
+                  setFirstValidationName(false);
+                }, 200);
+              }}
               type="text"
               placeholder="Francisco Terán"
               className={wrongName()}
@@ -233,7 +237,11 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               value={user}
               autoComplete="off"
               onInput={(e) => setUser(e.target.value)}
-              onBlur={() => setFirstValidationUser(false)}
+              onBlur={() => {
+                setTimeout(() => {
+                  setFirstValidationUser(false);
+                }, 200);
+              }}
               type="text"
               placeholder=""
               className={wrongUser()}
@@ -253,7 +261,11 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               autoComplete="off"
               name="email"
               onInput={(e) => setMails(e.target.value)}
-              onBlur={() => setFirstValidationMail(false)}
+              onBlur={() => {
+                setTimeout(() => {
+                  setFirstValidationMail(false);
+                }, 200);
+              }}
               type="mail"
               placeholder="fran@gmail.com"
               className={wrongMail()}
@@ -271,7 +283,11 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               value={password}
               autoComplete="off"
               onInput={(e) => setPassword(e.target.value)}
-              onBlur={() => setFirstValidationPassword(false)}
+              onBlur={() => {
+                setTimeout(() => {
+                  setFirstValidationPassword(false);
+                }, 200);
+              }}
               type="password"
               className={wrongPassword()}
             />
@@ -290,7 +306,11 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               value={repeatPassword}
               autoComplete="off"
               onInput={(e) => setRepeatPassword(e.target.value)}
-              onBlur={() => setFirstValidationRepeatPassword(false)}
+              onBlur={() => {
+                setTimeout(() => {
+                  setFirstValidationRepeatPassword(false);
+                }, 200);
+              }}
               type="password"
               className={wrongRepeatPassword()}
             />
