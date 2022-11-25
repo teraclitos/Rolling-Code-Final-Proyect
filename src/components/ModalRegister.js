@@ -338,6 +338,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                   setFirstValidationUser(true);
                   setFirstValidationPassword(true);
                   setFirstValidationRepeatPassword(true);
+                  handleCloseRegister();
                   alert("se ha registrado correctamente");
                   e.submit();
                 } else {
