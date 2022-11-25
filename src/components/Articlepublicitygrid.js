@@ -4,6 +4,7 @@ import Categorias from "../components/Categorias";
 import { Button, Card, Pagination } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import Slider from "./Slider";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 // import {
 //   faFacebook,
@@ -22,10 +23,11 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
       </Pagination.Item>
     );
   }
+
   return (
     <>
       <Advertising />
-
+      <Slider />
       <div className="container grid-articles-publicity mt-5 px-5 px-sm-2 px-md-0 ">
         <div className="grid-articles">
           {data.map((d, i) => (
@@ -45,16 +47,18 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
                   <Link to={`/ArticleDetailContainer/${d.id}`}>
                     <Button className="py-1 px-2 btn-color ">Leer más</Button>
                   </Link>
-                  <Button
-                    onClick={() => add(d)}
-                    disabled={cart.includes(d) && auth.user !== " "}
-                    className="btn-like"
-                  >
-                    <FontAwesomeIcon
-                      className="align-self-center fs-5 text-danger"
-                      icon={faHeart}
-                    />
-                  </Button>
+                  {auth.user === "user" && (
+                    <Button
+                      disabled={cart.includes(d)}
+                      onClick={() => add(d)}
+                      className="btn-like"
+                    >
+                      <FontAwesomeIcon
+                        className="align-self-center fs-5 text-danger"
+                        icon={faHeart}
+                      />
+                    </Button>
+                  )}
                 </Card.Footer>
               </Card>
             </div>
