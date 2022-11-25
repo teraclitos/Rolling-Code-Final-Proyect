@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import {
@@ -22,39 +22,29 @@ import Categorias from "./Categorias";
 import "../styles/articledetail.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
-const ArticleDetail = ({ data, add, cart }) => {
+const ArticleDetail = ({ data, add, cart, auth }) => {
   const [show, setShow] = useState(false);
-  const [editSection, setEditSection] = useState(data.section);
-  const [editAuthor, setEditAuthor] = useState(data.author);
-  const [editImage, setEditImage] = useState(data.image);
-  const [editTitle, setEditTitle] = useState(data.title);
-  const [editSubtitulo, setEditSubtitulo] = useState(data.subtitulo);
-  const [editDescription, setEditDescription] = useState(data.description);
+  const [editSection, setEditSection] = useState("");
+  const [editAuthor, setEditAuthor] = useState("");
+  const [editImage, setEditImage] = useState("");
+  const [editTitle, setEditTitle] = useState("");
+  const [editSubtitulo, setEditSubtitulo] = useState("");
+  const [editDescription, setEditDescription] = useState("");
   const [submitOk, setSubmitOk] = useState(null);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleSubmit = (e) => {
-    // e.preventDefault();
-    // setSubmitOk(null);
-    // fetch("https://rcs-3i-api-node.vercel.app/products/update/" + product._id, {
-    //   method: "PUT",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     category: product.category,
-    //     description: editDescription,
-    //     image:
-    //       "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-    //     price: editPrice,
-    //     title: editName,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((json) => setSubmitOk(true))
-    //   .catch((error) => setSubmitOk(false));
-  };
+  const handleSubmit = (e) => {};
+
+  useEffect(() => {
+    setEditTitle(data.title);
+    setEditSection(data.section);
+    setEditDescription(data.description);
+    setEditImage(data.image);
+    setEditAuthor(data.author);
+    setEditSubtitulo(data.subtitulo);
+  }, [data]);
+
   return (
     <div>
       <Container fluid>
@@ -124,8 +114,7 @@ const ArticleDetail = ({ data, add, cart }) => {
             <Button className=" btn-detail" onClick={handleShow}>
               EDITAR
             </Button>
-            {/* )}  cierro parentesis de admin boton*/}
-            {/* {auth.role === "admin" ? ( */}
+            {/* )} */}
             <Modal show={show} onHide={handleClose}>
               <Modal.Header className="card-crud" closeButton>
                 <Modal.Title className="title-crud">CRUD ARTICULOS</Modal.Title>
@@ -141,9 +130,9 @@ const ArticleDetail = ({ data, add, cart }) => {
                     <Form.Label className="style-crud">Seccion</Form.Label>
                     <Form.Control
                       type="text"
-                      // value={section}
+                      value={editSection}
                       defaultValue={editSection}
-                      onChange={(e) => setEditSection(e.target.value)}
+                      onInput={(e) => setEditSection(e.target.value)}
                       autoFocus
                     />
                     <Form.Group />
@@ -158,7 +147,7 @@ const ArticleDetail = ({ data, add, cart }) => {
                         placeholder="Nombre del autor"
                         defaultValue={editAuthor}
                         value={editAuthor}
-                        onChange={(e) => setEditAuthor(e.target.value)}
+                        onInput={(e) => setEditAuthor(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
@@ -170,25 +159,22 @@ const ArticleDetail = ({ data, add, cart }) => {
                       <Form.Label className="style-crud">Titulo</Form.Label>
                       <Form.Control
                         type="text"
-                        placeholder="Ingrese titulo del articulo"
+                        // placeholder={data.title}
                         defaultValue={editTitle}
                         value={editTitle}
-                        onChange={(e) => setEditTitle(e.target.value)}
+                        onInput={(e) => setEditTitle(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
                     {/* data.image */}
-                    <Form.Group
-                      className="mb-3"
-                      controlId="exampleForm.ControlInput1"
-                    >
+                    <Form.Group className="mb-3">
                       <Form.Label className="style-crud">URL</Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Ingrese URL de imagen"
                         defaultValue={setEditImage}
                         value={editImage}
-                        onChange={(e) => setEditImage(e.target.value)}
+                        onInput={(e) => setEditImage(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
@@ -203,7 +189,7 @@ const ArticleDetail = ({ data, add, cart }) => {
                         placeholder="Ingrese subtitulo"
                         defaultValue={setEditSubtitulo}
                         value={editSubtitulo}
-                        onChange={(e) => setEditSubtitulo(e.target.value)}
+                        onInput={(e) => setEditSubtitulo(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
@@ -220,20 +206,18 @@ const ArticleDetail = ({ data, add, cart }) => {
                         placeholder=""
                         defaultValue={setEditDescription}
                         value={editDescription}
-                        onChange={(e) => setEditDescription(e.target.value)}
+                        onInput={(e) => setEditDescription(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
-                    <Form.Group
-                      className="mb-3 mt-5 btn-detail"
-                      controlId="formBasicCheckbox"
-                    >
-                      <Form.Check type="checkbox" label="Destacar" />
+                    <Form.Group className="mb-3 mt-5 btn-detail">
+                      <Form.Check
+                        type="checkbox"
+                        label="Destacar"
+                        onClick={() => add(data)}
+                      />
                     </Form.Group>
-                    <Form.Group
-                      className="mb-3 mt-5"
-                      controlId="formBasicCheckbox"
-                    >
+                    <Form.Group className="mb-3 mt-5">
                       <Button
                         className="mb-5 mr-5 btn-save"
                         onClick={(e) => handleSubmit(e)}
@@ -251,8 +235,6 @@ const ArticleDetail = ({ data, add, cart }) => {
               </Modal.Footer>
             </Modal>
 
-            {/* ) parentesis que cierra vista admin */}
-            {/* aca reemplazar por el contador de favoritos de andre */}
             <Button
               className="mt-5 mb-5"
               variant="warning"
@@ -270,3 +252,5 @@ const ArticleDetail = ({ data, add, cart }) => {
 };
 
 export default ArticleDetail;
+
+  
