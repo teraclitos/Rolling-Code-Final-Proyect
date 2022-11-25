@@ -76,8 +76,10 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
 
             <Button
               className="mt-3 btn-color"
-              type="submit"
-              onClick={() => handleLogin(mail, password)}
+              onClick={() => {
+                handleLogin(mail, password);
+                handleCloseLogin();
+              }}
             >
               Iniciar sesión
             </Button>

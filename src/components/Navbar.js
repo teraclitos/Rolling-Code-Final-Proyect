@@ -98,7 +98,7 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
 
               <Nav.Link>
                 {auth.user ? (
-                  <Button className="btn-danger" onclick={() => logout()}>
+                  <Button className="btn-danger" onClick={() => logout()}>
                     {auth.user}
                     <FontAwesomeIcon
                       icon={faRightFromBracket}
