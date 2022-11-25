@@ -2,14 +2,14 @@ import { React, useState, useEffect } from "react";
 import "../styles/publicidad.css";
 
 const Advertising = () => {
-  const [modal, setModal] = useState("none");
+  const [modal, setModal] = useState("hidden");
   useEffect(() => {
     setTimeout(() => {
-      setModal("flex");
-    }, 3000);
+      setModal("visible");
+    }, 500);
     setTimeout(() => {
-      setModal("none");
-    }, 7000);
+      setModal("hidden");
+    }, 3000);
   }, []);
 
   return (
@@ -17,7 +17,7 @@ const Advertising = () => {
     //   <body>
     //     <input type="checkbox" id="cerrar" />
     //     <label for="cerrar" id="btn-cerrar"></label>
-    <div style={{ display: modal }} className="modal">
+    <div style={{ visibility: modal }} className="modal d-none d-md-flex">
       <div className="contenido">
         <img
           className="img-modal-publicity"
@@ -29,6 +29,7 @@ const Advertising = () => {
           }}
           className="btn-cerrar "
         >
+          {" "}
           X
         </button>
       </div>
