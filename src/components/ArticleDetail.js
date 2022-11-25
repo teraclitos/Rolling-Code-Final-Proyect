@@ -236,7 +236,6 @@ const ArticleDetail = ({ data, add, cart }) => {
                     >
                       <Button
                         className="mb-5 mr-5 btn-save"
-                        type="submit"
                         onClick={(e) => handleSubmit(e)}
                       >
                         Guardar cambios

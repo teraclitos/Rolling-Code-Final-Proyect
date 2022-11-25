@@ -42,7 +42,6 @@ const ArticleFound = ({ data }) => {
     <div>
       <Form className="d-flex d-xl-none d-lg-none">
         <Form.Control
-          type="search"
           value={search}
           placeholder="Buscar por nombre o categoría"
           className="me-2"
