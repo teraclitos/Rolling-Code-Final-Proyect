@@ -3,7 +3,7 @@ import Carousel from "react-bootstrap/Carousel";
 
 const Slider = () => {
   return (
-    <Carousel className="mt-3 d-none d-lg-block d-xl-none">
+    <Carousel className="mt-3 d-none d-lg-block">
       <Carousel.Item>
         <img
           className="d-block w-100"
