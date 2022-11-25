@@ -6,10 +6,10 @@ const Advertising = () => {
   useEffect(() => {
     setTimeout(() => {
       setModal("visible");
-    }, 3000);
+    }, 500);
     setTimeout(() => {
       setModal("hidden");
-    }, 7000);
+    }, 3000);
   }, []);
 
   return (
