@@ -15,7 +15,6 @@ import OffcanvasFav from "./OffcanvasFav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStar,
-  faTrash,
   faUser,
   faHeart,
   faEnvelope,
@@ -97,6 +96,16 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
               </Nav.Link>
 
               <Nav.Link>
+                <Link
+                  to="/articlefound"
+                  className="link-nav"
+                  style={{ textDecoration: "none" }}
+                >
+                  <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
+                </Link>
+              </Nav.Link>
+
+              <Nav.Link>
                 {auth.user ? (
                   <Button className="btn-danger" onClick={() => logout()}>
                     {auth.user}
@@ -133,25 +142,6 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
                 </Link>
               </Nav.Link>
             </Nav>
-            <Form className="d-flex d-xl-none d-lg-none">
-              <Form.Control
-                type="search"
-                // value={search}
-                placeholder="Buscar por nombre o categoría"
-                className="me-2"
-                aria-label="Search"
-                // onInput={(e) => setSearch(e.target.value)}
-                // onChange={handleChange}
-              />
-              <Link to="/articlefound" style={{ textDecoration: "none" }}>
-                <Button variant="outline-light">
-                  <FontAwesomeIcon
-                    icon={faMagnifyingGlass}
-                    className="text-white mx-2"
-                  />
-                </Button>
-              </Link>
-            </Form>
           </BSNavbar.Collapse>
         </Container>
       </BSNavbar>
