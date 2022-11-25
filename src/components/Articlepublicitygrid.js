@@ -23,6 +23,7 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
       </Pagination.Item>
     );
   }
+
   return (
     <>
       <Advertising />
@@ -46,16 +47,18 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
                   <Link to={`/ArticleDetailContainer/${d.id}`}>
                     <Button className="py-1 px-2 btn-color ">Leer más</Button>
                   </Link>
-                  <Button
-                    onClick={() => add(d)}
-                    disabled={cart.includes(d) && auth.user !== " "}
-                    className="btn-like"
-                  >
-                    <FontAwesomeIcon
-                      className="align-self-center fs-5 text-danger"
-                      icon={faHeart}
-                    />
-                  </Button>
+                  {auth.user === "user" && (
+                    <Button
+                      disabled={cart.includes(d)}
+                      onClick={() => add(d)}
+                      className="btn-like"
+                    >
+                      <FontAwesomeIcon
+                        className="align-self-center fs-5 text-danger"
+                        icon={faHeart}
+                      />
+                    </Button>
+                  )}
                 </Card.Footer>
               </Card>
             </div>
