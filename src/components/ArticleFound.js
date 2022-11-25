@@ -24,6 +24,9 @@ const ArticleFound = ({ data }) => {
       }
     });
     setStock(resultadoBusqueda);
+    if (terminoBusqueda == "") {
+      setStock([]);
+    }
   };
 
   return (
