@@ -347,17 +347,33 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 alert("debe completar correctamente todos los campos");
                 if (validateEmail(mails) !== true) {
                   setWrongBorderMail(true);
+
+                  if (!mails) {
+                    setFirstValidationMail(false);
+                  }
                 }
                 if (validateName(name) !== true) {
+                  if (!name) {
+                    setFirstValidationName(false);
+                  }
                   setWrongBorderName(true);
                 }
                 if (validateUser(user) !== true) {
+                  if (!user) {
+                    setFirstValidationUser(false);
+                  }
                   setWrongBorderUser(true);
                 }
                 if (validatePassword(password) !== true) {
+                  if (!password) {
+                    setFirstValidationPassword(false);
+                  }
                   setWrongBorderPassword(true);
                 }
                 if (validateRepeatPassword(repeatPassword) !== true) {
+                  if (!repeatPassword) {
+                    setFirstValidationRepeatPassword(false);
+                  }
                   setWrongBorderrepeatPassword(true);
                 }
               }
