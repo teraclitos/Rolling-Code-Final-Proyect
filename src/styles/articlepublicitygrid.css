@@ -86,23 +86,16 @@
   box-shadow: none !important;
   border: rgb(145, 140, 140);
 }
-/* .outline-input:focus {
-  box-shadow: none !important;
-  outline: none !important;
-} */
 
 @media (max-width: 991.98px) {
   .grid-articles-publicity {
     grid-template-columns: 1fr;
   }
   .list-categories {
-    /* width: 8em; */
     margin-left: auto;
     margin-right: auto;
   }
-  /* .btn-categories {
-    width: 8em;
-  } */
+
   .grid-articles {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
