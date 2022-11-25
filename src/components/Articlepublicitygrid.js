@@ -4,6 +4,7 @@ import Categorias from "../components/Categorias";
 import { Button, Card, Pagination } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import Slider from "./Slider";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 // import {
 //   faFacebook,
@@ -25,7 +26,7 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
   return (
     <>
       <Advertising />
-
+      <Slider />
       <div className="container grid-articles-publicity mt-5 px-5 px-sm-2 px-md-0 ">
         <div className="grid-articles">
           {data.map((d, i) => (
