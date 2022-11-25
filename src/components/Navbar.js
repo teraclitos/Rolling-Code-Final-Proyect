@@ -15,7 +15,6 @@ import OffcanvasFav from "./OffcanvasFav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStar,
-  faTrash,
   faUser,
   faHeart,
   faEnvelope,
