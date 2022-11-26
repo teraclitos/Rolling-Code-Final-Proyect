@@ -212,7 +212,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             className="mb-2 d-flex flex-column align-items-start"
             controlId="formBasicEmail"
           >
-            <Form.Label>Nombre completo</Form.Label>
+            <Form.Label></Form.Label>
             <InputGroup className="mb-1">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
@@ -230,7 +230,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                   }, 200);
                 }}
                 type="text"
-                placeholder="Francisco Terán"
+                placeholder="Nombre"
                 className={wrongName()}
               />
             </InputGroup>
@@ -250,7 +250,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             className="mb-2 d-flex flex-column align-items-start"
             controlId="formBasicEmail"
           >
-            <Form.Label>Nombre de usuario</Form.Label>
+            <Form.Label></Form.Label>
             <InputGroup className="mb-1">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
@@ -268,7 +268,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                   }, 200);
                 }}
                 type="text"
-                placeholder=""
+                placeholder="Nombre de usuario"
                 className={wrongUser()}
               />
             </InputGroup>
@@ -289,7 +289,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             className="mb-2 d-flex flex-column align-items-start"
             controlId="formBasicPassword"
           >
-            <Form.Label>Email</Form.Label>
+            <Form.Label></Form.Label>
             <InputGroup className="mb-1">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
@@ -308,7 +308,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                   }, 200);
                 }}
                 type="mail"
-                placeholder="fran@gmail.com"
+                placeholder="Email"
                 className={wrongMail()}
               />
             </InputGroup>
@@ -328,7 +328,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             className="mb-2 d-flex flex-column align-items-start"
             controlId="formBasicPassword"
           >
-            <Form.Label>Contraseña</Form.Label>
+            <Form.Label></Form.Label>
 
             <InputGroup className="mb-1">
               <InputGroup.Text className="color-login">
@@ -348,6 +348,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 }}
                 type="password"
                 className={wrongPassword()}
+                placeholder="Contraseña"
               />
             </InputGroup>
 
@@ -366,10 +367,10 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             </div>
           </Form.Group>
           <Form.Group
-            className="mb-2 d-flex flex-column align-items-start"
+            className="mb-3 d-flex flex-column align-items-start"
             controlId="formBasicPassword"
           >
-            <Form.Label>Repita contraseña</Form.Label>
+            <Form.Label></Form.Label>
             <InputGroup className="mb-1">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
@@ -388,6 +389,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 }}
                 type="password"
                 className={wrongRepeatPassword()}
+                placeholder="Repita contraseña"
               />
             </InputGroup>
 
@@ -408,7 +410,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             </div>
           </Form.Group>
           <Form.Group
-            className="mb-2 d-flex flex-column align-items-center"
+            className="mb-3 d-flex flex-column align-items-center"
             controlId="formBasicCheckbox"
           >
             <Form.Check
@@ -479,7 +481,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 }
               }
             }}
-            className="mt-2 btn-color"
+            className=" btn-color"
             type="submit"
           >
             Regístrate
