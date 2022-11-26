@@ -229,28 +229,29 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                         autoFocus
                       />
                     </Form.Group>
-                    <Form.Group className="mb-3 mt-5 btn-detail">
-                      <Form.Check
-                        type="checkbox"
-                        label="Destacar"
-                        onClick={() => add(data)}
-                      />
-                    </Form.Group>
-                    <Form.Group className="mb-3 mt-5">
-                      <Button
-                        className="mb-5 mr-5 btn-save"
-                        onClick={(e) => handleSubmit(e)}
-                      >
-                        Guardar cambios
-                      </Button>
-                    </Form.Group>
                   </Form.Group>
                 </Form>
               </Modal.Body>
+
               <Modal.Footer className="card-crud">
-                <Button className="btn-save" onClick={handleClose}>
+                <Button className="btn-detail" onClick={handleClose}>
                   Cerrar
                 </Button>
+                <Form.Group className=" btn-detail">
+                  <Form.Check
+                    type="checkbox"
+                    label="Destacar"
+                    onClick={() => add(data)}
+                  />
+                </Form.Group>
+                <Form.Group className="">
+                  <Button
+                    className="btn-detail"
+                    onClick={(e) => handleSubmit(e)}
+                  >
+                    Guardar cambios
+                  </Button>
+                </Form.Group>
               </Modal.Footer>
             </Modal>
 
