@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
 .grid-articles-publicity {
   display: grid;
   grid-template-columns: 5fr 1fr;
@@ -65,23 +67,39 @@
   cursor: pointer;
 }
 .modal-background {
-  background-color: #fd841f;
-  color: rgb(255, 255, 255);
-  filter: brightness(0.8);
+  border-radius: 5px;
+  color: #fff;
+  background-image: url("https://nortena577.files.wordpress.com/2012/07/fondo-naranja.jpg");
+
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .modal-titles {
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
+  font-family: "Anton";
+}
+.btn-modal {
+  background-color: #1986a0;
+
+  border: 0;
+  color: black;
+  border-radius: 4px;
+  font-family: "Anton";
+}
+.btn-modal:hover {
+  color: black;
+}
+.btn-modal:active {
+  color: black !important;
 }
 .wrong {
   color: rgb(201, 2, 2);
 }
 .wrong-border {
-  border: 2px solid rgb(201, 2, 2) !important;
+  border: 2.5px solid rgb(201, 2, 2) !important;
 }
-.correct-border {
-  border: 2px solid rgb(30, 107, 30);
-}
+
 .outline-input {
   box-shadow: none !important;
   border: rgb(145, 140, 140);

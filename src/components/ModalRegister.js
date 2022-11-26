@@ -37,7 +37,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
   const [wrongBorderPassword, setWrongBorderPassword] = useState(false);
   const [wrongBorderrepeatPassword, setWrongBorderrepeatPassword] =
     useState(false);
-  useState(false);
+
   const validateEmail = (value) => {
     let error;
     if (!value) {
@@ -197,14 +197,11 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
   ]);
   return (
     <Modal centered show={showRegister} onHide={handleCloseRegister}>
-      <Modal.Header
-        className="border-0 modal-background modal-titles"
-        closeButton
-      >
-        <div></div>
-        <Modal.Title className="">Regístrate</Modal.Title>
-      </Modal.Header>
       <Modal.Body className="modal-background">
+        <Modal.Header className="border-0 modal-titles" closeButton>
+          <div></div>
+          <Modal.Title className="">Registro</Modal.Title>
+        </Modal.Header>
         <Form>
           <Form.Group
             className="mb-3 d-flex flex-column align-items-start"
@@ -393,14 +390,13 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 }
               }
             }}
-            className="mt-3 btn-color"
+            className="mt-3 btn-modal"
             type="submit"
           >
             Regístrate
           </Button>
         </Form>
       </Modal.Body>
-      <Modal.Footer className="modal-background border-0"></Modal.Footer>
     </Modal>
   );
 };
