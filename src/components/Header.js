@@ -23,12 +23,17 @@ const Header = () => {
 
     return height;
   };
-
+  const [width, setWidth] = useState(window.innerWidth);
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
   const [stateHeight, setstateheight] = useState(0);
 
   useEffect(() => {
+    window.addEventListener("resize", handleResize);
     setstateheight(headerHeight);
-  }, []);
+    console.log(width);
+  }, [width]);
   return (
     <div
       style={{ height: `${stateHeight}px` }}
