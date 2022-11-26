@@ -22,10 +22,13 @@
   background-color: #1986a0;
   font-family: "Anton";
   font-size: 20px;
+  letter-spacing: 1px;
   border: 0;
+  color: black;
 }
 .btn-color:hover {
   background-color: #0d4c92;
+  color: black !important;
 }
 
 .btn-like {
@@ -81,6 +84,7 @@
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   font-family: "Anton";
+  letter-spacing: 1px;
 }
 .btn-modal {
   background-color: #1986a0;

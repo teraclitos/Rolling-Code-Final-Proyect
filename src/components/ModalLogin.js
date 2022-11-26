@@ -36,16 +36,16 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
   return (
     <div>
       <Modal centered show={showLogin} onHide={handleCloseLogin}>
-        <Modal.Header
-          className="border-0 modal-titles modal-background"
-          closeButton
-        >
-          <div></div>
-          <Modal.Title className="text-center text-login">
-            Iniciar sesión
-          </Modal.Title>
-        </Modal.Header>
         <Modal.Body className="modal-background ">
+          <Modal.Header
+            className="border-0 modal-titles modal-background"
+            closeButton
+          >
+            <div></div>
+            <Modal.Title className="text-center text-login fs-2">
+              Iniciar sesión
+            </Modal.Title>
+          </Modal.Header>
           <Form>
             <Form.Group
               className="mb-3 d-flex flex-column align-items-start"
@@ -107,7 +107,6 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
             </Button>
           </Form>
         </Modal.Body>
-        <ModalFooter className="modal-background border-0"></ModalFooter>
       </Modal>
     </div>
   );

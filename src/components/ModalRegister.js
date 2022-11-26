@@ -205,7 +205,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
       <Modal.Body className="modal-background">
         <Modal.Header className="border-0 modal-titles" closeButton>
           <div></div>
-          <Modal.Title className="">Registro</Modal.Title>
+          <Modal.Title className="fs-2">Registro</Modal.Title>
         </Modal.Header>
         <Form>
           <Form.Group
@@ -215,7 +215,6 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             <Form.Label>Nombre completo</Form.Label>
             <InputGroup className="mb-3">
               <InputGroup.Text className="color-login">
-                {" "}
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
                   icon={faUser}
@@ -246,7 +245,6 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             <Form.Label>Nombre de usuario</Form.Label>
             <InputGroup className="mb-3">
               <InputGroup.Text className="color-login">
-                {" "}
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
                   icon={faUser}
@@ -278,7 +276,6 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             <Form.Label>Email</Form.Label>
             <InputGroup className="mb-3">
               <InputGroup.Text className="color-login">
-                {" "}
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
                   icon={faEnvelope}
@@ -311,7 +308,6 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
 
             <InputGroup className="mb-3">
               <InputGroup.Text className="color-login">
-                {" "}
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
                   icon={faLock}
@@ -343,7 +339,6 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             <Form.Label>Repita contraseña</Form.Label>
             <InputGroup className="mb-3">
               <InputGroup.Text className="color-login">
-                {" "}
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
                   icon={faLock}
@@ -442,7 +437,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 }
               }
             }}
-            className="mt-3 btn-modal"
+            className="mt-3 btn-color"
             type="submit"
           >
             Regístrate
