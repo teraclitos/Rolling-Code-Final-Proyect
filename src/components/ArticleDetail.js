@@ -22,7 +22,7 @@ import Categorias from "./Categorias";
 import "../styles/articledetail.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
-const ArticleDetail = ({ data, add, cart, auth }) => {
+const ArticleDetail = ({ data, add, cart, del, auth }) => {
   const [show, setShow] = useState(false);
   const [editSection, setEditSection] = useState("");
   const [editAuthor, setEditAuthor] = useState("");
