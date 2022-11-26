@@ -25,7 +25,7 @@ const Header = () => {
   };
   return (
     <div
-      style={{ height: `${headerHeight()}px` }}
+      // style={{ height: `${headerHeight()}px` }}
       className="container-fluid containerbg grid-header pt-4 "
     >
       <div className="fs-1 d-flex flex-column justify-content-center align-items-center icon-container">
