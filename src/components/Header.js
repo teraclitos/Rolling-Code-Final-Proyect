@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useEffect } from "react";
 import "../styles/header.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,8 +9,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // } from "@fortawesome/free-brands-svg-icons";
 
 const Header = () => {
+  const navHeight = () => {
+    let navBarHeight =
+      document.getElementById("nav-bar-container").clientHeight;
+    return navBarHeight;
+  };
+  const screenHeight = () => {
+    let screenHeight = window.innerHeight;
+    return screenHeight;
+  };
+
   return (
-    <div className="container-fluid containerbg grid-header pt-4 ">
+    <div
+      style={{ height: `${screenHeight() - navHeight()}` }}
+      className="container-fluid containerbg grid-header pt-4 "
+    >
       <div className="fs-1 d-flex flex-column justify-content-center align-items-center icon-container">
         {/* <FontAwesomeIcon className="icon" icon={faFacebook} />
         <FontAwesomeIcon className="icon" icon={faTwitter} />

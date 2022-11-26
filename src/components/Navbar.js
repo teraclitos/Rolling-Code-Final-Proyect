@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
@@ -37,6 +37,7 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
   return (
     <>
       <BSNavbar
+        id="nav-bar-container"
         className="bg-nav "
         collapseOnSelect
         expand="lg"
