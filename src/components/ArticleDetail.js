@@ -34,7 +34,9 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e) => {
+    fetch("https://fakestoreapi.com/products/${params.id}");
+  };
 
   useEffect(() => {
     setEditTitle(data.title);
@@ -252,5 +254,3 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
 };
 
 export default ArticleDetail;
-
-  
