@@ -28,7 +28,7 @@
 }
 .btn-color:hover {
   background-color: #0d4c92;
-  color: black !important;
+  /* color: black !important; */
 }
 
 .btn-like {
@@ -86,19 +86,8 @@
   font-family: "Anton";
   letter-spacing: 1px;
 }
-.btn-modal {
-  background-color: #1986a0;
-
-  border: 0;
-  color: black;
-  border-radius: 4px;
-  font-family: "Anton";
-}
-.btn-modal:hover {
-  color: black;
-}
-.btn-modal:active {
-  color: black !important;
+.height-invisible {
+  height: 0;
 }
 .wrong {
   color: rgb(201, 2, 2);

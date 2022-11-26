@@ -209,7 +209,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
         </Modal.Header>
         <Form>
           <Form.Group
-            className="mb-3 d-flex flex-column align-items-start"
+            className="mb-2 d-flex flex-column align-items-start"
             controlId="formBasicEmail"
           >
             <Form.Label>Nombre completo</Form.Label>
@@ -234,12 +234,20 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 className={wrongName()}
               />
             </InputGroup>
-            {validateName(name) && !firstValidationName && (
-              <Form.Text className="wrong ">{validateName(name)}</Form.Text>
-            )}
+            <div className="d-flex ">
+              <InputGroup.Text className="color-login opacity-0 height-invisible">
+                <FontAwesomeIcon
+                  style={{ fontSize: "1em", color: "#fd841f" }}
+                  icon={faLock}
+                />
+              </InputGroup.Text>
+              {validateName(name) && !firstValidationName && (
+                <Form.Text className="wrong ">{validateName(name)}</Form.Text>
+              )}
+            </div>
           </Form.Group>
           <Form.Group
-            className="mb-3 d-flex flex-column align-items-start"
+            className="mb-2 d-flex flex-column align-items-start"
             controlId="formBasicEmail"
           >
             <Form.Label>Nombre de usuario</Form.Label>
@@ -264,13 +272,21 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 className={wrongUser()}
               />
             </InputGroup>
-            {validateUser(user) && !firstValidationUser && (
-              <Form.Text className="wrong ">{validateUser(user)}</Form.Text>
-            )}
+            <div className="d-flex ">
+              <InputGroup.Text className="color-login opacity-0 height-invisible">
+                <FontAwesomeIcon
+                  style={{ fontSize: "1em", color: "#fd841f" }}
+                  icon={faLock}
+                />
+              </InputGroup.Text>
+              {validateUser(user) && !firstValidationUser && (
+                <Form.Text className="wrong ">{validateUser(user)}</Form.Text>
+              )}
+            </div>
           </Form.Group>
 
           <Form.Group
-            className="mb-3 d-flex flex-column align-items-start"
+            className="mb-2 d-flex flex-column align-items-start"
             controlId="formBasicPassword"
           >
             <Form.Label>Email</Form.Label>
@@ -296,12 +312,20 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 className={wrongMail()}
               />
             </InputGroup>
-            {validateEmail(mails) !== true && !firstValidationMail && (
-              <Form.Text className="wrong ">{validateEmail(mails)}</Form.Text>
-            )}
+            <div className="d-flex ">
+              <InputGroup.Text className="color-login opacity-0 height-invisible">
+                <FontAwesomeIcon
+                  style={{ fontSize: "1em", color: "#fd841f" }}
+                  icon={faLock}
+                />
+              </InputGroup.Text>
+              {validateEmail(mails) !== true && !firstValidationMail && (
+                <Form.Text className="wrong ">{validateEmail(mails)}</Form.Text>
+              )}
+            </div>
           </Form.Group>
           <Form.Group
-            className="mb-3 d-flex flex-column align-items-start"
+            className="mb-2 d-flex flex-column align-items-start"
             controlId="formBasicPassword"
           >
             <Form.Label>Contraseña</Form.Label>
@@ -326,14 +350,23 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 className={wrongPassword()}
               />
             </InputGroup>
-            {validatePassword(password) && !firstValidationPassword && (
-              <Form.Text className="wrong ">
-                {validatePassword(password)}
-              </Form.Text>
-            )}
+
+            <div className="d-flex ">
+              <InputGroup.Text className="color-login opacity-0 height-invisible">
+                <FontAwesomeIcon
+                  style={{ fontSize: "1em", color: "#fd841f" }}
+                  icon={faLock}
+                />
+              </InputGroup.Text>
+              {validatePassword(password) && !firstValidationPassword && (
+                <Form.Text className="wrong ">
+                  {validatePassword(password)}
+                </Form.Text>
+              )}
+            </div>
           </Form.Group>
           <Form.Group
-            className="mb-3 d-flex flex-column align-items-start"
+            className="mb-2 d-flex flex-column align-items-start"
             controlId="formBasicPassword"
           >
             <Form.Label>Repita contraseña</Form.Label>
@@ -358,15 +391,24 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
               />
             </InputGroup>
 
-            {validateRepeatPassword(repeatPassword) &&
-              !firstValidationRepeatPassword && (
-                <Form.Text className="wrong ">
-                  {validateRepeatPassword(repeatPassword)}
-                </Form.Text>
-              )}
+            <div className="d-flex ">
+              <InputGroup.Text className="color-login opacity-0 height-invisible ">
+                <FontAwesomeIcon
+                  style={{ fontSize: "1em", color: "#fd841f" }}
+                  icon={faLock}
+                />
+              </InputGroup.Text>
+
+              {validateRepeatPassword(repeatPassword) &&
+                !firstValidationRepeatPassword && (
+                  <Form.Text className="wrong ">
+                    {validateRepeatPassword(repeatPassword)}
+                  </Form.Text>
+                )}
+            </div>
           </Form.Group>
           <Form.Group
-            className="mb-3 d-flex flex-column align-items-center"
+            className="mb-2 d-flex flex-column align-items-center"
             controlId="formBasicCheckbox"
           >
             <Form.Check
@@ -437,7 +479,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 }
               }
             }}
-            className="mt-3 btn-color"
+            className="mt-2 btn-color"
             type="submit"
           >
             Regístrate
