@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import "../styles/header.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,9 +23,15 @@ const Header = () => {
 
     return height;
   };
+
+  const [stateHeight, setstateheight] = useState(0);
+
+  useEffect(() => {
+    setstateheight(headerHeight);
+  }, []);
   return (
     <div
-      // style={{ height: `${headerHeight()}px` }}
+      style={{ height: `${stateHeight}px` }}
       className="container-fluid containerbg grid-header pt-4 "
     >
       <div className="fs-1 d-flex flex-column justify-content-center align-items-center icon-container">
