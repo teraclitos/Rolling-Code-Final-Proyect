@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ModalFooter, Toast } from "react-bootstrap";
+import { ModalFooter, Toast, InputGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -8,6 +8,9 @@ import "../styles/articlepublicitygrid.css";
 import { Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
   const handleCloseLogin = () => setShowLogin(false);
@@ -38,7 +41,9 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
           closeButton
         >
           <div></div>
-          <Modal.Title className="text-center">Iniciar sesión</Modal.Title>
+          <Modal.Title className="text-center text-login">
+            Iniciar sesión
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body className="modal-background ">
           <Form>
@@ -47,11 +52,20 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
               controlId="formBasicMail"
             >
               <Form.Label>Email o usuario</Form.Label>
-              <Form.Control
-                type="mail"
-                placeholder=""
-                onInput={(e) => setMail(e.target.value)}
-              />
+              <InputGroup className="mb-3">
+                <InputGroup.Text className="color-login">
+                  {" "}
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faUser}
+                  />
+                </InputGroup.Text>
+                <Form.Control
+                  type="mail"
+                  placeholder=""
+                  onInput={(e) => setMail(e.target.value)}
+                />
+              </InputGroup>
 
               {/* <Form.Text className="text-danger">Ingrese su mail.</Form.Text> */}
             </Form.Group>
@@ -60,11 +74,19 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
               controlId="formBasicPassword"
             >
               <Form.Label>Contraseña</Form.Label>
-              <Form.Control
-                type="password"
-                onInput={(e) => setPassword(e.target.value)}
-              />
-
+              <InputGroup className="mb-3">
+                <InputGroup.Text className="color-login">
+                  {" "}
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faLock}
+                  />
+                </InputGroup.Text>
+                <Form.Control
+                  type="password"
+                  onInput={(e) => setPassword(e.target.value)}
+                />
+              </InputGroup>
               {/* <Form.Text className="text-danger">
               Ingrese su contraseña.
             </Form.Text> */}

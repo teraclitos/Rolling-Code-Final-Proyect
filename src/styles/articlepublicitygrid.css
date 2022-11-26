@@ -17,10 +17,13 @@
   overflow: hidden;
 }
 .btn-color {
-  background-color: #0d4c92;
+  background-color: #1986a0;
+  font-family: "Anton";
+  font-size: 20px;
+  border: 0;
 }
 .btn-color:hover {
-  background-color: #0e185f;
+  background-color: #0d4c92;
 }
 
 .btn-like {
@@ -149,4 +152,12 @@
 .link-category:hover::after {
   width: 100%;
   right: 0;
+}
+.text-login {
+  font-family: "Anton";
+}
+
+.color-login {
+  background-color: #1986a0;
+  border: 0;
 }
