@@ -18,10 +18,14 @@ const Header = () => {
     let screenHeight = window.innerHeight;
     return screenHeight;
   };
+  const headerHeight = () => {
+    let height = screenHeight() - navHeight();
 
+    return height;
+  };
   return (
     <div
-      style={{ height: `${screenHeight() - navHeight()}` }}
+      style={{ height: `${headerHeight()}px` }}
       className="container-fluid containerbg grid-header pt-4 "
     >
       <div className="fs-1 d-flex flex-column justify-content-center align-items-center icon-container">
