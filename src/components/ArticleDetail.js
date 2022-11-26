@@ -34,8 +34,25 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleSubmit = (e) => {
-    fetch("https://fakestoreapi.com/products/${params.id}");
+  const handleSubmit = () => {
+    fetch("https://fakestoreapi.com/products/1", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        editSection,
+        editAuthor,
+        editImage,
+        editTitle,
+        editSubtitulo,
+        editDescription,
+      }),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        console.log("responseFakeStore", response);
+      });
   };
 
   useEffect(() => {
@@ -112,7 +129,7 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
           </div>
           {/* VISTA ADMIN */}
           <div className="col-12 col-md-3">
-            {/* {auth.role === "admin" && ( */}
+            {/* {auth.user === "admin" && ( */}
             <Button className=" btn-detail" onClick={handleShow}>
               EDITAR
             </Button>
