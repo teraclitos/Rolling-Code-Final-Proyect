@@ -213,7 +213,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicEmail"
           >
             <Form.Label>Nombre completo</Form.Label>
-            <InputGroup className="mb-3">
+            <InputGroup className="mb-1">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
@@ -243,7 +243,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicEmail"
           >
             <Form.Label>Nombre de usuario</Form.Label>
-            <InputGroup className="mb-3">
+            <InputGroup className="mb-1">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
@@ -274,7 +274,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicPassword"
           >
             <Form.Label>Email</Form.Label>
-            <InputGroup className="mb-3">
+            <InputGroup className="mb-1">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
@@ -306,7 +306,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
           >
             <Form.Label>Contraseña</Form.Label>
 
-            <InputGroup className="mb-3">
+            <InputGroup className="mb-1">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
@@ -337,7 +337,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicPassword"
           >
             <Form.Label>Repita contraseña</Form.Label>
-            <InputGroup className="mb-3">
+            <InputGroup className="mb-1">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
