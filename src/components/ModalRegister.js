@@ -213,7 +213,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicEmail"
           >
             <Form.Label></Form.Label>
-            <InputGroup className="mb-1">
+            <InputGroup className="">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
@@ -251,7 +251,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicEmail"
           >
             <Form.Label></Form.Label>
-            <InputGroup className="mb-1">
+            <InputGroup className="">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
@@ -290,7 +290,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicPassword"
           >
             <Form.Label></Form.Label>
-            <InputGroup className="mb-1">
+            <InputGroup className="">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
@@ -330,7 +330,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
           >
             <Form.Label></Form.Label>
 
-            <InputGroup className="mb-1">
+            <InputGroup className="">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
@@ -371,7 +371,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicPassword"
           >
             <Form.Label></Form.Label>
-            <InputGroup className="mb-1">
+            <InputGroup className="">
               <InputGroup.Text className="color-login">
                 <FontAwesomeIcon
                   style={{ fontSize: "1em", color: "#fd841f" }}
