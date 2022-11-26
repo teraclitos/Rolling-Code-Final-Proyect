@@ -108,7 +108,7 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
 
               <Nav.Link>
                 {auth.user ? (
-                  <Button className="btn-danger" onClick={() => logout()}>
+                  <Button className="btn-useradmin" onClick={() => logout()}>
                     {auth.user}
                     <FontAwesomeIcon
                       icon={faRightFromBracket}
@@ -116,7 +116,10 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
                     />
                   </Button>
                 ) : (
-                  <Button onClick={() => handleShowLogin()}>
+                  <Button
+                    className="btn-sesion"
+                    onClick={() => handleShowLogin()}
+                  >
                     <Link
                       to="/"
                       className="link-nav"

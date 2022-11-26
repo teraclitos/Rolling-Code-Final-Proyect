@@ -1,8 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Button, Form, Card } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Form,
+  Card,
+  InputGroup,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+
+import {
+  faMagnifyingGlassplus,
+  faUser,
+  faGlasses,
+} from "@fortawesome/free-solid-svg-icons";
 
 const ArticleFound = ({ data }) => {
   const [stock, setStock] = useState([]);
@@ -32,13 +45,22 @@ const ArticleFound = ({ data }) => {
   return (
     <div>
       <Form className="m-3">
-        <Form.Control
-          value={search}
-          placeholder="Buscar por nombre o categoría"
-          className="me-2"
-          aria-label="Search"
-          onChange={handleChange}
-        />{" "}
+        <InputGroup className="mb-3">
+          <InputGroup.Text className="color-span">
+            {" "}
+            <FontAwesomeIcon
+              style={{ fontSize: "2em", color: "#1986a0" }}
+              icon={faGlasses}
+            />
+          </InputGroup.Text>
+          <Form.Control
+            value={search}
+            placeholder="Buscar por nombre o categoría"
+            className="me-2"
+            aria-label="Search"
+            onChange={handleChange}
+          />{" "}
+        </InputGroup>
       </Form>
       <Container>
         Resultados de Búsqueda

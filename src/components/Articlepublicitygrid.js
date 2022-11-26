@@ -44,7 +44,13 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-between p-0 px-1 border-0 mt-2 bg-white card-footer ">
-                  <Link to={`/ArticleDetailContainer/${d.id}`}>
+                  <Link
+                    to={
+                      auth.user === "admin" || auth.user === "user"
+                        ? `/ArticleDetailContainer/${d.id}`
+                        : "/"
+                    }
+                  >
                     <Button className="py-1 px-2 btn-color ">Leer más</Button>
                   </Link>
                   {auth.user === "user" && (

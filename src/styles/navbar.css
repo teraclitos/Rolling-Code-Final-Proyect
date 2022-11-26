@@ -62,3 +62,18 @@
 .btn-favorite:hover {
   background-color: #fd841f;
 }
+
+.btn-useradmin {
+  background: linear-gradient(to right, #001253, #fd841f);
+  border: 0;
+}
+
+.btn-useradmin:hover {
+  background: linear-gradient(to right, #fd841f, #001253);
+  border: 0;
+}
+
+.btn-sesion {
+  background: linear-gradient(to right, #001253, #1986a0);
+  border: 0;
+}

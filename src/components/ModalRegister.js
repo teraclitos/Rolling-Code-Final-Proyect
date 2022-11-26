@@ -2,8 +2,13 @@ import { React, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import InputGroup from "react-bootstrap/InputGroup";
 import "../styles/navbar.css";
 import "../styles/articlepublicitygrid.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faLock, faUser, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
 const ModalRegister = ({ showRegister, setShowRegister }) => {
   const handleCloseRegister = () => {
     setShowRegister(false);
@@ -208,19 +213,28 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicEmail"
           >
             <Form.Label>Nombre completo</Form.Label>
-            <Form.Control
-              value={name}
-              autoComplete="off"
-              onInput={(e) => setName(e.target.value)}
-              onBlur={() => {
-                setTimeout(() => {
-                  setFirstValidationName(false);
-                }, 200);
-              }}
-              type="text"
-              placeholder="Francisco Terán"
-              className={wrongName()}
-            />
+            <InputGroup className="mb-3">
+              <InputGroup.Text className="color-login">
+                {" "}
+                <FontAwesomeIcon
+                  style={{ fontSize: "1em", color: "#fd841f" }}
+                  icon={faUser}
+                />
+              </InputGroup.Text>
+              <Form.Control
+                value={name}
+                autoComplete="off"
+                onInput={(e) => setName(e.target.value)}
+                onBlur={() => {
+                  setTimeout(() => {
+                    setFirstValidationName(false);
+                  }, 200);
+                }}
+                type="text"
+                placeholder="Francisco Terán"
+                className={wrongName()}
+              />
+            </InputGroup>
             {validateName(name) && !firstValidationName && (
               <Form.Text className="wrong ">{validateName(name)}</Form.Text>
             )}
@@ -230,19 +244,28 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicEmail"
           >
             <Form.Label>Nombre de usuario</Form.Label>
-            <Form.Control
-              value={user}
-              autoComplete="off"
-              onInput={(e) => setUser(e.target.value)}
-              onBlur={() => {
-                setTimeout(() => {
-                  setFirstValidationUser(false);
-                }, 200);
-              }}
-              type="text"
-              placeholder=""
-              className={wrongUser()}
-            />
+            <InputGroup className="mb-3">
+              <InputGroup.Text className="color-login">
+                {" "}
+                <FontAwesomeIcon
+                  style={{ fontSize: "1em", color: "#fd841f" }}
+                  icon={faUser}
+                />
+              </InputGroup.Text>
+              <Form.Control
+                value={user}
+                autoComplete="off"
+                onInput={(e) => setUser(e.target.value)}
+                onBlur={() => {
+                  setTimeout(() => {
+                    setFirstValidationUser(false);
+                  }, 200);
+                }}
+                type="text"
+                placeholder=""
+                className={wrongUser()}
+              />
+            </InputGroup>
             {validateUser(user) && !firstValidationUser && (
               <Form.Text className="wrong ">{validateUser(user)}</Form.Text>
             )}
@@ -253,20 +276,29 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicPassword"
           >
             <Form.Label>Email</Form.Label>
-            <Form.Control
-              value={mails}
-              autoComplete="off"
-              name="email"
-              onInput={(e) => setMails(e.target.value)}
-              onBlur={() => {
-                setTimeout(() => {
-                  setFirstValidationMail(false);
-                }, 200);
-              }}
-              type="mail"
-              placeholder="fran@gmail.com"
-              className={wrongMail()}
-            />
+            <InputGroup className="mb-3">
+              <InputGroup.Text className="color-login">
+                {" "}
+                <FontAwesomeIcon
+                  style={{ fontSize: "1em", color: "#fd841f" }}
+                  icon={faEnvelope}
+                />
+              </InputGroup.Text>
+              <Form.Control
+                value={mails}
+                autoComplete="off"
+                name="email"
+                onInput={(e) => setMails(e.target.value)}
+                onBlur={() => {
+                  setTimeout(() => {
+                    setFirstValidationMail(false);
+                  }, 200);
+                }}
+                type="mail"
+                placeholder="fran@gmail.com"
+                className={wrongMail()}
+              />
+            </InputGroup>
             {validateEmail(mails) !== true && !firstValidationMail && (
               <Form.Text className="wrong ">{validateEmail(mails)}</Form.Text>
             )}
@@ -276,18 +308,28 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicPassword"
           >
             <Form.Label>Contraseña</Form.Label>
-            <Form.Control
-              value={password}
-              autoComplete="off"
-              onInput={(e) => setPassword(e.target.value)}
-              onBlur={() => {
-                setTimeout(() => {
-                  setFirstValidationPassword(false);
-                }, 200);
-              }}
-              type="password"
-              className={wrongPassword()}
-            />
+
+            <InputGroup className="mb-3">
+              <InputGroup.Text className="color-login">
+                {" "}
+                <FontAwesomeIcon
+                  style={{ fontSize: "1em", color: "#fd841f" }}
+                  icon={faLock}
+                />
+              </InputGroup.Text>
+              <Form.Control
+                value={password}
+                autoComplete="off"
+                onInput={(e) => setPassword(e.target.value)}
+                onBlur={() => {
+                  setTimeout(() => {
+                    setFirstValidationPassword(false);
+                  }, 200);
+                }}
+                type="password"
+                className={wrongPassword()}
+              />
+            </InputGroup>
             {validatePassword(password) && !firstValidationPassword && (
               <Form.Text className="wrong ">
                 {validatePassword(password)}
@@ -299,18 +341,28 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
             controlId="formBasicPassword"
           >
             <Form.Label>Repita contraseña</Form.Label>
-            <Form.Control
-              value={repeatPassword}
-              autoComplete="off"
-              onInput={(e) => setRepeatPassword(e.target.value)}
-              onBlur={() => {
-                setTimeout(() => {
-                  setFirstValidationRepeatPassword(false);
-                }, 200);
-              }}
-              type="password"
-              className={wrongRepeatPassword()}
-            />
+            <InputGroup className="mb-3">
+              <InputGroup.Text className="color-login">
+                {" "}
+                <FontAwesomeIcon
+                  style={{ fontSize: "1em", color: "#fd841f" }}
+                  icon={faLock}
+                />
+              </InputGroup.Text>
+              <Form.Control
+                value={repeatPassword}
+                autoComplete="off"
+                onInput={(e) => setRepeatPassword(e.target.value)}
+                onBlur={() => {
+                  setTimeout(() => {
+                    setFirstValidationRepeatPassword(false);
+                  }, 200);
+                }}
+                type="password"
+                className={wrongRepeatPassword()}
+              />
+            </InputGroup>
+
             {validateRepeatPassword(repeatPassword) &&
               !firstValidationRepeatPassword && (
                 <Form.Text className="wrong ">

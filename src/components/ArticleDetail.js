@@ -22,7 +22,7 @@ import Categorias from "./Categorias";
 import "../styles/articledetail.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
-const ArticleDetail = ({ data, add, cart, auth }) => {
+const ArticleDetail = ({ data, add, cart, del, auth }) => {
   const [show, setShow] = useState(false);
   const [editSection, setEditSection] = useState("");
   const [editAuthor, setEditAuthor] = useState("");
@@ -34,7 +34,26 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleSubmit = (e) => {};
+  const handleSubmit = () => {
+    fetch("https://fakestoreapi.com/products/1", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        editSection,
+        editAuthor,
+        editImage,
+        editTitle,
+        editSubtitulo,
+        editDescription,
+      }),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        console.log("responseFakeStore", response);
+      });
+  };
 
   useEffect(() => {
     setEditTitle(data.title);
@@ -110,7 +129,7 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
           </div>
           {/* VISTA ADMIN */}
           <div className="col-12 col-md-3">
-            {/* {auth.role === "admin" && ( */}
+            {/* {auth.user === "admin" && ( */}
             <Button className=" btn-detail" onClick={handleShow}>
               EDITAR
             </Button>
@@ -210,28 +229,29 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                         autoFocus
                       />
                     </Form.Group>
-                    <Form.Group className="mb-3 mt-5 btn-detail">
-                      <Form.Check
-                        type="checkbox"
-                        label="Destacar"
-                        onClick={() => add(data)}
-                      />
-                    </Form.Group>
-                    <Form.Group className="mb-3 mt-5">
-                      <Button
-                        className="mb-5 mr-5 btn-save"
-                        onClick={(e) => handleSubmit(e)}
-                      >
-                        Guardar cambios
-                      </Button>
-                    </Form.Group>
                   </Form.Group>
                 </Form>
               </Modal.Body>
+
               <Modal.Footer className="card-crud">
-                <Button className="btn-save" onClick={handleClose}>
+                <Button className="btn-detail" onClick={handleClose}>
                   Cerrar
                 </Button>
+                <Form.Group className=" btn-detail">
+                  <Form.Check
+                    type="checkbox"
+                    label="Destacar"
+                    onClick={() => add(data)}
+                  />
+                </Form.Group>
+                <Form.Group className="">
+                  <Button
+                    className="btn-detail"
+                    onClick={(e) => handleSubmit(e)}
+                  >
+                    Guardar cambios
+                  </Button>
+                </Form.Group>
               </Modal.Footer>
             </Modal>
 
@@ -252,5 +272,3 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
 };
 
 export default ArticleDetail;
-
-  
