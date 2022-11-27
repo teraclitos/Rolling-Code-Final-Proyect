@@ -48,7 +48,7 @@ const Navbar = ({
   return (
     <>
       <BSNavbar
-        id="nav-bar-container"
+       
         className="bg-nav "
         collapseOnSelect
         expand="lg"
@@ -59,6 +59,7 @@ const Navbar = ({
           <Link to="/" style={{ textDecoration: "none" }}>
             <BSNavbar.Brand>
               <img
+               id="nav-bar-logo"
                 alt=""
                 src="\logoRollingneta.png"
                 width="75"

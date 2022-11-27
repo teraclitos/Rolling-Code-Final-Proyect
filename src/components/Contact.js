@@ -14,7 +14,7 @@ const Contact = () => {
   return (
     <div>
       <body className="body-contacto">
-        <div className="container bgcontact  py-5 mx-auto">
+        <div className="container bgcontact py-5 mx-auto">
           <div className="row align-items-stretch">
             <div className="row m-0 flex-row justify-content-between h-75">
               <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
