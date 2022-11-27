@@ -15,7 +15,6 @@ import Advertising from "./components/Advertising";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RecoverPass from "../src/components/RecoverPass";
-
 import { Slide, Zoom, Flip, Bounce } from "react-toastify";
 function App() {
   const [data, setData] = useState([]);

@@ -3,8 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import InputGroup from "react-bootstrap/InputGroup";
-import "../styles/navbar.css";
-import "../styles/articlepublicitygrid.css";
+import "../styles/allcss.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faLock, faUser, faEnvelope } from "@fortawesome/free-solid-svg-icons";
@@ -206,6 +205,34 @@ const ModalRegister = ({
     validatePassword(password),
     validateRepeatPassword(repeatPassword),
   ]);
+
+  const wrongBordersFunction = () => {
+    if (validateEmail(mails) !== true) {
+      setWrongBorderMail(true);
+
+      setFirstValidationMail(false);
+    }
+    if (validateName(name) !== true) {
+      setFirstValidationName(false);
+
+      setWrongBorderName(true);
+    }
+    if (validateUser(user) !== true) {
+      setFirstValidationUser(false);
+
+      setWrongBorderUser(true);
+    }
+    if (validatePassword(password) !== true) {
+      setFirstValidationPassword(false);
+
+      setWrongBorderPassword(true);
+    }
+    if (validateRepeatPassword(repeatPassword) !== true) {
+      setFirstValidationRepeatPassword(false);
+
+      setWrongBorderrepeatPassword(true);
+    }
+  };
 
   return (
     <>
@@ -462,32 +489,11 @@ const ModalRegister = ({
                     toastError("acepte los terminos y condiciones");
                   }
                 } else {
-                  toastError("Debe completar correctamente todos los campos");
-                  if (validateEmail(mails) !== true) {
-                    setWrongBorderMail(true);
+                  // toastError(
+                  //   "Debe completar correctamente todos los campos obligatorios"
+                  // );
 
-                    setFirstValidationMail(false);
-                  }
-                  if (validateName(name) !== true) {
-                    setFirstValidationName(false);
-
-                    setWrongBorderName(true);
-                  }
-                  if (validateUser(user) !== true) {
-                    setFirstValidationUser(false);
-
-                    setWrongBorderUser(true);
-                  }
-                  if (validatePassword(password) !== true) {
-                    setFirstValidationPassword(false);
-
-                    setWrongBorderPassword(true);
-                  }
-                  if (validateRepeatPassword(repeatPassword) !== true) {
-                    setFirstValidationRepeatPassword(false);
-
-                    setWrongBorderrepeatPassword(true);
-                  }
+                  wrongBordersFunction();
                 }
               }}
               className=" btn-color fs-5"

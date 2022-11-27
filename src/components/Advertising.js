@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import "../styles/publicidad.css";
+import "../styles/allcss.css";
 import CloseButton from "react-bootstrap/CloseButton";
 
 const Advertising = () => {

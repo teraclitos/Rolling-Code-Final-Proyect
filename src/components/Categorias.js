@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 import ListGroup from "react-bootstrap/ListGroup";
 import Carousel from "react-bootstrap/Carousel";
-import "../styles/articlepublicitygrid.css";
+import "../styles/allcss.css";
 
 const Categorias = () => {
   const [open, setOpen] = useState(false);
