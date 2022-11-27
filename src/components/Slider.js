@@ -3,8 +3,8 @@ import Carousel from "react-bootstrap/Carousel";
 
 const Slider = () => {
   return (
-    <Carousel className=" d-none d-lg-block">
-      <Carousel.Item>
+    <Carousel indicators={false} pause={false} className=" d-none d-lg-block">
+      <Carousel.Item interval={3000}>
         <img
           className="d-block w-100"
           src="https://www.ole.com.ar/images/2022/11/21/IyIvC3VNT_1290x760__1.jpg"
@@ -21,7 +21,7 @@ const Slider = () => {
           </p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item interval={3000}>
         <img
           className="d-block w-100"
           src="https://www.ole.com.ar/images/2022/11/23/wIkYyAEFw_1290x760__1.jpg"
@@ -36,7 +36,7 @@ const Slider = () => {
           </p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item interval={3000}>
         <img
           className="d-block w-100"
           src="https://www.ole.com.ar/images/2022/11/24/Mx_Txhnz__1290x760__1.jpg"
