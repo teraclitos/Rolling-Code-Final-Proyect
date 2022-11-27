@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Container, Row, Form, Modal, Button } from "react-bootstrap";
+import { Row, Form, Modal, Button, InputGroup } from "react-bootstrap";
 import { Formik } from "formik";
 import "../styles/recoverPass.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 const RecoverPass = () => {
   const [show, setShowPass] = useState(false);
   const [pass, setPass] = useState(false);
@@ -48,16 +50,23 @@ const RecoverPass = () => {
                       }) => (
                         <Form onSubmit={handleSubmit}>
                           <Form.Group className="mb-3 text-center">
-                            <Form.Label className="text-danger rounded"></Form.Label>
-                            <Form.Control
-                              type="email"
-                              placeholder="Ingrese su correo electronico"
-                              id="email"
-                              value={values.email}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              maxLength={20}
-                            />
+                            <InputGroup className="mb-3">
+                              <InputGroup.Text className="color-span">
+                                <FontAwesomeIcon
+                                  style={{ fontSize: "2em", color: "#1986a0" }}
+                                  icon={faEnvelope}
+                                />
+                              </InputGroup.Text>
+                              <Form.Control
+                                type="email"
+                                placeholder="Ingrese su correo electronico"
+                                id="email"
+                                value={values.email}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                maxLength={20}
+                              />
+                            </InputGroup>
                             {touched.email && errors.email && (
                               <Form.Text className="text-danger">
                                 <b>{errors.email}</b>
@@ -74,7 +83,12 @@ const RecoverPass = () => {
                     </Button>
                   </Row>
 
-                  <Modal show={pass} onHide={passClose} animation={false}>
+                  <Modal
+                    className="modal-backgroud"
+                    show={pass}
+                    onHide={passClose}
+                    animation={false}
+                  >
                     <Modal.Body>
                       <Formik
                         initialValues={{ passNew: "", checkPassNew: "" }}
