@@ -43,7 +43,9 @@ const Contact = () => {
                     validate={(valores) => {
                       let errores = {};
                       if (!valores.name) {
-                        errores.name = "por faov intro nombre";
+                        errores.name = (
+                          <p className="text-contact">Escribe tu nombre</p>
+                        );
                       } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.name)) {
                         errores.name = (
                           <p className="text-contact">
