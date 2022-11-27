@@ -7,7 +7,7 @@ const Advertising = () => {
   useEffect(() => {
     setTimeout(() => {
       setModal("visible");
-    }, 1000);
+    }, 500);
     setTimeout(() => {
       setModal("hidden");
     }, 5000);
