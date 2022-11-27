@@ -48,13 +48,12 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
           </Modal.Header>
           <Form>
             <Form.Group
-              className="mb-3 d-flex flex-column align-items-start"
+              className="mb-2 d-flex flex-column align-items-start"
               controlId="formBasicMail"
             >
-              <Form.Label>Email o usuario</Form.Label>
+              <Form.Label></Form.Label>
               <InputGroup className="mb-3">
                 <InputGroup.Text className="color-login">
-                  {" "}
                   <FontAwesomeIcon
                     style={{ fontSize: "1em", color: "#fd841f" }}
                     icon={faUser}
@@ -62,7 +61,7 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
                 </InputGroup.Text>
                 <Form.Control
                   type="mail"
-                  placeholder=""
+                  placeholder="Mail o usuario"
                   onInput={(e) => setMail(e.target.value)}
                 />
               </InputGroup>
@@ -70,13 +69,12 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
               {/* <Form.Text className="text-danger">Ingrese su mail.</Form.Text> */}
             </Form.Group>
             <Form.Group
-              className="mb-3 d-flex flex-column align-items-start"
+              className="mb-2 d-flex flex-column align-items-start"
               controlId="formBasicPassword"
             >
-              <Form.Label>Contraseña</Form.Label>
+              <Form.Label></Form.Label>
               <InputGroup className="mb-3">
                 <InputGroup.Text className="color-login">
-                  {" "}
                   <FontAwesomeIcon
                     style={{ fontSize: "1em", color: "#fd841f" }}
                     icon={faLock}
@@ -85,19 +83,22 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
                 <Form.Control
                   type="password"
                   onInput={(e) => setPassword(e.target.value)}
+                  placeholder="Contraseña"
                 />
               </InputGroup>
               {/* <Form.Text className="text-danger">
               Ingrese su contraseña.
             </Form.Text> */}
-              <span className="mt-2">
-                Si no recuerda su contraseña, ingrese{" "}
-                <Link to="/home">aquí</Link>
-              </span>
+              <div className="d-flex justify-content-center w-100">
+                <span className="mt-2">
+                  Si no recuerda su contraseña, ingrese{" "}
+                  <Link to="/home">aquí</Link>
+                </span>
+              </div>
             </Form.Group>
 
             <Button
-              className="mt-3 btn-color"
+              className="mt-3 btn-color fs-5"
               onClick={() => {
                 handleLogin(mail, password);
                 handleCloseLogin();
