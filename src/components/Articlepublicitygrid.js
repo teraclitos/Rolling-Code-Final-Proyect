@@ -51,7 +51,8 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
                         : "/"
                     }
                   >
-                    <Button className="py-1 px-2 btn-color ">Leer más</Button>
+                    {/* <Button className="py-1 px-2 btn-color ">Leer más</Button> */}
+                    Leer más
                   </Link>
                   {auth.user === "user" && (
                     <Button
