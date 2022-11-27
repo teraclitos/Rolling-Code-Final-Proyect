@@ -481,7 +481,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
                 }
               }
             }}
-            className=" btn-color"
+            className=" btn-color fs-5"
             type="submit"
           >
             Regístrate
