@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import "../styles/publicidad.css";
+import CloseButton from "react-bootstrap/CloseButton";
 
 const Advertising = () => {
   const [modal, setModal] = useState("hidden");
@@ -13,29 +14,21 @@ const Advertising = () => {
   }, []);
 
   return (
-    // <div>
-    //   <body>
-    //     <input type="checkbox" id="cerrar" />
-    //     <label for="cerrar" id="btn-cerrar"></label>
     <div style={{ visibility: modal }} className="modal d-none d-md-flex">
       <div className="contenido">
         <img
           className="img-modal-publicity"
           src="https://marinjavier.com/wp-content/uploads/2020/10/mujeres-nike-anuncios.jpg"
         />
-        <button
+        <CloseButton
           onClick={() => {
             setModal("none");
           }}
+          variant="white"
           className="btn-cerrar "
-        >
-          {" "}
-          X
-        </button>
+        />
       </div>
     </div>
-    //   </body>
-    // </div>
   );
 };
 

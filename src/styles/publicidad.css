@@ -36,12 +36,6 @@ body {
   position: absolute;
   right: 0.5em;
   top: 0.5em;
-  opacity: 0.5;
-  border-radius: 5px;
-}
-.btn-cerrar:hover {
-  background-color: rgb(77, 64, 64);
-  color: #fff;
 }
 
 @keyframes modal {
@@ -49,25 +43,3 @@ body {
     opacity: 0;
   }
 }
-/* #cerrar + label {
-  position: absolute;
-  color: #fff;
-  font-size: 25px;
-  z-index: 50;
-  background: darkred;
-  height: 40px;
-  width: 40px;
-  line-height: 40px;
-  border-radius: 50%;
-  right: 10px;
-  cursor: pointer;
-
-  animation: modal 2s 3s;
-  visibility: hidden;
-  opacity: 0;
-}
-
-#cerrar:checked + label,
-#cerrar:checked ~ .modal {
-  display: none;
-} */
