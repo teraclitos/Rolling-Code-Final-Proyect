@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/contact.css";
+import "../styles/allcss.css";
 // import Form from "react-bootstrap/Form";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

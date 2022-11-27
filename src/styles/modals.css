@@ -1,0 +1,35 @@
+.modal-background {
+  border-radius: 5px;
+  color: #fff;
+  background-image: url("https://nortena577.files.wordpress.com/2012/07/fondo-naranja.jpg");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.modal-titles {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  font-family: "Anton";
+  letter-spacing: 1px;
+}
+.height-invisible {
+  height: 0;
+}
+.wrong {
+  color: rgb(201, 2, 2);
+}
+.wrong-border {
+  border: 2.5px solid rgb(201, 2, 2) !important;
+}
+
+.outline-input {
+  box-shadow: none !important;
+  border: rgb(145, 140, 140);
+}
+.color-login {
+  background-color: #1986a0;
+  border: 0;
+}
+.text-login {
+  font-family: "Anton";
+}

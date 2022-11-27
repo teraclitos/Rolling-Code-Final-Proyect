@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import "../styles/articlepublicitygrid.css";
+import "../styles/allcss.css";
 import Categorias from "../components/Categorias";
 import { Button, Card, Pagination } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

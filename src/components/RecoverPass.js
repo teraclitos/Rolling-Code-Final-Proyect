@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Form, Modal, Button, InputGroup } from "react-bootstrap";
 import { Formik } from "formik";
-import "../styles/recoverPass.css";
+import "../styles/allcss.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";

@@ -22,7 +22,7 @@ import {
   faRightFromBracket,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-import "../styles/navbar.css";
+import "../styles/allcss.css";
 
 const Navbar = ({
   cart,

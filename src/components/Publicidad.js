@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/publicidad.css";
+import "../styles/allcss.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHashtag,

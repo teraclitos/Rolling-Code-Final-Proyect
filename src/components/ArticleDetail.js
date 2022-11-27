@@ -19,7 +19,7 @@ import {
   faSeedling,
 } from "@fortawesome/free-solid-svg-icons";
 import Categorias from "./Categorias";
-import "../styles/articledetail.css";
+import "../styles/allcss.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
 const ArticleDetail = ({ data, add, cart, del, auth }) => {
