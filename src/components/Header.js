@@ -19,7 +19,7 @@ const Header = () => {
     return screenHeight;
   };
   const headerHeight = () => {
-    let height = screenHeight() - navHeight();
+    let height = screenHeight() - navHeight() -16;
 
     return height;
   };
