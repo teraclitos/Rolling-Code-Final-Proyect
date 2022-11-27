@@ -1,0 +1,34 @@
+.recover-pass {
+  font-family: "Anton";
+  margin-bottom: 40px;
+  color: white;
+}
+.body-recover {
+  background-image: url("https://img.freepik.com/premium-photo/mini-balls-different-sports-blue-background-minimalism-sport-concept-top-view-flat-lay-copy-space_175682-22293.jpg?w=826");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgpass {
+  background-color: rgba(236, 132, 62, 0.829);
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  /* box-shadow: 4px 4px 4px 4px rgb(12, 73, 32); */
+}
+
+.btn-pass {
+  background-color: #1986a0;
+  border: 0;
+  color: black;
+  border-radius: 4px;
+  font-family: "Anton";
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.btn-pass:hover {
+  background-color: #fd841f;
+}
