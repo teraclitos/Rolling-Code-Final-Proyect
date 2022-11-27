@@ -1,0 +1,19 @@
+.recover-pass {
+  font-family: "Anton";
+  margin-bottom: 40px;
+  color: white;
+}
+.body-recover {
+  background-image: url("https://s.france24.com/media/display/6aca8d1a-7783-11ea-9cf2-005056bf87d6/w:1024/p:16x9/WEB%2005ABR%20DEPORTES%20PORTADA%20FOTO.webp");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgpass {
+  background-color: rgba(17, 17, 17, 0.829);
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  /* box-shadow: 4px 4px 4px 4px rgb(12, 73, 32); */
+}

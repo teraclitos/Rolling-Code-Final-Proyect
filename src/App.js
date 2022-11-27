@@ -12,6 +12,7 @@ import ArticleDetailContainer from "./components/ArticleDetailContainer";
 import Highlights from "../src/components/Highlights";
 import ArticleFound from "../src/components/ArticleFound";
 import Advertising from "./components/Advertising";
+import RecoverPass from "./components/RecoverPass";
 
 function App() {
   const [data, setData] = useState([]);
