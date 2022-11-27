@@ -24,6 +24,7 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
       </Pagination.Item>
     );
   }
+  const [filter, setFilter] = useState(data);
 
   return (
     <>
@@ -32,12 +33,14 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
       <Slider />
       <div className="container grid-articles-publicity mt-5 px-5 px-sm-2 px-md-0 ">
         <div className="grid-articles">
-          {data.map((d, i) => (
+          {filter.map((d, i) => (
             <div className="mb-3  ">
               <Card className=" h-100 card-grid">
                 <Card.Img src={d.image} variant="top" className=" img-card" />
                 <Card.Body className="p-0 ps-1 card-body  ">
-                  <h3 className="category-title fs-6 mt-2 mb-0">Fútbol</h3>
+                  <h3 className="category-title fs-6 mt-2 mb-0">
+                    {d.category}
+                  </h3>
                   <Card.Title className="mt-2 mb-0 card-title">
                     {d.title}
                   </Card.Title>
