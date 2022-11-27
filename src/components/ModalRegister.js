@@ -9,7 +9,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faLock, faUser, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
-const ModalRegister = ({ showRegister, setShowRegister }) => {
+const ModalRegister = ({
+  showRegister,
+  setShowRegister,
+  toastError,
+  toastSuccess,
+}) => {
   const handleCloseRegister = () => {
     setShowRegister(false);
     setFirstValidationMail(true);
@@ -24,6 +29,7 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
     setWrongBorderUser(false);
     setWrongBorderrepeatPassword(false);
   };
+
   const [mails, setMails] = useState("");
   const [firstValidationMail, setFirstValidationMail] = useState(true);
   const [name, setName] = useState("");
@@ -200,295 +206,299 @@ const ModalRegister = ({ showRegister, setShowRegister }) => {
     validatePassword(password),
     validateRepeatPassword(repeatPassword),
   ]);
+
   return (
-    <Modal centered show={showRegister} onHide={handleCloseRegister}>
-      <Modal.Body className="modal-background">
-        <Modal.Header className="border-0 modal-titles" closeButton>
-          <div></div>
-          <Modal.Title className="fs-2">Registro</Modal.Title>
-        </Modal.Header>
-        <Form>
-          <Form.Group
-            className="mb-2 d-flex flex-column align-items-start"
-            controlId="formBasicEmail"
-          >
-            <Form.Label></Form.Label>
-            <InputGroup className="">
-              <InputGroup.Text className="color-login">
-                <FontAwesomeIcon
-                  style={{ fontSize: "1em", color: "#fd841f" }}
-                  icon={faUser}
+    <>
+      <Modal centered show={showRegister} onHide={handleCloseRegister}>
+        <Modal.Body className="modal-background">
+          <Modal.Header className="border-0 modal-titles" closeButton>
+            <div></div>
+            <Modal.Title className="fs-2">Registro</Modal.Title>
+          </Modal.Header>
+          <Form>
+            <Form.Group
+              className="mb-2 d-flex flex-column align-items-start"
+              controlId="nameRegister"
+            >
+              <Form.Label></Form.Label>
+              <InputGroup className="">
+                <InputGroup.Text className="color-login">
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faUser}
+                  />
+                </InputGroup.Text>
+                <Form.Control
+                  value={name}
+                  autoComplete="off"
+                  onInput={(e) => setName(e.target.value)}
+                  onBlur={() => {
+                    setTimeout(() => {
+                      setFirstValidationName(false);
+                    }, 200);
+                  }}
+                  type="text"
+                  placeholder="Nombre"
+                  className={wrongName()}
                 />
-              </InputGroup.Text>
-              <Form.Control
-                value={name}
-                autoComplete="off"
-                onInput={(e) => setName(e.target.value)}
-                onBlur={() => {
-                  setTimeout(() => {
-                    setFirstValidationName(false);
-                  }, 200);
-                }}
-                type="text"
-                placeholder="Nombre"
-                className={wrongName()}
-              />
-            </InputGroup>
-            <div className="d-flex ">
-              <InputGroup.Text className="color-login opacity-0 height-invisible">
-                <FontAwesomeIcon
-                  style={{ fontSize: "1em", color: "#fd841f" }}
-                  icon={faLock}
+              </InputGroup>
+              <div className="d-flex ">
+                <InputGroup.Text className="color-login opacity-0 height-invisible">
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faLock}
+                  />
+                </InputGroup.Text>
+                {validateName(name) && !firstValidationName && (
+                  <Form.Text className="wrong ">{validateName(name)}</Form.Text>
+                )}
+              </div>
+            </Form.Group>
+            <Form.Group
+              className="mb-2 d-flex flex-column align-items-start"
+              controlId="UserRegister"
+            >
+              <Form.Label></Form.Label>
+              <InputGroup className="">
+                <InputGroup.Text className="color-login">
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faUser}
+                  />
+                </InputGroup.Text>
+                <Form.Control
+                  value={user}
+                  autoComplete="off"
+                  onInput={(e) => setUser(e.target.value)}
+                  onBlur={() => {
+                    setTimeout(() => {
+                      setFirstValidationUser(false);
+                    }, 200);
+                  }}
+                  type="text"
+                  placeholder="Nombre de usuario"
+                  className={wrongUser()}
                 />
-              </InputGroup.Text>
-              {validateName(name) && !firstValidationName && (
-                <Form.Text className="wrong ">{validateName(name)}</Form.Text>
-              )}
-            </div>
-          </Form.Group>
-          <Form.Group
-            className="mb-2 d-flex flex-column align-items-start"
-            controlId="formBasicEmail"
-          >
-            <Form.Label></Form.Label>
-            <InputGroup className="">
-              <InputGroup.Text className="color-login">
-                <FontAwesomeIcon
-                  style={{ fontSize: "1em", color: "#fd841f" }}
-                  icon={faUser}
-                />
-              </InputGroup.Text>
-              <Form.Control
-                value={user}
-                autoComplete="off"
-                onInput={(e) => setUser(e.target.value)}
-                onBlur={() => {
-                  setTimeout(() => {
-                    setFirstValidationUser(false);
-                  }, 200);
-                }}
-                type="text"
-                placeholder="Nombre de usuario"
-                className={wrongUser()}
-              />
-            </InputGroup>
-            <div className="d-flex ">
-              <InputGroup.Text className="color-login opacity-0 height-invisible">
-                <FontAwesomeIcon
-                  style={{ fontSize: "1em", color: "#fd841f" }}
-                  icon={faLock}
-                />
-              </InputGroup.Text>
-              {validateUser(user) && !firstValidationUser && (
-                <Form.Text className="wrong ">{validateUser(user)}</Form.Text>
-              )}
-            </div>
-          </Form.Group>
+              </InputGroup>
+              <div className="d-flex ">
+                <InputGroup.Text className="color-login opacity-0 height-invisible">
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faLock}
+                  />
+                </InputGroup.Text>
+                {validateUser(user) && !firstValidationUser && (
+                  <Form.Text className="wrong ">{validateUser(user)}</Form.Text>
+                )}
+              </div>
+            </Form.Group>
 
-          <Form.Group
-            className="mb-2 d-flex flex-column align-items-start"
-            controlId="formBasicPassword"
-          >
-            <Form.Label></Form.Label>
-            <InputGroup className="">
-              <InputGroup.Text className="color-login">
-                <FontAwesomeIcon
-                  style={{ fontSize: "1em", color: "#fd841f" }}
-                  icon={faEnvelope}
+            <Form.Group
+              className="mb-2 d-flex flex-column align-items-start"
+              controlId=",ailRegister"
+            >
+              <Form.Label></Form.Label>
+              <InputGroup className="">
+                <InputGroup.Text className="color-login">
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faEnvelope}
+                  />
+                </InputGroup.Text>
+                <Form.Control
+                  value={mails}
+                  autoComplete="off"
+                  name="email"
+                  onInput={(e) => setMails(e.target.value)}
+                  onBlur={() => {
+                    setTimeout(() => {
+                      setFirstValidationMail(false);
+                    }, 200);
+                  }}
+                  type="mail"
+                  placeholder="Email"
+                  className={wrongMail()}
                 />
-              </InputGroup.Text>
-              <Form.Control
-                value={mails}
-                autoComplete="off"
-                name="email"
-                onInput={(e) => setMails(e.target.value)}
-                onBlur={() => {
-                  setTimeout(() => {
-                    setFirstValidationMail(false);
-                  }, 200);
-                }}
-                type="mail"
-                placeholder="Email"
-                className={wrongMail()}
-              />
-            </InputGroup>
-            <div className="d-flex ">
-              <InputGroup.Text className="color-login opacity-0 height-invisible">
-                <FontAwesomeIcon
-                  style={{ fontSize: "1em", color: "#fd841f" }}
-                  icon={faLock}
-                />
-              </InputGroup.Text>
-              {validateEmail(mails) !== true && !firstValidationMail && (
-                <Form.Text className="wrong ">{validateEmail(mails)}</Form.Text>
-              )}
-            </div>
-          </Form.Group>
-          <Form.Group
-            className="mb-2 d-flex flex-column align-items-start"
-            controlId="formBasicPassword"
-          >
-            <Form.Label></Form.Label>
-
-            <InputGroup className="">
-              <InputGroup.Text className="color-login">
-                <FontAwesomeIcon
-                  style={{ fontSize: "1em", color: "#fd841f" }}
-                  icon={faLock}
-                />
-              </InputGroup.Text>
-              <Form.Control
-                value={password}
-                autoComplete="off"
-                onInput={(e) => setPassword(e.target.value)}
-                onBlur={() => {
-                  setTimeout(() => {
-                    setFirstValidationPassword(false);
-                  }, 200);
-                }}
-                type="password"
-                className={wrongPassword()}
-                placeholder="Contraseña"
-              />
-            </InputGroup>
-
-            <div className="d-flex ">
-              <InputGroup.Text className="color-login opacity-0 height-invisible">
-                <FontAwesomeIcon
-                  style={{ fontSize: "1em", color: "#fd841f" }}
-                  icon={faLock}
-                />
-              </InputGroup.Text>
-              {validatePassword(password) && !firstValidationPassword && (
-                <Form.Text className="wrong ">
-                  {validatePassword(password)}
-                </Form.Text>
-              )}
-            </div>
-          </Form.Group>
-          <Form.Group
-            className="mb-3 d-flex flex-column align-items-start"
-            controlId="formBasicPassword"
-          >
-            <Form.Label></Form.Label>
-            <InputGroup className="">
-              <InputGroup.Text className="color-login">
-                <FontAwesomeIcon
-                  style={{ fontSize: "1em", color: "#fd841f" }}
-                  icon={faLock}
-                />
-              </InputGroup.Text>
-              <Form.Control
-                value={repeatPassword}
-                autoComplete="off"
-                onInput={(e) => setRepeatPassword(e.target.value)}
-                onBlur={() => {
-                  setTimeout(() => {
-                    setFirstValidationRepeatPassword(false);
-                  }, 200);
-                }}
-                type="password"
-                className={wrongRepeatPassword()}
-                placeholder="Repita contraseña"
-              />
-            </InputGroup>
-
-            <div className="d-flex ">
-              <InputGroup.Text className="color-login opacity-0 height-invisible ">
-                <FontAwesomeIcon
-                  style={{ fontSize: "1em", color: "#fd841f" }}
-                  icon={faLock}
-                />
-              </InputGroup.Text>
-
-              {validateRepeatPassword(repeatPassword) &&
-                !firstValidationRepeatPassword && (
+              </InputGroup>
+              <div className="d-flex ">
+                <InputGroup.Text className="color-login opacity-0 height-invisible">
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faLock}
+                  />
+                </InputGroup.Text>
+                {validateEmail(mails) !== true && !firstValidationMail && (
                   <Form.Text className="wrong ">
-                    {validateRepeatPassword(repeatPassword)}
+                    {validateEmail(mails)}
                   </Form.Text>
                 )}
-            </div>
-          </Form.Group>
-          <Form.Group
-            className="mb-3 d-flex flex-column align-items-center"
-            controlId="formBasicCheckbox"
-          >
-            <Form.Check
-              type="checkbox"
-              label="Acepto los terminos y condiciones."
+              </div>
+            </Form.Group>
+            <Form.Group
+              className="mb-2 d-flex flex-column align-items-start"
+              controlId="passwordRegister"
+            >
+              <Form.Label></Form.Label>
+
+              <InputGroup className="">
+                <InputGroup.Text className="color-login">
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faLock}
+                  />
+                </InputGroup.Text>
+                <Form.Control
+                  value={password}
+                  autoComplete="off"
+                  onInput={(e) => setPassword(e.target.value)}
+                  onBlur={() => {
+                    setTimeout(() => {
+                      setFirstValidationPassword(false);
+                    }, 200);
+                  }}
+                  type="password"
+                  className={wrongPassword()}
+                  placeholder="Contraseña"
+                />
+              </InputGroup>
+
+              <div className="d-flex ">
+                <InputGroup.Text className="color-login opacity-0 height-invisible">
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faLock}
+                  />
+                </InputGroup.Text>
+                {validatePassword(password) && !firstValidationPassword && (
+                  <Form.Text className="wrong ">
+                    {validatePassword(password)}
+                  </Form.Text>
+                )}
+              </div>
+            </Form.Group>
+            <Form.Group
+              className="mb-3 d-flex flex-column align-items-start"
+              controlId="repeatPasswordRegister"
+            >
+              <Form.Label></Form.Label>
+              <InputGroup className="">
+                <InputGroup.Text className="color-login">
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faLock}
+                  />
+                </InputGroup.Text>
+                <Form.Control
+                  value={repeatPassword}
+                  autoComplete="off"
+                  onInput={(e) => setRepeatPassword(e.target.value)}
+                  onBlur={() => {
+                    setTimeout(() => {
+                      setFirstValidationRepeatPassword(false);
+                    }, 200);
+                  }}
+                  type="password"
+                  className={wrongRepeatPassword()}
+                  placeholder="Repita contraseña"
+                />
+              </InputGroup>
+
+              <div className="d-flex ">
+                <InputGroup.Text className="color-login opacity-0 height-invisible ">
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faLock}
+                  />
+                </InputGroup.Text>
+
+                {validateRepeatPassword(repeatPassword) &&
+                  !firstValidationRepeatPassword && (
+                    <Form.Text className="wrong ">
+                      {validateRepeatPassword(repeatPassword)}
+                    </Form.Text>
+                  )}
+              </div>
+            </Form.Group>
+            <Form.Group
+              className="mb-3 d-flex flex-column align-items-center"
+              controlId="formBasicCheckbox"
+            >
+              <Form.Check
+                type="checkbox"
+                label="Acepto los terminos y condiciones."
+                onClick={(e) => {
+                  if (!conditions) {
+                    setConditions(true);
+                  } else {
+                    setConditions(false);
+                  }
+                }}
+              />
+            </Form.Group>
+            <Button
               onClick={(e) => {
-                if (!conditions) {
-                  setConditions(true);
+                e.preventDefault();
+                if (
+                  validateEmail(mails) === true &&
+                  validateName(name) === true &&
+                  validateUser(user) === true &&
+                  validatePassword(password) === true &&
+                  validateRepeatPassword(repeatPassword) === true
+                ) {
+                  if (conditions) {
+                    setMails("");
+                    setName("");
+                    setUser("");
+                    setPassword("");
+                    setRepeatPassword("");
+                    setFirstValidationMail(true);
+                    setFirstValidationName(true);
+                    setFirstValidationUser(true);
+                    setFirstValidationPassword(true);
+                    setFirstValidationRepeatPassword(true);
+                    handleCloseRegister();
+                    toastSuccess("Se ha registrado correctamente");
+                  } else {
+                    toastError("acepte los terminos y condiciones");
+                  }
                 } else {
-                  setConditions(false);
+                  toastError("Debe completar correctamente todos los campos");
+                  if (validateEmail(mails) !== true) {
+                    setWrongBorderMail(true);
+
+                    setFirstValidationMail(false);
+                  }
+                  if (validateName(name) !== true) {
+                    setFirstValidationName(false);
+
+                    setWrongBorderName(true);
+                  }
+                  if (validateUser(user) !== true) {
+                    setFirstValidationUser(false);
+
+                    setWrongBorderUser(true);
+                  }
+                  if (validatePassword(password) !== true) {
+                    setFirstValidationPassword(false);
+
+                    setWrongBorderPassword(true);
+                  }
+                  if (validateRepeatPassword(repeatPassword) !== true) {
+                    setFirstValidationRepeatPassword(false);
+
+                    setWrongBorderrepeatPassword(true);
+                  }
                 }
               }}
-            />
-          </Form.Group>
-          <Button
-            onClick={(e) => {
-              e.preventDefault();
-              if (
-                validateEmail(mails) === true &&
-                validateName(name) === true &&
-                validateUser(user) === true &&
-                validatePassword(password) === true &&
-                validateRepeatPassword(repeatPassword) === true
-              ) {
-                if (conditions) {
-                  setMails("");
-                  setName("");
-                  setUser("");
-                  setPassword("");
-                  setRepeatPassword("");
-                  setFirstValidationMail(true);
-                  setFirstValidationName(true);
-                  setFirstValidationUser(true);
-                  setFirstValidationPassword(true);
-                  setFirstValidationRepeatPassword(true);
-                  handleCloseRegister();
-                  alert("se ha registrado correctamente");
-                  e.submit();
-                } else {
-                  alert("acepte los terminos y condiciones");
-                }
-              } else {
-                alert("debe completar correctamente todos los campos");
-                if (validateEmail(mails) !== true) {
-                  setWrongBorderMail(true);
-
-                  setFirstValidationMail(false);
-                }
-                if (validateName(name) !== true) {
-                  setFirstValidationName(false);
-
-                  setWrongBorderName(true);
-                }
-                if (validateUser(user) !== true) {
-                  setFirstValidationUser(false);
-
-                  setWrongBorderUser(true);
-                }
-                if (validatePassword(password) !== true) {
-                  setFirstValidationPassword(false);
-
-                  setWrongBorderPassword(true);
-                }
-                if (validateRepeatPassword(repeatPassword) !== true) {
-                  setFirstValidationRepeatPassword(false);
-
-                  setWrongBorderrepeatPassword(true);
-                }
-              }
-            }}
-            className=" btn-color fs-5"
-            type="submit"
-          >
-            Regístrate
-          </Button>
-        </Form>
-      </Modal.Body>
-    </Modal>
+              className=" btn-color fs-5"
+              type="submit"
+            >
+              Regístrate
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
+    </>
   );
 };
 

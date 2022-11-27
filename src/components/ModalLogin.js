@@ -49,7 +49,7 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
           <Form>
             <Form.Group
               className="mb-2 d-flex flex-column align-items-start"
-              controlId="formBasicMail"
+              controlId="mailUserLogin"
             >
               <Form.Label></Form.Label>
               <InputGroup className="mb-3">
@@ -70,7 +70,7 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
             </Form.Group>
             <Form.Group
               className="mb-2 d-flex flex-column align-items-start"
-              controlId="formBasicPassword"
+              controlId="passwordLogin"
             >
               <Form.Label></Form.Label>
               <InputGroup className="mb-3">

@@ -12,7 +12,9 @@ import ArticleDetailContainer from "./components/ArticleDetailContainer";
 import Highlights from "../src/components/Highlights";
 import ArticleFound from "../src/components/ArticleFound";
 import Advertising from "./components/Advertising";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Slide, Zoom, Flip, Bounce } from "react-toastify";
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -78,11 +80,21 @@ function App() {
     setAuth({ user: "", role: "" });
     console.log("logout");
   };
+  const prevenDuplicateToast = "custom-id-yes";
+
+  const toastError = (writte) => {
+    toast.error(writte, { toastId: prevenDuplicateToast });
+  };
+  const toastSuccess = (writte) => {
+    toast.success(writte, { toastId: prevenDuplicateToast });
+  };
 
   return (
     <div>
       <BrowserRouter>
         <Navbar
+          toastError={toastError}
+          toastSuccess={toastSuccess}
           cart={cart}
           del={del}
           clear={clear}
@@ -145,6 +157,7 @@ function App() {
           />
         </Routes>
         <Footer />
+        <ToastContainer transition={Flip} />
       </BrowserRouter>
     </div>
   );
