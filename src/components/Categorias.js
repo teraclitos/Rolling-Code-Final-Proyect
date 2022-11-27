@@ -8,9 +8,8 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Carousel from "react-bootstrap/Carousel";
 import "../styles/allcss.css";
 
-const Categorias = (data, add, cart, auth) => {
+const Categorias = (data) => {
   const [open, setOpen] = useState(false);
-  const [filter, setFilter] = useState(data);
 
   return (
     <Container>
@@ -28,11 +27,8 @@ const Categorias = (data, add, cart, auth) => {
           <Collapse className="collapse-estilos" in={open}>
             <div id="example-collapse-text  ">
               <ListGroup className=" mb-5 list-categories">
-                <ListGroup.Item
-                  onclick={() => setFilter(data)}
-                  className="item-list-categories link-category "
-                >
-                  Todas las noticias del dia
+                <ListGroup.Item className="item-list-categories link-category ">
+                  Fútbol
                 </ListGroup.Item>
                 <ListGroup.Item className="item-list-categories link-category ">
                   Tenis
