@@ -24,7 +24,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/navbar.css";
 
-const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
+const Navbar = ({
+  cart,
+  del,
+  clear,
+  data,
+  validate,
+  auth,
+  login,
+  logout,
+  toastError,
+  toastSuccess,
+}) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -153,6 +164,8 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
       <ModalRegister
         showRegister={showRegister}
         setShowRegister={setShowRegister}
+        toastError={toastError}
+        toastSuccess={toastSuccess}
       />
       <ModalLogin
         showLogin={showLogin}
@@ -161,6 +174,8 @@ const Navbar = ({ cart, del, clear, data, validate, auth, login, logout }) => {
         validate={validate}
         login={login}
         logout={logout}
+        toastError={toastError}
+        toastSuccess={toastSuccess}
       />
       <OffcanvasFav
         cart={cart}

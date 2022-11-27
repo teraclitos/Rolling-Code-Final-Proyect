@@ -32,7 +32,6 @@ const Header = () => {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     setstateheight(headerHeight);
-    console.log(width);
   }, [width]);
   return (
     <div
