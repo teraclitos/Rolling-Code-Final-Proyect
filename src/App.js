@@ -83,10 +83,14 @@ function App() {
   const prevenDuplicateToast = "custom-id-yes";
 
   const toastError = (writte) => {
-    toast.error(writte, { toastId: prevenDuplicateToast });
+    toast.error(writte, {
+      toastId: prevenDuplicateToast,
+    });
   };
   const toastSuccess = (writte) => {
-    toast.success(writte, { toastId: prevenDuplicateToast });
+    toast.success(writte, {
+      toastId: prevenDuplicateToast,
+    });
   };
 
   return (
@@ -157,7 +161,13 @@ function App() {
           />
         </Routes>
         <Footer />
-        <ToastContainer transition={Flip} />
+        <ToastContainer
+          transition={Flip}
+          theme="colored"
+          hideProgressBar={true}
+          autoClose={2000}
+          pauseOnFocusLoss={false}
+        />
       </BrowserRouter>
     </div>
   );
