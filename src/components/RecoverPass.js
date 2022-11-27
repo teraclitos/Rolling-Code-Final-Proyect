@@ -17,7 +17,7 @@ const RecoverPass = () => {
         <div className="container bgpass  py-5 mx-auto">
           <div className="row align-items-stretch">
             <div className="row m-0 flex-row justify-content-between h-75">
-              <div className="col-12 col-md-12 d-flex flex-column justify-content-center mt-5">
+              <div className="col-12 col-md-12 d-flex flex-column justify-content-center mb-5">
                 <div className="row align-items-center">
                   <h3 className="recover-pass">Recuperar contraseña</h3>
                   <Row>
@@ -48,7 +48,7 @@ const RecoverPass = () => {
                       }) => (
                         <Form onSubmit={handleSubmit}>
                           <Form.Group className="mb-3 text-center">
-                            <Form.Label className="text-dark rounded"></Form.Label>
+                            <Form.Label className="text-danger rounded"></Form.Label>
                             <Form.Control
                               type="email"
                               placeholder="Ingrese su correo electronico"
@@ -69,41 +69,13 @@ const RecoverPass = () => {
                     </Formik>
                   </Row>
                   <Row>
-                    <Button
-                      style={{
-                        backgroundColor: "#eb6440",
-                      }}
-                      onClick={handleShowPass}
-                    >
+                    <Button className="btn-pass" onClick={handleShowPass}>
                       Enviar Mail
                     </Button>
                   </Row>
 
-                  <Modal show={show}>
-                    <Modal.Body style={{ backgroundColor: "#d6e4e5" }}>
-                      <Form>
-                        <Form.Group className="mb-3">
-                          <Form.Label>Introducir Código</Form.Label>
-                          <Form.Control as="textarea" rows={1} />
-                        </Form.Group>
-                      </Form>
-                    </Modal.Body>
-                    <div className="d-flex justify-content-center m-2">
-                      <Button
-                        style={{
-                          backgroundColor: "#eb6440",
-                        }}
-                        onClick={() => {
-                          handleClosePass();
-                          passShow();
-                        }}
-                      >
-                        Verificar código
-                      </Button>
-                    </div>
-                  </Modal>
                   <Modal show={pass} onHide={passClose} animation={false}>
-                    <Modal.Body style={{ backgroundColor: "#d6e4e5" }}>
+                    <Modal.Body>
                       <Formik
                         initialValues={{ passNew: "", checkPassNew: "" }}
                         validate={(valores) => {
@@ -179,21 +151,10 @@ const RecoverPass = () => {
                       </Formik>
                     </Modal.Body>
                     <div className="d-flex justify-content-center m-2">
-                      <Button
-                        style={{
-                          backgroundColor: "#eb6440",
-                          marginRight: "10px",
-                        }}
-                        onClick={passClose}
-                      >
+                      <Button className="btn-pass" onClick={passClose}>
                         Cerrar
                       </Button>
-                      <Button
-                        style={{
-                          backgroundColor: "#eb6440",
-                        }}
-                        onClick={passClose}
-                      >
+                      <Button className="btn-pass" onClick={passClose}>
                         Guardar Cambios
                       </Button>
                     </div>
