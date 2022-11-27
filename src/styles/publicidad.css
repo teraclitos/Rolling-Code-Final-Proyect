@@ -32,10 +32,16 @@ body {
   cursor: pointer;
 }
 
-.btn-cerrar {
+.btn-close-advertising {
   position: absolute;
   right: 0.5em;
   top: 0.5em;
+}
+.btn-close-advertising:focus {
+  box-shadow: none;
+}
+.btn-close:focus {
+  box-shadow: none;
 }
 
 @keyframes modal {
