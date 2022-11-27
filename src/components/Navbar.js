@@ -74,11 +74,7 @@ const Navbar = ({
           >
             <Nav>
               <Nav.Link onClick={handleShow}>
-                <Link
-                  to="/"
-                  className="link-nav"
-                  style={{ textDecoration: "none" }}
-                >
+                <Link className="link-nav" style={{ textDecoration: "none" }}>
                   Favoritos
                   <FontAwesomeIcon icon={faHeart} className="mx-2" />
                   <Badge bg="none">{cart.length}</Badge>
@@ -132,7 +128,6 @@ const Navbar = ({
                     onClick={() => handleShowLogin()}
                   >
                     <Link
-                      to="/"
                       className="link-nav"
                       style={{ textDecoration: "none" }}
                     >
@@ -147,11 +142,7 @@ const Navbar = ({
               </Nav.Link>
 
               <Nav.Link onClick={handleShowRegister}>
-                <Link
-                  to="/"
-                  className="link-nav"
-                  style={{ textDecoration: "none" }}
-                >
+                <Link className="link-nav" style={{ textDecoration: "none" }}>
                   Regístrate
                   <FontAwesomeIcon icon={faUser} className="mx-2" />
                 </Link>
