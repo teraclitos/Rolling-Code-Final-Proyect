@@ -12,6 +12,7 @@ import { Route, Routes, Link, useParams } from "react-router-dom";
 //   faInstagram,
 // } from "@fortawesome/free-brands-svg-icons";
 import Advertising from "./Advertising";
+import Header from "../components/Header";
 
 const Articlepublicitygrid = ({ data, add, cart, auth }) => {
   let active = 2;
@@ -27,6 +28,7 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
   return (
     <>
       <Advertising />
+      <Header />
       <Slider />
       <div className="container grid-articles-publicity mt-5 px-5 px-sm-2 px-md-0 ">
         <div className="grid-articles">

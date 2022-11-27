@@ -109,7 +109,7 @@ function App() {
           login={login}
           logout={logout}
         />
-        <Header />
+
         {/* <Advertising /> */}
         {/* <ArticleDetailContainer data={data} /> */}
         {/* <Articlepublicitygrid data={data} /> */}
