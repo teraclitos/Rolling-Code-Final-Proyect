@@ -7,10 +7,10 @@ const Advertising = () => {
   useEffect(() => {
     setTimeout(() => {
       setModal("visible");
-    }, 500);
+    }, 1000);
     setTimeout(() => {
       setModal("hidden");
-    }, 3000);
+    }, 5000);
   }, []);
 
   return (
@@ -22,10 +22,10 @@ const Advertising = () => {
         />
         <CloseButton
           onClick={() => {
-            setModal("none");
+            setModal("hidden");
           }}
           variant="white"
-          className="btn-cerrar "
+          className="btn-close-advertising "
         />
       </div>
     </div>
