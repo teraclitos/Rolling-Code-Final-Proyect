@@ -143,6 +143,7 @@ function App() {
               )
             }
           />
+          <Route path="/recuperarContraseña" element={<RecoverPass />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -92,7 +92,7 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
               <div className="d-flex justify-content-center w-100">
                 <span className="mt-2">
                   Si no recuerda su contraseña, ingrese{" "}
-                  <Link to="/home">aquí</Link>
+                  <Link to="/recuperarContraseña">aquí</Link>
                 </span>
               </div>
             </Form.Group>
