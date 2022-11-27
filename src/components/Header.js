@@ -11,7 +11,7 @@ import {
 const Header = () => {
   const navHeight = () => {
     let navBarHeight =
-      document.getElementById("nav-bar-container").clientHeight;
+      document.getElementById("nav-bar-logo").clientHeight;
     return navBarHeight;
   };
   const screenHeight = () => {
