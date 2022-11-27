@@ -13,7 +13,7 @@ const Contact = () => {
   const [formEnviado, cambiarformEnviado] = useState(false);
   return (
     <div>
-      <body className="body-contacto">
+      <body className="body-contacto ">
         <div className="container bgcontact py-5 mx-auto">
           <div className="row align-items-stretch">
             <div className="row m-0 flex-row justify-content-between h-75">
@@ -31,8 +31,8 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="col-12 col-md-6 d-flex flex-column justify-content-center mt-5">
-                <div className="row align-items-stretch">
+              <div className="col-12 col-md-6 d-flex justify-content-center mt-5">
+                <div className="row  align-items-stretch">
                   <h3 className="titulo-contacto">CONTACTO</h3>
                   <Formik
                     initialValues={{
@@ -43,25 +43,40 @@ const Contact = () => {
                     validate={(valores) => {
                       let errores = {};
                       if (!valores.name) {
-                        errores.name = "por faov intro nombre";
+                        errores.name = (
+                          <p className="text-contact">Escribe tu nombre</p>
+                        );
                       } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.name)) {
-                        errores.name =
-                          "el nombre solo puede contener letras y espacios";
+                        errores.name = (
+                          <p className="text-contact">
+                            El nombre solo puede contener letras y espacios
+                          </p>
+                        );
                       }
 
                       //validacion mail
                       if (!valores.mail) {
-                        errores.mail = "por faov intro mail";
+                        errores.mail = (
+                          <p className="text-contact">
+                            por favor introduce tu mail
+                          </p>
+                        );
                       } else if (
                         !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
                           valores.mail
                         )
                       ) {
-                        errores.mail =
-                          "el nombre solo puede contener letras y espacios";
+                        errores.mail = (
+                          <p className="text-contact">
+                            {" "}
+                            Introduce un mail valido"
+                          </p>
+                        );
                       }
                       if (!valores.comment) {
-                        errores.comment = "por faov intro mail";
+                        errores.comment = (
+                          <p className="text-contact"> Escribe tu comentario</p>
+                        );
                       }
                       return errores;
                     }}
@@ -173,10 +188,12 @@ const Contact = () => {
                         {/* {touched.comment && errors.comment && (
                           <div className="error">{errors.comment}</div>
                         )} */}
-                        <button className="btn-contact" type="submit">
+                        <button className="btn-contact d-flex" type="submit">
                           Enviar
                         </button>
-                        {formEnviado && <p className="exito">Form enviado</p>}
+                        {formEnviado && (
+                          <p className="exito">Comentario enviado</p>
+                        )}
                       </Form>
                     )}
                   </Formik>

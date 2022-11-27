@@ -1,5 +1,3 @@
-
-
 body {
   min-height: 100vh;
   margin: 0;
@@ -49,9 +47,11 @@ body {
   border-radius: 4px;
   font-family: "Anton";
   padding: 1%;
-  padding-left: 6%;
-  padding-right: 6%;
-  margin-left: 30%;
+  margin-left: 50px;
+  margin-right: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .btn-contact:hover {
@@ -65,4 +65,12 @@ body {
 .mapa {
   width: 100%;
   border-radius: 5px;
+}
+
+.text-contact {
+  color: #fd841f;
+}
+
+.exito {
+  color: #1986a0;
 }

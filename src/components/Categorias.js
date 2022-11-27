@@ -8,7 +8,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Carousel from "react-bootstrap/Carousel";
 import "../styles/allcss.css";
 
-const Categorias = () => {
+const Categorias = (data) => {
   const [open, setOpen] = useState(false);
 
   return (
