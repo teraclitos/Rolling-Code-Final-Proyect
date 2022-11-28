@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/allcss.css";
 // import { faFacebook } from "@fortawesome/free-brands-svg-icons";
@@ -18,32 +18,70 @@ import {
   faHeart,
   faHeartCircleBolt,
   faSeedling,
+  faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import Categorias from "./Categorias";
-import "../styles/articledetail.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
 const Highlights = ({ data, add, cart }) => {
-  const [show, setShow] = useState(false);
+  const [arrayFavourites, setArrayFavourites] = useState([
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+    { condition: "text-dark" },
+  ]);
   const [title, setTitle] = useState("");
   const [section, setSection] = useState("");
   const [image, setimage] = useState("");
   const [sybtitulo, setSubtitulo] = useState("");
   const [author, setAuthor] = useState("");
   const [description, setDescription] = useState("");
-  const [edition, setEdition] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [edition, setEdition] = useState("");
+
   const handleEdition = () => {
     setEdition(!edition);
   };
+  useEffect(() => {
+    setArrayFavourites(arrayFavourites);
+    console.log(arrayFavourites);
+  }, [arrayFavourites]);
 
+  const starting = (i) => {
+    let array = [];
+
+    arrayFavourites.forEach((element) => {
+      array.push(element);
+    });
+    if (array[i].condition === "text-dark") {
+      array[i].condition = "text-warning";
+    } else {
+      array[i].condition = "text-dark";
+    }
+
+    setArrayFavourites(array);
+  };
   return (
     <div>
       <Container fluid>
         <h2 className="title-news text-center">Noticias de la Semana</h2>
         <Row xs={1} md={2}>
-          {Array.from({ length: 3 }).map((_, idx) => (
+          {data.map((d, i) => (
             <div className="col-12 col-md-12">
               <Card border="0" className="mt-5 card-highlights">
                 <Card.Header className="title-section">MUNDIAL</Card.Header>
@@ -82,7 +120,7 @@ const Highlights = ({ data, add, cart }) => {
                     </div>
                     <div className="col-12 linea-style" />
                   </Card.Text>
-                  <Card.Title className="text-center"> titulo</Card.Title>
+                  <Card.Title className="text-center">{d.title}</Card.Title>
                   {/* data.title */}
                 </Card.Body>
               </Card>
@@ -92,27 +130,26 @@ const Highlights = ({ data, add, cart }) => {
                 <Card.Body className="card-destacado">
                   <Card.Title>soy subtitulo</Card.Title>
                   {/* data.subtitulo */}
-                  <Card.Text>
-                    Vincic, quien a los 42 años debutará en una Copa del Mundo,
-                    es árbitro FIFA desde 2010 y dirigió en el Sub 17 de 2017 y
-                    en el Sub 20 de 2019. Viene de ser el juez principal de la
-                    final de la última Europa League, ganada por el Eintracht
-                    Frankfurt de Alemania. Sin embargo, parece ser que hay una
-                    historia que despertó la curiosidad de los seguidores del
-                    fútbol en distintas partes del mundo y es que el encargado
-                    de impartir justicia estuvo detenido tras encontrarse en el
-                    lugar incorrecto en el momento incorrecto.
-                  </Card.Text>
+                  <Card.Text>{d.description}</Card.Text>
                   {/* data.description */}
                 </Card.Body>
               </Card>
 
               <Button
                 className="mt-5 mb-5"
-                variant="warning"
+                variant="primary"
                 // onClick={() => add(data)}
               >
-                Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
+                Agregar a favoritos
+                <FontAwesomeIcon
+                  id={`favourite${i}`}
+                  className={arrayFavourites[i].condition}
+                  icon={faStar}
+                  onClick={() => {
+                    starting(i);
+                    console.log(arrayFavourites);
+                  }}
+                />
               </Button>
               <div className="col-12 line-style" />
             </div>
