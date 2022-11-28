@@ -117,7 +117,7 @@ function App() {
         <Routes>
           <Route
             path="/highlights"
-            element={<Highlights add={add} cart={cart} />}
+            element={<Highlights data={data} add={add} cart={cart} />}
           />
           <Route path="/articlefound" element={<ArticleFound data={data} />} />
           <Route
