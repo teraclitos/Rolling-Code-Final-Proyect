@@ -71,6 +71,7 @@ const Highlights = ({ data, add, cart }) => {
 
       title: "Solid Gold Petite Micropave ",
     },
+    ,
   ]);
   const [title, setTitle] = useState("");
   const [section, setSection] = useState("");
@@ -83,9 +84,6 @@ const Highlights = ({ data, add, cart }) => {
   const handleEdition = () => {
     setEdition(!edition);
   };
-  useEffect(() => {
-    setArrayFavourites(arrayFavourites);
-  }, [arrayFavourites]);
 
   const starting = (i) => {
     let array = [];
@@ -110,9 +108,16 @@ const Highlights = ({ data, add, cart }) => {
     );
 
     setArrayFavourites(array);
+
     localStorage.setItem("favoritos", JSON.stringify(arrayFilter));
-    localSTGFavourite = JSON.parse(localStorage.getItem("favoritos")) || [];
+    localStorage.setItem("data", JSON.stringify(array));
   };
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("data"))) {
+      setArrayFavourites(JSON.parse(localStorage.getItem("data")));
+    }
+  }, []);
   return (
     <div>
       <Container fluid>
