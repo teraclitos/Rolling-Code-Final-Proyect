@@ -27,6 +27,7 @@ const ModalRegister = ({
     setWrongBorderPassword(false);
     setWrongBorderUser(false);
     setWrongBorderrepeatPassword(false);
+    setErrorToastRequiredField(false);
   };
 
   const [mails, setMails] = useState("");
@@ -47,6 +48,8 @@ const ModalRegister = ({
   const [wrongBorderPassword, setWrongBorderPassword] = useState(false);
   const [wrongBorderrepeatPassword, setWrongBorderrepeatPassword] =
     useState(false);
+
+  const [errorToastRequiredField, setErrorToastRequiredField] = useState(false);
 
   const validateEmail = (value) => {
     let error;
@@ -197,6 +200,16 @@ const ModalRegister = ({
     }
     if (validateRepeatPassword(repeatPassword) === true) {
       setWrongBorderrepeatPassword(false);
+    }
+
+    if (
+      validateEmail(mails) === true &&
+      validateName(name) === true &&
+      validateUser(user) === true &&
+      validatePassword(password) === true &&
+      validateRepeatPassword(repeatPassword) === true
+    ) {
+      setErrorToastRequiredField(false);
     }
   }, [
     validateEmail(mails),
@@ -465,6 +478,7 @@ const ModalRegister = ({
             <Button
               onClick={(e) => {
                 e.preventDefault();
+
                 if (
                   validateEmail(mails) === true &&
                   validateName(name) === true &&
@@ -483,17 +497,20 @@ const ModalRegister = ({
                     setFirstValidationUser(true);
                     setFirstValidationPassword(true);
                     setFirstValidationRepeatPassword(true);
+
                     handleCloseRegister();
                     toastSuccess("Se ha registrado correctamente");
                   } else {
                     toastError("acepte los terminos y condiciones");
                   }
                 } else {
-                  // toastError(
-                  //   "Debe completar correctamente todos los campos obligatorios"
-                  // );
-
                   wrongBordersFunction();
+
+                  errorToastRequiredField &&
+                    toastError(
+                      "Debe completar correctamente todos los campos obligatorios"
+                    );
+                  setErrorToastRequiredField(true);
                 }
               }}
               className=" btn-color fs-5"
