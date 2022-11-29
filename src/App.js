@@ -117,7 +117,15 @@ function App() {
         <Routes>
           <Route
             path="/highlights"
-            element={<Highlights data={data} add={add} cart={cart} />}
+            element={
+              <Highlights
+                toastError={toastError}
+                toastSuccess={toastSuccess}
+                data={data}
+                add={add}
+                cart={cart}
+              />
+            }
           />
           <Route path="/articlefound" element={<ArticleFound data={data} />} />
           <Route

@@ -23,7 +23,7 @@ import {
 import Categorias from "./Categorias";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
-const Highlights = ({ data, add, cart }) => {
+const Highlights = ({ data, add, cart, toastError, toastSuccess }) => {
   const [arrayFavourites, setArrayFavourites] = useState([
     {
       condition: "text-dark",
@@ -108,11 +108,13 @@ const Highlights = ({ data, add, cart }) => {
     if (localSTGFavourite.length < 3 || array[i].condition === "text-warning") {
       if (array[i].condition === "text-dark") {
         array[i].condition = "text-warning";
+        toastSuccess("destacado agregado con éxito");
       } else {
         array[i].condition = "text-dark";
+        toastSuccess("destacado eliminado con éxito");
       }
     } else {
-      alert("Sólo puede haber 3 favoritos");
+      toastError("Sólo puede haber 3 destacados");
     }
 
     const arrayFilter = array.filter(
@@ -190,7 +192,7 @@ const Highlights = ({ data, add, cart }) => {
                 variant="primary"
                 // onClick={() => add(data)}
               >
-                Agregar a favoritos
+                Agregar a destacados
                 <FontAwesomeIcon
                   id={`favourite${i}`}
                   className={arrayFavourites[i].condition}
