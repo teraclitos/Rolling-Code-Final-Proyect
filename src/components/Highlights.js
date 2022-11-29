@@ -31,6 +31,8 @@ const Highlights = ({ data, add, cart }) => {
         "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
       id: 1,
       title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+      image:
+        "https://www.ole.com.ar/images/2022/11/21/IyIvC3VNT_1290x760__1.jpg",
     },
     {
       condition: "text-dark",
@@ -39,6 +41,8 @@ const Highlights = ({ data, add, cart }) => {
       id: 2,
 
       title: "Mens Casual Premium Slim Fit T-Shirts ",
+      image:
+        "https://www.ole.com.ar/images/2022/11/23/wIkYyAEFw_1290x760__1.jpg",
     },
     {
       condition: "text-dark",
@@ -47,6 +51,8 @@ const Highlights = ({ data, add, cart }) => {
       id: 3,
 
       title: "Mens Cotton Jacket",
+      image:
+        "https://www.ole.com.ar/images/2022/11/24/Mx_Txhnz__1290x760__1.jpg",
     },
     {
       condition: "text-dark",
@@ -54,6 +60,8 @@ const Highlights = ({ data, add, cart }) => {
         "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
       id: 4,
       title: "Mens Casual Slim Fit",
+      image:
+        "https://www.ole.com.ar/images/2022/11/28/cbkiPRrp4_1290x760__1.jpg",
     },
     {
       condition: "text-dark",
@@ -62,6 +70,8 @@ const Highlights = ({ data, add, cart }) => {
       id: 5,
       title:
         "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
+      image:
+        "https://www.ole.com.ar/images/2022/11/28/heZXOv5IP_1290x760__1.jpg",
     },
     {
       condition: "text-dark",
@@ -70,6 +80,8 @@ const Highlights = ({ data, add, cart }) => {
       id: 6,
 
       title: "Solid Gold Petite Micropave ",
+      image:
+        "https://www.ole.com.ar/images/2022/11/28/QH-AYwCv3_1290x760__1.jpg",
     },
     ,
   ]);
@@ -130,11 +142,7 @@ const Highlights = ({ data, add, cart }) => {
                 {/* data.section */}
                 <Card.Body>
                   <div className="detail-author">
-                    <Card.Img
-                      variant="top"
-                      src="./logoRollingneta"
-                      width={70}
-                    />
+                    <Card.Img variant="top" width={70} />
                     <Card.Title className="mt-4">Marina Bianconi</Card.Title>
                   </div>
                   {/* data.author */}
@@ -167,7 +175,7 @@ const Highlights = ({ data, add, cart }) => {
                 </Card.Body>
               </Card>
               <Card border="0">
-                <Card.Img src="./logoheader" />
+                <Card.Img src={d.image} />
                 {/* data.image */}
                 <Card.Body className="card-destacado">
                   <Card.Title>soy subtitulo</Card.Title>
