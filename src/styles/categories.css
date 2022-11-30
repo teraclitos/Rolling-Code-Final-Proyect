@@ -40,10 +40,12 @@
 .categories-container {
   display: grid;
   grid-template-columns: 5fr 1fr;
-  padding-right: 3em;
+  gap: 3em;
 }
 .categories-list-container {
   gap: 3em;
   align-self: center;
   background: linear-gradient(to right, #001253, #1986a0);
+  width: 90%;
+  justify-self: center;
 }
