@@ -19,7 +19,7 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
       <div>
         <Categorias />
       </div>
-      <div className="container grid-articles-publicity mt-5 px-5 px-sm-2 px-md-0 mb-5 ">
+      <div className="container grid-articles-publicity mt-5 px-5 px-sm-2 px-md-0 mb-5  ">
         <div className="grid-articles">
           {data.map((d, i) => (
             <div className="mb-3  ">
