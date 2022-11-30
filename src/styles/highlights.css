@@ -1,5 +1,6 @@
 .card-highlights {
-  border-bottom: 4mm ridge rgba(211, 220, 50, 0.6);
+  border-bottom: 4mm ridge #fd841f;
+  margin-bottom: 5px;
 }
 .social-media {
   display: flex;
