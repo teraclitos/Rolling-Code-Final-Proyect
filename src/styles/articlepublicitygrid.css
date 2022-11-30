@@ -75,3 +75,18 @@
   background-color: #fff !important;
   color: #0e185f !important;
 }
+
+.btn-reed {
+  background: #1986a0;
+  color: rgb(73, 71, 71);
+  padding: 5px 5px;
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: "Anton";
+  text-decoration: none;
+}
+.btn-reed:hover {
+  color: #0e185f;
+  background-color: #fd841f;
+}
