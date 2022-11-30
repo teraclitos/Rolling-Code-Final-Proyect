@@ -80,100 +80,11 @@ const RecoverPass = () => {
                   </Row>
                   <Row className="d-flex justify-content-center">
                     <Link to="/error404" style={{ textDecoration: "none" }}>
-                      <Button onClick={handleShowPass}>Enviar Mail</Button>
+                      <Button className="btn-pass" onClick={handleShowPass}>
+                        Enviar Mail
+                      </Button>
                     </Link>
                   </Row>
-
-                  <Modal
-                    className="modal-backgroud"
-                    show={pass}
-                    onHide={passClose}
-                    animation={false}
-                  >
-                    <Modal.Body>
-                      <Formik
-                        initialValues={{ passNew: "", checkPassNew: "" }}
-                        validate={(valores) => {
-                          let errors = {};
-                          if (!valores.passNew) {
-                            errors.passNew =
-                              "Por favor ingrese su nueva contraseña.";
-                          } else if (/\s/.test(valores.passNew)) {
-                            errors.passNew =
-                              "La contraseña no puede tener espacios.";
-                          }
-                          if (!valores.checkPassNew) {
-                            errors.checkPassNew =
-                              "Por favor confirme su nueva contraseña.";
-                          } else if (valores.passNew !== valores.checkPassNew) {
-                            errors.checkPassNew =
-                              "Las contraseñas no coinciden.";
-                          }
-
-                          return errors;
-                        }}
-                        onSubmit={(valores, { resetForm }) => {
-                          resetForm();
-                        }}
-                      >
-                        {({
-                          values,
-                          errors,
-                          touched,
-                          handleSubmit,
-                          handleChange,
-                          handleBlur,
-                        }) => (
-                          <Form onSubmit={handleSubmit}>
-                            <Form.Group className="mb-3">
-                              <Form.Label>Nueva Contraseña</Form.Label>
-                              <Form.Control
-                                type="password"
-                                placeholder="Ingrese su nueva contraseña"
-                                value={values.passNew}
-                                id="passNew"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                maxLength={15}
-                              />
-                              {touched.passNew && errors.passNew && (
-                                <Form.Text className="text-danger">
-                                  <b>{errors.passNew}</b>
-                                </Form.Text>
-                              )}
-                            </Form.Group>
-                            <Form.Group className="mb-3">
-                              <Form.Label>
-                                Confirmar nueva contraseña
-                              </Form.Label>
-                              <Form.Control
-                                type="password"
-                                placeholder="Confirme su contraseña"
-                                id="checkPassNew"
-                                value={values.checkPassNew}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                maxLength={15}
-                              />
-                              {touched.checkPassNew && errors.checkPassNew && (
-                                <Form.Text className="text-danger">
-                                  <b>{errors.checkPassNew}</b>
-                                </Form.Text>
-                              )}
-                            </Form.Group>
-                          </Form>
-                        )}
-                      </Formik>
-                    </Modal.Body>
-                    <div className="btn-pass d-flex justify-content-center m-2">
-                      <Button className="btn-pass" onClick={passClose}>
-                        Cerrar
-                      </Button>
-                      <Button className="btn-pass" onClick={passClose}>
-                        Guardar Cambios
-                      </Button>
-                    </div>
-                  </Modal>
                 </div>
               </div>
             </div>
