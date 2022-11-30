@@ -16,6 +16,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RecoverPass from "../src/components/RecoverPass";
 import { Slide, Zoom, Flip, Bounce } from "react-toastify";
+import Error404 from "./components/Error404";
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -169,6 +170,7 @@ function App() {
             }
           />
           <Route path="/recuperarContraseña" element={<RecoverPass />} />
+          <Route path="/error404" element={<Error404 />} />
         </Routes>
         <Footer />
         <ToastContainer

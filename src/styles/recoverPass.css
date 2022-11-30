@@ -24,10 +24,6 @@
   color: black;
   border-radius: 4px;
   font-family: "Anton";
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 }
 .btn-pass:hover {
   background-color: #fd841f;

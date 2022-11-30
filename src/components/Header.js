@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import "../styles/allcss.css";
-
+import { Animated } from "react-animated-css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -10,8 +10,7 @@ import {
 
 const Header = () => {
   const navHeight = () => {
-    let navBarHeight =
-      document.getElementById("nav-bar-logo").clientHeight;
+    let navBarHeight = document.getElementById("nav-bar-logo").clientHeight;
     return navBarHeight;
   };
   const screenHeight = () => {
@@ -19,7 +18,7 @@ const Header = () => {
     return screenHeight;
   };
   const headerHeight = () => {
-    let height = screenHeight() - navHeight() -16;
+    let height = screenHeight() - navHeight() - 16;
 
     return height;
   };
@@ -50,14 +49,16 @@ const Header = () => {
           tu pasión
         </h3>
       </div>
+
       <div className="fs-1 d-flex flex-column align-items-center justify-content-center grid-center-header ">
-        <img className="img-header" src="\logoheader.png" alt="logo-hero" />
+        <img className="img-header" src="\logoheader.png" alt="logo-hero" />{" "}
         <h3 className="text-header  d-block d-md-none fs-1  text-center">
           Potenciamos
           <br />
           tu pasión
         </h3>
       </div>
+
       <div></div>
     </div>
   );

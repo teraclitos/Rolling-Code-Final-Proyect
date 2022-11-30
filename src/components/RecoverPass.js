@@ -5,6 +5,7 @@ import "../styles/allcss.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 const RecoverPass = () => {
   const [show, setShowPass] = useState(false);
   const [pass, setPass] = useState(false);
@@ -77,10 +78,10 @@ const RecoverPass = () => {
                       )}
                     </Formik>
                   </Row>
-                  <Row>
-                    <Button className="btn-pass" onClick={handleShowPass}>
-                      Enviar Mail
-                    </Button>
+                  <Row className="d-flex justify-content-center">
+                    <Link to="/error404" style={{ textDecoration: "none" }}>
+                      <Button onClick={handleShowPass}>Enviar Mail</Button>
+                    </Link>
                   </Row>
 
                   <Modal
