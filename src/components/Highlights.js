@@ -151,19 +151,22 @@ const Highlights = ({ data, add, cart, toastError, toastSuccess }) => {
                     <div className="social-media">
                       <div className="red-social">
                         <FontAwesomeIcon
-                          style={{ fontSize: "3em", color: "#1986a0" }}
+                          className="icon-fb"
+                          style={{ fontSize: "3em" }}
                           icon={faFacebook}
                         />
                       </div>
                       <div className="red-social">
                         <FontAwesomeIcon
+                          className="icon-tw"
                           icon={faTwitter}
-                          style={{ fontSize: "3em", color: "#1986a0" }}
+                          style={{ fontSize: "3em" }}
                         />
                       </div>
                       <div className="red-social">
                         <FontAwesomeIcon
-                          style={{ fontSize: "3em", color: "#1986a0" }}
+                          className="icon-ig"
+                          style={{ fontSize: "3em" }}
                           icon={faInstagram}
                         />
                       </div>
@@ -185,22 +188,6 @@ const Highlights = ({ data, add, cart, toastError, toastSuccess }) => {
                 </Card.Body>
               </Card>
 
-              <Button
-                className="mt-5 mb-5"
-                variant="primary"
-                // onClick={() => add(data)}
-              >
-                Agregar a destacados
-                <FontAwesomeIcon
-                  id={`favourite${i}`}
-                  className={arrayFavourites[i].condition}
-                  icon={faStar}
-                  onClick={() => {
-                    starting(i);
-                    console.log(arrayFavourites);
-                  }}
-                />
-              </Button>
               <div className="col-12 line-style" />
             </div>
           ))}
