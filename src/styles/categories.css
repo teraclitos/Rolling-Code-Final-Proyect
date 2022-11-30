@@ -6,11 +6,13 @@
   cursor: pointer;
   border: 0;
   text-decoration: none;
-  color: #0e185f !important;
+  color: white;
   padding: 10px;
   font-family: "Roboto", sans-serif;
   font-size: 1.1rem;
   position: relative;
+  text-decoration: none;
+  list-style: none;
 }
 
 .link-category:after {
@@ -19,7 +21,7 @@
   height: 2px;
   background-color: #fd841f;
   position: absolute;
-  bottom: 0;
+  bottom: 8px;
   right: 50%;
   transition: all 0.5s;
   will-change: width;
@@ -34,4 +36,14 @@
 }
 .carousel-advertisement {
   top: 100px;
+}
+.categories-container {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  padding-right: 3em;
+}
+.categories-list-container {
+  gap: 3em;
+  align-self: center;
+  background: linear-gradient(to right, #001253, #1986a0);
 }

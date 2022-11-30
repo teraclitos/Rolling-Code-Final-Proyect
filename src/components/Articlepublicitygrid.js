@@ -16,6 +16,9 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
       <Advertising />
       <Header />
       <Slider />
+      <div>
+        <Categorias />
+      </div>
       <div className="container grid-articles-publicity mt-5 px-5 px-sm-2 px-md-0 mb-5 ">
         <div className="grid-articles">
           {data.map((d, i) => (
@@ -63,12 +66,9 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
           ))}
         </div>
         <div className="grid-publicity d-none d-lg-grid ">
-          {/* <div>
-            <Categorias />
-          </div> */}
-          <div className="carousel-advertisement-container">
+          <aside className="carousel-advertisement-container">
             <AsideAdvertisement />
-          </div>
+          </aside>
         </div>
       </div>
     </>
