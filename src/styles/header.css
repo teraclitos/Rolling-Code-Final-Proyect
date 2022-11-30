@@ -29,6 +29,19 @@
   color: #fff;
   gap: 0.5em;
 }
-.icon {
+.icon-tw:hover {
+  transition: 1s;
+  color: #1da1f2;
+  cursor: pointer;
+}
+
+.icon-fb:hover {
+  transition: 1s;
+  color: #021b4d;
+  cursor: pointer;
+}
+.icon-ig:hover {
+  transition: 1s;
+  color: #e00547;
   cursor: pointer;
 }

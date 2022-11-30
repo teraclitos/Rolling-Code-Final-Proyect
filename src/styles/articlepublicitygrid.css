@@ -12,10 +12,12 @@
 .category-title {
   color: #fd841f;
   background-color: #0d4c92;
+  font-family: "Anton";
 }
 .card-title {
   height: 2.6em;
   overflow: hidden;
+  font-family: "anton";
 }
 .btn-color {
   background-color: #1986a0;

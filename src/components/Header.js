@@ -39,9 +39,9 @@ const Header = () => {
       className="container-fluid containerbg grid-header pt-4 "
     >
       <div className="fs-1 d-flex flex-column justify-content-center align-items-center icon-container">
-        <FontAwesomeIcon className="icon" icon={faFacebook} />
-        <FontAwesomeIcon className="icon" icon={faTwitter} />
-        <FontAwesomeIcon className="icon" icon={faInstagram} />
+        <FontAwesomeIcon className="icon-fb" icon={faFacebook} />
+        <FontAwesomeIcon className="icon-tw" icon={faTwitter} />
+        <FontAwesomeIcon className="icon-ig" icon={faInstagram} />
       </div>
       <div className=" text-center d-flex justify-content-center align-items-center ">
         <h3 className="text-header  d-none d-md-block fs-1 ">
