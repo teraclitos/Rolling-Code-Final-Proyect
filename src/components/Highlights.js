@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/allcss.css";
-// import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+
 import {
   Button,
   Card,
@@ -12,14 +12,12 @@ import {
   Col,
   Pagination,
 } from "react-bootstrap";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import {
-  faCommentAlt,
-  faHashtag,
-  faHeart,
-  faHeartCircleBolt,
-  faSeedling,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+  faFacebook,
+  faTwitter,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 import Categorias from "./Categorias";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
@@ -153,20 +151,20 @@ const Highlights = ({ data, add, cart, toastError, toastSuccess }) => {
                     <div className="social-media">
                       <div className="red-social">
                         <FontAwesomeIcon
-                          style={{ fontSize: "2em", color: "#1986a0" }}
-                          icon={faHeartCircleBolt}
+                          style={{ fontSize: "3em", color: "#1986a0" }}
+                          icon={faFacebook}
                         />
                       </div>
                       <div className="red-social">
                         <FontAwesomeIcon
-                          icon={faCommentAlt}
-                          style={{ fontSize: "2em", color: "#1986a0" }}
+                          icon={faTwitter}
+                          style={{ fontSize: "3em", color: "#1986a0" }}
                         />
                       </div>
                       <div className="red-social">
                         <FontAwesomeIcon
-                          style={{ fontSize: "2em", color: "#1986a0" }}
-                          icon={faSeedling}
+                          style={{ fontSize: "3em", color: "#1986a0" }}
+                          icon={faInstagram}
                         />
                       </div>
                     </div>
