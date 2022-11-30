@@ -8,13 +8,16 @@
   grid-template-columns: repeat(5, 1fr);
   gap: 1em;
 }
+
 .category-title {
   color: #fd841f;
   background-color: #0d4c92;
+  font-family: "Anton";
 }
 .card-title {
   height: 2.6em;
   overflow: hidden;
+  font-family: "anton";
 }
 .btn-color {
   background-color: #1986a0;
@@ -54,6 +57,13 @@
 .card-grid {
   min-width: 100%;
   width: 10em;
+  transition: all 400ms ease;
+  box-shadow: 0px, 1px, 10px, rgba(0, 0, 0, 0.2);
+}
+
+.card-grid:hover {
+  box-shadow: 20px, 20px, 20px, rgba(0, 0, 0, 0.4);
+  transform: translateY(-5%);
 }
 
 .btn-categories:hover {
@@ -64,4 +74,19 @@
 .btn-categories:active {
   background-color: #fff !important;
   color: #0e185f !important;
+}
+
+.btn-reed {
+  background: #1986a0;
+  color: rgb(73, 71, 71);
+  padding: 5px 5px;
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: "Anton";
+  text-decoration: none;
+}
+.btn-reed:hover {
+  color: #0e185f;
+  background-color: #fd841f;
 }

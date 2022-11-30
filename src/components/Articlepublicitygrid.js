@@ -49,6 +49,7 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-between p-0 px-1 border-0 mt-2 bg-white card-footer ">
                   <Link
+                    className="btn-reed"
                     to={
                       auth.user === "admin" || auth.user === "user"
                         ? `/ArticleDetailContainer/${d.id}`
