@@ -20,7 +20,7 @@ import Error404 from "./components/Error404";
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://backend-news-3bqq4jzze-andreahongn.vercel.app/newslist")
       .then((res) => res.json())
       .then((json) => setData(json));
   }, []);

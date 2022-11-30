@@ -51,8 +51,7 @@
 }
 
 .img-card {
-  height: 5em;
-  width: 5em;
+  width: 100%;
 }
 .card-grid {
   min-width: 100%;
