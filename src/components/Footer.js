@@ -20,31 +20,42 @@ const Footer = () => {
             <div className="col-12 col-sm-6 col-md-4 p-0 d-flex flex-column align-items-center">
               <div className=" w-50">
                 <div className="row m-2 justify-content-center ">
-                  <h6 className="my-3 fw-bold text-center mt-5">
+                  <h6 className="my-3 fw-bold d-flex justify-content-center text-center mt-5 text-footer">
                     REDES SOCIALES
                   </h6>
-                  <div className="col-3  btn-footer">
+
+                  <div className="col-3 btn-footer">
                     {/* agregar link a icono */}
-                    <FontAwesomeIcon icon={faHashtag} />
+                    <FontAwesomeIcon
+                      style={{ fontSize: "2em" }}
+                      className="icon-fb"
+                      icon={faFacebook}
+                    />
                   </div>
                   <div className="col-3 btn-footer">
                     {/* agregar link a icono */}
-                    <FontAwesomeIcon className="icon" icon={faFacebook} />
-                  </div>
-                  <div className="col-3 btn-footer">
-                    {/* agregar link a icono */}
-                    <FontAwesomeIcon className="icon" icon={faInstagram} />
+                    <FontAwesomeIcon
+                      style={{ fontSize: "2em" }}
+                      className="icon-ig"
+                      icon={faInstagram}
+                    />
                   </div>
                   <div class="col-3 btn-footer">
                     {/* agregar link a icono */}
-                    <FontAwesomeIcon className="icon" icon={faTwitter} />
+                    <FontAwesomeIcon
+                      style={{ fontSize: "2em" }}
+                      className="icon-tw"
+                      icon={faTwitter}
+                    />
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-12 col-sm-6 col-md-4 p-0 d-flex flex-column align-items-center">
               <div class="row m-2 justify-content-center">
-                <h6 className="my-3 fw-bold text-center mt-5">CONTACTANOS</h6>
+                <h6 className="my-3 fw-bold text-center mt-5 text-footer">
+                  CONTACTANOS
+                </h6>
                 <h8 className="text-center">Av. Siempre Vivas</h8>
                 <h8 className="text-center">Acerca de Nosotros</h8>
               </div>
