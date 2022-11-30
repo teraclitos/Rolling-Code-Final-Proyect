@@ -6,31 +6,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Slider from "./Slider";
 import { Route, Routes, Link, useParams } from "react-router-dom";
-// import {
-//   faFacebook,
-//   faTwitter,
-//   faInstagram,
-// } from "@fortawesome/free-brands-svg-icons";
 import Advertising from "./Advertising";
 import Header from "../components/Header";
+import AsideAdvertisement from "./AsideAdvertisement";
 
 const Articlepublicitygrid = ({ data, add, cart, auth }) => {
-  let active = 2;
-  let items = [];
-  for (let number = 1; number <= 3; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
-
   return (
     <>
       <Advertising />
       <Header />
       <Slider />
-      <div className="container grid-articles-publicity mt-5 px-5 px-sm-2 px-md-0 ">
+      <div className="container grid-articles-publicity mt-5 px-5 px-sm-2 px-md-0 mb-5 ">
         <div className="grid-articles">
           {data.map((d, i) => (
             <div className="mb-3  ">
@@ -77,16 +63,11 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
           ))}
         </div>
         <div className="grid-publicity d-none d-lg-grid ">
-          <div>
+          {/* <div>
             <Categorias />
-          </div>
-        </div>
-        <div className="d-flex  justify-content-center mt-1">
-          <Pagination>{items}</Pagination>
-        </div>
-        <div className="grid-publicity d-grid d-lg-none ">
-          <div>
-            <Categorias />
+          </div> */}
+          <div className="carousel-advertisement-container">
+            <AsideAdvertisement />
           </div>
         </div>
       </div>

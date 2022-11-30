@@ -29,3 +29,9 @@
   width: 100%;
   right: 0;
 }
+.carousel-advertisement-container {
+  position: sticky;
+}
+.carousel-advertisement {
+  top: 100px;
+}
