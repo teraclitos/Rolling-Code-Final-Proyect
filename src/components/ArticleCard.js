@@ -3,12 +3,18 @@ import { Button, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 import React from "react";
 
 const ArticleCard = ({ cart, d, add, auth }) => {
   return (
+
     <Card className=" h-100 card-container border-0">
+
+
+   
+
       <Card.Img src={d.img_URL} variant="top" className=" img-card" />
       <Card.Body className="p-0 card-body  ">
         <h3 className="category-title fs-6 mt-2 mb-0 ps-2 text-start">
@@ -29,6 +35,20 @@ const ArticleCard = ({ cart, d, add, auth }) => {
               ? `/ArticleDetailContainer/${d.id}`
               : "/"
           }
+          
+           onClick={() => {
+              !auth.user &&
+                toast("Debes iniciar sesión para ver el contenido", {
+                  position: "top-center",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                });
+            }}
         >
           {/* <Button className="py-1 px-2 btn-color ">Leer más</Button> */}
           Leer más
@@ -38,6 +58,7 @@ const ArticleCard = ({ cart, d, add, auth }) => {
             disabled={cart.includes(d)}
             onClick={() => add(d)}
             className="btn-like "
+
           >
             <FontAwesomeIcon
               className="align-self-center fs-5 text-danger"

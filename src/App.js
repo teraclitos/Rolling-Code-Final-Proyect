@@ -78,11 +78,32 @@ function App() {
       user: userFound.user,
       role: userFound.role,
     });
+
+    toast("👋 Bienvenido! Sesión iniciada correctamente", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     console.log("funcion login auth" + auth);
   };
 
   const logout = () => {
     setAuth({ user: "", role: "" });
+    toast("Sesión cerrada correctamente", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     console.log("logout");
   };
   const prevenDuplicateToast = "custom-id-yes";
@@ -161,6 +182,7 @@ function App() {
           />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/usertable" element={<AdminTable />} />
+
           <Route
             path="/category"
             element={
@@ -175,7 +197,22 @@ function App() {
               />
             }
           />
+
           <Route
+            path="/ArticleDetailContainer/:id"
+            element={
+              <ArticleDetailContainer
+                add={add}
+                cart={cart}
+                auth={auth}
+                validate={validate}
+                login={login}
+                logout={logout}
+              />
+            }
+          />
+
+          {/* <Route
             path="/ArticleDetailContainer/:id"
             element={
               auth.user ? (
@@ -199,7 +236,7 @@ function App() {
                 />
               )
             }
-          />
+          /> */}
           <Route path="/recuperarContraseña" element={<RecoverPass />} />
           <Route path="/error404" element={<Error404 />} />
         </Routes>
