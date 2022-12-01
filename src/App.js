@@ -104,6 +104,7 @@ function App() {
       progress: undefined,
       theme: "light",
     });
+
     console.log("logout");
   };
   const prevenDuplicateToast = "custom-id-yes";
