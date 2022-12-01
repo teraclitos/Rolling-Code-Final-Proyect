@@ -105,19 +105,28 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                         icon={faTwitter}
                       />
                     </div>
+                    <div className="red-social">
+                      <h5 className="mt-4">{data.date}</h5>
+                    </div>
                   </div>
+
                   <div className="col-12 linea-style" />
                 </Card.Text>
-                <Card.Title className="text-center">{data.title}</Card.Title>
+                <Card.Title className="text-center title-detail">
+                  {data.title}
+                </Card.Title>
               </Card.Body>
             </Card>
             <Card border="0">
-              <Card.Img src={data.img_URL} />
+              <Card.Img src={data.img_URL} className="img-detail" />
               <Card.Body>
-                <Card.Title>{data.description}</Card.Title>
+                <Card.Title className="title-description">
+                  {data.description}{" "}
+                </Card.Title>
 
-                <Card.Text>{data.content}</Card.Text>
+                <Card.Text className="content">{data.content}</Card.Text>
               </Card.Body>
+              <div className="col-12 card-highlights" />
             </Card>
           </div>
           {/* VISTA ADMIN */}

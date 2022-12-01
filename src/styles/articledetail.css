@@ -60,7 +60,6 @@
   font-family: "Anton";
   width: 110px;
   padding: 2%;
-  /* padding-left: 6%; */
 
   margin-left: 40px;
 }
@@ -124,8 +123,17 @@
   color: #e00547;
   cursor: pointer;
 }
-.social-media {
-  display: flex;
-  justify-content: center;
-  color: #1986a0;
+
+.title-detail {
+  font-family: "anton";
+  font-size: 35px;
+}
+.title-description {
+  font-family: "Anton";
+  font-size: 20px;
+  color: #5a5858;
+}
+.content {
+  font-size: 20px;
+  text-align: justify;
 }

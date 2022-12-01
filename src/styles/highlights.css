@@ -3,9 +3,10 @@
   margin-bottom: 5px;
 }
 .social-media {
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   color: #1986a0;
+  justify-content: space-between;
 }
 
 .icon-tw:hover {
