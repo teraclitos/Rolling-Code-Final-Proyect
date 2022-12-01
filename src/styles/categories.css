@@ -32,7 +32,8 @@
   right: 0;
 }
 .carousel-advertisement-container {
-  position: sticky;
+  position: relative;
+  z-index: -1;
 }
 .carousel-advertisement {
   top: 100px;
