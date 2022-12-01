@@ -44,7 +44,7 @@ const CategoryDetail = ({ data, add, cart, auth }) => {
       <Container className="mb-5">
         <h2 className="title-category">{category}</h2>
         <Row>
-          {dataFilter.map((d, i, auth, add, cart) => (
+          {dataFilter.map((d, i) => (
             <Col className="col-12 col-lg-6 mb-5">
               <ArticleCard cart={cart} d={d} add={add} auth={auth} />
             </Col>
