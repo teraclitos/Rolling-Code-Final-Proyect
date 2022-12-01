@@ -21,6 +21,7 @@ import {
   faRightToBracket,
   faRightFromBracket,
   faMagnifyingGlass,
+  faScrewdriverWrench,
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/allcss.css";
 
@@ -145,12 +146,15 @@ const Navbar = ({
                 <Nav.Link>
                   {" "}
                   <Link
-                    to="/contacto"
+                    to="/usertable"
                     className="link-nav"
                     style={{ textDecoration: "none" }}
                   >
                     Users
-                    <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
+                    <FontAwesomeIcon
+                      icon={faScrewdriverWrench}
+                      className="mx-2"
+                    />
                   </Link>
                 </Nav.Link>
               )}
