@@ -1,26 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Form, InputGroup } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Form, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ArticleCard from "./ArticleCard";
 import { Button, Card, Pagination } from "react-bootstrap";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  faMagnifyingGlass,
-  faUser,
-  faGlasses,
-} from "@fortawesome/free-solid-svg-icons";
-
-const ArticleFound = ({ data, add, cart, auth }) => {
+const ArticleFound = ({ data }) => {
   const [stock, setStock] = useState([]);
   const [search, setSearch] = useState("");
 
   let handleChange = (e) => {
     setSearch(e.target.value);
-    console.log(setSearch);
     filterArticle(e.target.value);
-    console.log(data);
   };
 
   const filterArticle = (terminoBusqueda) => {
@@ -61,8 +52,9 @@ const ArticleFound = ({ data, add, cart, auth }) => {
         </Form>
         <Container>
           {search && <h3 className="card-title">Resultados de Búsqueda</h3>}
-          <div className="container grid-articles-publicity mt-5 px-5 px-sm-2 px-md-0 ">
-            <div className="grid-articles">
+          <Container>
+            <Row lg={4}>
+              {" "}
               {stock.map((d, i) => (
                 <div className="mb-3  ">
                   <Card className=" h-100 card-grid">
@@ -92,8 +84,8 @@ const ArticleFound = ({ data, add, cart, auth }) => {
                   </Card>
                 </div>
               ))}
-            </div>
-          </div>
+            </Row>
+          </Container>
         </Container>
       </body>
       ;
