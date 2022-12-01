@@ -87,7 +87,7 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                     <div className="red-social">
                       <FontAwesomeIcon
                         className="icon-fb"
-                        style={{ fontSize: "2em" }}
+                        style={{ fontSize: "3em" }}
                         icon={faFacebook}
                       />
                     </div>
@@ -95,13 +95,13 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                       <FontAwesomeIcon
                         className="icon-ig"
                         icon={faInstagram}
-                        style={{ fontSize: "2em" }}
+                        style={{ fontSize: "3em" }}
                       />
                     </div>
                     <div className="red-social">
                       <FontAwesomeIcon
                         className="icon-tw"
-                        style={{ fontSize: "2em" }}
+                        style={{ fontSize: "3em" }}
                         icon={faTwitter}
                       />
                     </div>
