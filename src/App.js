@@ -1,6 +1,7 @@
 import Navbar from "../src/components/Navbar";
 import Footer from "../src/components/Footer";
 import Articlepublicitygrid from "../src/components/Articlepublicitygrid";
+import AdminTable from "../src/components/AdminTable";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import Contact from "./components/Contact";
@@ -144,6 +145,7 @@ function App() {
             }
           />
           <Route path="/contacto" element={<Contact />} />
+          <Route path="/usertable" element={<AdminTable />} />
           <Route
             path="/ArticleDetailContainer/:id"
             element={

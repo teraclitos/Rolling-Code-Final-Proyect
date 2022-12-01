@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import BSNavbar from "react-bootstrap/Navbar";
@@ -48,7 +48,6 @@ const Navbar = ({
   return (
     <>
       <BSNavbar
-       
         className="bg-nav "
         collapseOnSelect
         expand="lg"
@@ -59,7 +58,7 @@ const Navbar = ({
           <Link to="/" style={{ textDecoration: "none" }}>
             <BSNavbar.Brand>
               <img
-               id="nav-bar-logo"
+                id="nav-bar-logo"
                 alt=""
                 src="\logoRollingneta.png"
                 width="75"
@@ -142,6 +141,19 @@ const Navbar = ({
                 )}
               </Nav.Link>
 
+              {auth.user == "admin" && (
+                <Nav.Link>
+                  {" "}
+                  <Link
+                    to="/contacto"
+                    className="link-nav"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Users
+                    <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
+                  </Link>
+                </Nav.Link>
+              )}
               <Nav.Link onClick={handleShowRegister}>
                 <Link className="link-nav" style={{ textDecoration: "none" }}>
                   Regístrate
