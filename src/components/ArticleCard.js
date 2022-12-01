@@ -10,16 +10,24 @@ import React from "react";
 const ArticleCard = ({ cart, d, add, auth }) => {
   return (
 
-    <Card className=" h-100 card-container">
+    <Card className=" h-100 card-container border-0">
+
+
+   
+
       <Card.Img src={d.img_URL} variant="top" className=" img-card" />
-      <Card.Body className="p-0 ps-1 card-body  ">
-        <h3 className="category-title fs-6 mt-2 mb-0">{d.category}</h3>
-        <Card.Title className="mt-2 mb-0 card-title">{d.title}</Card.Title>
+      <Card.Body className="p-0 card-body  ">
+        <h3 className="category-title fs-6 mt-2 mb-0 ps-2 text-start">
+          {d.category}
+        </h3>
+        <Card.Title className="mt-2 mb-0 card-title text-start">
+          {d.title}
+        </Card.Title>
         <Card.Text className="mt-1 mb-0 text-card-container ">
-          <p className="text-card">{d.description}</p>
+          <p className="text-card text-start">{d.description}</p>
         </Card.Text>
       </Card.Body>
-      <Card.Footer className="d-flex justify-content-between p-0 px-1 border-0 mt-2 bg-white card-footer ">
+      <Card.Footer className="d-flex justify-content-between p-0 border-0 mt-2 bg-white card-footer ">
         <Link
           className="btn-reed mb-2"
           to={
