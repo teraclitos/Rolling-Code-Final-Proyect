@@ -1,16 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Form, InputGroup } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Form, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ArticleCard from "./ArticleCard";
 import { Button, Card, Pagination } from "react-bootstrap";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-
-import {
-  faMagnifyingGlass,
-  faUser,
-  faGlasses,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const ArticleFound = ({ data }) => {
   const [stock, setStock] = useState([]);
