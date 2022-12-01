@@ -2,6 +2,7 @@ import Navbar from "../src/components/Navbar";
 import Footer from "../src/components/Footer";
 import Articlepublicitygrid from "../src/components/Articlepublicitygrid";
 import AdminTable from "../src/components/AdminTable";
+import CategoryDetail from "./components/CategoryDetail";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import Contact from "./components/Contact";
@@ -18,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import RecoverPass from "../src/components/RecoverPass";
 import { Slide, Zoom, Flip, Bounce } from "react-toastify";
 import Error404 from "./components/Error404";
+
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -146,6 +148,7 @@ function App() {
           />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/usertable" element={<AdminTable />} />
+          <Route path="/category" element={<CategoryDetail data={data} />} />
           <Route
             path="/ArticleDetailContainer/:id"
             element={

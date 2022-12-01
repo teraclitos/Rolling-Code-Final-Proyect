@@ -1,7 +1,7 @@
 import { Container, Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import "../styles/allcss.css";
 import { faTrash, faUserPen } from "@fortawesome/free-solid-svg-icons";
 function ResponsiveExample() {
   return (
