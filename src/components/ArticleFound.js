@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Form,
-  Card,
-  InputGroup,
-} from "react-bootstrap";
+import { Container, Row, Col, Form, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ArticleCard from "./ArticleCard";
+import { Button, Card, Pagination } from "react-bootstrap";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 import {
   faMagnifyingGlass,
@@ -17,7 +12,7 @@ import {
   faGlasses,
 } from "@fortawesome/free-solid-svg-icons";
 
-const ArticleFound = ({ data }) => {
+const ArticleFound = ({ data, add, cart, auth }) => {
   const [stock, setStock] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -65,7 +60,7 @@ const ArticleFound = ({ data }) => {
           </InputGroup>
         </Form>
         <Container>
-          Resultados de Búsqueda
+          {search && <h3 className="card-title">Resultados de Búsqueda</h3>}
           <div className="container grid-articles-publicity mt-5 px-5 px-sm-2 px-md-0 ">
             <div className="grid-articles">
               {stock.map((d, i) => (
@@ -89,7 +84,7 @@ const ArticleFound = ({ data }) => {
                     </Card.Body>
                     <Card.Footer className="d-flex justify-content-between p-0 px-1 border-0 mt-2 bg-white card-footer ">
                       <Link to={`/ArticleDetailContainer/${d.id}`}>
-                        <Button className="py-1 px-2 btn-color ">
+                        <Button className="py-1 px-2 btn-reed mb-2 ">
                           Leer más
                         </Button>
                       </Link>
