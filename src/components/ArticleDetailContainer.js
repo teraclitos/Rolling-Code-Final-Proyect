@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ArticleDetail from "./ArticleDetail";
-import { Route, Routes, Link, useParams } from "react-router-dom";
-import Highlights from "./Highlights";
+import { useParams } from "react-router-dom";
+
 const ArticleDetailContainer = ({ add, cart, auth }) => {
   const params = useParams();
   console.log("params" + params);
@@ -11,11 +11,12 @@ const ArticleDetailContainer = ({ add, cart, auth }) => {
   //     .then((res) => res.json())
   //     .then((json) => setData(json));
   // }, []);
+
   useEffect(() => {
-    fetch(`https://backend-news-b7li2s1zo-andreahongn.vercel.app/${params.id}`)
+    fetch(`https://backend-news-eight.vercel.app/newslist/${params.id}`)
       .then((res) => res.json())
       .then((json) => setData(json));
-  }, [params.id]);
+  }, []);
 
   return (
     <div>
