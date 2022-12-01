@@ -73,13 +73,13 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
               <Card.Header className="title-section">
                 {data.category}
               </Card.Header>
-              {/* data.section */}
+
               <Card.Body>
                 <div className="detail-author">
                   <Card.Img variant="top" src="./logoRollingneta" width={70} />
-                  <Card.Title className="mt-4">{data.title}</Card.Title>
+                  <Card.Title className="mt-4">{data.author}</Card.Title>
                 </div>
-                {/* data.author */}
+
                 <div className="col-12 linea-style" />
 
                 <Card.Text>
@@ -106,27 +106,14 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                   <div className="col-12 linea-style" />
                 </Card.Text>
                 <Card.Title className="text-center">{data.title}</Card.Title>
-                {/* data.title */}
               </Card.Body>
             </Card>
             <Card border="0">
-              <Card.Img src={data.image} />
+              <Card.Img src={data.img_URL} />
               <Card.Body>
                 <Card.Title>{data.description}</Card.Title>
-                {/* data.subtitulo */}
-                <Card.Text>
-                  {data.content}
-                  {/* Vincic, quien a los 42 años debutará en una Copa del Mundo, es
-                  árbitro FIFA desde 2010 y dirigió en el Sub 17 de 2017 y en el
-                  Sub 20 de 2019. Viene de ser el juez principal de la final de
-                  la última Europa League, ganada por el Eintracht Frankfurt de
-                  Alemania. Sin embargo, parece ser que hay una historia que
-                  despertó la curiosidad de los seguidores del fútbol en
-                  distintas partes del mundo y es que el encargado de impartir
-                  justicia estuvo detenido tras encontrarse en el lugar
-                  incorrecto en el momento incorrecto. */}
-                </Card.Text>
-                {/* data.description */}
+
+                <Card.Text>{data.content}</Card.Text>
               </Card.Body>
             </Card>
           </div>
