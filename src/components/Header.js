@@ -34,6 +34,7 @@ const Header = () => {
   }, [width]);
   return (
     <div
+      id="header"
       style={{ height: `${stateHeight}px` }}
       className="container-fluid containerbg grid-header pt-4 "
     >

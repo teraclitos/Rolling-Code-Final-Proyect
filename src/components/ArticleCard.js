@@ -1,20 +1,14 @@
 import "../styles/allcss.css";
-import Categorias from "../components/Categorias";
-import { Button, Card, Pagination } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import Slider from "./Slider";
-import { Route, Routes, Link, useParams } from "react-router-dom";
-import Advertising from "./Advertising";
-import Header from "../components/Header";
-import AsideAdvertisement from "./AsideAdvertisement";
+import { Link, useParams } from "react-router-dom";
 
 import React from "react";
 
 const ArticleCard = ({ cart, d, add, auth }) => {
   return (
     <div>
-      {" "}
       <Card className=" h-100 card-grid">
         <Card.Img src={d.img_URL} variant="top" className=" img-card" />
         <Card.Body className="p-0 ps-1 card-body  ">
