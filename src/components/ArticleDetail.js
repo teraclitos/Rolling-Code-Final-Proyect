@@ -34,8 +34,8 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleSubmit = () => {
-    fetch("https://fakestoreapi.com/products/1", {
+  const handleSubmit = (e) => {
+    fetch("https://backend-news-eight.vercel.app/news", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -57,11 +57,11 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
 
   useEffect(() => {
     setEditTitle(data.title);
-    setEditSection(data.section);
-    setEditDescription(data.description);
-    setEditImage(data.image);
+    setEditSection(data.category);
+    setEditDescription(data.content);
+    setEditImage(data.img_URL);
     setEditAuthor(data.author);
-    setEditSubtitulo(data.subtitulo);
+    setEditSubtitulo(data.description);
   }, [data]);
 
   return (
@@ -146,11 +146,7 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
-                    {/* data.category */}
-
-                    <Form.Label className="style-crud">
-                      {data.category}
-                    </Form.Label>
+                    <Form.Label className="style-crud">Categoria</Form.Label>
                     <Form.Control
                       type="text"
                       value={editSection}
@@ -159,14 +155,12 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                       autoFocus
                     />
                     <Form.Group />
-                    {/* data.author */}
+
                     <Form.Group
                       className="mb-3"
                       controlId="exampleForm.ControlInput1"
                     >
-                      <Form.Label className="style-crud">
-                        {data.author}
-                      </Form.Label>
+                      <Form.Label className="style-crud">Autor</Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Nombre del autor"
@@ -176,7 +170,7 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                         autoFocus
                       />
                     </Form.Group>
-                    {/* data.title */}
+
                     <Form.Group
                       className="mb-3"
                       controlId="exampleForm.ControlInput1"
@@ -184,14 +178,13 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                       <Form.Label className="style-crud">Titulo</Form.Label>
                       <Form.Control
                         type="text"
-                        // placeholder={data.title}
                         defaultValue={editTitle}
                         value={editTitle}
                         onInput={(e) => setEditTitle(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
-                    {/* data.image */}
+
                     <Form.Group className="mb-3">
                       <Form.Label className="style-crud">URL</Form.Label>
                       <Form.Control
@@ -203,7 +196,7 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                         autoFocus
                       />
                     </Form.Group>
-                    {/* data.subtitulo */}
+
                     <Form.Group
                       className="mb-3"
                       controlId="exampleForm.ControlInput1"
