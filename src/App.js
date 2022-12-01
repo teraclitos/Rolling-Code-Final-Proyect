@@ -78,12 +78,32 @@ function App() {
       user: userFound.user,
       role: userFound.role,
     });
+
+    toast("👋 Bienvenido! Sesión iniciada correctamente", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     console.log("funcion login auth" + auth);
   };
 
   const logout = () => {
     setAuth({ user: "", role: "" });
-    toast("Sesión cerrada correctamente", { autoClose: 750 });
+    toast("Sesión cerrada correctamente", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     console.log("logout");
   };
   const prevenDuplicateToast = "custom-id-yes";
