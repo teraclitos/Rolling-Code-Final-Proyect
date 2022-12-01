@@ -263,7 +263,6 @@ const ArticleDetail = ({ data, add, cart, del, auth }) => {
             >
               Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
             </Button>
-            <Categorias />
           </div>
         </Row>
       </Container>
