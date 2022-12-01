@@ -27,7 +27,7 @@ const ArticleCard = ({ cart, d, add, auth }) => {
           className="btn-reed mb-2"
           to={
             auth.user === "admin" || auth.user === "user"
-              ? `/ArticleDetailContainer/${d.id}`
+              ? `/ArticleDetailContainer/${d._id}`
               : "/"
           }
           onClick={() => {
