@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Form, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,11 +15,28 @@ const ArticleFound = ({ data, add, cart, auth }) => {
     filterArticle(e.target.value);
   };
 
+  useEffect(() => {
+    setStock(data);
+  }, [data]);
+
   const filterArticle = (terminoBusqueda) => {
     var resultadoBusqueda = data.filter((elemento) => {
       if (
-        elemento.title.toUpperCase().includes(terminoBusqueda.toUpperCase()) ||
-        elemento.category.toUpperCase().includes(terminoBusqueda.toUpperCase())
+        elemento.title
+          .toUpperCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .includes(terminoBusqueda.toUpperCase()) ||
+        elemento.category
+          .toUpperCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .includes(terminoBusqueda.toUpperCase()) ||
+        elemento.description
+          .toUpperCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .includes(terminoBusqueda.toUpperCase())
       ) {
         return elemento;
       }
