@@ -117,27 +117,6 @@ const Navbar = ({
                   <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
                 </Link>
               </Nav.Link>
-
-              <Nav.Link>
-                {auth.user ? (
-                  <Button className="btn-useradmin">
-                    {auth.user}
-                    <FontAwesomeIcon
-                      icon={faRightFromBracket}
-                      className="mx-2"
-                    />
-                  </Button>
-                ) : (
-                  <Link
-                    className="link-nav"
-                    style={{ textDecoration: "none" }}
-                    onClick={() => handleShowLogin()}
-                  >
-                    Iniciar sesión
-                    <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
-                  </Link>
-                )}
-              </Nav.Link>
               {auth.user == "admin" && (
                 <Nav.Link>
                   {" "}
@@ -154,6 +133,24 @@ const Navbar = ({
                   </Link>
                 </Nav.Link>
               )}
+              <Nav.Link>
+                {auth.user ? (
+                  <Button className="btn-useradmin ">
+                    {auth.user}
+                    <FontAwesomeIcon icon={faUser} className="mx-2" />
+                  </Button>
+                ) : (
+                  <Link
+                    className="link-nav"
+                    style={{ textDecoration: "none" }}
+                    onClick={() => handleShowLogin()}
+                  >
+                    Iniciar sesión
+                    <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
+                  </Link>
+                )}
+              </Nav.Link>
+
               {auth.user && (
                 <Nav.Link>
                   <Link
