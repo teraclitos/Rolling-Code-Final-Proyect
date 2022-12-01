@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AsideAdvertisement from "./AsideAdvertisement";
 // import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import {
   Button,
@@ -257,6 +258,9 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
             >
               Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
             </Button>
+            <aside className="carousel-advertisement-container">
+              <AsideAdvertisement />
+            </aside>
           </div>
         </Row>
       </Container>
