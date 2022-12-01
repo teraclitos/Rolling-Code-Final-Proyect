@@ -138,18 +138,6 @@ const Navbar = ({
                   </Link>
                 )}
               </Nav.Link>
-              {auth.user && (
-                <Nav.Link>
-                  <Link
-                    className="link-nav"
-                    style={{ textDecoration: "none" }}
-                    onClick={() => logout()}
-                  >
-                    Cerrar sesión
-                    <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
-                  </Link>
-                </Nav.Link>
-              )}
               {auth.user == "admin" && (
                 <Nav.Link>
                   {" "}
@@ -166,6 +154,19 @@ const Navbar = ({
                   </Link>
                 </Nav.Link>
               )}
+              {auth.user && (
+                <Nav.Link>
+                  <Link
+                    className="link-nav"
+                    style={{ textDecoration: "none" }}
+                    onClick={() => logout()}
+                  >
+                    Cerrar sesión
+                    <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
+                  </Link>
+                </Nav.Link>
+              )}
+
               {!auth.user && (
                 <Nav.Link onClick={handleShowRegister}>
                   <Link className="link-nav" style={{ textDecoration: "none" }}>
