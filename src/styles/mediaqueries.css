@@ -4,18 +4,12 @@
   }
   .grid-articles {
     grid-template-columns: 1fr 1fr;
-    gap: 3em;
   }
   .categories-container {
     grid-template-columns: 1fr;
   }
 }
-/* @media (max-width: 767.98px) {
-  .grid-articles {
-    grid-template-columns: 1fr 1fr;
-    gap: 3em;
-  }
-} */
+
 @media (max-width: 575.98px) {
   .grid-articles {
     grid-template-columns: 1fr;
