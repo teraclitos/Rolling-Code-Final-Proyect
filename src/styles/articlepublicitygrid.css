@@ -8,7 +8,11 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1em;
 }
-
+.card-title-found {
+  color: #fd841f;
+  font-size: 2em;
+  letter-spacing: 1px;
+}
 .category-title {
   color: #fd841f;
   background-color: #0d4c92;

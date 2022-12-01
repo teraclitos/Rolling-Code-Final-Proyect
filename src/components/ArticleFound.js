@@ -7,7 +7,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import ArticleCard from "./ArticleCard";
 
 const ArticleFound = ({ data, add, cart, auth }) => {
-  const [stock, setStock] = useState([]);
+  const [stock, setStock] = useState(data);
   const [search, setSearch] = useState("");
 
   let handleChange = (e) => {
@@ -26,38 +26,40 @@ const ArticleFound = ({ data, add, cart, auth }) => {
     });
     setStock(resultadoBusqueda);
     if (terminoBusqueda == "") {
-      setStock([]);
+      setStock(data);
     }
   };
 
   return (
     <div>
       <body className="body-found">
-        <Form className="m-3">
-          <InputGroup className="mb-3">
-            <InputGroup.Text className="color-span">
-              <FontAwesomeIcon
-                style={{ fontSize: "2em", color: "#1986a0" }}
-                icon={faMagnifyingGlass}
-              />
-            </InputGroup.Text>
-            <Form.Control
-              value={search}
-              placeholder="Buscar por nombre o categoría"
-              className="me-2"
-              aria-label="Search"
-              onChange={handleChange}
-            />
-          </InputGroup>
-        </Form>
         <Container>
-          {search && <h3 className="card-title">Resultados de Búsqueda</h3>}
+          <Form className="my-5">
+            <InputGroup className="mb-3">
+              <InputGroup.Text className="color-span">
+                <FontAwesomeIcon
+                  style={{ fontSize: "2em", color: "#1986a0" }}
+                  icon={faMagnifyingGlass}
+                />
+              </InputGroup.Text>
+              <Form.Control
+                value={search}
+                placeholder="Buscar por nombre o categoría"
+                className="me-2"
+                aria-label="Search"
+                onChange={handleChange}
+              />
+            </InputGroup>
+          </Form>
+        </Container>
+        <Container>
+          {search && (
+            <h3 className="card-title card-title-found mb-5">
+              Resultados de Búsqueda
+            </h3>
+          )}
           <Container>
-
             <Row lg={4}>
-
-           
-
               {stock.map((d, i) => (
                 <div className="mb-3  ">
                   <ArticleCard cart={cart} d={d} add={add} auth={auth} />
