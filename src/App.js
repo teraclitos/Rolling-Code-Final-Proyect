@@ -148,7 +148,20 @@ function App() {
           />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/usertable" element={<AdminTable />} />
-          <Route path="/category" element={<CategoryDetail data={data} />} />
+          <Route
+            path="/category"
+            element={
+              <CategoryDetail
+                data={data}
+                add={add}
+                cart={cart}
+                auth={auth}
+                validate={validate}
+                login={login}
+                logout={logout}
+              />
+            }
+          />
           <Route
             path="/ArticleDetailContainer/:id"
             element={
