@@ -35,9 +35,10 @@
   position: relative;
   z-index: -1;
 }
-.carousel-advertisement {
+.carousel-advertisement-scroll-top {
   top: 100px;
 }
+
 .categories-container {
   display: grid;
   grid-template-columns: 5fr 1fr;
@@ -49,4 +50,28 @@
   background: linear-gradient(to right, #001253, #1986a0);
   width: 90%;
   justify-self: center;
+}
+.title-category {
+  color: #fd841f;
+  font-family: "Anton";
+  font-size: 3em;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 2em 0;
+  animation: title 3s;
+}
+
+.title-category:hover {
+  color: #974d10;
+}
+
+@keyframes title {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
