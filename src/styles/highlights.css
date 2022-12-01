@@ -1,3 +1,26 @@
 .card-highlights {
-  border-bottom: 4mm ridge rgba(211, 220, 50, 0.6);
+  border-bottom: 4mm ridge #fd841f;
+  margin-bottom: 5px;
+}
+.social-media {
+  display: flex;
+  justify-content: center;
+  color: #1986a0;
+}
+
+.icon-tw:hover {
+  transition: 1s;
+  color: #1da1f2;
+  cursor: pointer;
+}
+
+.icon-fb:hover {
+  transition: 1s;
+  color: #021b4d;
+  cursor: pointer;
+}
+.icon-ig:hover {
+  transition: 1s;
+  color: #e00547;
+  cursor: pointer;
 }

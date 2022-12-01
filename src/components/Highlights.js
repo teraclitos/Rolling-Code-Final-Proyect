@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/allcss.css";
-// import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+
 import {
   Button,
   Card,
@@ -12,14 +12,12 @@ import {
   Col,
   Pagination,
 } from "react-bootstrap";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import {
-  faCommentAlt,
-  faHashtag,
-  faHeart,
-  faHeartCircleBolt,
-  faSeedling,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+  faFacebook,
+  faTwitter,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 import Categorias from "./Categorias";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
@@ -153,20 +151,23 @@ const Highlights = ({ data, add, cart, toastError, toastSuccess }) => {
                     <div className="social-media">
                       <div className="red-social">
                         <FontAwesomeIcon
-                          style={{ fontSize: "2em", color: "#1986a0" }}
-                          icon={faHeartCircleBolt}
+                          className="icon-fb"
+                          style={{ fontSize: "3em" }}
+                          icon={faFacebook}
                         />
                       </div>
                       <div className="red-social">
                         <FontAwesomeIcon
-                          icon={faCommentAlt}
-                          style={{ fontSize: "2em", color: "#1986a0" }}
+                          className="icon-tw"
+                          icon={faTwitter}
+                          style={{ fontSize: "3em" }}
                         />
                       </div>
                       <div className="red-social">
                         <FontAwesomeIcon
-                          style={{ fontSize: "2em", color: "#1986a0" }}
-                          icon={faSeedling}
+                          className="icon-ig"
+                          style={{ fontSize: "3em" }}
+                          icon={faInstagram}
                         />
                       </div>
                     </div>
@@ -187,23 +188,7 @@ const Highlights = ({ data, add, cart, toastError, toastSuccess }) => {
                 </Card.Body>
               </Card>
 
-              <Button
-                className="mt-5 mb-5"
-                variant="primary"
-                // onClick={() => add(data)}
-              >
-                Agregar a destacados
-                <FontAwesomeIcon
-                  id={`favourite${i}`}
-                  className={arrayFavourites[i].condition}
-                  icon={faStar}
-                  onClick={() => {
-                    starting(i);
-                    console.log(arrayFavourites);
-                  }}
-                />
-              </Button>
-              <div className="col-12 line-style" />
+              <div className="col-12 card-highlights" />
             </div>
           ))}
         </Row>
