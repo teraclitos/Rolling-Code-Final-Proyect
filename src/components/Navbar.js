@@ -125,7 +125,7 @@ const Navbar = ({
                     className="link-nav"
                     style={{ textDecoration: "none" }}
                   >
-                    Users
+                    Administrar Usuarios
                     <FontAwesomeIcon
                       icon={faScrewdriverWrench}
                       className="mx-2"
