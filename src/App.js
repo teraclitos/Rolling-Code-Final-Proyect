@@ -9,7 +9,7 @@ import Contact from "./components/Contact";
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import { BrowserRouter } from "react-router-dom";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ArticleDetailContainer from "./components/ArticleDetailContainer";
 import Highlights from "../src/components/Highlights";
 import ArticleFound from "../src/components/ArticleFound";
@@ -91,7 +91,7 @@ function App() {
     });
     console.log("funcion login auth" + auth);
   };
-  const navigate = useNavigate();
+
   const logout = () => {
     setAuth({ user: "", role: "" });
     toast("Sesión cerrada correctamente", {
@@ -104,7 +104,7 @@ function App() {
       progress: undefined,
       theme: "light",
     });
-    navigate("/");
+
     console.log("logout");
   };
   const prevenDuplicateToast = "custom-id-yes";

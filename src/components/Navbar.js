@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import BSNavbar from "react-bootstrap/Navbar";
@@ -154,6 +154,7 @@ const Navbar = ({
               {auth.user && (
                 <Nav.Link>
                   <Link
+                    to="/"
                     className="link-nav"
                     style={{ textDecoration: "none" }}
                     onClick={() => logout()}
