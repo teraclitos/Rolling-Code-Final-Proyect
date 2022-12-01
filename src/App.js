@@ -161,6 +161,8 @@ function App() {
           />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/usertable" element={<AdminTable />} />
+
+
           <Route
             path="/category"
             element={
@@ -175,7 +177,22 @@ function App() {
               />
             }
           />
+
           <Route
+            path="/ArticleDetailContainer/:id"
+            element={
+              <ArticleDetailContainer
+                add={add}
+                cart={cart}
+                auth={auth}
+                validate={validate}
+                login={login}
+                logout={logout}
+              />
+            }
+          />
+
+          {/* <Route
             path="/ArticleDetailContainer/:id"
             element={
               auth.user ? (
@@ -199,7 +216,7 @@ function App() {
                 />
               )
             }
-          />
+          /> */}
           <Route path="/recuperarContraseña" element={<RecoverPass />} />
           <Route path="/error404" element={<Error404 />} />
         </Routes>
