@@ -74,13 +74,15 @@ const Navbar = ({
             className="justify-content-end"
           >
             <Nav>
-              <Nav.Link onClick={handleShow}>
-                <Link className="link-nav" style={{ textDecoration: "none" }}>
-                  Favoritos
-                  <FontAwesomeIcon icon={faHeart} className="mx-2" />
-                  <Badge bg="none">{cart.length}</Badge>
-                </Link>
-              </Nav.Link>
+              {auth.user == "user" && (
+                <Nav.Link onClick={handleShow}>
+                  <Link className="link-nav" style={{ textDecoration: "none" }}>
+                    Favoritos
+                    <FontAwesomeIcon icon={faHeart} className="mx-2" />
+                    <Badge bg="none">{cart.length}</Badge>
+                  </Link>
+                </Nav.Link>
+              )}
 
               <Nav.Link>
                 <Link
@@ -93,16 +95,18 @@ const Navbar = ({
                 </Link>
               </Nav.Link>
 
-              <Nav.Link>
-                <Link
-                  to="/contacto"
-                  className="link-nav"
-                  style={{ textDecoration: "none" }}
-                >
-                  Contacto
-                  <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
-                </Link>
-              </Nav.Link>
+              {auth.user !== "admin" && (
+                <Nav.Link>
+                  <Link
+                    to="/contacto"
+                    className="link-nav"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Contacto
+                    <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
+                  </Link>
+                </Nav.Link>
+              )}
 
               <Nav.Link>
                 <Link
@@ -116,7 +120,7 @@ const Navbar = ({
 
               <Nav.Link>
                 {auth.user ? (
-                  <Button className="btn-useradmin" onClick={() => logout()}>
+                  <Button className="btn-useradmin">
                     {auth.user}
                     <FontAwesomeIcon
                       icon={faRightFromBracket}
@@ -124,24 +128,28 @@ const Navbar = ({
                     />
                   </Button>
                 ) : (
-                  <Button
-                    className="btn-sesion"
+                  <Link
+                    className="link-nav"
+                    style={{ textDecoration: "none" }}
                     onClick={() => handleShowLogin()}
                   >
-                    <Link
-                      className="link-nav"
-                      style={{ textDecoration: "none" }}
-                    >
-                      Iniciar sesión
-                      <FontAwesomeIcon
-                        icon={faRightToBracket}
-                        className="mx-2"
-                      />
-                    </Link>
-                  </Button>
+                    Iniciar sesión
+                    <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
+                  </Link>
                 )}
               </Nav.Link>
-
+              {auth.user && (
+                <Nav.Link>
+                  <Link
+                    className="link-nav"
+                    style={{ textDecoration: "none" }}
+                    onClick={() => logout()}
+                  >
+                    Cerrar sesión
+                    <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
+                  </Link>
+                </Nav.Link>
+              )}
               {auth.user == "admin" && (
                 <Nav.Link>
                   {" "}
@@ -158,12 +166,14 @@ const Navbar = ({
                   </Link>
                 </Nav.Link>
               )}
-              <Nav.Link onClick={handleShowRegister}>
-                <Link className="link-nav" style={{ textDecoration: "none" }}>
-                  Regístrate
-                  <FontAwesomeIcon icon={faUser} className="mx-2" />
-                </Link>
-              </Nav.Link>
+              {!auth.user && (
+                <Nav.Link onClick={handleShowRegister}>
+                  <Link className="link-nav" style={{ textDecoration: "none" }}>
+                    Regístrate
+                    <FontAwesomeIcon icon={faUser} className="mx-2" />
+                  </Link>
+                </Nav.Link>
+              )}
             </Nav>
           </BSNavbar.Collapse>
         </Container>
