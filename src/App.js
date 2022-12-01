@@ -131,7 +131,20 @@ function App() {
               />
             }
           />
-          <Route path="/articlefound" element={<ArticleFound data={data} />} />
+          <Route
+            path="/articlefound"
+            element={
+              <ArticleFound
+                data={data}
+                add={add}
+                cart={cart}
+                auth={auth}
+                validate={validate}
+                login={login}
+                logout={logout}
+              />
+            }
+          />
           <Route
             path="/"
             element={
