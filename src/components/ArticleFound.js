@@ -12,15 +12,13 @@ import {
   faGlasses,
 } from "@fortawesome/free-solid-svg-icons";
 
-const ArticleFound = ({ data, add, cart, auth }) => {
+const ArticleFound = ({ data }) => {
   const [stock, setStock] = useState([]);
   const [search, setSearch] = useState("");
 
   let handleChange = (e) => {
     setSearch(e.target.value);
-    console.log(setSearch);
     filterArticle(e.target.value);
-    console.log(data);
   };
 
   const filterArticle = (terminoBusqueda) => {
