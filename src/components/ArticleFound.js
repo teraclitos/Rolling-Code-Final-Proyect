@@ -51,13 +51,11 @@ const ArticleFound = ({ data, add, cart, auth }) => {
           </InputGroup>
         </Form>
         <Container>
-          {search && <h3 className="card-title">Resultados de Búsqueda</h3>}
+          {search && (
+            <h3 className="card-title my-3">Resultados de Búsqueda</h3>
+          )}
           <Container>
-
             <Row lg={4}>
-
-           
-
               {stock.map((d, i) => (
                 <div className="mb-3  ">
                   <ArticleCard cart={cart} d={d} add={add} auth={auth} />
