@@ -83,6 +83,7 @@ function App() {
 
   const logout = () => {
     setAuth({ user: "", role: "" });
+    toast("Sesión cerrada correctamente", { autoClose: 750 });
     console.log("logout");
   };
   const prevenDuplicateToast = "custom-id-yes";
@@ -161,7 +162,6 @@ function App() {
           />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/usertable" element={<AdminTable />} />
-
 
           <Route
             path="/category"
