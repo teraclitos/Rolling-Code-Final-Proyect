@@ -9,7 +9,12 @@ const Categorias = (data) => {
   return (
     <div className="container categories-container mt-5 d-none d-lg-grid   ">
       <ul className="d-flex justify-content-center categories-list-container px-0   ">
-        <li className="item-list-categories link-category ">
+        <li
+          onClick={() => {
+            localStorage.setItem("category", JSON.stringify({ id: 1 }));
+          }}
+          className="item-list-categories link-category "
+        >
           <Link
             to="/category"
             style={{ textDecoration: "none" }}
@@ -18,9 +23,48 @@ const Categorias = (data) => {
             Mundial
           </Link>
         </li>
-        <li className="item-list-categories link-category ">Liga argentina</li>
-        <li className="item-list-categories link-category">Tenis</li>
-        <li className="item-list-categories link-category">Basquet</li>
+        <li
+          onClick={() => {
+            localStorage.setItem("category", JSON.stringify({ id: 2 }));
+          }}
+          className="item-list-categories link-category "
+        >
+          <Link
+            to="/category"
+            style={{ textDecoration: "none" }}
+            className="text-white"
+          >
+            Liga Argentina
+          </Link>
+        </li>
+        <li
+          onClick={() => {
+            localStorage.setItem("category", JSON.stringify({ id: 3 }));
+          }}
+          className="item-list-categories link-category"
+        >
+          <Link
+            to="/category"
+            style={{ textDecoration: "none" }}
+            className="text-white"
+          >
+            Tenis
+          </Link>
+        </li>
+        <li
+          onClick={() => {
+            localStorage.setItem("category", JSON.stringify({ id: 4 }));
+          }}
+          className="item-list-categories link-category"
+        >
+          <Link
+            to="/category"
+            style={{ textDecoration: "none" }}
+            className="text-white"
+          >
+            Basquet
+          </Link>
+        </li>
       </ul>
     </div>
   );
