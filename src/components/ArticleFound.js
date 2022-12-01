@@ -31,7 +31,8 @@ const ArticleFound = ({ data }) => {
   const filterArticle = (terminoBusqueda) => {
     var resultadoBusqueda = data.filter((elemento) => {
       if (
-        elemento.title.toUpperCase().includes(terminoBusqueda.toUpperCase())
+        elemento.title.toUpperCase().includes(terminoBusqueda.toUpperCase()) ||
+        elemento.category.toUpperCase().includes(terminoBusqueda.toUpperCase())
       ) {
         return elemento;
       }
@@ -71,12 +72,14 @@ const ArticleFound = ({ data }) => {
                 <div className="mb-3  ">
                   <Card className=" h-100 card-grid">
                     <Card.Img
-                      src={d.image}
+                      src={d.img_URL}
                       variant="top"
                       className=" img-card"
                     />
                     <Card.Body className="p-0 ps-1 card-body  ">
-                      <h3 className="category-title fs-6 mt-2 mb-0">Fútbol</h3>
+                      <h3 className="category-title fs-6 mt-2 mb-0">
+                        {d.category}
+                      </h3>
                       <Card.Title className="mt-2 mb-0 card-title">
                         {d.title}
                       </Card.Title>

@@ -30,7 +30,7 @@ function App() {
   useEffect(() => {
     console.log(cart);
   }, [cart]);
-  //CART
+
   const add = (p) => {
     setCart([...cart, p]);
     console.log("funcion auth" + auth.user);
