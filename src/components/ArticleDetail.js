@@ -12,13 +12,12 @@ import {
   Col,
   Pagination,
 } from "react-bootstrap";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import {
-  faCommentAlt,
-  faHashtag,
-  faHeart,
-  faHeartCircleBolt,
-  faSeedling,
-} from "@fortawesome/free-solid-svg-icons";
+  faFacebook,
+  faTwitter,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 import Categorias from "./Categorias";
 import "../styles/allcss.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
@@ -77,7 +76,7 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
 
               <Card.Body>
                 <div className="detail-author">
-                  <Card.Img variant="top" src="./logoRollingneta" width={70} />
+                  <Card.Img variant="top" src={data.img_URL} width={70} />
                   <Card.Title className="mt-4">{data.author}</Card.Title>
                 </div>
 
@@ -87,20 +86,23 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                   <div className="social-media">
                     <div className="red-social">
                       <FontAwesomeIcon
-                        style={{ fontSize: "2em", color: "#1986a0" }}
-                        icon={faHeartCircleBolt}
+                        className="icon-fb"
+                        style={{ fontSize: "2em" }}
+                        icon={faFacebook}
                       />
                     </div>
                     <div className="red-social">
                       <FontAwesomeIcon
-                        icon={faCommentAlt}
-                        style={{ fontSize: "2em", color: "#1986a0" }}
+                        className="icon-ig"
+                        icon={faInstagram}
+                        style={{ fontSize: "2em" }}
                       />
                     </div>
                     <div className="red-social">
                       <FontAwesomeIcon
-                        style={{ fontSize: "2em", color: "#1986a0" }}
-                        icon={faSeedling}
+                        className="icon-tw"
+                        style={{ fontSize: "2em" }}
+                        icon={faTwitter}
                       />
                     </div>
                   </div>
