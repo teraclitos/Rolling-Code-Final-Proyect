@@ -4,6 +4,7 @@
   }
   .grid-articles {
     grid-template-columns: 1fr 1fr;
+    gap: 2em;
   }
   .categories-container {
     grid-template-columns: 1fr;

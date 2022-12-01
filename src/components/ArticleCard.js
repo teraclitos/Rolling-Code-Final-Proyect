@@ -22,7 +22,7 @@ const ArticleCard = ({ cart, d, add, auth }) => {
           <p className="text-card text-start">{d.description}</p>
         </Card.Text>
       </Card.Body>
-      <Card.Footer className="d-flex justify-content-between p-0 border-0 mt-2 bg-white card-footer ">
+      <Card.Footer className="d-flex justify-content-between p-0 border-0 bg-white card-footer ">
         <Link
           className="btn-reed mb-2"
           to={
