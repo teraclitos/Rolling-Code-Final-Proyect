@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
 import BSNavbar from "react-bootstrap/Navbar";
@@ -21,6 +21,7 @@ import {
   faRightToBracket,
   faRightFromBracket,
   faMagnifyingGlass,
+  faScrewdriverWrench,
 } from "@fortawesome/free-solid-svg-icons";
 import "../styles/allcss.css";
 
@@ -48,7 +49,6 @@ const Navbar = ({
   return (
     <>
       <BSNavbar
-       
         className="bg-nav "
         collapseOnSelect
         expand="lg"
@@ -59,7 +59,7 @@ const Navbar = ({
           <Link to="/" style={{ textDecoration: "none" }}>
             <BSNavbar.Brand>
               <img
-               id="nav-bar-logo"
+                id="nav-bar-logo"
                 alt=""
                 src="\logoRollingneta.png"
                 width="75"
@@ -74,13 +74,15 @@ const Navbar = ({
             className="justify-content-end"
           >
             <Nav>
-              <Nav.Link onClick={handleShow}>
-                <Link className="link-nav" style={{ textDecoration: "none" }}>
-                  Favoritos
-                  <FontAwesomeIcon icon={faHeart} className="mx-2" />
-                  <Badge bg="none">{cart.length}</Badge>
-                </Link>
-              </Nav.Link>
+              {auth.user == "user" && (
+                <Nav.Link onClick={handleShow}>
+                  <Link className="link-nav" style={{ textDecoration: "none" }}>
+                    Favoritos
+                    <FontAwesomeIcon icon={faHeart} className="mx-2" />
+                    <Badge bg="none">{cart.length}</Badge>
+                  </Link>
+                </Nav.Link>
+              )}
 
               <Nav.Link>
                 <Link
@@ -93,16 +95,18 @@ const Navbar = ({
                 </Link>
               </Nav.Link>
 
-              <Nav.Link>
-                <Link
-                  to="/contacto"
-                  className="link-nav"
-                  style={{ textDecoration: "none" }}
-                >
-                  Contacto
-                  <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
-                </Link>
-              </Nav.Link>
+              {auth.user !== "admin" && (
+                <Nav.Link>
+                  <Link
+                    to="/contacto"
+                    className="link-nav"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Contacto
+                    <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
+                  </Link>
+                </Nav.Link>
+              )}
 
               <Nav.Link>
                 <Link
@@ -116,7 +120,7 @@ const Navbar = ({
 
               <Nav.Link>
                 {auth.user ? (
-                  <Button className="btn-useradmin" onClick={() => logout()}>
+                  <Button className="btn-useradmin">
                     {auth.user}
                     <FontAwesomeIcon
                       icon={faRightFromBracket}
@@ -124,30 +128,52 @@ const Navbar = ({
                     />
                   </Button>
                 ) : (
-                  <Button
-                    className="btn-sesion"
+                  <Link
+                    className="link-nav"
+                    style={{ textDecoration: "none" }}
                     onClick={() => handleShowLogin()}
                   >
-                    <Link
-                      className="link-nav"
-                      style={{ textDecoration: "none" }}
-                    >
-                      Iniciar sesión
-                      <FontAwesomeIcon
-                        icon={faRightToBracket}
-                        className="mx-2"
-                      />
-                    </Link>
-                  </Button>
+                    Iniciar sesión
+                    <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
+                  </Link>
                 )}
               </Nav.Link>
-
-              <Nav.Link onClick={handleShowRegister}>
-                <Link className="link-nav" style={{ textDecoration: "none" }}>
-                  Regístrate
-                  <FontAwesomeIcon icon={faUser} className="mx-2" />
-                </Link>
-              </Nav.Link>
+              {auth.user && (
+                <Nav.Link>
+                  <Link
+                    className="link-nav"
+                    style={{ textDecoration: "none" }}
+                    onClick={() => logout()}
+                  >
+                    Cerrar sesión
+                    <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
+                  </Link>
+                </Nav.Link>
+              )}
+              {auth.user == "admin" && (
+                <Nav.Link>
+                  {" "}
+                  <Link
+                    to="/usertable"
+                    className="link-nav"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Users
+                    <FontAwesomeIcon
+                      icon={faScrewdriverWrench}
+                      className="mx-2"
+                    />
+                  </Link>
+                </Nav.Link>
+              )}
+              {!auth.user && (
+                <Nav.Link onClick={handleShowRegister}>
+                  <Link className="link-nav" style={{ textDecoration: "none" }}>
+                    Regístrate
+                    <FontAwesomeIcon icon={faUser} className="mx-2" />
+                  </Link>
+                </Nav.Link>
+              )}
             </Nav>
           </BSNavbar.Collapse>
         </Container>
