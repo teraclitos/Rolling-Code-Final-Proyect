@@ -46,7 +46,7 @@ const Contact = () => {
                         errores.name = (
                           <p className="text-contact">Escribe tu nombre</p>
                         );
-                      } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.name)) {
+                      } else if (!/^[a-zA-ZÀ-ÿ\s]{3,30}$/.test(valores.name)) {
                         errores.name = (
                           <p className="text-contact">
                             El nombre solo puede contener letras y espacios
