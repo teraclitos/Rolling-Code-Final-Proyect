@@ -188,7 +188,7 @@ const Highlights = ({ data, add, cart, toastError, toastSuccess }) => {
                 </Card.Body>
               </Card>
 
-              <div className="col-12  card-highlights" />
+              <div className="col-12 card-highlights" />
             </div>
           ))}
         </Row>
