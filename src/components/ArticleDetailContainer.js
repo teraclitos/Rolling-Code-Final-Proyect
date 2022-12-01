@@ -13,7 +13,7 @@ const ArticleDetailContainer = ({ add, cart, auth }) => {
   // }, []);
 
   useEffect(() => {
-    fetch(`https://backend-news-eight.vercel.app/newslist/${params.id}`)
+    fetch(`https://backend-news-eight.vercel.app/news/${params.id}`)
       .then((res) => res.json())
       .then((json) => setData(json));
   }, []);
