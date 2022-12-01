@@ -53,7 +53,7 @@ const ArticleFound = ({ data }) => {
         <Container>
           {search && <h3 className="card-title">Resultados de Búsqueda</h3>}
           <Container>
-            <Row lg={4}>
+            <Row lg={3}>
               {" "}
               {stock.map((d, i) => (
                 <div className="mb-3  ">
