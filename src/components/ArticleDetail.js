@@ -22,7 +22,7 @@ import Categorias from "./Categorias";
 import "../styles/allcss.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
-const ArticleDetail = ({ data, add, cart, del, auth }) => {
+const ArticleDetail = ({ data, add, cart, auth }) => {
   const [show, setShow] = useState(false);
   const [editSection, setEditSection] = useState("");
   const [editAuthor, setEditAuthor] = useState("");
@@ -70,12 +70,14 @@ const ArticleDetail = ({ data, add, cart, del, auth }) => {
         <Row xs={1} md={2}>
           <div className="col-12 col-md-9">
             <Card border="0" className="mt-5">
-              <Card.Header className="title-section">MUNDIAL</Card.Header>
+              <Card.Header className="title-section">
+                {data.category}
+              </Card.Header>
               {/* data.section */}
               <Card.Body>
                 <div className="detail-author">
                   <Card.Img variant="top" src="./logoRollingneta" width={70} />
-                  <Card.Title className="mt-4">Marina Bianconi</Card.Title>
+                  <Card.Title className="mt-4">{data.title}</Card.Title>
                 </div>
                 {/* data.author */}
                 <div className="col-12 linea-style" />
@@ -113,7 +115,8 @@ const ArticleDetail = ({ data, add, cart, del, auth }) => {
                 <Card.Title>{data.description}</Card.Title>
                 {/* data.subtitulo */}
                 <Card.Text>
-                  Vincic, quien a los 42 años debutará en una Copa del Mundo, es
+                  {data.content}
+                  {/* Vincic, quien a los 42 años debutará en una Copa del Mundo, es
                   árbitro FIFA desde 2010 y dirigió en el Sub 17 de 2017 y en el
                   Sub 20 de 2019. Viene de ser el juez principal de la final de
                   la última Europa League, ganada por el Eintracht Frankfurt de
@@ -121,7 +124,7 @@ const ArticleDetail = ({ data, add, cart, del, auth }) => {
                   despertó la curiosidad de los seguidores del fútbol en
                   distintas partes del mundo y es que el encargado de impartir
                   justicia estuvo detenido tras encontrarse en el lugar
-                  incorrecto en el momento incorrecto.
+                  incorrecto en el momento incorrecto. */}
                 </Card.Text>
                 {/* data.description */}
               </Card.Body>
@@ -144,9 +147,11 @@ const ArticleDetail = ({ data, add, cart, del, auth }) => {
                     className="mb-3"
                     controlId="exampleForm.ControlInput1"
                   >
-                    {/* data.section */}
+                    {/* data.category */}
 
-                    <Form.Label className="style-crud">Seccion</Form.Label>
+                    <Form.Label className="style-crud">
+                      {data.category}
+                    </Form.Label>
                     <Form.Control
                       type="text"
                       value={editSection}
@@ -160,7 +165,9 @@ const ArticleDetail = ({ data, add, cart, del, auth }) => {
                       className="mb-3"
                       controlId="exampleForm.ControlInput1"
                     >
-                      <Form.Label className="style-crud">Autor</Form.Label>
+                      <Form.Label className="style-crud">
+                        {data.author}
+                      </Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Nombre del autor"
