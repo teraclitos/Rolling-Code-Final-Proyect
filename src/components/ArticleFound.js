@@ -61,8 +61,9 @@ const ArticleFound = ({ data, add, cart, auth }) => {
         </Form>
         <Container>
           {search && <h3 className="card-title">Resultados de Búsqueda</h3>}
-          <div className="container grid-articles-publicity mt-5 px-5 px-sm-2 px-md-0 ">
-            <div className="grid-articles">
+          <Container>
+            <Row lg={4}>
+              {" "}
               {stock.map((d, i) => (
                 <div className="mb-3  ">
                   <Card className=" h-100 card-grid">
@@ -92,8 +93,8 @@ const ArticleFound = ({ data, add, cart, auth }) => {
                   </Card>
                 </div>
               ))}
-            </div>
-          </div>
+            </Row>
+          </Container>
         </Container>
       </body>
       ;
