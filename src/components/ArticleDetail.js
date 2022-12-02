@@ -41,29 +41,32 @@ const ArticleDetail = ({
   const [editDescription, setEditDescription] = useState(data.content);
   const [editHighlight, setEditHighlight] = useState(data.highlight);
   const [submitOk, setSubmitOk] = useState(null);
-
+  // https://backend-news-eight.vercel.app/news
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleSubmit = (e) => {
     console.log("enviado");
     e.preventDefaul();
     setSubmitOk(null);
-    fetch("https://backend-news-eight.vercel.app/news" + data._id, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        category: editSection,
-        author: editAuthor,
-        img_URL: editImage,
-        title: editTitle,
-        description: editSubtitulo,
-        content: editDescription,
-        highlight: editHighlight,
-        date: data.date,
-      }),
-    })
+    fetch(
+      "https://backend-news-mcgmvn8ip-andreahongn.vercel.app/news" + data._id,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          category: editSection,
+          author: editAuthor,
+          img_URL: editImage,
+          title: editTitle,
+          description: editSubtitulo,
+          content: editDescription,
+          highlight: editHighlight,
+          date: data.date,
+        }),
+      }
+    )
       .then((res) => res.json())
       .then((json) => setSubmitOk(true))
       .catch((error) => setSubmitOk(false));
