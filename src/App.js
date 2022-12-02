@@ -183,7 +183,10 @@ function App() {
               />
             }
           />
-          <Route path="/contacto" element={<Contact />} />
+          <Route
+            path="/contacto"
+            element={<Contact toastSuccess={toastSuccess} />}
+          />
           <Route path="/usertable" element={<AdminTable />} />
 
           <Route

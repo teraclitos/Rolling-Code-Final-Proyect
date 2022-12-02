@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { toast, ToastContainer } from "react-toastify";
 
-const Contact = () => {
+const Contact = ({ toastSuccess }) => {
   const [formEnviado, cambiarformEnviado] = useState(false);
   return (
     <div>
@@ -194,16 +194,7 @@ const Contact = () => {
                         )} */}
                         <button className="btn-contact d-flex">Enviar</button>
                         {formEnviado &&
-                          toast("Formulario enviado con exito", {
-                            position: "top-center",
-                            autoClose: 5000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: "light",
-                          })}
+                          toastSuccess("Formulario enviado con exito")}
                       </Form>
                     )}
                   </Formik>
