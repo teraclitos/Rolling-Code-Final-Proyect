@@ -11,7 +11,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 
-const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
+const ModalLogin = ({
+  showLogin,
+  setShowLogin,
+  auth,
+  validate,
+  login,
+  showRegister,
+  setShowRegister,
+  handleShowRegister,
+}) => {
   const handleCloseLogin = () => setShowLogin(false);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
@@ -97,6 +106,20 @@ const ModalLogin = ({ showLogin, setShowLogin, auth, validate, login }) => {
                     to="/recuperarContraseña"
                   >
                     aquí
+                  </Link>
+                </span>
+              </div>
+              <div className="d-flex justify-content-center w-100">
+                <span className="mt-2">
+                  Aún no estás registrado, pues qué esperas
+                  <Link
+                    className="ms-2"
+                    onClick={() => {
+                      handleCloseLogin();
+                      handleShowRegister();
+                    }}
+                  >
+                    registráte
                   </Link>
                 </span>
               </div>

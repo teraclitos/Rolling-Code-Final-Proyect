@@ -194,6 +194,9 @@ const Navbar = ({
         logout={logout}
         toastError={toastError}
         toastSuccess={toastSuccess}
+        showRegister={showRegister}
+        setShowRegister={setShowRegister}
+        handleShowRegister={handleShowRegister}
       />
       <OffcanvasFav
         cart={cart}
