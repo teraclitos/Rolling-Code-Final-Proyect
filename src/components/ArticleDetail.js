@@ -163,12 +163,12 @@ const ArticleDetail = ({
                   <Card.Text className="content">{data.content}</Card.Text>
 
                   {auth.user === "admin" ? (
-                    <Button className=" btn-detail " onClick={handleShow}>
+                    <Button className=" mt-2 btn-detail " onClick={handleShow}>
                       EDITAR
                     </Button>
                   ) : (
                     <Button
-                      className="mt-3 mb-2"
+                      className="mt-2 mb-2"
                       variant="warning"
                       onClick={() => add(data)}
                       disabled={cart.includes(data)}
