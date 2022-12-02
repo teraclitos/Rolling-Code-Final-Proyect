@@ -209,6 +209,7 @@ function App() {
                 validate={validate}
                 login={login}
                 logout={logout}
+                totalData={data}
               />
             }
           />

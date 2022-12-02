@@ -22,7 +22,7 @@ import Categorias from "./Categorias";
 import "../styles/allcss.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
-const ArticleDetail = ({ data, add, cart, auth }) => {
+const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
   const [show, setShow] = useState(false);
   const [editSection, setEditSection] = useState("");
   const [editAuthor, setEditAuthor] = useState("");
@@ -63,9 +63,7 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
     setEditDescription(data.content);
     setEditImage(data.img_URL);
     setEditAuthor(data.author);
-
     setEditSubtitulo(data.description);
-
   }, [data]);
   const addHighlight = () => {
     if (!editHighlight) {
