@@ -61,7 +61,7 @@ const ArticleFound = ({ data, add, cart, auth }) => {
               </InputGroup.Text>
               <Form.Control
                 value={search}
-                placeholder="Buscar por nombre o categoría"
+                placeholder="Buscar por nombre o categoría o descripción"
                 className="me-2"
                 aria-label="Search"
                 onChange={handleChange}

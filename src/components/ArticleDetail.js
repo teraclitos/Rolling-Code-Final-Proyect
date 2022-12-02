@@ -61,7 +61,9 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
     setEditDescription(data.content);
     setEditImage(data.img_URL);
     setEditAuthor(data.author);
+
     setEditSubtitulo(data.description);
+
   }, [data]);
 
   return (
@@ -241,6 +243,8 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                     type="checkbox"
                     label="Destacar"
                     onClick={() => add(data)}
+                    value={true}
+                    checked={data.highlight === true && true}
                   />
                 </Form.Group>
                 <Form.Group className="">
