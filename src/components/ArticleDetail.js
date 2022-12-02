@@ -102,7 +102,7 @@ const ArticleDetail = ({
   return (
     <div>
       {render === true && (
-        <Container fluid>
+        <Container className="mb-5">
           <Row xs={1} md={2}>
             <div id="render-container" className="col-12 col-md-9">
               <Card border="0" className="mt-5">
@@ -161,16 +161,30 @@ const ArticleDetail = ({
                   </Card.Title>
 
                   <Card.Text className="content">{data.content}</Card.Text>
+
+                  {auth.user === "admin" ? (
+                    <Button className=" btn-detail " onClick={handleShow}>
+                      EDITAR
+                    </Button>
+                  ) : (
+                    <Button
+                      className="mt-3 mb-2"
+                      variant="warning"
+                      onClick={() => add(data)}
+                      disabled={cart.includes(data)}
+                    >
+                      Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
+                    </Button>
+                  )}
                 </Card.Body>
+
                 <div className="col-12 card-highlights" />
               </Card>
             </div>
             {/* VISTA ADMIN */}
             <div className="col-12 col-md-3">
               {/* {auth.user === "admin" && ( */}
-              <Button className=" btn-detail" onClick={handleShow}>
-                EDITAR
-              </Button>
+
               {/* )} */}
               <Modal show={show} onHide={handleClose}>
                 <Modal.Header className="card-crud" closeButton>
@@ -303,14 +317,6 @@ const ArticleDetail = ({
                 </Modal.Footer>
               </Modal>
 
-              <Button
-                className="mt-5 mb-5"
-                variant="warning"
-                onClick={() => add(data)}
-                disabled={cart.includes(data)}
-              >
-                Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
-              </Button>
               {/* <aside className="carousel-advertisement-container">
               <AsideAdvertisement />
             </aside> */}
