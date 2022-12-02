@@ -6,13 +6,13 @@ import { faTrash, faUserPen } from "@fortawesome/free-solid-svg-icons";
 
 import React, { useEffect, useState } from "react";
 
-const AdminTable = () => {
-  const [dataUser, setDataUser] = useState([]);
-  useEffect(() => {
-    fetch("https://backend-news-eight.vercel.app/users/verusuarios")
-      .then((res) => res.json())
-      .then((json) => setDataUser(json));
-  }, []);
+const AdminTable = (dataUser) => {
+  // const [dataUser, setDataUser] = useState([]);
+  // useEffect(() => {
+  //   fetch("https://backend-news-eight.vercel.app/users/verusuarios")
+  //     .then((res) => res.json())
+  //     .then((json) => setDataUser(json));
+  // }, []);
 
   return (
     <div>

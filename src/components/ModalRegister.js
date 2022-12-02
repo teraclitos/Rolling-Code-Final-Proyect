@@ -28,6 +28,21 @@ const ModalRegister = ({
     setWrongBorderUser(false);
     setWrongBorderrepeatPassword(false);
     setErrorToastRequiredField(false);
+
+    // fetch("https://backend-news-eight.vercel.app/users/register", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     username: setUser,
+    //     name: setName,
+    //     email: setEmail,
+    //     password: setPassword,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((json) => console.log(json));
   };
 
   const [mails, setMails] = useState("");

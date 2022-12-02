@@ -30,6 +30,7 @@ const Navbar = ({
   del,
   clear,
   data,
+  dataUser,
   validate,
   auth,
   login,
@@ -184,6 +185,7 @@ const Navbar = ({
         setShowRegister={setShowRegister}
         toastError={toastError}
         toastSuccess={toastSuccess}
+        
       />
       <ModalLogin
         showLogin={showLogin}
