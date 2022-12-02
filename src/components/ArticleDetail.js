@@ -290,6 +290,7 @@ const ArticleDetail = ({
                       onClick={(e) => {
                         if (highlightFilter() === true) {
                           handleSubmit(e);
+                          handleClose();
                         } else {
                           toastError("Sólo puede haber tres destacados");
                         }
