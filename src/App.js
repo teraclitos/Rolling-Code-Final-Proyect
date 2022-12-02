@@ -19,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import RecoverPass from "../src/components/RecoverPass";
 import { Slide, Zoom, Flip, Bounce } from "react-toastify";
 import Error404 from "./components/Error404";
+import Loader from "./components/Loader";
 
 function App() {
   const [data, setData] = useState([]);
@@ -136,7 +137,7 @@ function App() {
           login={login}
           logout={logout}
         />
-
+        <Loader />
         <Routes>
           <Route
             path="/highlights"
