@@ -28,6 +28,8 @@ function App() {
       .then((res) => res.json())
       .then((json) => setData(json));
   }, []);
+  const handleShowLogin = () => setShowLogin(true);
+  const [showLogin, setShowLogin] = useState(false);
 
   //carrito de mg
   const [cart, setCart] = useState([]);
@@ -137,6 +139,9 @@ function App() {
           validate={validate}
           login={login}
           logout={logout}
+          handleShowLogin={handleShowLogin}
+          showLogin={showLogin}
+          setShowLogin={setShowLogin}
         />
 
         <Routes>
@@ -179,6 +184,7 @@ function App() {
                 logout={logout}
                 toastError={toastError}
                 totalHighlights={totalHighlights}
+                handleShowLogin={handleShowLogin}
               />
             }
           />
