@@ -59,6 +59,7 @@ const ArticleDetail = ({
         title: editTitle,
         description: editSubtitulo,
         content: editDescription,
+        highlight: editHighlight,
         date: data.date,
       }),
     })
@@ -89,6 +90,17 @@ const ArticleDetail = ({
       setEditHighlight(true);
     } else {
       setEditHighlight(false);
+    }
+  };
+
+  const highlightFilter = () => {
+    const totalHighlights = totalData.filter(
+      (element) => element.highlight === true
+    );
+    if (totalHighlights.length > 2 && editHighlight === true) {
+      return false;
+    } else {
+      return true;
     }
   };
 
@@ -275,7 +287,13 @@ const ArticleDetail = ({
                 <Form.Group className="">
                   <Button
                     className="btn-detail"
-                    onClick={(e) => handleSubmit(e)}
+                    onClick={(e) => {
+                      if (highlightFilter() === true) {
+                        handleSubmit(e);
+                      } else {
+                        toastError("Sólo pude haber tres destacados");
+                      }
+                    }}
                   >
                     Guardar cambios
                   </Button>
