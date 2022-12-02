@@ -46,7 +46,7 @@ const ArticleDetail = ({
   const handleShow = () => setShow(true);
   const handleSubmit = (e) => {
     console.log("enviado");
-    e.preventDefaul();
+
     setSubmitOk(null);
     fetch("https://backend-news-eight.vercel.app/news" + data._id, {
       method: "PUT",
