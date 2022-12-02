@@ -212,6 +212,8 @@ function App() {
                 login={login}
                 logout={logout}
                 totalData={data}
+                toastError={toastError}
+                toastSuccess={toastSuccess}
               />
             }
           />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AsideAdvertisement from "./AsideAdvertisement";
-// import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+
 import {
   Button,
   Card,
@@ -22,49 +22,57 @@ import Categorias from "./Categorias";
 import "../styles/allcss.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
-const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
+const ArticleDetail = ({
+  data,
+  add,
+  cart,
+  auth,
+  totalData,
+  toastSuccess,
+  toastError,
+}) => {
   const [show, setShow] = useState(false);
-  const [editSection, setEditSection] = useState("");
-  const [editAuthor, setEditAuthor] = useState("");
-  const [editImage, setEditImage] = useState("");
-  const [editTitle, setEditTitle] = useState("");
-  const [editSubtitulo, setEditSubtitulo] = useState("");
-  const [editDescription, setEditDescription] = useState("");
+  const [editSection, setEditSection] = useState(data.category);
+  const [editAuthor, setEditAuthor] = useState(data.author);
+  const [editImage, setEditImage] = useState(data.img_URL);
+  const [editTitle, setEditTitle] = useState(data.title);
+  const [editSubtitulo, setEditSubtitulo] = useState(data.description);
+  const [editDescription, setEditDescription] = useState(data.content);
   const [editHighlight, setEditHighlight] = useState(data.highlight);
   const [submitOk, setSubmitOk] = useState(null);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleSubmit = (e) => {
+    e.preventDefaul();
+    setSubmitOk(null);
     fetch("https://backend-news-eight.vercel.app/news", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        editSection,
-        editAuthor,
-        editImage,
-        editTitle,
-        editSubtitulo,
-        editDescription,
-        editHighlight,
+        category: editSection,
+        author: editAuthor,
+        img_URL: editImage,
+        title: editTitle,
+        description: editSubtitulo,
+        content: editDescription,
       }),
     })
       .then((res) => res.json())
-      .then((response) => {
-        console.log("responseFakeStore", response);
-      });
+      .then((json) => setSubmitOk(true))
+      .catch((error) => setSubmitOk(false));
   };
 
   useEffect(() => {
-    setEditTitle(data.title);
-    setEditSection(data.category);
-    setEditDescription(data.content);
-    setEditImage(data.img_URL);
-    setEditAuthor(data.author);
-    setEditSubtitulo(data.description);
-  }, [data]);
+    if (submitOk) {
+      toastSuccess("Modificado!");
+    } else if (submitOk === false) {
+      toastError("Algo ha salido mal ...");
+    }
+  }, [submitOk]);
+
   const addHighlight = () => {
     if (!editHighlight) {
       setEditHighlight(true);
@@ -160,7 +168,7 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                       type="text"
                       value={editSection}
                       defaultValue={editSection}
-                      onInput={(e) => setEditSection(e.target.value)}
+                      onChange={(e) => setEditSection(e.target.value)}
                       autoFocus
                     />
                     <Form.Group />
@@ -175,7 +183,7 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                         placeholder="Nombre del autor"
                         defaultValue={editAuthor}
                         value={editAuthor}
-                        onInput={(e) => setEditAuthor(e.target.value)}
+                        onChange={(e) => setEditAuthor(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
@@ -189,7 +197,7 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                         type="text"
                         defaultValue={editTitle}
                         value={editTitle}
-                        onInput={(e) => setEditTitle(e.target.value)}
+                        onChange={(e) => setEditTitle(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
@@ -199,9 +207,9 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                       <Form.Control
                         type="text"
                         placeholder="Ingrese URL de imagen"
-                        defaultValue={setEditImage}
+                        defaultValue={editImage}
                         value={editImage}
-                        onInput={(e) => setEditImage(e.target.value)}
+                        onChange={(e) => setEditImage(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
@@ -214,7 +222,7 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                       <Form.Control
                         type="text"
                         placeholder="Ingrese subtitulo"
-                        defaultValue={setEditSubtitulo}
+                        defaultValue={editSubtitulo}
                         value={editSubtitulo}
                         onInput={(e) => setEditSubtitulo(e.target.value)}
                         autoFocus
@@ -231,7 +239,7 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                       <Form.Control
                         type="textarea"
                         placeholder=""
-                        defaultValue={setEditDescription}
+                        defaultValue={editDescription}
                         value={editDescription}
                         onInput={(e) => setEditDescription(e.target.value)}
                         autoFocus
