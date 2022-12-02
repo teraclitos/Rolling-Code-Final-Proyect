@@ -19,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import RecoverPass from "../src/components/RecoverPass";
 import { Slide, Zoom, Flip, Bounce } from "react-toastify";
 import Error404 from "./components/Error404";
+import Loader from "./components/Loader";
 
 function App() {
   const [data, setData] = useState([]);
@@ -137,10 +138,6 @@ function App() {
           logout={logout}
         />
 
-        {/* <Advertising /> */}
-        {/* <ArticleDetailContainer data={data} /> */}
-        {/* <Articlepublicitygrid data={data} /> */}
-        {/* <Contact /> */}
         <Routes>
           <Route
             path="/highlights"
@@ -183,7 +180,10 @@ function App() {
               />
             }
           />
-          <Route path="/contacto" element={<Contact />} />
+          <Route
+            path="/contacto"
+            element={<Contact toastSuccess={toastSuccess} />}
+          />
           <Route path="/usertable" element={<AdminTable />} />
 
           <Route
@@ -212,6 +212,8 @@ function App() {
                 login={login}
                 logout={logout}
                 totalData={data}
+                toastError={toastError}
+                toastSuccess={toastSuccess}
               />
             }
           />
