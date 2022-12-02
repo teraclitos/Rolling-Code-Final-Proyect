@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ArticleDetail from "./ArticleDetail";
 import { useParams } from "react-router-dom";
 
-const ArticleDetailContainer = ({ add, cart, auth }) => {
+const ArticleDetailContainer = ({ add, cart, auth, totalData }) => {
   const params = useParams();
   console.log("params" + params);
   const [data, setData] = useState([]);
@@ -20,7 +20,14 @@ const ArticleDetailContainer = ({ add, cart, auth }) => {
 
   return (
     <div>
-      <ArticleDetail data={data} add={add} cart={cart} auth={auth} />;
+      <ArticleDetail
+        totalData={totalData}
+        data={data}
+        add={add}
+        cart={cart}
+        auth={auth}
+      />
+      ;
     </div>
   );
 };
