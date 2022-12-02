@@ -7,7 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 
 import React from "react";
 
-const ArticleCard = ({ cart, d, add, auth, toastError }) => {
+const ArticleCard = ({ cart, d, add, auth, toastError, handleShowLogin }) => {
   return (
     <Card className=" h-100 card-container border-0 px-2">
       <Card.Img src={d.img_URL} variant="top" className=" img-card" />
@@ -31,8 +31,7 @@ const ArticleCard = ({ cart, d, add, auth, toastError }) => {
               : "/"
           }
           onClick={() => {
-            !auth.user &&
-              toastError("Debes iniciar sesión para acceder a contenido");
+            !auth.user && handleShowLogin();
           }}
         >
           {/* <Button className="py-1 px-2 btn-color ">Leer más</Button> */}

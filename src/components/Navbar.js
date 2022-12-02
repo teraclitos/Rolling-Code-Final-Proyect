@@ -36,6 +36,9 @@ const Navbar = ({
   logout,
   toastError,
   toastSuccess,
+  handleShowLogin,
+  showLogin,
+  setShowLogin,
 }) => {
   const [show, setShow] = useState(false);
 
@@ -43,8 +46,6 @@ const Navbar = ({
   const handleShow = () => setShow(true);
   const [showRegister, setShowRegister] = useState(false);
   const handleShowRegister = () => setShowRegister(true);
-  const [showLogin, setShowLogin] = useState(false);
-  const handleShowLogin = () => setShowLogin(true);
 
   return (
     <>
