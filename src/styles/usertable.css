@@ -1,0 +1,55 @@
+.div-administrador > div {
+  margin-top: 5.4rem;
+  width: 550px;
+  background-color: rgba(187, 183, 250, 0.726);
+  border-radius: 4px;
+}
+
+.titulo-admin {
+  color: blue;
+}
+
+.titulo-admin {
+  z-index: 1;
+  width: 96%;
+
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background-color: rgb(253, 191, 98);
+  color: white;
+}
+
+.table-responsive {
+  max-height: 390px;
+  overflow: auto;
+}
+
+@media (max-width: 580px) {
+  .div-administrador > div {
+    width: 95%;
+  }
+}
+
+@media (max-width: 263px) {
+  .div-administrador > div {
+    align-items: center;
+  }
+}
+
+@media (max-width: 230px) {
+  .div-administrador > div {
+    width: 80%;
+  }
+
+  .table-color td,
+  .table-color th {
+    font-size: 70% !important;
+  }
+}
+.table-color {
+  background-color: #d8d8d8;
+}
+
+table > tbody a {
+  color: black;
+}

@@ -48,7 +48,7 @@ const ArticleDetail = ({
     console.log("enviado");
     e.preventDefaul();
     setSubmitOk(null);
-    fetch("https://backend-news-eight.vercel.app/news" + data._id, {
+    fetch("https://backend-news-eight.vercel.app/news/editnews" + data._id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
