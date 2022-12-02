@@ -137,7 +137,7 @@ function App() {
           login={login}
           logout={logout}
         />
-        <Loader />
+
         <Routes>
           <Route
             path="/highlights"
