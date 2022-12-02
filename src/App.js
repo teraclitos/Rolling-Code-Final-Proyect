@@ -24,7 +24,7 @@ import Loader from "./components/Loader";
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://backend-news-mcgmvn8ip-andreahongn.vercel.app/news")
+    fetch("https://backend-news-mcgmvn8ip-andreahongn.vercel.app/news/news")
       .then((res) => res.json())
       .then((json) => setData(json));
   }, []);
@@ -81,35 +81,12 @@ function App() {
       user: userFound.user,
       role: userFound.role,
     });
-
-    toast("👋 Bienvenido! Sesión iniciada correctamente", {
-      position: "top-right",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-    console.log("funcion login auth" + auth);
+    toastSuccess("👋 Bienvenido! Sesión iniciada correctamente");
   };
 
   const logout = () => {
     setAuth({ user: "", role: "" });
-
-    toast("Sesión cerrada correctamente", {
-      position: "top-right",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
-    console.log("logout");
+    toastSuccess("Sesión cerrada correctamente");
   };
   const prevenDuplicateToast = "custom-id-yes";
 
