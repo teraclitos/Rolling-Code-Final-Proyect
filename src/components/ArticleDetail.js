@@ -44,9 +44,10 @@ const ArticleDetail = ({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleSubmit = (e) => {
+    console.log("enviado");
     e.preventDefaul();
     setSubmitOk(null);
-    fetch("https://backend-news-eight.vercel.app/news", {
+    fetch("https://backend-news-eight.vercel.app/news" + data._id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -58,12 +59,22 @@ const ArticleDetail = ({
         title: editTitle,
         description: editSubtitulo,
         content: editDescription,
+        date: data.date,
       }),
     })
       .then((res) => res.json())
       .then((json) => setSubmitOk(true))
       .catch((error) => setSubmitOk(false));
   };
+
+  useEffect(() => {
+    setEditSection(data.category);
+    setEditAuthor(data.author);
+    setEditImage(data.img_URL);
+    setEditTitle(data.description);
+    setEditSubtitulo(data.description);
+    setEditDescription(data.content);
+  }, [data]);
 
   useEffect(() => {
     if (submitOk) {
@@ -93,7 +104,7 @@ const ArticleDetail = ({
 
               <Card.Body>
                 <div className="detail-author">
-                  <Card.Img variant="top" src={data.img_URL} width={70} />
+                  <Card.Img variant="top" src={data.img_URL} width={50} />
                   <Card.Title className="mt-4">{data.author}</Card.Title>
                 </div>
 
@@ -123,7 +134,7 @@ const ArticleDetail = ({
                       />
                     </div>
                     <div className="red-social">
-                      <h5 className="mt-4">{data.date}</h5>
+                      {/* <h5 className="mt-4">{data.date}</h5> */}
                     </div>
                   </div>
 
@@ -135,7 +146,7 @@ const ArticleDetail = ({
               </Card.Body>
             </Card>
             <Card border="0">
-              <Card.Img src={data.img_URL} className="img-detail" />
+              <Card.Img src={data.img_URL} width={40} />
               <Card.Body>
                 <Card.Title className="title-description">
                   {data.description}{" "}
@@ -167,7 +178,6 @@ const ArticleDetail = ({
                     <Form.Control
                       type="text"
                       value={editSection}
-                      defaultValue={editSection}
                       onChange={(e) => setEditSection(e.target.value)}
                       autoFocus
                     />
@@ -181,9 +191,8 @@ const ArticleDetail = ({
                       <Form.Control
                         type="text"
                         placeholder="Nombre del autor"
-                        defaultValue={editAuthor}
                         value={editAuthor}
-                        onChange={(e) => setEditAuthor(e.target.value)}
+                        onInput={(e) => setEditAuthor(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
@@ -282,9 +291,9 @@ const ArticleDetail = ({
             >
               Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
             </Button>
-            <aside className="carousel-advertisement-container">
+            {/* <aside className="carousel-advertisement-container">
               <AsideAdvertisement />
-            </aside>
+            </aside> */}
           </div>
         </Row>
       </Container>
