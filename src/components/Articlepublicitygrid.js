@@ -11,12 +11,19 @@ import Header from "../components/Header";
 import AsideAdvertisement from "./AsideAdvertisement";
 import ArticleCard from "./ArticleCard";
 
-const Articlepublicitygrid = ({ data, add, cart, auth, toastError }) => {
+const Articlepublicitygrid = ({
+  data,
+  add,
+  cart,
+  auth,
+  toastError,
+  totalHighlights,
+}) => {
   return (
     <>
       <Advertising />
       <Header />
-      <Slider />
+      <Slider totalHighlights={totalHighlights} />
       <div>
         <Categorias />
       </div>

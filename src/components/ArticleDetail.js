@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AsideAdvertisement from "./AsideAdvertisement";
-// import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+
 import {
   Button,
   Card,
@@ -11,6 +11,7 @@ import {
   Form,
   Col,
   Pagination,
+  Alert,
 } from "react-bootstrap";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -22,54 +23,82 @@ import Categorias from "./Categorias";
 import "../styles/allcss.css";
 import { Route, Routes, Link, useParams } from "react-router-dom";
 
-const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
+const ArticleDetail = ({
+  data,
+  add,
+  cart,
+  auth,
+  toastSuccess,
+  toastError,
+  totalHighlights,
+}) => {
   const [show, setShow] = useState(false);
-  const [editSection, setEditSection] = useState("");
-  const [editAuthor, setEditAuthor] = useState("");
-  const [editImage, setEditImage] = useState("");
-  const [editTitle, setEditTitle] = useState("");
-  const [editSubtitulo, setEditSubtitulo] = useState("");
-  const [editDescription, setEditDescription] = useState("");
+  const [editSection, setEditSection] = useState(data.category);
+  const [editAuthor, setEditAuthor] = useState(data.author);
+  const [editImage, setEditImage] = useState(data.img_URL);
+  const [editTitle, setEditTitle] = useState(data.title);
+  const [editSubtitulo, setEditSubtitulo] = useState(data.description);
+  const [editDescription, setEditDescription] = useState(data.content);
   const [editHighlight, setEditHighlight] = useState(data.highlight);
   const [submitOk, setSubmitOk] = useState(null);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleSubmit = (e) => {
-    fetch("https://backend-news-eight.vercel.app/news", {
+    console.log("enviado");
+    e.preventDefaul();
+    setSubmitOk(null);
+    fetch("https://backend-news-eight.vercel.app/news" + data._id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        editSection,
-        editAuthor,
-        editImage,
-        editTitle,
-        editSubtitulo,
-        editDescription,
-        editHighlight,
+        category: editSection,
+        author: editAuthor,
+        img_URL: editImage,
+        title: editTitle,
+        description: editSubtitulo,
+        content: editDescription,
+        highlight: editHighlight,
+        date: data.date,
       }),
     })
       .then((res) => res.json())
-      .then((response) => {
-        console.log("responseFakeStore", response);
-      });
+      .then((json) => setSubmitOk(true))
+      .catch((error) => setSubmitOk(false));
   };
 
   useEffect(() => {
-    setEditTitle(data.title);
     setEditSection(data.category);
-    setEditDescription(data.content);
-    setEditImage(data.img_URL);
     setEditAuthor(data.author);
+    setEditImage(data.img_URL);
+    setEditTitle(data.description);
     setEditSubtitulo(data.description);
+    setEditDescription(data.content);
   }, [data]);
+
+  useEffect(() => {
+    if (submitOk) {
+      toastSuccess("Modificado!");
+    } else if (submitOk === false) {
+      toastError("Algo ha salido mal ...");
+    }
+  }, [submitOk]);
+
   const addHighlight = () => {
     if (!editHighlight) {
       setEditHighlight(true);
     } else {
       setEditHighlight(false);
+    }
+  };
+
+  const highlightFilter = () => {
+    if (totalHighlights.length > 2 && editHighlight === true) {
+      return false;
+    } else {
+      return true;
     }
   };
 
@@ -85,7 +114,7 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
 
               <Card.Body>
                 <div className="detail-author">
-                  <Card.Img variant="top" src={data.img_URL} width={70} />
+                  <Card.Img variant="top" src={data.img_URL} width={50} />
                   <Card.Title className="mt-4">{data.author}</Card.Title>
                 </div>
 
@@ -115,7 +144,7 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                       />
                     </div>
                     <div className="red-social">
-                      <h5 className="mt-4">{data.date}</h5>
+                      {/* <h5 className="mt-4">{data.date}</h5> */}
                     </div>
                   </div>
 
@@ -127,7 +156,7 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
               </Card.Body>
             </Card>
             <Card border="0">
-              <Card.Img src={data.img_URL} className="img-detail" />
+              <Card.Img src={data.img_URL} width={40} />
               <Card.Body>
                 <Card.Title className="title-description">
                   {data.description}{" "}
@@ -159,8 +188,7 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                     <Form.Control
                       type="text"
                       value={editSection}
-                      defaultValue={editSection}
-                      onInput={(e) => setEditSection(e.target.value)}
+                      onChange={(e) => setEditSection(e.target.value)}
                       autoFocus
                     />
                     <Form.Group />
@@ -173,7 +201,6 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                       <Form.Control
                         type="text"
                         placeholder="Nombre del autor"
-                        defaultValue={editAuthor}
                         value={editAuthor}
                         onInput={(e) => setEditAuthor(e.target.value)}
                         autoFocus
@@ -189,7 +216,7 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                         type="text"
                         defaultValue={editTitle}
                         value={editTitle}
-                        onInput={(e) => setEditTitle(e.target.value)}
+                        onChange={(e) => setEditTitle(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
@@ -199,9 +226,9 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                       <Form.Control
                         type="text"
                         placeholder="Ingrese URL de imagen"
-                        defaultValue={setEditImage}
+                        defaultValue={editImage}
                         value={editImage}
-                        onInput={(e) => setEditImage(e.target.value)}
+                        onChange={(e) => setEditImage(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
@@ -214,7 +241,7 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                       <Form.Control
                         type="text"
                         placeholder="Ingrese subtitulo"
-                        defaultValue={setEditSubtitulo}
+                        defaultValue={editSubtitulo}
                         value={editSubtitulo}
                         onInput={(e) => setEditSubtitulo(e.target.value)}
                         autoFocus
@@ -231,7 +258,7 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                       <Form.Control
                         type="textarea"
                         placeholder=""
-                        defaultValue={setEditDescription}
+                        defaultValue={editDescription}
                         value={editDescription}
                         onInput={(e) => setEditDescription(e.target.value)}
                         autoFocus
@@ -258,7 +285,13 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
                 <Form.Group className="">
                   <Button
                     className="btn-detail"
-                    onClick={(e) => handleSubmit(e)}
+                    onClick={(e) => {
+                      if (highlightFilter() === true) {
+                        handleSubmit(e);
+                      } else {
+                        toastError("Sólo puede haber tres destacados");
+                      }
+                    }}
                   >
                     Guardar cambios
                   </Button>
@@ -274,9 +307,9 @@ const ArticleDetail = ({ data, add, cart, auth, totalData }) => {
             >
               Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
             </Button>
-            <aside className="carousel-advertisement-container">
+            {/* <aside className="carousel-advertisement-container">
               <AsideAdvertisement />
-            </aside>
+            </aside> */}
           </div>
         </Row>
       </Container>

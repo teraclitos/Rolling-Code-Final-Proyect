@@ -19,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import RecoverPass from "../src/components/RecoverPass";
 import { Slide, Zoom, Flip, Bounce } from "react-toastify";
 import Error404 from "./components/Error404";
+import Loader from "./components/Loader";
 
 function App() {
   const [data, setData] = useState([]);
@@ -97,6 +98,7 @@ function App() {
       toastId: prevenDuplicateToast,
     });
   };
+  const totalHighlights = data.filter((element) => element.highlight === true);
 
   return (
     <div>
@@ -114,10 +116,6 @@ function App() {
           logout={logout}
         />
 
-        {/* <Advertising /> */}
-        {/* <ArticleDetailContainer data={data} /> */}
-        {/* <Articlepublicitygrid data={data} /> */}
-        {/* <Contact /> */}
         <Routes>
           <Route
             path="/highlights"
@@ -157,10 +155,14 @@ function App() {
                 login={login}
                 logout={logout}
                 toastError={toastError}
+                totalHighlights={totalHighlights}
               />
             }
           />
-          <Route path="/contacto" element={<Contact />} />
+          <Route
+            path="/contacto"
+            element={<Contact toastSuccess={toastSuccess} />}
+          />
           <Route path="/usertable" element={<AdminTable />} />
 
           <Route
@@ -188,7 +190,9 @@ function App() {
                 validate={validate}
                 login={login}
                 logout={logout}
-                totalData={data}
+                toastError={toastError}
+                toastSuccess={toastSuccess}
+                totalHighlights={totalHighlights}
               />
             }
           />

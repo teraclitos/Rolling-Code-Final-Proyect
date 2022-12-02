@@ -71,6 +71,6 @@ body {
   color: #fd841f;
 }
 
-.exito {
-  color: #1986a0;
+.loader {
+  background-color: linear-gradient(to right, #001253, #1986a0);
 }
