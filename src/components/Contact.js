@@ -8,6 +8,7 @@ import {
   faEnvelope,
   faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
+import { toast, ToastContainer } from "react-toastify";
 
 const Contact = () => {
   const [formEnviado, cambiarformEnviado] = useState(false);
@@ -46,7 +47,7 @@ const Contact = () => {
                         errores.name = (
                           <p className="text-contact">Escribe tu nombre</p>
                         );
-                      } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.name)) {
+                      } else if (!/^[a-zA-ZÀ-ÿ\s]{3,30}$/.test(valores.name)) {
                         errores.name = (
                           <p className="text-contact">
                             El nombre solo puede contener letras y espacios
@@ -94,7 +95,10 @@ const Contact = () => {
                       handleChange,
                       handleBlur,
                     }) => (
-                      <Form>
+                      <Form
+                        action="https://formsubmit.co/marinabi2306@gmail.com"
+                        method="POST"
+                      >
                         <div class="input-group mb-3">
                           <span
                             class="input-group-text color-span"
@@ -188,12 +192,18 @@ const Contact = () => {
                         {/* {touched.comment && errors.comment && (
                           <div className="error">{errors.comment}</div>
                         )} */}
-                        <button className="btn-contact d-flex" type="submit">
-                          Enviar
-                        </button>
-                        {formEnviado && (
-                          <p className="exito">Comentario enviado</p>
-                        )}
+                        <button className="btn-contact d-flex">Enviar</button>
+                        {formEnviado &&
+                          toast("Formulario enviado con exito", {
+                            position: "top-center",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                          })}
                       </Form>
                     )}
                   </Formik>

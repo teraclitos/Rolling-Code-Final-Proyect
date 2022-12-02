@@ -71,9 +71,11 @@ const ArticleFound = ({ data, add, cart, auth }) => {
         </Container>
         <Container>
           {search && (
+
             <h3 className="card-title card-title-found mb-5">
               Resultados de Búsqueda
             </h3>
+
           )}
           <Container>
             <Row lg={4}>
