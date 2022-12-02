@@ -48,22 +48,26 @@ const ArticleDetail = ({
     console.log("enviado");
 
     setSubmitOk(null);
-    fetch("https://backend-news-eight.vercel.app/news/editnews" + data._id, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        category: editSection,
-        author: editAuthor,
-        img_URL: editImage,
-        title: editTitle,
-        description: editSubtitulo,
-        content: editDescription,
-        highlight: editHighlight,
-        date: data.date,
-      }),
-    })
+    fetch(
+      "https://backend-news-8r5buygab-andreahongn.vercel.app/news/editnews/" +
+        data._id,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          category: editSection,
+          author: editAuthor,
+          img_URL: editImage,
+          title: editTitle,
+          description: editSubtitulo,
+          content: editDescription,
+          highlight: editHighlight,
+          date: data.date,
+        }),
+      }
+    )
       .then((res) => res.json())
       .then((json) => setSubmitOk(true))
       .catch((error) => setSubmitOk(false));

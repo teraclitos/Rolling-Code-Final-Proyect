@@ -24,7 +24,7 @@ import Loader from "./components/Loader";
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://backend-news-mcgmvn8ip-andreahongn.vercel.app/news/news")
+    fetch("https://backend-news-8r5buygab-andreahongn.vercel.app/news/news")
       .then((res) => res.json())
       .then((json) => setData(json));
   }, []);
