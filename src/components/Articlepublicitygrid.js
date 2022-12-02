@@ -18,6 +18,7 @@ const Articlepublicitygrid = ({
   auth,
   toastError,
   totalHighlights,
+  handleShowLogin,
 }) => {
   return (
     <>
@@ -37,6 +38,7 @@ const Articlepublicitygrid = ({
                 add={add}
                 auth={auth}
                 toastError={toastError}
+                handleShowLogin={handleShowLogin}
               />
             </div>
           ))}

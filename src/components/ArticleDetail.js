@@ -46,7 +46,7 @@ const ArticleDetail = ({
   const handleShow = () => setShow(true);
   const handleSubmit = (e) => {
     console.log("enviado");
-    e.preventDefaul();
+
     setSubmitOk(null);
     fetch("https://backend-news-eight.vercel.app/news/editnews" + data._id, {
       method: "PUT",
@@ -76,6 +76,7 @@ const ArticleDetail = ({
     setEditTitle(data.description);
     setEditSubtitulo(data.description);
     setEditDescription(data.content);
+    setEditHighlight(data.highlight);
   }, [data]);
 
   useEffect(() => {
