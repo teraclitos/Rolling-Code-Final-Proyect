@@ -76,6 +76,7 @@ const ArticleDetail = ({
     setEditTitle(data.description);
     setEditSubtitulo(data.description);
     setEditDescription(data.content);
+    setEditHighlight(data.highlight);
   }, [data]);
 
   useEffect(() => {
