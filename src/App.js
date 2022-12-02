@@ -27,7 +27,7 @@ function App() {
     fetch("https://backend-news-eight.vercel.app/news/news")
       .then((res) => res.json())
       .then((json) => setData(json));
-  }, []);
+  }, [data]);
   const handleShowLogin = () => setShowLogin(true);
   const [showLogin, setShowLogin] = useState(false);
 
