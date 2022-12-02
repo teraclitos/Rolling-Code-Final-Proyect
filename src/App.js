@@ -121,6 +121,7 @@ function App() {
       toastId: prevenDuplicateToast,
     });
   };
+  const totalHighlights = data.filter((element) => element.highlight === true);
 
   return (
     <div>
@@ -177,6 +178,7 @@ function App() {
                 login={login}
                 logout={logout}
                 toastError={toastError}
+                totalHighlights={totalHighlights}
               />
             }
           />
@@ -211,9 +213,9 @@ function App() {
                 validate={validate}
                 login={login}
                 logout={logout}
-                totalData={data}
                 toastError={toastError}
                 toastSuccess={toastSuccess}
+                totalHighlights={totalHighlights}
               />
             }
           />

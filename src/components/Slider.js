@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 
-const Slider = () => {
+const Slider = (totalHighlights = { totalHighlights }) => {
   const [destacados, setDestacados] = useState([
     {
       condition: "text-dark",
@@ -50,37 +50,6 @@ const Slider = () => {
           </Carousel.Caption>
         </Carousel.Item>
       ))}
-      {/* <Carousel.Item interval={3000}>
-        <img
-          className="d-block w-100"
-          src="https://www.ole.com.ar/images/2022/11/23/wIkYyAEFw_1290x760__1.jpg"
-          alt="Second slide"
-        />
-
-        <Carousel.Caption>
-          <h3>Mundial Qatar 2022: hora y TV de cada partido</h3>
-          <p>
-            Continúa la primera fase de la Copa del Mundo con cuatro partidos en
-            cada jornada.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item interval={3000}>
-        <img
-          className="d-block w-100"
-          src="https://www.ole.com.ar/images/2022/11/24/Mx_Txhnz__1290x760__1.jpg"
-          alt="Third slide"
-        />
-
-        <Carousel.Caption>
-          <h3>La brutal estadística que explica la lesión de Neymar</h3>
-          <p>
-            El astro de Brasil sufrió una entorsis en su tobillo derecho en el
-            debut y no asombra: fue el blanco de las faltas de los serbios. Acá,
-            un dato revelador.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item> */}
     </Carousel>
   );
 };
