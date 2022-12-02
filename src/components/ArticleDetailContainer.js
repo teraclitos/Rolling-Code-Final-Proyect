@@ -18,9 +18,7 @@ const ArticleDetailContainer = ({
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://backend-news-8r5buygab-andreahongn.vercel.app/news/news/${params.id}`
-    )
+    fetch(`https://backend-news-eight.vercel.app/news/news/${params.id}`)
       .then((res) => res.json())
       .then((json) => setData(json))
       .finally(() => setIsLoading(false));
