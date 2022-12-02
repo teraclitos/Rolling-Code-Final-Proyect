@@ -94,6 +94,7 @@ function App() {
 
   const logout = () => {
     setAuth({ user: "", role: "" });
+
     toast("Sesión cerrada correctamente", {
       position: "top-right",
       autoClose: 1500,
@@ -178,6 +179,7 @@ function App() {
                 validate={validate}
                 login={login}
                 logout={logout}
+                toastError={toastError}
               />
             }
           />

@@ -11,7 +11,7 @@ import Header from "../components/Header";
 import AsideAdvertisement from "./AsideAdvertisement";
 import ArticleCard from "./ArticleCard";
 
-const Articlepublicitygrid = ({ data, add, cart, auth }) => {
+const Articlepublicitygrid = ({ data, add, cart, auth, toastError }) => {
   return (
     <>
       <Advertising />
@@ -24,7 +24,13 @@ const Articlepublicitygrid = ({ data, add, cart, auth }) => {
         <div className="grid-articles">
           {data.map((d, i) => (
             <div className="mb-3  ">
-              <ArticleCard cart={cart} d={d} add={add} auth={auth} />
+              <ArticleCard
+                cart={cart}
+                d={d}
+                add={add}
+                auth={auth}
+                toastError={toastError}
+              />
             </div>
           ))}
         </div>
