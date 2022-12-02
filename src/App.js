@@ -137,10 +137,6 @@ function App() {
           logout={logout}
         />
 
-        {/* <Advertising /> */}
-        {/* <ArticleDetailContainer data={data} /> */}
-        {/* <Articlepublicitygrid data={data} /> */}
-        {/* <Contact /> */}
         <Routes>
           <Route
             path="/highlights"
