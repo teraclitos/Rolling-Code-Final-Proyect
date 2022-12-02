@@ -30,6 +30,7 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
   const [editTitle, setEditTitle] = useState("");
   const [editSubtitulo, setEditSubtitulo] = useState("");
   const [editDescription, setEditDescription] = useState("");
+  const [editHighlight, setEditHighlight] = useState(data.highlight);
   const [submitOk, setSubmitOk] = useState(null);
 
   const handleClose = () => setShow(false);
@@ -47,6 +48,7 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
         editTitle,
         editSubtitulo,
         editDescription,
+        editHighlight,
       }),
     })
       .then((res) => res.json())
@@ -65,6 +67,13 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
     setEditSubtitulo(data.description);
 
   }, [data]);
+  const addHighlight = () => {
+    if (!editHighlight) {
+      setEditHighlight(true);
+    } else {
+      setEditHighlight(false);
+    }
+  };
 
   return (
     <div>
@@ -242,9 +251,10 @@ const ArticleDetail = ({ data, add, cart, auth }) => {
                   <Form.Check
                     type="checkbox"
                     label="Destacar"
-                    onClick={() => add(data)}
-                    value={true}
-                    checked={data.highlight === true && true}
+                    onClick={() => {
+                      addHighlight();
+                    }}
+                    checked={editHighlight}
                   />
                 </Form.Group>
                 <Form.Group className="">
