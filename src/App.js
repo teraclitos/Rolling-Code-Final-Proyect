@@ -199,6 +199,7 @@ function App() {
                 toastError={toastError}
                 toastSuccess={toastSuccess}
                 totalHighlights={totalHighlights}
+                dataTotal={data}
               />
             }
           />

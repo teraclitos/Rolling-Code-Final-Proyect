@@ -11,6 +11,7 @@ const ArticleDetailContainer = ({
   totalHighlights,
   toastError,
   toastSuccess,
+  dataTotal,
 }) => {
   const params = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +23,7 @@ const ArticleDetailContainer = ({
       .then((res) => res.json())
       .then((json) => setData(json))
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [dataTotal]);
 
   return (
     <>
@@ -37,6 +38,7 @@ const ArticleDetailContainer = ({
           toastSuccess={toastSuccess}
           toastError={toastError}
           totalHighlights={totalHighlights}
+          dataTotal={dataTotal}
         />
       )}
     </>
