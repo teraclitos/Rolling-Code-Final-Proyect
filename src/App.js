@@ -29,6 +29,13 @@ function App() {
       .then((json) => setData(json));
   }, [data]);
 
+  const [dataUser, setDataUser] = useState([]);
+  useEffect(() => {
+    fetch("https://backend-news-eight.vercel.app/users/verusuarios")
+      .then((res) => res.json())
+      .then((json) => setDataUser(json));
+  }, []);
+
   const handleShowLogin = () => setShowLogin(true);
   const [showLogin, setShowLogin] = useState(false);
 
@@ -113,6 +120,7 @@ function App() {
           del={del}
           clear={clear}
           data={data}
+          dataUser={dataUser}
           auth={auth}
           validate={validate}
           login={login}
@@ -170,7 +178,10 @@ function App() {
             path="/contacto"
             element={<Contact toastSuccess={toastSuccess} />}
           />
-          <Route path="/usertable" element={<AdminTable />} />
+          <Route
+            path="/usertable"
+            element={<AdminTable dataUser={dataUser} />}
+          />
 
           <Route
             path="/category"
