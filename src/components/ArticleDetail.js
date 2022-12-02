@@ -11,6 +11,7 @@ import {
   Form,
   Col,
   Pagination,
+  Alert,
 } from "react-bootstrap";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -27,9 +28,9 @@ const ArticleDetail = ({
   add,
   cart,
   auth,
-  totalData,
   toastSuccess,
   toastError,
+  totalHighlights,
 }) => {
   const [show, setShow] = useState(false);
   const [editSection, setEditSection] = useState(data.category);
@@ -94,9 +95,6 @@ const ArticleDetail = ({
   };
 
   const highlightFilter = () => {
-    const totalHighlights = totalData.filter(
-      (element) => element.highlight === true
-    );
     if (totalHighlights.length > 2 && editHighlight === true) {
       return false;
     } else {
@@ -291,7 +289,7 @@ const ArticleDetail = ({
                       if (highlightFilter() === true) {
                         handleSubmit(e);
                       } else {
-                        toastError("Sólo pude haber tres destacados");
+                        toastError("Sólo puede haber tres destacados");
                       }
                     }}
                   >

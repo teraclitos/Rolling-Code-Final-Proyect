@@ -8,7 +8,7 @@ const ArticleDetailContainer = ({
   add,
   cart,
   auth,
-  totalData,
+  totalHighlights,
   toastError,
   toastSuccess,
 }) => {
@@ -30,13 +30,13 @@ const ArticleDetailContainer = ({
         <Loader />
       ) : (
         <ArticleDetail
-          totalData={totalData}
           add={add}
           auth={auth}
           data={data}
           cart={cart}
           toastSuccess={toastSuccess}
           toastError={toastError}
+          totalHighlights={totalHighlights}
         />
       )}
     </>
