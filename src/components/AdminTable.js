@@ -13,11 +13,51 @@ function AdminTable() {
   const [open, setOpen] = useState(false);
   const [editName, setEditName] = useState("");
   const [editUserName, setEditUserName] = useState("");
+  const [editEmail, setEditEmail] = useState("");
+  const [submit, setSubmit] = useState(null);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDel = () => setOpen(false);
   const handleOpen = () => setOpen(true);
+  const handleSubmit = (e) => {
+    console.log("enviado");
+    e.preventDefault();
+
+    fetch("" + data._id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Name: editName,
+        Username: editUserName,
+        Mail: editEmail,
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => setSubmit(true))
+      .catch((error) => setSubmit(false));
+  };
+
+  useEffect(() => {
+    setEditSection(data.category);
+    setEditAuthor(data.author);
+    setEditImage(data.img_URL);
+    setEditTitle(data.description);
+    setEditSubtitulo(data.description);
+    setEditDescription(data.content);
+    setEditDate(data.date);
+  }, [data]);
+
+  useEffect(() => {
+    if (submit) {
+      console.log("ssfdsfdfd");
+      toastSuccess("Modificado!");
+    } else if (submit === false) {
+      toastError("Algo ha salido mal ...");
+    }
+  }, [submit]);
 
   return (
     <body className="body-contacto">
@@ -91,6 +131,8 @@ function AdminTable() {
                             <Form.Control
                               type="email"
                               placeholder="name@example.com"
+                              value={editEmail}
+                              onChange={(e) => setEditEmail(e.target.value)}
                               autoFocus
                             />
                           </Form.Group>
@@ -100,7 +142,10 @@ function AdminTable() {
                         <Button className="btn-detail" onClick={handleClose}>
                           Cerrar
                         </Button>
-                        <Button className="btn-detail" onClick={handleClose}>
+                        <Button
+                          className="btn-detail"
+                          onClick={(e) => handleSubmit(e)}
+                        >
                           Guardar cambios
                         </Button>
                       </Modal.Footer>
