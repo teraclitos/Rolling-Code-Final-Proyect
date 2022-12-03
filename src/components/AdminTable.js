@@ -36,25 +36,27 @@ function AdminTable() {
               <tbody>
                 <tr>
                   <td>1</td>
+                  <td>1</td>
                   <td>Mark</td>
                   <td>
                     <FontAwesomeIcon
+                      className="btn-icon"
                       onClick={handleShow}
-                      style={{ fontSize: "2em", color: "#1986a0" }}
+                      style={{ fontSize: "2em" }}
                       icon={faPenToSquare}
                     />
 
                     <Modal show={show} onHide={handleClose}>
-                      <Modal.Header closeButton>
+                      <Modal.Header className="card-crud" closeButton>
                         <Modal.Title>Modificar User</Modal.Title>
                       </Modal.Header>
-                      <Modal.Body>
+                      <Modal.Body className="card-crud">
                         <Form>
                           <Form.Group
                             className="mb-3"
                             controlId="exampleForm.ControlInput1"
                           >
-                            <Form.Label>Name</Form.Label>
+                            <Form.Label className="edit-label">Name</Form.Label>
                             <Form.Control
                               type="text"
                               placeholder="Ingresa un nuevo nombre"
@@ -65,7 +67,9 @@ function AdminTable() {
                             className="mb-3"
                             controlId="exampleForm.ControlInput1"
                           >
-                            <Form.Label>Username</Form.Label>
+                            <Form.Label className="edit-label">
+                              Username
+                            </Form.Label>
                             <Form.Control
                               type="text"
                               placeholder="Ingresa un nuevo username"
@@ -76,7 +80,9 @@ function AdminTable() {
                             className="mb-3"
                             controlId="exampleForm.ControlInput1"
                           >
-                            <Form.Label>Email</Form.Label>
+                            <Form.Label className="edit-label">
+                              Email
+                            </Form.Label>
                             <Form.Control
                               type="email"
                               placeholder="name@example.com"
@@ -85,23 +91,17 @@ function AdminTable() {
                           </Form.Group>
                         </Form>
                       </Modal.Body>
-                      <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                          Close
+                      <Modal.Footer className="card-crud">
+                        <Button className="btn-detail" onClick={handleClose}>
+                          Cerrar
                         </Button>
-                        <Button variant="primary" onClick={handleClose}>
+                        <Button className="btn-detail" onClick={handleClose}>
                           Guardar cambios
                         </Button>
                       </Modal.Footer>
                     </Modal>
                   </td>
                   <td>@mdo</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
                 </tr>
               </tbody>
             </Table>
