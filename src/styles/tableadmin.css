@@ -1,0 +1,20 @@
+.resposive-table {
+  overflow-x: auto;
+  margin-top: 6rem;
+
+  background-color: rgba(17, 17, 17, 0.829);
+}
+.color-table {
+  background: linear-gradient(to right, #646464, #5eceeb);
+}
+.edit-label {
+  font-family: "Anton";
+}
+.btn-icon {
+  color: #fd841f;
+  cursor: pointer;
+}
+
+.btn-icon:hover {
+  color: #0e185f;
+}
