@@ -55,7 +55,7 @@ function AdminTable(data, toastSuccess, toastError) {
   }, [submit]);
 
   return (
-    <body className="body-contacto">
+    <body className="body-recover">
       <Container fluid className="resposive-table">
         <div className="d-flex flex-column">
           <div className="d-flex flex-column align-items-center">
