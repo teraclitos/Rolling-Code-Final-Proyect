@@ -1,5 +1,9 @@
-.table-admin {
-  margin-top: 5.4rem;
+.resposive-table {
+  overflow-x: auto;
+  margin-top: 6rem;
 
-  background-color: rgba(170, 125, 228, 0.726);
+  background-color: rgba(139, 5, 5, 0.726);
+}
+.color-table {
+  background-color: aqua;
 }
