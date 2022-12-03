@@ -11,6 +11,9 @@ import Modal from "react-bootstrap/Modal";
 function AdminTable() {
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
+  const [editName, setEditName] = useState("");
+  const [editUserName, setEditUserName] = useState("");
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDel = () => setOpen(false);
@@ -58,7 +61,8 @@ function AdminTable() {
                             <Form.Label className="edit-label">Name</Form.Label>
                             <Form.Control
                               type="text"
-                              placeholder="Ingresa un nuevo nombre"
+                              value={editName}
+                              onChange={(e) => setEditName(e.target.value)}
                               autoFocus
                             />
                           </Form.Group>
@@ -71,7 +75,9 @@ function AdminTable() {
                             </Form.Label>
                             <Form.Control
                               type="text"
-                              placeholder="Ingresa un nuevo username"
+                              placeholder="Ingrese nuevo user name"
+                              value={editUserName}
+                              onChange={(e) => setEditUserName(e.target.value)}
                               autoFocus
                             />
                           </Form.Group>
@@ -109,18 +115,15 @@ function AdminTable() {
                     />
 
                     <Modal show={open} onHide={handleDel}>
-                      <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
-                      </Modal.Header>
-                      <Modal.Body>
-                        Woohoo, you're reading this text in a modal!
+                      <Modal.Body className="card-crud">
+                        ¿Estas seguro que quieres eliminar este usuario?
                       </Modal.Body>
-                      <Modal.Footer>
-                        <Button variant="secondary" onClick={handleDel}>
-                          Close
+                      <Modal.Footer className="card-crud">
+                        <Button className="btn-detail" onClick={handleDel}>
+                          Cancelar
                         </Button>
-                        <Button variant="primary" onClick={handleDel}>
-                          Save Changes
+                        <Button className="btn-detail" onClick={handleDel}>
+                          Eliminar
                         </Button>
                       </Modal.Footer>
                     </Modal>
