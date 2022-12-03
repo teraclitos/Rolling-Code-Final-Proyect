@@ -92,7 +92,11 @@ const ArticleDetail = ({
   };
 
   const highlightFilter = () => {
-    if (totalHighlights.length > 2 && editHighlight === true) {
+    if (
+      totalHighlights.length > 2 &&
+      data.highlight === false &&
+      editHighlight !== data.highlight
+    ) {
       return false;
     } else {
       return true;
