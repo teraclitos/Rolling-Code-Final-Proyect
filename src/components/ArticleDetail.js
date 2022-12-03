@@ -59,6 +59,7 @@ const ArticleDetail = ({
         category: editSection,
         author: editAuthor,
         img_URL: editImage,
+        avatar_URL: data.avatar_URL,
         title: editTitle,
         description: editSubtitulo,
         content: editDescription,
@@ -116,7 +117,7 @@ const ArticleDetail = ({
 
                 <Card.Body>
                   <div className="detail-author">
-                    <Card.Img variant="top" src={data.img_URL} width={50} />
+                    <Card.Img variant="top" src={data.avatar_URL} width={50} />
                     <Card.Title className="mt-4">{data.author}</Card.Title>
                   </div>
 
