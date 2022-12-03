@@ -3,20 +3,19 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/allcss.css";
 import { faTrash, faUserPen } from "@fortawesome/free-solid-svg-icons";
-import {
-  faUser,
-  faEnvelope,
-  faPenToSquare,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUserSlash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
 function AdminTable() {
   const [show, setShow] = useState(false);
-
+  const [open, setOpen] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleDel = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
+
   return (
     <body className="body-contacto">
       <Container fluid className="resposive-table">
@@ -101,7 +100,31 @@ function AdminTable() {
                       </Modal.Footer>
                     </Modal>
                   </td>
-                  <td>@mdo</td>
+                  <td>
+                    <FontAwesomeIcon
+                      className="btn-icon"
+                      onClick={handleOpen}
+                      style={{ fontSize: "2em" }}
+                      icon={faUserSlash}
+                    />
+
+                    <Modal show={open} onHide={handleDel}>
+                      <Modal.Header closeButton>
+                        <Modal.Title>Modal heading</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        Woohoo, you're reading this text in a modal!
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={handleDel}>
+                          Close
+                        </Button>
+                        <Button variant="primary" onClick={handleDel}>
+                          Save Changes
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </td>
                 </tr>
               </tbody>
             </Table>
