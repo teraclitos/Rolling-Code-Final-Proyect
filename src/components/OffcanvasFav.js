@@ -24,7 +24,7 @@ const OffcanvasFav = ({ clear, del, cart, handleClose, show, setShow }) => {
           {cart.length
             ? cart.map((c, i) => (
                 <Row key={i}>
-                  <Col className="title-fav">{c.title}</Col>
+                  <Col className="">{c.title}</Col>
 
                   <Col>{c.price}</Col>
 
