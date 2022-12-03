@@ -1,61 +1,48 @@
 import { Container, Button } from "react-bootstrap";
-import Table from "react-bootstrap/Table";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/allcss.css";
 import { faTrash, faUserPen } from "@fortawesome/free-solid-svg-icons";
-function ResponsiveExample() {
-  return (
-    <Table responsive>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>id</th>
-          <th>Mail o nombre usuario</th>
-          <th>Contraseña(en puntitos)</th>
-          <th>Modificar</th>
-          <th>Eliminar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1 </td>
-          <td>_id </td>
-          <td> user</td>
-          <td>password </td>
-          <td>
-            <Button variant="warning">
-              Modificar
-              <FontAwesomeIcon icon={faUserPen} className="mx-2" />
-            </Button>
-          </td>
-          <td>
-            <Button variant="danger">
-              Eliminar
-              <FontAwesomeIcon icon={faTrash} className="mx-2" />
-            </Button>
-          </td>
-        </tr>
+import Table from "react-bootstrap/Table";
 
-        {/* {data.map((d, i) => (
-            <tr>
-              <td>#</td>
-              <td>{data._id}</td>
-              <td>{data.user}</td>
-              <td>{data.password}</td>
-              <td>id</td>
-              <td>user</td>
-              <td>password</td>
-              <td>
-                <Button>Eliminar</Button>
-              </td>
-              <td>
-                <Button>Modificar</Button>
-              </td>
-            </tr>
-          ))} */}
-      </tbody>
-    </Table>
+function AdminTable() {
+  return (
+    <body>
+      <Container>
+        <div class="d-flex mx-auto pt-4 pb-3 justify-content-center table-admin">
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td colSpan={2}>Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </Table>
+        </div>
+      </Container>
+    </body>
   );
 }
 
-export default ResponsiveExample;
+export default AdminTable;

@@ -38,6 +38,7 @@ const ArticleDetail = ({
   const [editTitle, setEditTitle] = useState(data.title);
   const [editSubtitulo, setEditSubtitulo] = useState(data.description);
   const [editDescription, setEditDescription] = useState(data.content);
+  const [editDate, setEditDate] = useState(data.date);
   const [editHighlight, setEditHighlight] = useState(data.highlight);
   const [submitOk, setSubmitOk] = useState(null);
 
@@ -45,8 +46,8 @@ const ArticleDetail = ({
   const handleShow = () => setShow(true);
   const handleSubmit = (e) => {
     console.log("enviado");
-    e.preventDefaul();
-    setSubmitOk(null);
+    e.preventDefault();
+
     fetch("https://backend-news-eight.vercel.app/news" + data._id, {
       method: "PUT",
       headers: {
@@ -59,7 +60,7 @@ const ArticleDetail = ({
         title: editTitle,
         description: editSubtitulo,
         content: editDescription,
-        date: data.date,
+        date: editDate,
       }),
     })
       .then((res) => res.json())
@@ -74,10 +75,12 @@ const ArticleDetail = ({
     setEditTitle(data.description);
     setEditSubtitulo(data.description);
     setEditDescription(data.content);
+    setEditDate(data.date);
   }, [data]);
 
   useEffect(() => {
     if (submitOk) {
+      console.log("ssfdsfdfd");
       toastSuccess("Modificado!");
     } else if (submitOk === false) {
       toastError("Algo ha salido mal ...");
@@ -192,7 +195,20 @@ const ArticleDetail = ({
                         type="text"
                         placeholder="Nombre del autor"
                         value={editAuthor}
-                        onInput={(e) => setEditAuthor(e.target.value)}
+                        onChange={(e) => setEditAuthor(e.target.value)}
+                        autoFocus
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label className="style-crud">Fecha</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="fecha"
+                        value={editDate}
+                        ononChange={(e) => setEditDate(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
@@ -204,7 +220,6 @@ const ArticleDetail = ({
                       <Form.Label className="style-crud">Titulo</Form.Label>
                       <Form.Control
                         type="text"
-                        defaultValue={editTitle}
                         value={editTitle}
                         onChange={(e) => setEditTitle(e.target.value)}
                         autoFocus
@@ -216,7 +231,6 @@ const ArticleDetail = ({
                       <Form.Control
                         type="text"
                         placeholder="Ingrese URL de imagen"
-                        defaultValue={editImage}
                         value={editImage}
                         onChange={(e) => setEditImage(e.target.value)}
                         autoFocus
@@ -231,9 +245,8 @@ const ArticleDetail = ({
                       <Form.Control
                         type="text"
                         placeholder="Ingrese subtitulo"
-                        defaultValue={editSubtitulo}
                         value={editSubtitulo}
-                        onInput={(e) => setEditSubtitulo(e.target.value)}
+                        onChange={(e) => setEditSubtitulo(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
@@ -248,9 +261,8 @@ const ArticleDetail = ({
                       <Form.Control
                         type="textarea"
                         placeholder=""
-                        defaultValue={editDescription}
                         value={editDescription}
-                        onInput={(e) => setEditDescription(e.target.value)}
+                        onChange={(e) => setEditDescription(e.target.value)}
                         autoFocus
                       />
                     </Form.Group>
