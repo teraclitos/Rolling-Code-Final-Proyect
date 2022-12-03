@@ -9,6 +9,9 @@
   .categories-container {
     grid-template-columns: 1fr;
   }
+  .grid-header {
+    grid-template-columns: 1fr 5fr 1fr;
+  }
 }
 
 @media (max-width: 575.98px) {

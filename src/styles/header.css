@@ -16,6 +16,7 @@
 .img-header {
   width: 7em;
   user-select: none;
+  animation: logo 2s;
 }
 
 .text-header {
@@ -32,6 +33,7 @@
 .icon-container {
   color: rgb(255, 255, 255);
   gap: 0.5em;
+  animation: redes 4s;
 }
 .icon-tw:hover {
   transition: 0.3s;
