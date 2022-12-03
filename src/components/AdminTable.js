@@ -18,7 +18,7 @@ function AdminTable() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
-    <body>
+    <body className="body-contacto">
       <Container fluid className="resposive-table">
         <div class="d-flex flex-column">
           <div class="d-flex flex-column align-items-center">
@@ -26,6 +26,7 @@ function AdminTable() {
             <Table striped bordered hover className="color-table">
               <thead>
                 <tr>
+                  <th>#</th>
                   <th>Id</th>
                   <th>Usuario</th>
                   <th>Modificar</th>
@@ -39,13 +40,13 @@ function AdminTable() {
                   <td>
                     <FontAwesomeIcon
                       onClick={handleShow}
-                      style={{ fontSize: "1em", color: "#1986a0" }}
-                      icon={faUser}
+                      style={{ fontSize: "2em", color: "#1986a0" }}
+                      icon={faPenToSquare}
                     />
 
                     <Modal show={show} onHide={handleClose}>
                       <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
+                        <Modal.Title>Modificar User</Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
                         <Form>
@@ -53,19 +54,34 @@ function AdminTable() {
                             className="mb-3"
                             controlId="exampleForm.ControlInput1"
                           >
-                            <Form.Label>Email address</Form.Label>
+                            <Form.Label>Name</Form.Label>
                             <Form.Control
-                              type="email"
-                              placeholder="name@example.com"
+                              type="text"
+                              placeholder="Ingresa un nuevo nombre"
                               autoFocus
                             />
                           </Form.Group>
                           <Form.Group
                             className="mb-3"
-                            controlId="exampleForm.ControlTextarea1"
+                            controlId="exampleForm.ControlInput1"
                           >
-                            <Form.Label>Example textarea</Form.Label>
-                            <Form.Control as="textarea" rows={3} />
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control
+                              type="text"
+                              placeholder="Ingresa un nuevo username"
+                              autoFocus
+                            />
+                          </Form.Group>
+                          <Form.Group
+                            className="mb-3"
+                            controlId="exampleForm.ControlInput1"
+                          >
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control
+                              type="email"
+                              placeholder="name@example.com"
+                              autoFocus
+                            />
                           </Form.Group>
                         </Form>
                       </Modal.Body>
@@ -74,7 +90,7 @@ function AdminTable() {
                           Close
                         </Button>
                         <Button variant="primary" onClick={handleClose}>
-                          Save Changes
+                          Guardar cambios
                         </Button>
                       </Modal.Footer>
                     </Modal>
