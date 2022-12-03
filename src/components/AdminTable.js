@@ -59,7 +59,9 @@ function AdminTable(data, toastSuccess, toastError) {
       <Container fluid className="resposive-table">
         <div className="d-flex flex-column">
           <div className="d-flex flex-column align-items-center">
-            <h3 class="text-center py-2 title-table">ADMINISTRAR USUARIO</h3>
+            <h3 class="text-center pb-2 pt-3 title-table ">
+              ADMINISTRAR USUARIO
+            </h3>
             <Table striped bordered hover className="color-table">
               <thead>
                 <tr>

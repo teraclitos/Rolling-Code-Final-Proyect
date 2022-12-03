@@ -65,6 +65,15 @@
 .title-category:hover {
   color: #974d10;
 }
+.slider-container {
+  height: 100vh;
+  min-height: 400px;
+}
+.slider-img {
+  height: 100vh;
+  min-height: 400px;
+  object-fit: cover;
+}
 
 @keyframes title {
   from {
