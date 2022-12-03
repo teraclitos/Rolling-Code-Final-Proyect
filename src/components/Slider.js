@@ -1,8 +1,17 @@
 import { React, useEffect, useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
+import { Link, useParams } from "react-router-dom";
 import "../styles/allcss.css";
 
-const Slider = ({ totalHighlights }) => {
+const Slider = ({
+  totalHighlights,
+  cart,
+  d,
+  add,
+  auth,
+  toastError,
+  handleShowLogin,
+}) => {
   return (
     <Carousel
       indicators={false}
@@ -17,8 +26,20 @@ const Slider = ({ totalHighlights }) => {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>{d.title}</h3>
-            <p>{d.description}</p>
+            <Link
+              className=""
+              to={
+                auth.user === "admin" || auth.user === "user"
+                  ? `/ArticleDetailContainer/${d._id}`
+                  : "/"
+              }
+              onClick={() => {
+                !auth.user && handleShowLogin();
+              }}
+            >
+              <h3>{d.title}</h3>
+              <p>{d.description}</p>
+            </Link>
           </Carousel.Caption>
         </Carousel.Item>
       ))}
