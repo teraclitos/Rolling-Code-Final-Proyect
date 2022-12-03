@@ -8,7 +8,7 @@ import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-function AdminTable() {
+function AdminTable(data, toastSuccess, toastError) {
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
   const [editName, setEditName] = useState("");
@@ -20,44 +20,39 @@ function AdminTable() {
   const handleShow = () => setShow(true);
   const handleDel = () => setOpen(false);
   const handleOpen = () => setOpen(true);
-  const handleSubmit = (e) => {
-    console.log("enviado");
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   console.log("enviado");
+  //   e.preventDefault();
 
-    fetch("" + data._id, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        Name: editName,
-        Username: editUserName,
-        Mail: editEmail,
-      }),
-    })
-      .then((res) => res.json())
-      .then((json) => setSubmit(true))
-      .catch((error) => setSubmit(false));
-  };
+  //   fetch("" + data._id, {
+  //     method: "PUT",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       Name: editName,
+  //       Username: editUserName,
+  //       Mail: editEmail,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((json) => setSubmit(true))
+  //     .catch((error) => setSubmit(false));
+  // };
 
-  useEffect(() => {
-    setEditSection(data.category);
-    setEditAuthor(data.author);
-    setEditImage(data.img_URL);
-    setEditTitle(data.description);
-    setEditSubtitulo(data.description);
-    setEditDescription(data.content);
-    setEditDate(data.date);
-  }, [data]);
+  // useEffect(() => {
+  //   setEditName(data.name);
+  //   setEditEmail(data.email);
+  //   setEditUserName(data.name);
+  // }, [data]);
 
-  useEffect(() => {
-    if (submit) {
-      console.log("ssfdsfdfd");
-      toastSuccess("Modificado!");
-    } else if (submit === false) {
-      toastError("Algo ha salido mal ...");
-    }
-  }, [submit]);
+  // useEffect(() => {
+  //   if (submit) {
+  //     toastSuccess("Modificado!");
+  //   } else if (submit === false) {
+  //     toastError("Algo ha salido mal ...");
+  //   }
+  // }, [submit]);
 
   return (
     <body className="body-contacto">
@@ -144,7 +139,7 @@ function AdminTable() {
                         </Button>
                         <Button
                           className="btn-detail"
-                          onClick={(e) => handleSubmit(e)}
+                          // onClick={(e) => handleSubmit(e)}
                         >
                           Guardar cambios
                         </Button>
