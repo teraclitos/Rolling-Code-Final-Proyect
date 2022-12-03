@@ -9,8 +9,6 @@ const Error404 = () => {
       <body className="body-error">
         <div>
           <Container fluid className="error404">
-            <h3 className="text-404">Oop! Page not found.</h3>
-
             <h1 className="text-404">404</h1>
 
             <Link

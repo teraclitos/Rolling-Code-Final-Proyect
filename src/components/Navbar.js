@@ -185,7 +185,6 @@ const Navbar = ({
         setShowRegister={setShowRegister}
         toastError={toastError}
         toastSuccess={toastSuccess}
-        
       />
       <ModalLogin
         showLogin={showLogin}

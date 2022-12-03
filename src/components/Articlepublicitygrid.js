@@ -19,12 +19,21 @@ const Articlepublicitygrid = ({
   toastError,
   totalHighlights,
   handleShowLogin,
+  d,
 }) => {
   return (
     <>
       <Advertising />
       <Header />
-      <Slider totalHighlights={totalHighlights} />
+      <Slider
+        totalHighlights={totalHighlights}
+        cart={cart}
+        d={d}
+        add={add}
+        auth={auth}
+        toastError={toastError}
+        handleShowLogin={handleShowLogin}
+      />
       <div>
         <Categorias />
       </div>

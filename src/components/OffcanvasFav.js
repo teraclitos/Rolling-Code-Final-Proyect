@@ -12,7 +12,7 @@ const OffcanvasFav = ({ clear, del, cart, handleClose, show, setShow }) => {
       <Offcanvas className="bg-offcanvas" show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title className="style-favorite">
-            Mis favoritos ({cart.length})
+            Mis Favoritos ({cart.length})
           </Offcanvas.Title>
           {cart.length > 0 && (
             <Button className="btn-favorite" onClick={() => clear()}>
@@ -24,13 +24,16 @@ const OffcanvasFav = ({ clear, del, cart, handleClose, show, setShow }) => {
           {cart.length
             ? cart.map((c, i) => (
                 <Row key={i}>
-                  <Col>{c.title}</Col>
+                  <Col className="">{c.title}</Col>
+
                   <Col>{c.price}</Col>
+
                   <Col>
                     <Button className="btn-trash" onClick={() => del(c)}>
                       <FontAwesomeIcon className="text-danger" icon={faTrash} />
                     </Button>
                   </Col>
+                  <div className="col-12 card-highlights" />
                 </Row>
               ))
             : "Sin favoritos"}
