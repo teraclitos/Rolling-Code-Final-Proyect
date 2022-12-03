@@ -20,39 +20,39 @@ function AdminTable(data, toastSuccess, toastError) {
   const handleShow = () => setShow(true);
   const handleDel = () => setOpen(false);
   const handleOpen = () => setOpen(true);
-  // const handleSubmit = (e) => {
-  //   console.log("enviado");
-  //   e.preventDefault();
+  const handleSubmit = (e) => {
+    console.log("enviado");
+    e.preventDefault();
 
-  //   fetch("" + data._id, {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       Name: editName,
-  //       Username: editUserName,
-  //       Mail: editEmail,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((json) => setSubmit(true))
-  //     .catch((error) => setSubmit(false));
-  // };
+    fetch("" + data._id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Name: editName,
+        Username: editUserName,
+        Mail: editEmail,
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => setSubmit(true))
+      .catch((error) => setSubmit(false));
+  };
 
-  // useEffect(() => {
-  //   setEditName(data.name);
-  //   setEditEmail(data.email);
-  //   setEditUserName(data.name);
-  // }, [data]);
+  useEffect(() => {
+    setEditName(data.name);
+    setEditEmail(data.email);
+    setEditUserName(data.name);
+  }, [data]);
 
-  // useEffect(() => {
-  //   if (submit) {
-  //     toastSuccess("Modificado!");
-  //   } else if (submit === false) {
-  //     toastError("Algo ha salido mal ...");
-  //   }
-  // }, [submit]);
+  useEffect(() => {
+    if (submit) {
+      toastSuccess("Modificado");
+    } else if (submit === false) {
+      toastError("Algo ha salido mal");
+    }
+  }, [submit]);
 
   return (
     <body className="body-contacto">
