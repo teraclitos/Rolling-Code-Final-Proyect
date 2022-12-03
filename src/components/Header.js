@@ -43,8 +43,8 @@ const Header = () => {
         <FontAwesomeIcon className="icon-tw" icon={faTwitter} />
         <FontAwesomeIcon className="icon-ig" icon={faInstagram} />
       </div>
-      <div className=" text-center d-flex justify-content-center align-items-center ">
-        <h3 className="text-header  d-none d-md-block fs-1 ">
+      <div className=" text-center d-none d-lg-flex justify-content-center align-items-center ">
+        <h3 className="text-header   fs-1 ">
           Potenciamos
           <br />
           tu pasión
@@ -52,15 +52,26 @@ const Header = () => {
       </div>
 
       <div className="fs-1 d-flex flex-column align-items-center justify-content-center grid-center-header ">
-        <img className="img-header" src="\logoheader.png" alt="logo-hero" />{" "}
-        <h3 className="text-header  d-block d-md-none fs-1  text-center">
+        <h3 className="text-header  d-block d-lg-none fs-1  text-center">
           Potenciamos
           <br />
           tu pasión
         </h3>
+        <img className="img-header" src="\logoheader.png" alt="logo-hero" />
+        <h3 className="text-header  d-block d-lg-none fs-1   text-center">
+          El diario deportivo
+          <br />
+          número 1
+        </h3>
       </div>
 
-      <div></div>
+      <div className=" text-center d-none d-lg-flex justify-content-start align-items-center ">
+        <h3 className="text-header   fs-1  ">
+          El diario deportivo
+          <br />
+          número 1
+        </h3>
+      </div>
     </div>
   );
 };
