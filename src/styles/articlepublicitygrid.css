@@ -60,16 +60,6 @@
   transform: translateY(-5%);
 }
 
-.btn-categories:hover {
-  border: #0e185f solid 1px;
-  color: #0e185f;
-  background-color: #fff;
-}
-.btn-categories:active {
-  background-color: #fff !important;
-  color: #0e185f !important;
-}
-
 .btn-reed {
   background: #1986a0;
   color: rgb(73, 71, 71);

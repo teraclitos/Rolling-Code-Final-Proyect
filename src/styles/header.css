@@ -1,18 +1,22 @@
 .grid-header {
   width: 100%;
-  background-image: url("https://s03.s3c.es/imag/_v0/770x419/e/b/d/futbol-general-dreams.jpg");
+  background-image: url("https://img.freepik.com/vector-gratis/fondo-futbol-degradado-dinamico_23-2149007789.jpg?w=740&t=st=1670079535~exp=1670080135~hmac=29aad6ce2d65790c878c6cfe6984e932930480b85886b8ea778cdae82aeebf53");
   background-repeat: no-repeat;
   background-size: cover;
+
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 2fr;
   opacity: 0.9;
   filter: brightness(80%);
+  filter: contrast(1.1);
+
   min-height: 400px;
 }
 
 .img-header {
   width: 7em;
   user-select: none;
+  animation: logo 2s;
 }
 
 .text-header {
@@ -27,22 +31,23 @@
   gap: 1em;
 }
 .icon-container {
-  color: #fff;
+  color: rgb(255, 255, 255);
   gap: 0.5em;
+  animation: redes 4s;
 }
 .icon-tw:hover {
-  transition: 1s;
+  transition: 0.3s;
   color: #1da1f2;
   cursor: pointer;
 }
 
 .icon-fb:hover {
-  transition: 1s;
+  transition: 0.3s;
   color: #021b4d;
   cursor: pointer;
 }
 .icon-ig:hover {
-  transition: 1s;
+  transition: 0.3s;
   color: #e00547;
   cursor: pointer;
 }
