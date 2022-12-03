@@ -15,7 +15,7 @@ function AdminTable(data, toastSuccess, toastError) {
   const [editUserName, setEditUserName] = useState("");
   const [editEmail, setEditEmail] = useState("");
   const [submit, setSubmit] = useState(null);
-
+  const token = JSON.parse(localStorage.getItem("token"));
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDel = () => setOpen(false);
@@ -28,6 +28,7 @@ function AdminTable(data, toastSuccess, toastError) {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        token,
       },
       body: JSON.stringify({
         Name: editName,
