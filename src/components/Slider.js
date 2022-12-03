@@ -27,7 +27,7 @@ const Slider = ({
           />
           <Carousel.Caption>
             <Link
-              className=""
+              className="text-slider"
               to={
                 auth.user === "admin" || auth.user === "user"
                   ? `/ArticleDetailContainer/${d._id}`
@@ -36,6 +36,7 @@ const Slider = ({
               onClick={() => {
                 !auth.user && handleShowLogin();
               }}
+              style={{ textDecoration: "none" }}
             >
               <h3>{d.title}</h3>
               <p>{d.description}</p>
