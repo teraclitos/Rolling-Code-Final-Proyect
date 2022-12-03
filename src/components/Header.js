@@ -51,7 +51,7 @@ const Header = () => {
         </h3>
       </div>
 
-      <div className="fs-1 d-flex flex-column align-items-center justify-content-center grid-center-header ">
+      <div className="fs-1 d-flex flex-column align-items-center justify-content-lg-center justify-content-between grid-center-header ">
         <h3 className="text-header  d-block d-lg-none fs-1  text-center">
           Potenciamos
           <br />
