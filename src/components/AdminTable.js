@@ -1,123 +1,181 @@
 import { Container, Button } from "react-bootstrap";
-import Table from "react-bootstrap/Table";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/allcss.css";
-import { faTrash, faUserPen } from "@fortawesome/free-solid-svg-icons";
 
-import React, { useEffect, useState } from "react";
+import { faUserSlash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import Table from "react-bootstrap/Table";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
 
-const AdminTable = (dataUser) => {
-  // const [dataUser, setDataUser] = useState([]);
-  // useEffect(() => {
-  //   fetch("https://backend-news-eight.vercel.app/users/verusuarios")
-  //     .then((res) => res.json())
-  //     .then((json) => setDataUser(json));
-  // }, []);
+function AdminTable(data, toastSuccess, toastError) {
+  const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [editName, setEditName] = useState("");
+  const [editUserName, setEditUserName] = useState("");
+  const [editEmail, setEditEmail] = useState("");
+  const [submit, setSubmit] = useState(null);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleDel = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
+  const handleSubmit = (e) => {
+    console.log("enviado");
+    e.preventDefault();
+
+    fetch("" + data._id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        Name: editName,
+        Username: editUserName,
+        Mail: editEmail,
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => setSubmit(true))
+      .catch((error) => setSubmit(false));
+  };
+
+  useEffect(() => {
+    setEditName(data.name);
+    setEditEmail(data.email);
+    setEditUserName(data.name);
+  }, [data]);
+
+  useEffect(() => {
+    if (submit) {
+      toastSuccess("Modificado");
+    } else if (submit === false) {
+      toastError("Algo ha salido mal");
+    }
+  }, [submit]);
 
   return (
-    <div>
-      {" "}
-      <Container>
-        <div className="d-flex mx-auto pt-4 pb-3 justify-content-center div-administrador">
-          <div className="d-flex flex-column">
-            <div className="d-flex flex-column align-items-center">
-              <h3 className="text-center py-2 titulo-admin">ADMIN user</h3>
-            </div>
-            <div class="table-responsive">
-              <table className="table table-color mx-auto table-striped table-hover container mt-3 table-bordered">
-                <thead>
-                  <tr>
-                    <th className="col">ID</th>
-                    <th className="col">Nombre</th>
-                    <th className="col">Nombre de Usuario</th>
-                    <th className="col">COntraseña</th>
-                    <th className="col">Email</th>
-                    <th className="col">Modificar</th>
-                    <th className="col">Eliminar</th>
-                  </tr>
-                </thead>
+    <body className="body-recover">
+      <Container fluid className="resposive-table">
+        <div className="d-flex flex-column">
+          <div className="d-flex flex-column align-items-center">
+            <h3 class="text-center py-2 title-table">ADMINISTRAR USUARIO</h3>
+            <Table striped bordered hover className="color-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Id</th>
+                  <th>Usuario</th>
+                  <th>Modificar</th>
+                  <th>Eliminar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>
+                    <FontAwesomeIcon
+                      className="btn-icon"
+                      onClick={handleShow}
+                      style={{ fontSize: "2em" }}
+                      icon={faPenToSquare}
+                    />
 
-                <tbody id="filas">
-                  {dataUser.map((d, i) => (
-                    <tr>
-                      <td>{d._id}</td>
-                      <td>{d.name}</td>
-                      <td>{d.username}</td>
-                      <td>{d.password}</td>
-                      <td>{d.email}</td>
-                      <td>
-                        <Button variant="warning">
-                          Modificar
-                          <FontAwesomeIcon icon={faUserPen} className="mx-2" />
+                    <Modal show={show} onHide={handleClose}>
+                      <Modal.Header className="card-crud" closeButton>
+                        <Modal.Title>Modificar User</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body className="card-crud">
+                        <Form>
+                          <Form.Group
+                            className="mb-3"
+                            controlId="exampleForm.ControlInput1"
+                          >
+                            <Form.Label className="edit-label">Name</Form.Label>
+                            <Form.Control
+                              type="text"
+                              value={editName}
+                              onChange={(e) => setEditName(e.target.value)}
+                              autoFocus
+                            />
+                          </Form.Group>
+                          <Form.Group
+                            className="mb-3"
+                            controlId="exampleForm.ControlInput1"
+                          >
+                            <Form.Label className="edit-label">
+                              Username
+                            </Form.Label>
+                            <Form.Control
+                              type="text"
+                              placeholder="Ingrese nuevo user name"
+                              value={editUserName}
+                              onChange={(e) => setEditUserName(e.target.value)}
+                              autoFocus
+                            />
+                          </Form.Group>
+                          <Form.Group
+                            className="mb-3"
+                            controlId="exampleForm.ControlInput1"
+                          >
+                            <Form.Label className="edit-label">
+                              Email
+                            </Form.Label>
+                            <Form.Control
+                              type="email"
+                              placeholder="name@example.com"
+                              value={editEmail}
+                              onChange={(e) => setEditEmail(e.target.value)}
+                              autoFocus
+                            />
+                          </Form.Group>
+                        </Form>
+                      </Modal.Body>
+                      <Modal.Footer className="card-crud">
+                        <Button className="btn-detail" onClick={handleClose}>
+                          Cerrar
                         </Button>
-                      </td>
-                      <td>
-                        <Button variant="danger">
+                        <Button
+                          className="btn-detail"
+                          // onClick={(e) => handleSubmit(e)}
+                        >
+                          Guardar cambios
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </td>
+                  <td>
+                    <FontAwesomeIcon
+                      className="btn-icon"
+                      onClick={handleOpen}
+                      style={{ fontSize: "2em" }}
+                      icon={faUserSlash}
+                    />
+
+                    <Modal show={open} onHide={handleDel}>
+                      <Modal.Body className="card-crud">
+                        ¿Estas seguro que quieres eliminar este usuario?
+                      </Modal.Body>
+                      <Modal.Footer className="card-crud">
+                        <Button className="btn-detail" onClick={handleDel}>
+                          Cancelar
+                        </Button>
+                        <Button className="btn-detail" onClick={handleDel}>
                           Eliminar
-                          <FontAwesomeIcon icon={faTrash} className="mx-2" />
                         </Button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                      </Modal.Footer>
+                    </Modal>
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
           </div>
         </div>
       </Container>
-    </div>
+    </body>
   );
-};
+}
 
 export default AdminTable;
-
-// <Table responsive>
-//   <thead>
-//     <tr>
-//       <th>#</th>
-//       <th>id</th>
-//       <th>Mail o nombre usuario</th>
-//       <th>Contraseña(en puntitos)</th>
-//       <th>Modificar</th>
-//       <th>Eliminar</th>
-//     </tr>
-//   </thead>
-//   <tbody>
-//     <tr>
-//       <td>1 </td>
-//       <td>_id </td>
-//       <td> user</td>
-//       <td>password </td>
-//       <td>
-//         <Button variant="warning">
-//           Modificar
-//           <FontAwesomeIcon icon={faUserPen} className="mx-2" />
-//         </Button>
-//       </td>
-//       <td>
-//         <Button variant="danger">
-//           Eliminar
-//           <FontAwesomeIcon icon={faTrash} className="mx-2" />
-//         </Button>
-//       </td>
-//     </tr>
-
-//     {/* {data.map((d, i) => (
-//         <tr>
-//           <td>#</td>
-//           <td>{data._id}</td>
-//           <td>{data.user}</td>
-//           <td>{data.password}</td>
-//           <td>id</td>
-//           <td>user</td>
-//           <td>password</td>
-//           <td>
-//             <Button>Eliminar</Button>
-//           </td>
-//           <td>
-//             <Button>Modificar</Button>
-//           </td>
-//         </tr>
-//       ))} */}
-//   </tbody>
-// </Table>
