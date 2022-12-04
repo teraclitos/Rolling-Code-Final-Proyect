@@ -1,29 +1,49 @@
 .body-error {
-  margin: 0;
+  margin: auto;
   padding: 0;
   min-height: 100vh;
   background-image: linear-gradient(150deg, #fd841f, #3155d8, #1986a0);
 }
+.text-404 {
+  margin: 0px;
+  font-size: 80px;
+  font-family: "ANTON";
+  text-align: center;
+  color: #fd841f;
 
-.error404 {
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.p-404 {
+  margin: 0px;
+
+  font-family: "ANTON";
+  text-align: center;
+  color: #1a1614;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-right: 0%;
+    width: 100%;
+  }
+}
+
+.error-404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh -100px);
   width: 100%;
-  position: absolute;
-
-  transform: translateY(-50px);
-  color: #000000;
 }
-
-.error404 h1 {
-  font-size: 300px;
-  margin: 0;
-  font-weight: 900;
-  letter-spacing: 20px;
-  background: url("https://sfa-shared-media.azureedge.net/sfa-cache/9/3/8/e/5/e/938e5e7007a5912d317730d0ab1ac9d080946f3c.jpg")
-    center no-repeat;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-}
-
 .btn-404 {
   background: #fd841f;
   color: #fff;
@@ -32,11 +52,4 @@
   border-radius: 15px;
   font-size: 20px;
   font-family: "Anton";
-}
-
-@media (max-width: 550px) {
-  .error404 {
-    padding-top: 4rem;
-    padding-bottom: 2.5rem;
-  }
 }

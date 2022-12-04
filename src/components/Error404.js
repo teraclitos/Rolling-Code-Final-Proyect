@@ -6,20 +6,20 @@ import { Link } from "react-router-dom";
 const Error404 = () => {
   return (
     <>
-      <body className="body-error">
-        <div>
-          <Container fluid className="error404">
-            <h1 className="text-404">404</h1>
-
-            <Link
-              className="btn-404 "
-              to="/"
-              style={{ textDecoration: "none" }}
-            >
-              Go back home
-            </Link>
-          </Container>
-        </div>
+      <body className="body-error mt-auto">
+        <Container>
+          <section className="error 404">
+            <h1 className="text-404 mt-5">404</h1>
+            <h2 className="p-404">Pagina no encontrada</h2>
+          </section>
+          <Link
+            className="btn-404 mt-5"
+            to="/"
+            style={{ textDecoration: "none" }}
+          >
+            Go back home
+          </Link>
+        </Container>
       </body>
     </>
   );
