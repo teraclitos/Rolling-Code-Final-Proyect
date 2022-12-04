@@ -16,7 +16,7 @@
 .img-header {
   width: 7em;
   user-select: none;
-  animation-duration: 3s;
+  animation-duration: 1.5s;
   animation-name: slideinheader;
   position: relative;
 }

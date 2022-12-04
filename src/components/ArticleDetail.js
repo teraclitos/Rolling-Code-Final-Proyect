@@ -111,7 +111,7 @@ const ArticleDetail = ({
           <Row xs={1} md={2}>
             <div id="render-container" className="col-12 col-md-9">
               <Card border="0" className="mt-5">
-                <Card.Header className="title-section">
+                <Card.Header className="title-section d-flex align-items-center justify-content-center">
                   {data.category}
                 </Card.Header>
 
@@ -289,7 +289,7 @@ const ArticleDetail = ({
                   </Form>
                 </Modal.Body>
 
-                <Modal.Footer className="card-crud">
+                <Modal.Footer className="card-crud d-flex justify-content-center">
                   <Button className="btn-detail" onClick={handleClose}>
                     Cerrar
                   </Button>
