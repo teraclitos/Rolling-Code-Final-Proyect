@@ -12,6 +12,15 @@
   .grid-header {
     grid-template-columns: 1fr 5fr 1fr;
   }
+  @keyframes slidein {
+    from {
+      left: 200%;
+    }
+
+    to {
+      left: 0;
+    }
+  }
 }
 
 @media (max-width: 575.98px) {
