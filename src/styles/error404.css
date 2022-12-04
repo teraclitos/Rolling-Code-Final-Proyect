@@ -4,3 +4,52 @@
   min-height: 100vh;
   background-image: linear-gradient(150deg, #fd841f, #3155d8, #1986a0);
 }
+.text-404 {
+  margin: 0px;
+  font-size: 80px;
+  font-family: "ANTON";
+  text-align: center;
+  color: #fd841f;
+
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.p-404 {
+  margin: 0px;
+
+  font-family: "ANTON";
+  text-align: center;
+  color: #1a1614;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-right: 0%;
+    width: 100%;
+  }
+}
+
+.error-404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh -100px);
+  width: 100%;
+}
+.btn-404 {
+  background: #fd841f;
+  color: #fff;
+  padding: 12px 24px;
+  display: inline-block;
+  border-radius: 15px;
+  font-size: 20px;
+  font-family: "Anton";
+}
