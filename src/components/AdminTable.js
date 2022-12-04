@@ -10,19 +10,20 @@ import Modal from "react-bootstrap/Modal";
 
 function AdminTable(toastSuccess, toastError) {
   const [dataUser, setDataUser] = useState([]);
-  useEffect(() => {
-    fetch("https://backend-news-eight.vercel.app/users/verusuarios")
-      .then((res) => res.json())
-      .then((json) => setDataUser(json));
-  }, []);
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
   const [editName, setEditName] = useState("");
   const [editUserName, setEditUserName] = useState("");
   const [editEmail, setEditEmail] = useState("");
   const [submit, setSubmit] = useState(null);
-  // const token = JSON.parse(localStorage.getItem("token"));
   const handleClose = () => setShow(false);
+  useEffect(() => {
+    fetch("https://backend-news-eight.vercel.app/users/verusuarios")
+      .then((res) => res.json())
+      .then((json) => setDataUser(json));
+  }, []);
+  // const token = JSON.parse(localStorage.getItem("token"));
+
   const handleShow = () => setShow(true);
   const handleDel = () => {
     setOpen(false);
@@ -49,18 +50,24 @@ function AdminTable(toastSuccess, toastError) {
     console.log("enviado");
     e.preventDefault();
 
-    fetch("" + dataUser._id, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        // token,
-      },
-      body: JSON.stringify({
-        name: editName,
-        username: editUserName,
-        email: editEmail,
-      }),
-    })
+    fetch(
+      "https://backend-news-eight.vercel.app/users/verusuarios" + dataUser._id,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          // token,
+        },
+        body: JSON.stringify({
+          name: editName,
+          username: editUserName,
+          email: editEmail,
+          role: dataUser.role,
+          token: dataUser.token,
+          id: dataUser.id,
+        }),
+      }
+    )
       .then((res) => res.json())
       .then((json) => setSubmit(true))
       .catch((error) => setSubmit(false));
@@ -93,17 +100,19 @@ function AdminTable(toastSuccess, toastError) {
                 <tr>
                   <th>N°</th>
                   <th>Id</th>
+
                   <th>Usuario</th>
                   <th>Modificar</th>
                   <th>Eliminar</th>
                 </tr>
               </thead>
               <tbody>
-                {dataUser.map((d, i) => (
+                {dataUser.map((dataUser, i) => (
                   <tr>
                     <td>{i + 1}</td>
-                    <td>{d._id}</td>
-                    <td>{d.username}</td>
+                    <td>{dataUser._id}</td>
+
+                    <td>{dataUser.username}</td>
                     <td>
                       <FontAwesomeIcon
                         className="btn-icon"
@@ -172,7 +181,7 @@ function AdminTable(toastSuccess, toastError) {
                           </Button>
                           <Button
                             className="btn-detail"
-                            // onClick={(e) => handleSubmit(e)}
+                            onClick={(e) => handleSubmit(e)}
                           >
                             Guardar cambios
                           </Button>
