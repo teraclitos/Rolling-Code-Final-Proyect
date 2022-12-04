@@ -37,10 +37,10 @@ const ModalRegister = ({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: setUser,
-        name: setName,
-        email: setMails,
-        password: setPassword,
+        username: user,
+        name: name,
+        email: mails,
+        password: password,
       }),
     })
       .then((res) => res.json())
@@ -504,6 +504,7 @@ const ModalRegister = ({
                   validateRepeatPassword(repeatPassword) === true
                 ) {
                   if (conditions) {
+                    saveUser();
                     setMails("");
                     setName("");
                     setUser("");

@@ -21,25 +21,25 @@ const ModalLogin = ({
   setShowRegister,
   handleShowRegister,
 }) => {
-  const handleCloseLogin = () => setShowLogin(false);
+  // const handleCloseLogin = () => setShowLogin(false);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const handleCloseLogin = () => {
-  //   setShowLogin(false);
-  //   fetch("https://backend-news-eight.vercel.app/users/login", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       username: setMail,
-  //       password: setPassword,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((res) => localStorage.setItem("token", JSON.stringify(res.token)));
-  // };
+  const handleCloseLogin = () => {
+    setShowLogin(false);
+    fetch("https://backend-news-eight.vercel.app/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: mail,
+        password: password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => localStorage.setItem("token", JSON.stringify(res.token)));
+  };
 
   useEffect(() => {
     console.log(mail);

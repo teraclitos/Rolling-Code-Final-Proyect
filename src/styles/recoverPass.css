@@ -18,11 +18,17 @@
   /* box-shadow: 4px 4px 4px 4px rgb(12, 73, 32); */
 }
 
+.link-pass {
+  padding: 0;
+  margin: 0;
+  width: 6em;
+}
 .btn-pass {
   background-color: #1986a0;
   border: 0;
   color: black;
   border-radius: 4px;
+  width: 6em;
   font-family: "Anton";
 }
 .btn-pass:hover {

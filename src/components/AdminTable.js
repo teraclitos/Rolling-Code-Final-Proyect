@@ -18,7 +18,26 @@ function AdminTable(data, toastSuccess, toastError) {
   const token = JSON.parse(localStorage.getItem("token"));
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleDel = () => setOpen(false);
+  const handleDel = () => {
+    setOpen(false);
+    // e.preventDefault();
+
+    // fetch("" + data._id, {
+    //   method: "DELETE",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     token,
+    //   },
+    //   body: JSON.stringify({
+    //     name: editName,
+    //     username: editUserName,
+    //     email: editEmail,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((json) => setOpen(false))
+    //   .catch((error) => setSubmit(true));
+  };
   const handleOpen = () => setOpen(true);
   const handleSubmit = (e) => {
     console.log("enviado");
@@ -31,9 +50,9 @@ function AdminTable(data, toastSuccess, toastError) {
         token,
       },
       body: JSON.stringify({
-        Name: editName,
-        Username: editUserName,
-        Mail: editEmail,
+        name: editName,
+        username: editUserName,
+        email: editEmail,
       }),
     })
       .then((res) => res.json())
