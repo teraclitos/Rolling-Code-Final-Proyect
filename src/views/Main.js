@@ -59,6 +59,7 @@ const Main = ({
               data={data}
               add={add}
               cart={cart}
+              totalHighlights={totalHighlights}
             />
           }
         />
