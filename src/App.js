@@ -1,25 +1,9 @@
-import Navbar from "../src/components/Navbar";
-import Footer from "../src/components/Footer";
-import Articlepublicitygrid from "../src/components/Articlepublicitygrid";
-import AdminTable from "../src/components/AdminTable";
-import CategoryDetail from "./components/CategoryDetail";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
-import Contact from "./components/Contact";
-import { useEffect, useState } from "react";
-import Header from "./components/Header";
 import { BrowserRouter } from "react-router-dom";
-import { Route, Routes } from "react-router-dom";
-import ArticleDetailContainer from "./components/ArticleDetailContainer";
-import Highlights from "../src/components/Highlights";
-import ArticleFound from "../src/components/ArticleFound";
-import Advertising from "./components/Advertising";
 import { toast, ToastContainer } from "react-toastify";
+import Main from "./views/Main";
 import "react-toastify/dist/ReactToastify.css";
-import RecoverPass from "../src/components/RecoverPass";
-import { Slide, Zoom, Flip, Bounce } from "react-toastify";
-import Error404 from "./components/Error404";
-import Loader from "./components/Loader";
+import { Flip } from "react-toastify";
+import { useEffect, useState } from "react";
 
 function App() {
   const [data, setData] = useState([]);
@@ -58,12 +42,6 @@ function App() {
   const clear = () => {
     setCart([]);
   };
-
-  //Login
-
-  // useEffect(() => {
-  //   console.log(auth);
-  // }, [auth]);
 
   const [auth, setAuth] = useState({
     user: "",
@@ -111,150 +89,33 @@ function App() {
   const totalHighlights = data.filter((element) => element.highlight === true);
 
   return (
-    <div>
-      <BrowserRouter>
-        <Navbar
-          toastError={toastError}
-          toastSuccess={toastSuccess}
-          cart={cart}
-          del={del}
-          clear={clear}
-          data={data}
-          dataUser={dataUser}
-          auth={auth}
-          validate={validate}
-          login={login}
-          logout={logout}
-          handleShowLogin={handleShowLogin}
-          showLogin={showLogin}
-          setShowLogin={setShowLogin}
-        />
-
-        <Routes>
-          <Route
-            path="/highlights"
-            element={
-              <Highlights
-                toastError={toastError}
-                toastSuccess={toastSuccess}
-                data={data}
-                add={add}
-                cart={cart}
-                totalHighlights={totalHighlights}
-              />
-            }
-          />
-          <Route
-            path="/articlefound"
-            element={
-              <ArticleFound
-                data={data}
-                add={add}
-                cart={cart}
-                auth={auth}
-                validate={validate}
-                login={login}
-                logout={logout}
-              />
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <Articlepublicitygrid
-                data={data}
-                add={add}
-                cart={cart}
-                auth={auth}
-                validate={validate}
-                login={login}
-                logout={logout}
-                toastError={toastError}
-                totalHighlights={totalHighlights}
-                handleShowLogin={handleShowLogin}
-              />
-            }
-          />
-          <Route
-            path="/contacto"
-            element={<Contact toastSuccess={toastSuccess} />}
-          />
-          <Route
-            path="/usertable"
-            element={<AdminTable dataUser={dataUser} />}
-          />
-
-          <Route
-            path="/category"
-            element={
-              <CategoryDetail
-                data={data}
-                add={add}
-                cart={cart}
-                auth={auth}
-                validate={validate}
-                login={login}
-                logout={logout}
-              />
-            }
-          />
-
-          <Route
-            path="/ArticleDetailContainer/:id"
-            element={
-              <ArticleDetailContainer
-                add={add}
-                cart={cart}
-                auth={auth}
-                validate={validate}
-                login={login}
-                logout={logout}
-                toastError={toastError}
-                toastSuccess={toastSuccess}
-                totalHighlights={totalHighlights}
-                dataTotal={data}
-              />
-            }
-          />
-
-          {/* <Route
-            path="/ArticleDetailContainer/:id"
-            element={
-              auth.user ? (
-                <ArticleDetailContainer
-                  add={add}
-                  cart={cart}
-                  auth={auth}
-                  validate={validate}
-                  login={login}
-                  logout={logout}
-                />
-              ) : (
-                <Articlepublicitygrid
-                  data={data}
-                  add={add}
-                  cart={cart}
-                  auth={auth}
-                  validate={validate}
-                  login={login}
-                  logout={logout}
-                />
-              )
-            }
-          /> */}
-          <Route path="/recuperarContraseña" element={<RecoverPass />} />
-          <Route path="/error404" element={<Error404 />} />
-        </Routes>
-        <Footer />
-        <ToastContainer
-          transition={Flip}
-          theme="colored"
-          hideProgressBar={true}
-          autoClose={2000}
-          pauseOnFocusLoss={false}
-        />
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Main
+        toastError={toastError}
+        toastSuccess={toastSuccess}
+        cart={cart}
+        del={del}
+        add={add}
+        clear={clear}
+        data={data}
+        dataUser={dataUser}
+        auth={auth}
+        validate={validate}
+        login={login}
+        logout={logout}
+        handleShowLogin={handleShowLogin}
+        showLogin={showLogin}
+        setShowLogin={setShowLogin}
+        totalHighlights={totalHighlights}
+      />
+      <ToastContainer
+        transition={Flip}
+        theme="colored"
+        hideProgressBar={true}
+        autoClose={2000}
+        pauseOnFocusLoss={false}
+      />
+    </BrowserRouter>
   );
 }
 
