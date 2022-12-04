@@ -56,8 +56,7 @@ const Footer = () => {
                 <h6 className="my-3 fw-bold text-center mt-5 text-footer">
                   CONTACTANOS
                 </h6>
-                <h8 className="text-center">Av. Siempre Vivas</h8>
-                <h8 className="text-center">Acerca de Nosotros</h8>
+                <h8 className="text-center">Av. Siempre Vivas 846 -SMT</h8>
               </div>
             </div>
             <div className="col-xs-12 p-0 mt-4 copyright">

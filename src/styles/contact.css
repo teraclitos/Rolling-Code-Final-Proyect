@@ -15,12 +15,11 @@ body {
   text-align: center;
   font-family: "Anton", sans-serif;
   color: white;
-  /* margin-bottom: 30%; */
 }
 
 .body-contacto {
   background-image: url("https://s.france24.com/media/display/6aca8d1a-7783-11ea-9cf2-005056bf87d6/w:1024/p:16x9/WEB%2005ABR%20DEPORTES%20PORTADA%20FOTO.webp");
-  /* background-color: rgba(14, 12, 12, 0.726);  */
+
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -29,12 +28,11 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 5%;
-  /* box-shadow: 4px 4px 4px 4px rgb(12, 73, 32); */
 }
 
 .contactanos {
   background: rgb(245, 112, 3);
-  /* margin-top: -80px; */
+
   font-family: Impact, Haettenschweiler, "Arial Narrow", sans-serif;
   color: rgb(0, 0, 0);
   font-size: 30px;
@@ -47,8 +45,7 @@ body {
   border-radius: 4px;
   font-family: "Anton";
   padding: 1%;
-  margin-left: 50px;
-  margin-right: 50%;
+
   align-items: center;
   display: flex;
   justify-content: center;
