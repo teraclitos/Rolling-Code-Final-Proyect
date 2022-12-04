@@ -4,14 +4,14 @@ import CloseButton from "react-bootstrap/CloseButton";
 
 const Advertising = () => {
   const [modal, setModal] = useState("hidden");
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setModal("visible");
-  //   }, 500);
-  //   setTimeout(() => {
-  //     setModal("hidden");
-  //   }, 5000);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setModal("visible");
+    }, 3500);
+    setTimeout(() => {
+      setModal("hidden");
+    }, 6000);
+  }, []);
 
   return (
     <div style={{ visibility: modal }} className="modal d-none d-md-flex">

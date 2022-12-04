@@ -24,12 +24,10 @@
 @keyframes slidein {
   from {
     bottom: 200%;
-    /* width: 300%; */
   }
 
   to {
     bottom: 0%;
-    /* width: 100%; */
   }
 }
 
