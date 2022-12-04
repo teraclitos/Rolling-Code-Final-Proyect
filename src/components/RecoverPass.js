@@ -79,7 +79,11 @@ const RecoverPass = () => {
                     </Formik>
                   </Row>
                   <Row className="d-flex justify-content-center">
-                    <Link to="/error404" style={{ textDecoration: "none" }}>
+                    <Link
+                      to="/error404"
+                      className="link-pass"
+                      style={{ textDecoration: "none" }}
+                    >
                       <Button className="btn-pass" onClick={handleShowPass}>
                         Enviar Mail
                       </Button>
