@@ -13,12 +13,12 @@ function App() {
       .then((json) => setData(json));
   }, [data]);
 
-  const [dataUser, setDataUser] = useState([]);
-  useEffect(() => {
-    fetch("https://backend-news-eight.vercel.app/users/verusuarios")
-      .then((res) => res.json())
-      .then((json) => setDataUser(json));
-  }, []);
+  // const [dataUser, setDataUser] = useState([]);
+  // useEffect(() => {
+  //   fetch("https://backend-news-eight.vercel.app/users/verusuarios")
+  //     .then((res) => res.json())
+  //     .then((json) => setDataUser(json));
+  // }, []);
 
   const handleShowLogin = () => setShowLogin(true);
   const [showLogin, setShowLogin] = useState(false);
@@ -98,7 +98,6 @@ function App() {
         add={add}
         clear={clear}
         data={data}
-        dataUser={dataUser}
         auth={auth}
         validate={validate}
         login={login}
