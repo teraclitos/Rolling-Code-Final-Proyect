@@ -8,7 +8,6 @@ import {
   faEnvelope,
   faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
-import emailjs from "@emailjs/browser";
 
 const Contact = ({ toastSuccess }) => {
   const [formEnviado, cambiarformEnviado] = useState(false);
