@@ -16,25 +16,18 @@
 .img-header {
   width: 7em;
   user-select: none;
-  animation-duration: 5s;
+  animation-duration: 3s;
   animation-name: slidein;
+  position: relative;
 }
 
 @keyframes slidein {
   from {
-    margin-left: 100%;
-    width: 300%;
-  }
-
-  75% {
-    font-size: 300%;
-    margin-left: 25%;
-    width: 150%;
+    bottom: 200%;
   }
 
   to {
-    margin-left: 0%;
-    width: 100%;
+    bottom: 0%;
   }
 }
 
@@ -52,7 +45,6 @@
 .icon-container {
   color: rgb(255, 255, 255);
   gap: 0.5em;
-  animation: redes 4s;
 }
 .icon-tw:hover {
   transition: 0.3s;
