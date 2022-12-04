@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/allcss.css";
-// import Form from "react-bootstrap/Form";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,10 +8,31 @@ import {
   faEnvelope,
   faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
-import { toast, ToastContainer } from "react-toastify";
+import emailjs from "@emailjs/browser";
 
 const Contact = ({ toastSuccess }) => {
   const [formEnviado, cambiarformEnviado] = useState(false);
+
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
+
+  //   emailjs
+  //     .send(
+  //       "service_18qr3zl",
+  //       "template_qwmpdwh",
+  //       e.target,
+  //       "nGGAGr3mmxcq7Asha"
+  //     )
+  //     .then(
+  //       (result) => {
+  //         console.log(result.text);
+  //       },
+  //       (error) => {
+  //         console.log(error.text);
+  //       }
+  //     );
+  // };
+
   return (
     <div>
       <body className="body-contacto ">
@@ -59,7 +80,7 @@ const Contact = ({ toastSuccess }) => {
                       if (!valores.mail) {
                         errores.mail = (
                           <p className="text-contact">
-                            por favor introduce tu mail
+                            Por favor introduce tu mail
                           </p>
                         );
                       } else if (
@@ -83,7 +104,7 @@ const Contact = ({ toastSuccess }) => {
                     }}
                     onSubmit={(valores, { resetForm }) => {
                       resetForm();
-                      console.log("form enviado");
+
                       cambiarformEnviado(true);
                       setTimeout(() => cambiarformEnviado(false), 3000);
                     }}
@@ -95,10 +116,7 @@ const Contact = ({ toastSuccess }) => {
                       handleChange,
                       handleBlur,
                     }) => (
-                      <Form
-                        action="https://formsubmit.co/marinabi2306@gmail.com"
-                        method="POST"
-                      >
+                      <Form>
                         <div class="input-group mb-3">
                           <span
                             class="input-group-text color-span"
