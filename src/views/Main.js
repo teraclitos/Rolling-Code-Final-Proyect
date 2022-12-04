@@ -98,7 +98,16 @@ const Main = ({
           path="/contacto"
           element={<Contact toastSuccess={toastSuccess} />}
         />
-        <Route path="/usertable" element={<AdminTable dataUser={dataUser} />} />
+        <Route
+          path="/usertable"
+          element={
+            <AdminTable
+              dataUser={dataUser}
+              toastError={toastError}
+              toastSuccess={toastSuccess}
+            />
+          }
+        />
 
         <Route
           path="/category"
