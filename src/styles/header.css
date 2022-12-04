@@ -17,11 +17,11 @@
   width: 7em;
   user-select: none;
   animation-duration: 3s;
-  animation-name: slidein;
+  animation-name: slideinheader;
   position: relative;
 }
 
-@keyframes slidein {
+@keyframes slideinheader {
   from {
     bottom: 200%;
   }
