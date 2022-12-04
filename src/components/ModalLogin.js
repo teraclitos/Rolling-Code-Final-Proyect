@@ -135,7 +135,7 @@ const ModalLogin = ({
                       handleShowRegister();
                     }}
                   >
-                    registráte
+                    regístrate
                   </Link>
                 </span>
               </div>
