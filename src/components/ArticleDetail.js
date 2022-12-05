@@ -115,6 +115,7 @@ const ArticleDetail = ({
       .then((json) => setDeletetOk(true))
       .catch((error) => setDeletetOk(false));
   };
+  const navigate = useNavigate("/");
 
 
   return (
