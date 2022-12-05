@@ -32,7 +32,6 @@ const ArticleDetail = ({
   toastError,
   totalHighlights,
   dataTotal,
-  setDataTotal,
   changeData,
   setChangeData,
 }) => {
