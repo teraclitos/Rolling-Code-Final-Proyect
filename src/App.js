@@ -6,11 +6,15 @@ import { Flip } from "react-toastify";
 import { useEffect, useState } from "react";
 function App() {
   const [data, setData] = useState([]);
+  const [changeData, setChangeData] = useState(1);
+
+  const editButtom = document.getElementById("edit-buttom");
   useEffect(() => {
     fetch("https://backend-news-eight.vercel.app/news/news")
       .then((res) => res.json())
       .then((json) => setData(json));
-  }, [data]);
+    console.log(data);
+  }, [changeData]);
   // const [dataUser, setDataUser] = useState([]);
   // useEffect(() => {
   //   fetch("https://backend-news-eight.vercel.app/users/verusuarios")
@@ -143,6 +147,9 @@ function App() {
         showLogin={showLogin}
         setShowLogin={setShowLogin}
         totalHighlights={totalHighlights}
+        setData={setData}
+        changeData={changeData}
+        setChangeData={setChangeData}
       />
       <ToastContainer
         transition={Flip}

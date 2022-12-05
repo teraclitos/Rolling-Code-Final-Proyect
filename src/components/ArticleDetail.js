@@ -32,6 +32,9 @@ const ArticleDetail = ({
   toastError,
   totalHighlights,
   dataTotal,
+  setDataTotal,
+  changeData,
+  setChangeData,
 }) => {
   const [show, setShow] = useState(false);
   const [editSection, setEditSection] = useState(data.category);
@@ -323,14 +326,21 @@ const ArticleDetail = ({
                   </Form.Group>
                   <Form.Group className="">
                     <Button
+                      id="edit-Buttom"
                       className="btn-detail"
                       onClick={(e) => {
                         if (highlightFilter() === true) {
                           handleSubmit(e);
+
+                          setTimeout(() => {
+                            setChangeData(changeData + 1);
+                          }, 1000);
+
                           handleClose();
                         } else {
                           toastError("Sólo puede haber tres destacados");
                         }
+
                         setRender(true);
                       }}
                     >

@@ -30,6 +30,9 @@ const Main = ({
   setShowLogin,
   totalHighlights,
   add,
+  setData,
+  changeData,
+  setChangeData,
 }) => {
   return (
     <>
@@ -139,6 +142,9 @@ const Main = ({
                 toastSuccess={toastSuccess}
                 totalHighlights={totalHighlights}
                 dataTotal={data}
+                setDataTotal={setData}
+                changeData={changeData}
+                setChangeData={setChangeData}
               />
             }
           />
