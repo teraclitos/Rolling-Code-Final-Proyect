@@ -95,6 +95,7 @@ function AdminTable(toastSuccess, toastError) {
             <h3 class="text-center pb-2 pt-3 title-table ">
               ADMINISTRAR USUARIO
             </h3>
+
             <Table striped bordered hover className="color-table">
               <thead>
                 <tr>

@@ -75,7 +75,7 @@ const Navbar = ({
             id="responsive-navbar-nav"
             className="justify-content-end"
           >
-            <Nav>
+            <Nav className="d-flex align-items-center">
               {auth.user == "user" && (
                 <Nav.Link onClick={handleShow}>
                   <Link className="link-nav" style={{ textDecoration: "none" }}>
@@ -89,7 +89,7 @@ const Navbar = ({
               <Nav.Link>
                 <Link
                   to="/highlights"
-                  className="link-nav"
+                  className="link-nav "
                   style={{ textDecoration: "none" }}
                 >
                   Destacados
