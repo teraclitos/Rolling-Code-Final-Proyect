@@ -1,7 +1,4 @@
 .body-error {
-  margin: auto;
-  padding: 0;
-  min-height: 100vh;
   background-image: linear-gradient(150deg, #fd841f, #3155d8, #1986a0);
 }
 .text-404 {
@@ -52,4 +49,7 @@
   border-radius: 15px;
   font-size: 20px;
   font-family: "Anton";
+}
+.text-pass {
+  color: #120258;
 }

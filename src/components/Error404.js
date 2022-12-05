@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Error404 = () => {
   return (
     <>
-      <body className="body-error mt-auto">
+      <body className="body-error">
         <Container>
           <section className="error 404">
             <h1 className="text-404 mt-5">404</h1>
