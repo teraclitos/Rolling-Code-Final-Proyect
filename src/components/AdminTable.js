@@ -122,7 +122,7 @@ function AdminTable(toastSuccess, toastError) {
                         icon={faPenToSquare}
                       />
 
-                      <Modal show={show} onHide={handleClose}>
+                      <Modal centered show={show} onHide={handleClose}>
                         <Modal.Header className="card-crud" closeButton>
                           <Modal.Title>Modificar User</Modal.Title>
                         </Modal.Header>
@@ -136,6 +136,7 @@ function AdminTable(toastSuccess, toastError) {
                                 Name
                               </Form.Label>
                               <Form.Control
+                                maxLength={31}
                                 type="text"
                                 value={editName}
                                 onChange={(e) => setEditName(e.target.value)}
@@ -150,6 +151,7 @@ function AdminTable(toastSuccess, toastError) {
                                 Username
                               </Form.Label>
                               <Form.Control
+                                maxLength={31}
                                 type="text"
                                 placeholder="Ingrese nuevo user name"
                                 value={editUserName}
@@ -167,6 +169,7 @@ function AdminTable(toastSuccess, toastError) {
                                 Email
                               </Form.Label>
                               <Form.Control
+                                maxLength={31}
                                 type="email"
                                 placeholder="name@example.com"
                                 value={editEmail}
@@ -176,7 +179,7 @@ function AdminTable(toastSuccess, toastError) {
                             </Form.Group>
                           </Form>
                         </Modal.Body>
-                        <Modal.Footer className="card-crud">
+                        <Modal.Footer className="card-crud d-flex justify-content-center">
                           <Button className="btn-detail" onClick={handleClose}>
                             Cerrar
                           </Button>
@@ -197,11 +200,12 @@ function AdminTable(toastSuccess, toastError) {
                         icon={faUserSlash}
                       />
 
-                      <Modal show={open} onHide={handleDel}>
-                        <Modal.Body className="card-crud">
+                      <Modal centered show={open} onHide={handleDel}>
+                        <Modal.Header className="card-crud h-0 "></Modal.Header>
+                        <Modal.Body className="card-crud ">
                           ¿Estas seguro que quieres eliminar este usuario?
                         </Modal.Body>
-                        <Modal.Footer className="card-crud">
+                        <Modal.Footer className="card-crud d-flex justify-content-center">
                           <Button className="btn-detail" onClick={handleDel}>
                             Cancelar
                           </Button>

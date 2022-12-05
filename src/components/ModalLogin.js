@@ -84,6 +84,7 @@ const ModalLogin = ({
                   />
                 </InputGroup.Text>
                 <Form.Control
+                  maxLength={31}
                   type="mail"
                   placeholder="Mail o usuario"
                   onInput={(e) => setMail(e.target.value)}
@@ -105,6 +106,7 @@ const ModalLogin = ({
                   />
                 </InputGroup.Text>
                 <Form.Control
+                  maxLength={31}
                   type="password"
                   onInput={(e) => setPassword(e.target.value)}
                   placeholder="Contraseña"
