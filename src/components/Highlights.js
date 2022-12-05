@@ -31,13 +31,13 @@ const Highlights = ({
 }) => {
   return (
     <div>
-      <Container fluid>
+      <Container className="my-5" fluid>
         <h2 className="title-news text-center">Noticias de la Semana</h2>
         {totalHighlights.map((d, i) => (
-          <Row xs={1} md={2}>
+          <Row className="container me-auto ms-auto" xs={1} md={2}>
             <div className="col-12 col-md-12">
               <Card border="0" className="mt-5 card-highlights">
-                <Card.Header className="title-section">
+                <Card.Header className="title-section d-flex align-items-center justify-content-center">
                   {d.category}
                 </Card.Header>
                 {/* data.section */}
