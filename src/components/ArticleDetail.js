@@ -183,7 +183,7 @@ const ArticleDetail = ({
 
                   <Card.Text className="content">{data.content}</Card.Text>
 
-                  {auth.user === "admin2022" ? (
+                  {auth.role === "admin" ? (
                     <Button className=" mt-2 btn-detail " onClick={handleShow}>
                       EDITAR
                     </Button>
