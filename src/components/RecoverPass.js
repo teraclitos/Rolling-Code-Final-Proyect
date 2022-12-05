@@ -1,94 +1,101 @@
 import React, { useState } from "react";
-import { Row, Form, Modal, Button, InputGroup } from "react-bootstrap";
-import { Formik } from "formik";
+import { Row, Modal, Button, InputGroup } from "react-bootstrap";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import "../styles/allcss.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-const RecoverPass = () => {
-  const [show, setShowPass] = useState(false);
-  const [pass, setPass] = useState(false);
+const RecoverPass = (toastSuccess) => {
+  const [formEnviado, cambiarformEnviado] = useState(false);
 
-  const passClose = () => setPass(false);
-  const passShow = () => setPass(true);
-  const handleClosePass = () => setShowPass(false);
-  const handleShowPass = () => setShowPass(true);
   return (
     <>
       <body className="body-recover">
         <div className="container bgpass  py-5 mx-auto">
-          <div className="row align-items-stretch">
+          <div className="row">
             <div className="row m-0 flex-row justify-content-between h-75">
               <div className="col-12 col-md-12 d-flex flex-column justify-content-center mb-5">
                 <div className="row align-items-center">
                   <h1 className="recover-pass">Recuperar contraseña</h1>
-                  <Row>
-                    <Formik
-                      initialValues={{ email: "" }}
-                      validate={(valores) => {
-                        let errors = {};
-                        if (!valores.email) {
-                          errors.email =
-                            "Por favor ingrese su correo electrónico.";
-                        } else if (
-                          !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
-                            valores.email
-                          )
-                        ) {
-                          errors.email = "Ingrese un correo electrónico válido";
-                        }
-                        return errors;
-                      }}
-                    >
-                      {({
-                        values,
-                        errors,
-                        touched,
-                        handleSubmit,
-                        handleChange,
-                        handleBlur,
-                      }) => (
-                        <Form onSubmit={handleSubmit}>
-                          <Form.Group className="mb-3">
-                            <InputGroup className="mb-3">
-                              <InputGroup.Text className="color-span">
-                                <FontAwesomeIcon
-                                  style={{ fontSize: "2em", color: "#1986a0" }}
-                                  icon={faEnvelope}
-                                />
-                              </InputGroup.Text>
-                              <Form.Control
-                                type="email"
-                                placeholder="Ingrese su correo electronico"
-                                id="email"
-                                value={values.email}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                maxLength={20}
-                              />
-                            </InputGroup>
-                            {touched.email && errors.email && (
-                              <Form.Text className="text-danger">
-                                <b>{errors.email}</b>
-                              </Form.Text>
-                            )}
-                          </Form.Group>
-                        </Form>
-                      )}
-                    </Formik>
-                  </Row>
-                  <Row className="d-flex justify-content-center">
-                    <Link
-                      to="/error404"
-                      className="link-pass"
-                      style={{ textDecoration: "none" }}
-                    >
-                      <Button className="btn-pass" onClick={handleShowPass}>
-                        Enviar Mail
-                      </Button>
-                    </Link>
-                  </Row>
+
+                  <Formik
+                    initialValues={{
+                      mail: "",
+                    }}
+                    validate={(valores) => {
+                      let errores = {};
+                      if (!valores.mail) {
+                        errores.mail = (
+                          <p className="text-pass">
+                            Por favor introduce tu mail
+                          </p>
+                        );
+                      } else if (
+                        !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
+                          valores.mail
+                        )
+                      ) {
+                        errores.mail = (
+                          <p className="text-pass"> Introduce un mail valido</p>
+                        );
+                      }
+
+                      return errores;
+                    }}
+                    onSubmit={(valores, { resetForm }) => {
+                      resetForm();
+
+                      cambiarformEnviado(true);
+                      setTimeout(() => cambiarformEnviado(false), 3000);
+                    }}
+                  >
+                    {({
+                      values,
+                      errors,
+                      touched,
+                      handleChange,
+                      handleBlur,
+                    }) => (
+                      <Form>
+                        <div class="input-group mb-3">
+                          <span
+                            class="input-group-text color-span"
+                            id="basic-addon1"
+                          >
+                            <FontAwesomeIcon
+                              style={{ fontSize: "2em", color: "#1986a0" }}
+                              icon={faEnvelope}
+                            />
+                          </span>
+                          <Field
+                            id="mail"
+                            name="mail"
+                            type="mail"
+                            class="form-control"
+                            placeholder="Introduce tu mail"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                          />
+                        </div>
+                        <ErrorMessage
+                          name="mail"
+                          component={() => (
+                            <div className="error">{errors.mail}</div>
+                          )}
+                        />
+                        <Link
+                          to="/error404"
+                          className="link-pass"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <button className="btn-pass">Enviar</button>
+                          {formEnviado &&
+                            toastSuccess("Formulario enviado con exito")}
+                        </Link>
+                      </Form>
+                    )}
+                  </Formik>
                 </div>
               </div>
             </div>
