@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Navigate } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { Button, Card, Container, Row, Modal, Form } from "react-bootstrap";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -33,14 +34,13 @@ const ArticleDetail = ({
   const [submitOk, setSubmitOk] = useState(null);
   const [showDelete, setShowDelete] = useState(false);
   const [render, setRender] = useState(true);
+  const [deleteOk, setDeletetOk] = useState(null);
 
   const handleClose = () => setShow(false);
   const handleCloseDelete = () => setShowDelete(false);
   const handleShowDelete = () => setShowDelete(true);
   const handleShow = () => setShow(true);
   const handleSubmit = (e) => {
-    console.log("enviado");
-
     setSubmitOk(null);
     fetch("https://backend-news-eight.vercel.app/news/editnews/" + data._id, {
       method: "PUT",
@@ -75,6 +75,13 @@ const ArticleDetail = ({
       toastError("Algo ha salido mal ...");
     }
   }, [submitOk]);
+  useEffect(() => {
+    if (deleteOk) {
+      toastSuccess("Elimindado");
+    } else if (submitOk === false) {
+      toastError("Algo ha salido mal ...");
+    }
+  }, [deleteOk]);
 
   const addHighlight = () => {
     if (!editHighlight) {
@@ -95,20 +102,20 @@ const ArticleDetail = ({
       return true;
     }
   };
-  // const handleDeleteOneArticle = (id) => {
-  //   fetch("https://backend-news-eight.vercel.app/news/deletenews/" + data._id, {
-  //     method: "DELETE",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((json) => setShowDelete(true));
-  // };
 
-  // useEffect(() => {
-  //   setRender(true);
-  // }, [data, dataTotal]);
+  const handleDeleteOneArticle = () => {
+    fetch("https://backend-news-eight.vercel.app/news/deletenews/" + data._id, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => setDeletetOk(true))
+      .catch((error) => setDeletetOk(false));
+  };
+
+
   return (
     <div>
       {render === true && (
@@ -349,7 +356,7 @@ const ArticleDetail = ({
               >
                 <Modal.Header className="card-crud" closeButton>
                   <Modal.Title className="title-crud">
-                    ¿Estás Seguro de que quiere eliminar este producto?
+                    ¿Estás Seguro de que quiere eliminar este artículo?
                   </Modal.Title>
                 </Modal.Header>
                 <Modal.Footer className="card-crud border-0 d-flex justify-content-center">
@@ -361,8 +368,13 @@ const ArticleDetail = ({
                   </Button>
                   <Button
                     className="btn-delete"
-
-                    // onClick={() => handleDeleteOneArticle(data._id)}
+                    onClick={() => {
+                      handleDeleteOneArticle();
+                      handleCloseDelete();
+                      setTimeout(() => {
+                        setChangeData(changeData + 1);
+                      }, 1000);
+                    }}
                   >
                     SÍ
                   </Button>
