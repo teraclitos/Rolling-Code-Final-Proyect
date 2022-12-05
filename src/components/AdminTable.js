@@ -7,6 +7,7 @@ import { faUserSlash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import { useParams } from "react-router-dom";
 
 function AdminTable(toastSuccess, toastError) {
   const [dataUser, setDataUser] = useState([]);
@@ -17,46 +18,52 @@ function AdminTable(toastSuccess, toastError) {
   const [editEmail, setEditEmail] = useState("");
   const [submit, setSubmit] = useState(null);
   const handleClose = () => setShow(false);
+  const params = useParams();
+
   useEffect(() => {
     fetch("https://backend-news-eight.vercel.app/users/verusuarios")
       .then((res) => res.json())
       .then((json) => setDataUser(json));
   }, []);
-  // const token = JSON.parse(localStorage.getItem("token"));
 
   const handleShow = () => setShow(true);
-  const handleDel = () => {
-    setOpen(false);
-    // e.preventDefault();
+  const token = JSON.parse(localStorage.getItem("token"));
 
-    // fetch("" + data._id, {
-    //   method: "DELETE",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     token,
-    //   },
-    //   body: JSON.stringify({
-    //     name: editName,
-    //     username: editUserName,
-    //     email: editEmail,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((json) => setOpen(false))
-    //   .catch((error) => setSubmit(true));
+  const handleDel = (e) => {
+    e.preventDefault();
+
+    fetch(
+      "https://backend-news-eight.vercel.app/users/deleteuser/" + dataUser._id,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          token,
+        },
+        body: JSON.stringify({
+          name: editName,
+          username: editUserName,
+          email: editEmail,
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then((json) => setOpen(false))
+      .catch((error) => setSubmit(true));
   };
   const handleOpen = () => setOpen(true);
+
   const handleSubmit = (e) => {
     console.log("enviado");
     e.preventDefault();
 
     fetch(
-      "https://backend-news-eight.vercel.app/users/verusuarios" + dataUser._id,
+      `https://backend-news-eight.vercel.app/users/edituser/${params._id} `,
       {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          // token,
+          token,
         },
         body: JSON.stringify({
           name: editName,
@@ -64,7 +71,7 @@ function AdminTable(toastSuccess, toastError) {
           email: editEmail,
           role: dataUser.role,
           token: dataUser.token,
-          id: dataUser.id,
+          id: dataUser._id,
         }),
       }
     )
@@ -206,10 +213,16 @@ function AdminTable(toastSuccess, toastError) {
                           ¿Estas seguro que quieres eliminar este usuario?
                         </Modal.Body>
                         <Modal.Footer className="card-crud d-flex justify-content-center">
-                          <Button className="btn-detail" onClick={handleDel}>
+                          <Button
+                            className="btn-detail"
+                            onClick={(e) => handleDel(e)}
+                          >
                             Cancelar
                           </Button>
-                          <Button className="btn-detail" onClick={handleDel}>
+                          <Button
+                            className="btn-detail"
+                            onClick={(e) => handleDel(e)}
+                          >
                             Eliminar
                           </Button>
                         </Modal.Footer>

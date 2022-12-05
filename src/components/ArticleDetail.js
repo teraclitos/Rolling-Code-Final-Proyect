@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import AsideAdvertisement from "./AsideAdvertisement";
 
 import { Button, Card, Container, Row, Modal, Form } from "react-bootstrap";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -10,9 +9,8 @@ import {
   faTwitter,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-import Categorias from "./Categorias";
+
 import "../styles/allcss.css";
-import { Route, Routes, Link, useParams } from "react-router-dom";
 
 const ArticleDetail = ({
   data,
@@ -105,6 +103,7 @@ const ArticleDetail = ({
       return true;
     }
   };
+
   const handleDeleteOneArticle = () => {
     fetch("https://backend-news-eight.vercel.app/news/deletenews/" + data._id, {
       method: "DELETE",
@@ -116,8 +115,6 @@ const ArticleDetail = ({
       .then((json) => setDeletetOk(true))
       .catch((error) => setDeletetOk(false));
   };
-
-  const navigate = useNavigate();
 
   return (
     <div>
