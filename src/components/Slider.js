@@ -29,7 +29,7 @@ const Slider = ({
             <Link
               className="text-slider"
               to={
-                auth.user === "admin" || auth.user === "user"
+                auth.role === "admin" || auth.role === "user"
                   ? `/ArticleDetailContainer/${d._id}`
                   : "/"
               }
