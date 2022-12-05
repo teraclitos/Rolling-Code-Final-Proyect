@@ -35,7 +35,6 @@ const ModalLogin = ({
   };
   const navigate = useNavigate();
   useEffect(() => {
-    console.log(loginOk);
     if (loginOk.role) {
       localStorage.setItem("token", JSON.stringify(loginOk.token));
       login(mail, loginOk.role);

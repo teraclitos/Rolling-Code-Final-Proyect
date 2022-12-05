@@ -7,7 +7,7 @@ import { faUserSlash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { useParams } from "react-router-dom";
+import { useParams, useRouteLoaderData } from "react-router-dom";
 
 function AdminTable(toastSuccess, toastError) {
   const [dataUser, setDataUser] = useState([]);
@@ -29,24 +29,21 @@ function AdminTable(toastSuccess, toastError) {
   const handleShow = () => setShow(true);
   const token = JSON.parse(localStorage.getItem("token"));
 
-  const handleDel = (e) => {
-    e.preventDefault();
+  const handleDel = (id) => {
+    // e.preventDefault();
 
-    fetch(
-      "https://backend-news-eight.vercel.app/users/deleteuser/" + dataUser._id,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          token,
-        },
-        body: JSON.stringify({
-          name: editName,
-          username: editUserName,
-          email: editEmail,
-        }),
-      }
-    )
+    fetch("http://localhost:3001/users/deleteuser/" + id, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        token,
+      },
+      body: JSON.stringify({
+        name: editName,
+        username: editUserName,
+        email: editEmail,
+      }),
+    })
       .then((res) => res.json())
       .then((json) => setOpen(false))
       .catch((error) => setSubmit(true));
@@ -58,7 +55,7 @@ function AdminTable(toastSuccess, toastError) {
     e.preventDefault();
 
     fetch(
-      `https://backend-news-eight.vercel.app/users/edituser/${params._id} `,
+      `https://backend-news-eight.vercel.app/users/edituser/` + dataUser._id,
       {
         method: "PUT",
         headers: {
@@ -127,6 +124,7 @@ function AdminTable(toastSuccess, toastError) {
                         onClick={handleShow}
                         style={{ fontSize: "2em" }}
                         icon={faPenToSquare}
+                        disabled={dataUser.role === "admin"}
                       />
 
                       <Modal centered show={show} onHide={handleClose}>
@@ -205,6 +203,7 @@ function AdminTable(toastSuccess, toastError) {
                         onClick={handleOpen}
                         style={{ fontSize: "2em" }}
                         icon={faUserSlash}
+                        disabled={dataUser.role === "admin"}
                       />
 
                       <Modal centered show={open} onHide={handleDel}>
@@ -215,13 +214,13 @@ function AdminTable(toastSuccess, toastError) {
                         <Modal.Footer className="card-crud d-flex justify-content-center">
                           <Button
                             className="btn-detail"
-                            onClick={(e) => handleDel(e)}
+                            onClick={() => handleClose()}
                           >
                             Cancelar
                           </Button>
                           <Button
                             className="btn-detail"
-                            onClick={(e) => handleDel(e)}
+                            onClick={() => handleDel(dataUser._id)}
                           >
                             Eliminar
                           </Button>
