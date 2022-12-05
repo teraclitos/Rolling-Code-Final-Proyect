@@ -78,7 +78,7 @@ const ArticleDetail = ({
   }, [submitOk]);
   useEffect(() => {
     if (deleteOk) {
-      toastSuccess("Elimindado");
+      toastSuccess("Eliminado");
     } else if (submitOk === false) {
       toastError("Algo ha salido mal ...");
     }

@@ -100,11 +100,25 @@ const Main = ({
           <Route
             path="/usertable"
             element={
-              <AdminTable
-                dataUser={dataUser}
-                toastError={toastError}
-                toastSuccess={toastSuccess}
-              />
+              auth.role === "admin" ? (
+                <AdminTable
+                  dataUser={dataUser}
+                  toastError={toastError}
+                  toastSuccess={toastSuccess}
+                />
+              ) : (
+                <Articlepublicitygrid
+                  data={data}
+                  add={add}
+                  cart={cart}
+                  auth={auth}
+                  login={login}
+                  logout={logout}
+                  toastError={toastError}
+                  totalHighlights={totalHighlights}
+                  handleShowLogin={handleShowLogin}
+                />
+              )
             }
           />
 
