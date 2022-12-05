@@ -12,6 +12,9 @@ const ArticleDetailContainer = ({
   toastError,
   toastSuccess,
   dataTotal,
+  setDataTotal,
+  changeData,
+  setChangeData,
 }) => {
   const params = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -39,6 +42,9 @@ const ArticleDetailContainer = ({
           toastError={toastError}
           totalHighlights={totalHighlights}
           dataTotal={dataTotal}
+          setDataTotal={setDataTotal}
+          changeData={changeData}
+          setChangeData={setChangeData}
         />
       )}
     </>
