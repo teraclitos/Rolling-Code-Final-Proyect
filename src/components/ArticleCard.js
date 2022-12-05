@@ -33,7 +33,7 @@ const ArticleCard = ({ cart, d, add, auth, toastError, handleShowLogin }) => {
           {/* <Button className="py-1 px-2 btn-color ">Leer más</Button> */}
           Leer más
         </Link>
-        {auth.user === "user" && (
+        {auth.role === "user" && (
           <Button
             disabled={cart.includes(d)}
             onClick={() => add(d)}
