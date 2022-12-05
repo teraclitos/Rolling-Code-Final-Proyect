@@ -14,12 +14,6 @@ function App() {
       .then((res) => res.json())
       .then((json) => setData(json));
   }, [changeData]);
-  // const [dataUser, setDataUser] = useState([]);
-  // useEffect(() => {
-  //   fetch("https://backend-news-eight.vercel.app/users/verusuarios")
-  //     .then((res) => res.json())
-  //     .then((json) => setDataUser(json));
-  // }, []);
 
   const handleShowLogin = () => setShowLogin(true);
   const [showLogin, setShowLogin] = useState(false);
@@ -56,7 +50,6 @@ function App() {
     console.log("seteo logout auth user" + auth.user);
     console.log("seteo logout auth role" + auth.role);
     toastSuccess("Sesión cerrada correctamente");
-    // const token = JSON.parse(localStorage.getItem("token"));
     localStorage.setItem("token", JSON.stringify(""));
   };
 
