@@ -124,7 +124,7 @@ function AdminTable(toastSuccess, toastError) {
 
                       <Modal centered show={show} onHide={handleClose}>
                         <Modal.Header className="card-crud" closeButton>
-                          <Modal.Title>Modificar User</Modal.Title>
+                          <Modal.Title>Modificar Usuario</Modal.Title>
                         </Modal.Header>
                         <Modal.Body className="card-crud">
                           <Form>
@@ -133,7 +133,7 @@ function AdminTable(toastSuccess, toastError) {
                               controlId="exampleForm.ControlInput1"
                             >
                               <Form.Label className="edit-label">
-                                Name
+                                Nombre
                               </Form.Label>
                               <Form.Control
                                 maxLength={31}
@@ -148,7 +148,7 @@ function AdminTable(toastSuccess, toastError) {
                               controlId="exampleForm.ControlInput1"
                             >
                               <Form.Label className="edit-label">
-                                Username
+                                Nombre de Usuario
                               </Form.Label>
                               <Form.Control
                                 maxLength={31}
