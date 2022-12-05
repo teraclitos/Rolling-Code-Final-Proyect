@@ -76,6 +76,7 @@
 }
 
 .title-news {
+  position: relative;
   font-family: "Anton";
   margin-top: 30px;
   background-color: #fd841f;
