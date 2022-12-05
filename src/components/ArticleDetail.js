@@ -125,7 +125,7 @@ const ArticleDetail = ({
       {render === true && (
         <Container className="mb-5">
           <Row xs={1} md={2}>
-            <div id="render-container" className="col-12 col-md-9">
+            <div id="render-container" className="col-12 col-md-12">
               <Card border="0" className="mt-5">
                 <Card.Header className="title-section d-flex align-items-center justify-content-center">
                   {data.category}
