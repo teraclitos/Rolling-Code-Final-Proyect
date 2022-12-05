@@ -1,4 +1,5 @@
-import React, { useEffect, useState, Navigate } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Button, Card, Container, Row, Modal, Form } from "react-bootstrap";
@@ -373,6 +374,7 @@ const ArticleDetail = ({
                       handleCloseDelete();
                       setTimeout(() => {
                         setChangeData(changeData + 1);
+                        navigate("/");
                       }, 1000);
                     }}
                   >
