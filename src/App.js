@@ -13,11 +13,6 @@ function App() {
     fetch("https://backend-news-eight.vercel.app/news/news")
       .then((res) => res.json())
       .then((json) => setData(json));
-
-  }, [data]);
-
-
-    console.log(data);
   }, [changeData]);
   // const [dataUser, setDataUser] = useState([]);
   // useEffect(() => {
