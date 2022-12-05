@@ -32,7 +32,6 @@ const ArticleDetail = ({
   toastError,
   totalHighlights,
   dataTotal,
-  setDataTotal,
   changeData,
   setChangeData,
 }) => {
@@ -342,6 +341,7 @@ const ArticleDetail = ({
                         }
 
                         setRender(true);
+                        g;
                       }}
                     >
                       Guardar cambios
