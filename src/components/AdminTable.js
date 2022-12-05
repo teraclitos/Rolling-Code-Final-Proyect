@@ -12,7 +12,7 @@ import { useParams, useRouteLoaderData } from "react-router-dom";
 function AdminTable(toastSuccess, toastError) {
   const [dataUser, setDataUser] = useState([]);
 
-  const [renderUser, setRenderUser] = useState(true);
+  const [submitUser, setSubmitUser] = useState(null);
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
   const [editName, setEditName] = useState("");
@@ -20,6 +20,8 @@ function AdminTable(toastSuccess, toastError) {
   const [editEmail, setEditEmail] = useState("");
   const [submit, setSubmit] = useState(null);
   const handleClose = () => setShow(false);
+  const handleCloseDel = () => setOpen(false);
+
   const params = useParams();
 
   const [ChangeDataUser, setChangeDataUser] = useState(1);
@@ -34,7 +36,7 @@ function AdminTable(toastSuccess, toastError) {
 
   const handleDel = (e, id) => {
     e.preventDefault();
-    console.log(token);
+
     fetch("https://backend-news-eight.vercel.app/users/deleteuser/" + id, {
       method: "DELETE",
       headers: {
@@ -48,15 +50,12 @@ function AdminTable(toastSuccess, toastError) {
       }),
     })
       .then((res) => res.json())
-      .then((json) => setOpen(false))
-      .catch((error) => setSubmit(true));
+      .then((json) => setSubmitUser(true))
+      .catch((error) => setSubmitUser(false));
   };
   const handleOpen = () => setOpen(true);
 
-  const handleSubmit = (e, id) => {
-    console.log("enviado");
-    e.preventDefault();
-
+  const handleSubmitUser = (e, id) => {
     fetch(`https://backend-news-eight.vercel.app/users/edituser/` + id, {
       method: "PUT",
       headers: {
@@ -84,12 +83,12 @@ function AdminTable(toastSuccess, toastError) {
   }, [dataUser]);
 
   useEffect(() => {
-    if (submit) {
+    if (submitUser) {
       toastSuccess("Modificado");
-    } else if (submit === false) {
+    } else if (submitUser === false) {
       toastError("Algo ha salido mal");
     }
-  }, [submit]);
+  }, [submitUser]);
 
   return (
     <body className="body-recover">
@@ -119,14 +118,14 @@ function AdminTable(toastSuccess, toastError) {
 
                     <td>{dataUser.username}</td>
                     <td>
-                      <FontAwesomeIcon
-                        className="btn-icon"
-                        onClick={handleShow}
-                        style={{ fontSize: "2em" }}
-                        icon={faPenToSquare}
-                        disabled={dataUser.role === "admin"}
-                      />
-
+                      {dataUser.role !== "admin" && (
+                        <FontAwesomeIcon
+                          className="btn-icon"
+                          onClick={handleShow}
+                          style={{ fontSize: "2em" }}
+                          icon={faPenToSquare}
+                        />
+                      )}
                       <Modal centered show={show} onHide={handleClose}>
                         <Modal.Header className="card-crud" closeButton>
                           <Modal.Title>Modificar Usuario</Modal.Title>
@@ -141,6 +140,7 @@ function AdminTable(toastSuccess, toastError) {
                                 Nombre
                               </Form.Label>
                               <Form.Control
+                                placeholder="Ingrese nuevo nombre"
                                 maxLength={31}
                                 type="text"
                                 value={editName}
@@ -188,9 +188,21 @@ function AdminTable(toastSuccess, toastError) {
                           <Button className="btn-detail" onClick={handleClose}>
                             Cerrar
                           </Button>
+                          {/* <Button
+                            className="btn-detail"
+                            onClick={(e) => handleCerrar(e)}
+                          >
+                            Cerrar
+                          </Button> */}
                           <Button
                             className="btn-detail"
-                            onClick={(e) => handleSubmit(e, dataUser._id)}
+                            onClick={(e) => {
+                              handleSubmitUser(e, dataUser._id);
+                              handleClose();
+                              setTimeout(() => {
+                                setChangeDataUser(ChangeDataUser + 1);
+                              }, 1000);
+                            }}
                           >
                             Guardar cambios
                           </Button>
@@ -198,15 +210,16 @@ function AdminTable(toastSuccess, toastError) {
                       </Modal>
                     </td>
                     <td>
-                      <FontAwesomeIcon
-                        className="btn-icon"
-                        onClick={handleOpen}
-                        style={{ fontSize: "2em" }}
-                        icon={faUserSlash}
-                        disabled={dataUser.role === "admin"}
-                      />
+                      {dataUser.role !== "admin" && (
+                        <FontAwesomeIcon
+                          className="btn-icon"
+                          onClick={handleOpen}
+                          style={{ fontSize: "2em" }}
+                          icon={faUserSlash}
+                        />
+                      )}
 
-                      <Modal centered show={open} onHide={handleDel}>
+                      <Modal centered show={open} onHide={handleCloseDel}>
                         <Modal.Header className="card-crud h-0 "></Modal.Header>
                         <Modal.Body className="card-crud ">
                           ¿Estas seguro que quieres eliminar este usuario?
@@ -214,9 +227,11 @@ function AdminTable(toastSuccess, toastError) {
                         <Modal.Footer className="card-crud d-flex justify-content-center">
                           <Button
                             className="btn-detail"
-                            onClick={() => handleClose()}
+                            onClick={() => {
+                              handleCloseDel();
+                            }}
                           >
-                            Cancelar
+                            Cerrar
                           </Button>
                           <Button
                             className="btn-detail"
@@ -225,7 +240,7 @@ function AdminTable(toastSuccess, toastError) {
                               setTimeout(() => {
                                 setChangeDataUser(ChangeDataUser + 1);
                               }, 1000);
-                              handleClose();
+                              handleCloseDel();
                             }}
                           >
                             Eliminar

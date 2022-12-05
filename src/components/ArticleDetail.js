@@ -117,7 +117,6 @@ const ArticleDetail = ({
   };
   const navigate = useNavigate("/");
 
-
   return (
     <div>
       {render === true && (
@@ -385,10 +384,6 @@ const ArticleDetail = ({
                   </Button>
                 </Modal.Footer>
               </Modal>
-
-              {/* <aside className="carousel-advertisement-container">
-              <AsideAdvertisement />
-            </aside> */}
             </div>
           </Row>
         </Container>
