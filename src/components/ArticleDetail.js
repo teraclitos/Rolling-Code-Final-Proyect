@@ -186,9 +186,14 @@ const ArticleDetail = ({
                   <Card.Text className="content">{data.content}</Card.Text>
 
                   {auth.role === "admin" ? (
-                    <Button className=" mt-2 btn-detail " onClick={handleShow}>
-                      EDITAR
-                    </Button>
+                    <div className="mt-4">
+                      <Button className="me-4 btn-detail " onClick={handleShow}>
+                        EDITAR
+                      </Button>
+                      <Button onClick={handleShowDelete} className="btn-delete">
+                        Eliminar
+                      </Button>
+                    </div>
                   ) : (
                     <Button
                       className="mt-2 mb-2"
@@ -348,32 +353,34 @@ const ArticleDetail = ({
                   </Form.Group>
                 </Modal.Footer>
               </Modal>
-              {/* <Button
-                variant="danger"
-                onClick={handleShowDelete}
-                className="mt-3"
-              >
-                Eliminar
-              </Button>
 
-              <Modal show={showDelete} onHide={handleCloseDelete}>
-                <Modal.Header closeButton>
-                  <Modal.Title>
-                    ¿Estas Seguro de que quiere eliminar este producto?
+              <Modal
+                className="text-dark"
+                centered
+                show={showDelete}
+                onHide={handleCloseDelete}
+              >
+                <Modal.Header className="card-crud" closeButton>
+                  <Modal.Title className="title-crud">
+                    ¿Estás Seguro de que quiere eliminar este producto?
                   </Modal.Title>
                 </Modal.Header>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleCloseDelete}>
+                <Modal.Footer className="card-crud border-0 d-flex justify-content-center">
+                  <Button
+                    className="btn-detail btn-close-delete"
+                    onClick={handleCloseDelete}
+                  >
                     NO
                   </Button>
                   <Button
-                    variant="primary"
-                    onClick={() => handleDeleteOneArticle(data._id)}
+                    className="btn-delete"
+
+                    // onClick={() => handleDeleteOneArticle(data._id)}
                   >
-                    SI, estoy seguro
+                    SÍ
                   </Button>
                 </Modal.Footer>
-              </Modal> */}
+              </Modal>
 
               {/* <aside className="carousel-advertisement-container">
               <AsideAdvertisement />

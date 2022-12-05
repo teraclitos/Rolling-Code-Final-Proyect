@@ -59,7 +59,7 @@
   border-radius: 4px;
   font-family: "Anton";
   width: 110px;
-  padding: 2%;
+  padding: 1%;
 }
 .btn-detail:hover {
   background-color: #fd841f;
@@ -135,4 +135,24 @@
 .content {
   font-size: 20px;
   text-align: justify;
+}
+
+.btn-delete {
+  background-color: #fd841f;
+  border: 0;
+  color: black;
+  font-family: "Anton";
+}
+.btn-delete:hover {
+  background-color: #aa5005;
+}
+.btn-delete:active {
+  background-color: #aa5005 !important;
+}
+.btn-close-delete {
+  width: auto;
+  padding: 0.4em 0.6em;
+}
+.btn-close-delete:hover {
+  background-color: #095163;
 }
