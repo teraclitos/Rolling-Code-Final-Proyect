@@ -35,8 +35,6 @@ function AdminTable(toastSuccess, toastError) {
   const token = JSON.parse(localStorage.getItem("token"));
 
   const handleDel = (e, id) => {
-    e.preventDefault();
-
     fetch("https://backend-news-eight.vercel.app/users/deleteuser/" + id, {
       method: "DELETE",
       headers: {
@@ -83,12 +81,12 @@ function AdminTable(toastSuccess, toastError) {
   }, [dataUser]);
 
   useEffect(() => {
-    if (submitUser) {
+    if (submit) {
       toastSuccess("Modificado");
-    } else if (submitUser === false) {
+    } else if (submit === false) {
       toastError("Algo ha salido mal");
     }
-  }, [submitUser]);
+  }, []);
 
   return (
     <body className="body-recover">
