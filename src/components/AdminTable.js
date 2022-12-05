@@ -29,14 +29,14 @@ function AdminTable(toastSuccess, toastError) {
   const handleShow = () => setShow(true);
   const token = JSON.parse(localStorage.getItem("token"));
 
-  const handleDel = (id) => {
-    // e.preventDefault();
-
-    fetch("http://localhost:3001/users/deleteuser/" + id, {
+  const handleDel = (e, id) => {
+    e.preventDefault();
+    console.log(token);
+    fetch("https://backend-news-eight.vercel.app/users/deleteuser/" + id, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        token,
+        "auth-token": token,
       },
       body: JSON.stringify({
         name: editName,
@@ -50,28 +50,25 @@ function AdminTable(toastSuccess, toastError) {
   };
   const handleOpen = () => setOpen(true);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, id) => {
     console.log("enviado");
     e.preventDefault();
 
-    fetch(
-      `https://backend-news-eight.vercel.app/users/edituser/` + dataUser._id,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          token,
-        },
-        body: JSON.stringify({
-          name: editName,
-          username: editUserName,
-          email: editEmail,
-          role: dataUser.role,
-          token: dataUser.token,
-          id: dataUser._id,
-        }),
-      }
-    )
+    fetch(`http://localhost:3001/users/edituser/` + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+      body: JSON.stringify({
+        name: editName,
+        username: editUserName,
+        email: editEmail,
+        role: dataUser.role,
+        token: dataUser.token,
+        id: dataUser._id,
+      }),
+    })
       .then((res) => res.json())
       .then((json) => setSubmit(true))
       .catch((error) => setSubmit(false));
@@ -190,7 +187,7 @@ function AdminTable(toastSuccess, toastError) {
                           </Button>
                           <Button
                             className="btn-detail"
-                            onClick={(e) => handleSubmit(e)}
+                            onClick={(e) => handleSubmit(e, dataUser._id)}
                           >
                             Guardar cambios
                           </Button>
@@ -220,7 +217,7 @@ function AdminTable(toastSuccess, toastError) {
                           </Button>
                           <Button
                             className="btn-detail"
-                            onClick={() => handleDel(dataUser._id)}
+                            onClick={(e) => handleDel(e, dataUser._id)}
                           >
                             Eliminar
                           </Button>
