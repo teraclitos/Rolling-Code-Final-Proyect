@@ -11,6 +11,8 @@ import { useParams, useRouteLoaderData } from "react-router-dom";
 
 function AdminTable(toastSuccess, toastError) {
   const [dataUser, setDataUser] = useState([]);
+
+  const [renderUser, setRenderUser] = useState(true);
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
   const [editName, setEditName] = useState("");
@@ -20,11 +22,12 @@ function AdminTable(toastSuccess, toastError) {
   const handleClose = () => setShow(false);
   const params = useParams();
 
+  const [ChangeDataUser, setChangeDataUser] = useState(1);
   useEffect(() => {
     fetch("https://backend-news-eight.vercel.app/users/verusuarios")
       .then((res) => res.json())
       .then((json) => setDataUser(json));
-  }, []);
+  }, [ChangeDataUser]);
 
   const handleShow = () => setShow(true);
   const token = JSON.parse(localStorage.getItem("token"));
@@ -217,7 +220,13 @@ function AdminTable(toastSuccess, toastError) {
                           </Button>
                           <Button
                             className="btn-detail"
-                            onClick={(e) => handleDel(e, dataUser._id)}
+                            onClick={(e) => {
+                              handleDel(e, dataUser._id);
+                              setTimeout(() => {
+                                setChangeDataUser(ChangeDataUser + 1);
+                              }, 1000);
+                              handleClose();
+                            }}
                           >
                             Eliminar
                           </Button>
