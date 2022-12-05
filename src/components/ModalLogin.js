@@ -9,7 +9,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBorderStyle,
+  faLock,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
 const ModalLogin = ({
   showLogin,
@@ -20,41 +24,42 @@ const ModalLogin = ({
   showRegister,
   setShowRegister,
   handleShowRegister,
+  toastError,
+  toastSuccess,
 }) => {
   // const handleCloseLogin = () => setShowLogin(false);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleCloseLogin = () => {
+  const [loginOk, setLoginOk] = useState("");
+  const handleCloseLogin = async () => {
     setShowLogin(false);
-    fetch("https://backend-news-eight.vercel.app/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: mail,
-        password: password,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => localStorage.setItem("token", JSON.stringify(res.token)));
   };
 
   useEffect(() => {
-    console.log(mail);
-    console.log(password);
+    console.log("username" + mail);
+    console.log("password" + password);
   }, [mail, password]);
 
   const navigate = useNavigate();
-
+  // const handleLogin = (u, p) => {
+  //   if (validate(u, p)) {
+  //     login(u);
+  //     navigate("/");
+  //     console.log("login correcto" + auth.user);
+  //   } else {
+  //     console.log("login incorrecto" + auth.user);
+  //   }
   const handleLogin = (u, p) => {
-    if (validate(u, p)) {
-      login(u);
+    const result = validate(u, p);
+    console.log(result.role);
+    if (!result.error) {
+      login(u, result.role);
       navigate("/");
-      console.log("login correcto" + auth.user);
+      handleCloseLogin();
+      toastSuccess("👋 Bienvenido! Sesión iniciada correctamente");
     } else {
-      console.log("login incorrecto" + auth.user);
+      console.log("login incorrecto");
+      toastError("no se pudo iniciar sesion");
     }
   };
   return (
@@ -147,7 +152,6 @@ const ModalLogin = ({
               className="mt-3 btn-color fs-5"
               onClick={() => {
                 handleLogin(mail, password);
-                handleCloseLogin();
               }}
             >
               Iniciar sesión
