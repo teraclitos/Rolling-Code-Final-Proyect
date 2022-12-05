@@ -218,6 +218,7 @@ const ArticleDetail = ({
                     >
                       <Form.Label className="style-crud">Categoria</Form.Label>
                       <Form.Control
+                        maxLength={31}
                         type="text"
                         value={editSection}
                         onChange={(e) => setEditSection(e.target.value)}
@@ -231,6 +232,7 @@ const ArticleDetail = ({
                       >
                         <Form.Label className="style-crud">Autor</Form.Label>
                         <Form.Control
+                          maxLength={31}
                           type="text"
                           placeholder="Nombre del autor"
                           value={editAuthor}
@@ -245,6 +247,7 @@ const ArticleDetail = ({
                       >
                         <Form.Label className="style-crud">Titulo</Form.Label>
                         <Form.Control
+                          maxLength={31}
                           type="text"
                           defaultValue={editTitle}
                           value={editTitle}
@@ -256,6 +259,7 @@ const ArticleDetail = ({
                       <Form.Group className="mb-3">
                         <Form.Label className="style-crud">URL</Form.Label>
                         <Form.Control
+                          maxLength={31}
                           type="text"
                           placeholder="Ingrese URL de imagen"
                           defaultValue={editImage}
@@ -273,6 +277,7 @@ const ArticleDetail = ({
                           Subtitulo
                         </Form.Label>
                         <Form.Control
+                          maxLength={31}
                           type="text"
                           placeholder="Ingrese subtitulo"
                           defaultValue={editSubtitulo}
