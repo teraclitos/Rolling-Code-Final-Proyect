@@ -21,6 +21,9 @@
       opacity: 1;
     }
   }
+  .img-header {
+    animation-duration: 3s;
+  }
 }
 
 @media (max-width: 575.98px) {
