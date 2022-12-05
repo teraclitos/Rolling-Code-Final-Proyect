@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+## La Rollingneta
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Blog deportivo desarrollado a partir de los conocimientos adquiridos acerca de React y Node.js en Rolling Code School.
 
-## Available Scripts
+Blog donde se muestran noticias deportivas divididas en cuatro categorías. Consume datos de una API desarrollada por nuestra backdeveloper, Andrea Hong. La estructura donde se muestran estos datos (Front-End) estuvo  a cargo de los tres integrantes. El sitio distingue dos roles: Administrador y Usuario. Cada uno, a partir de renders condicionales, tiene acceso a lugares de la página comunes a ambos y, en otros casos, a lugares propios de cada rol. Por ejemplo ambos roles pueden acceder al detalle de la noticia, pero sólo el administrador puede editar y destacar las mismas. Por su parte, el usuario tiene la posibilidad de agregar noticias, mediante un click a un corazón, a un carrito de favoritos, el cual se encuentra ubicado en un offcanvas que se despliega por el lado izquierdo de la pantalla. El administrador, a su vez, es el encargado de administrar al conjunto de usuarios registrados. Los datos de estos , almacenados en una base de datos, se muestran en una tabla visible sólo para el administrador. A partir de dicha tabla el administrador puede modificar datos del usuario y, en caso de que sea necesario, eliminarlo. En los sitios sensibles de la página, sitios de conexiòn entre el Back y el Front, como ser el registro y el login, la pàgina presenta sólidas validaciones para garantizar la seguridad de nuestros usuarios.
 
-In the project directory, you can run:
+Para finalizar nos gustaría agradecer a la comunidad de Rolling, y especialmente a nuestro tutor Diego Grassino y a nuestro mentor Andres Perlo, que estuvieron siempre a dispoción nuestra, ayudándonos y dándonos invaluables consejos a lo largo del curso y de los diferentes proyectos que lo conforman.
 
-### `npm start`
+## Integrantes:
+ 
+- Terán Francisco 
+- Bianconi Marina
+- Hong Andrea
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Links
 
-### `npm test`
+[Link del repositorio en GitHub.](https://github.com/teraclitos/proyecto-final-rolling-code-blog)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Link del tablero de Trello.](https://trello.com/b/7nRn0Qdq/proyecto-final)
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Link del deploy.](https://proyecto-final-rolling-code-blog.vercel.app/)
