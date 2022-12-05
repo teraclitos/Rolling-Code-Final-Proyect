@@ -101,7 +101,7 @@ const ModalLogin = ({
                 <Form.Control
                   maxLength={31}
                   type="mail"
-                  placeholder="Mail o usuario"
+                  placeholder="usuario"
                   onInput={(e) => setMail(e.target.value)}
                 />
               </InputGroup>
