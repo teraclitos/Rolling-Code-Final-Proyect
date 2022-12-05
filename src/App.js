@@ -11,7 +11,7 @@ function App() {
     fetch("https://backend-news-eight.vercel.app/news/news")
       .then((res) => res.json())
       .then((json) => setData(json));
-  }, [data]);
+  }, []);
 
   // const [dataUser, setDataUser] = useState([]);
   // useEffect(() => {
@@ -23,7 +23,6 @@ function App() {
   const handleShowLogin = () => setShowLogin(true);
   const [showLogin, setShowLogin] = useState(false);
 
-  //carrito de mg
   const [cart, setCart] = useState([]);
   useEffect(() => {
     console.log(cart);
@@ -43,37 +42,66 @@ function App() {
     setCart([]);
   };
 
+  // const USERS = [
+  //   { user: "admin", pass: "admin", role: "admin" },
+  //   { user: "user", pass: "user", role: "user" },
+  // ];
+
+  //  const validate = (u, p) => {
+  //    let userOk = true;
+  //    let passOk = false;
+  //    let user = USERS.find((user) => user.user === u);
+  //    user ? (passOk = user.pass === p) : (userOk = false);
+  //    return userOk && passOk;
+  //  };
+
   const [auth, setAuth] = useState({
     user: "",
     role: "",
   });
+  useEffect(() => {
+    console.log(auth);
+  }, [auth]);
 
-  const USERS = [
-    { user: "admin", pass: "admin", role: "admin" },
-    { user: "user", pass: "user", role: "user" },
-  ];
-
-  const validate = (u, p) => {
-    let userOk = true;
-    let passOk = false;
-    let user = USERS.find((user) => user.user === u);
-    user ? (passOk = user.pass === p) : (userOk = false);
-    return userOk && passOk;
+  const validate = async (u, p) => {
+    // const response = await fetch(
+    //   "https://backend-news-eight.vercel.app/users/login",
+    //   {
+    //     method: "POST",
+    //     mode: "cors",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ username: u, password: p }),
+    //   }
+    // );
+    // console.log(response.body);
+    // return response;
+    console.log("validate test");
   };
 
-  const login = (u) => {
-    const userFound = USERS.find((user) => user.user === u);
-    setAuth({
-      user: userFound.user,
-      role: userFound.role,
-    });
-    toastSuccess("👋 Bienvenido! Sesión iniciada correctamente");
+  const login = (u, r) => {
+    setAuth({ user: u, role: r });
+    console.log(auth);
+    // console.log("seteo login auth role" + auth.role);
   };
-
   const logout = () => {
     setAuth({ user: "", role: "" });
-    toastSuccess("Sesión cerrada correctamente");
+    console.log("seteo logout auth user" + auth.user);
+    console.log("seteo logout auth role" + auth.role);
+    // toastSuccess("Sesión cerrada correctamente");
+    // const token = JSON.parse(localStorage.getItem("token"));
+    localStorage.setItem("token", JSON.stringify(""));
   };
+  // const login = (u) => {
+  //   const userFound = USERS.find((user) => user.user === u);
+  //   setAuth({
+  //     user: userFound.user,
+  //     role: userFound.role,
+  //   });
+  //   toastSuccess("👋 Bienvenido! Sesión iniciada correctamente");
+  // };
+
   const prevenDuplicateToast = "custom-id-yes";
 
   const toastError = (writte) => {
