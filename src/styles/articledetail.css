@@ -139,9 +139,20 @@
 
 .btn-delete {
   background-color: #fd841f;
+  border-radius: 4px;
+  width: 110px;
+  padding: 1%;
   border: 0;
   color: black;
   font-family: "Anton";
+}
+.btn-delete-yes {
+  width: auto;
+  border: 0;
+  color: black;
+  font-family: "Anton";
+  background-color: #fd841f;
+  padding: 0.4em 0.8em;
 }
 .btn-delete:hover {
   background-color: #aa5005;
@@ -151,5 +162,5 @@
 }
 .btn-close-delete {
   width: auto;
-  padding: 0.4em 0.6em;
+  padding: 0.4em 0.8em;
 }
