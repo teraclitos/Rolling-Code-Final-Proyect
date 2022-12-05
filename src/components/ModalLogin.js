@@ -29,12 +29,15 @@ const ModalLogin = ({
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [loginOk, setLoginOk] = useState("");
+
   const handleCloseLogin = async () => {
     setShowLogin(false);
   };
   const navigate = useNavigate();
   useEffect(() => {
+    console.log(loginOk);
     if (loginOk.role) {
+      localStorage.setItem("token", JSON.stringify(loginOk.token));
       login(mail, loginOk.role);
       navigate("/");
       handleCloseLogin();
@@ -57,10 +60,12 @@ const ModalLogin = ({
       }),
     })
       .then((res) => res.json())
+
       .then((json) =>
         setLoginOk({
           username: mail,
           role: json.role,
+          token: json.tokens,
         })
       )
       .catch((error) => {
