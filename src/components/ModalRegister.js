@@ -72,6 +72,10 @@ const ModalRegister = ({
     let error;
     if (!value) {
       error = "Campo obligatorio";
+    } else if (value.length < 9) {
+      error = "Debe tener al menos 8 caracteres";
+    } else if (value.length > 30) {
+      error = "Debe tener menos de 31 caracteres";
     } else if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value.trim())
     ) {
@@ -90,7 +94,7 @@ const ModalRegister = ({
     } else if (value.trim().length < 3) {
       error = "Debe tener al menos 3 caracteres";
     } else if (value.trim().length > 30) {
-      error = "Debe tener menos de 30 caracteres";
+      error = "Debe tener menos de 31 caracteres";
     } else if (!/^[a-zA-ZÀ-ÿ\s]{3,30}$/i.test(value.trim())) {
       error = "Sólo puede llevar letras";
     } else {
@@ -106,7 +110,7 @@ const ModalRegister = ({
     } else if (value.trim().length < 3) {
       error = "Debe tener al menos 3 caracteres";
     } else if (value.trim().length > 30) {
-      error = "Debe tener menos de 30 caracteres";
+      error = "Debe tener menos de 31 caracteres";
     } else if (!/^[a-zA-ZÀ-ÿ]{1}$/i.test(value.trim().charAt(0))) {
       error = "El primer caracter debe ser una letra";
     } else if (
@@ -130,7 +134,7 @@ const ModalRegister = ({
     } else if (value.length < 9) {
       error = "Debe tener al menos 8 caracteres";
     } else if (value.length > 30) {
-      error = "Debe tener menos de 30 caracteres";
+      error = "Debe tener menos de 31 caracteres";
     } else if (
       !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,30}$/i.test(
         value
@@ -286,6 +290,7 @@ const ModalRegister = ({
                   />
                 </InputGroup.Text>
                 <Form.Control
+                  maxLength={31}
                   value={name}
                   autoComplete="off"
                   onInput={(e) => setName(e.target.value)}
@@ -324,6 +329,7 @@ const ModalRegister = ({
                   />
                 </InputGroup.Text>
                 <Form.Control
+                  maxLength={31}
                   value={user}
                   autoComplete="off"
                   onInput={(e) => setUser(e.target.value)}
@@ -363,6 +369,7 @@ const ModalRegister = ({
                   />
                 </InputGroup.Text>
                 <Form.Control
+                  maxLength={31}
                   value={mails}
                   autoComplete="off"
                   name="email"
@@ -405,6 +412,7 @@ const ModalRegister = ({
                   />
                 </InputGroup.Text>
                 <Form.Control
+                  maxLength={31}
                   value={password}
                   autoComplete="off"
                   onInput={(e) => setPassword(e.target.value)}
@@ -446,6 +454,7 @@ const ModalRegister = ({
                   />
                 </InputGroup.Text>
                 <Form.Control
+                  maxLength={31}
                   value={repeatPassword}
                   autoComplete="off"
                   onInput={(e) => setRepeatPassword(e.target.value)}

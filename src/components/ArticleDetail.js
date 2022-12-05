@@ -42,9 +42,12 @@ const ArticleDetail = ({
   const [editDescription, setEditDescription] = useState(data.content);
   const [editHighlight, setEditHighlight] = useState(data.highlight);
   const [submitOk, setSubmitOk] = useState(null);
+  const [showDelete, setShowDelete] = useState(false);
   const [render, setRender] = useState(true);
 
   const handleClose = () => setShow(false);
+  const handleCloseDelete = () => setShowDelete(false);
+  const handleShowDelete = () => setShowDelete(true);
   const handleShow = () => setShow(true);
   const handleSubmit = (e) => {
     console.log("enviado");
@@ -103,7 +106,20 @@ const ArticleDetail = ({
       return true;
     }
   };
+  // const handleDeleteOneArticle = (id) => {
+  //   fetch("https://backend-news-eight.vercel.app/news/editnews/" + data._id, {
+  //     method: "DELETE",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((json) => setShowDelete(true));
+  // };
 
+  // useEffect(() => {
+  //   setRender(true);
+  // }, [data, dataTotal]);
   return (
     <div>
       {render === true && (
@@ -186,11 +202,8 @@ const ArticleDetail = ({
                 <div className="col-12 card-highlights" />
               </Card>
             </div>
-            {/* VISTA ADMIN */}
-            <div className="col-12 col-md-3">
-              {/* {auth.user === "admin" && ( */}
 
-              {/* )} */}
+            <div className="col-12 col-md-3">
               <Modal show={show} onHide={handleClose}>
                 <Modal.Header className="card-crud" closeButton>
                   <Modal.Title className="title-crud">
@@ -205,6 +218,7 @@ const ArticleDetail = ({
                     >
                       <Form.Label className="style-crud">Categoria</Form.Label>
                       <Form.Control
+                        maxLength={31}
                         type="text"
                         value={editSection}
                         onChange={(e) => setEditSection(e.target.value)}
@@ -218,6 +232,7 @@ const ArticleDetail = ({
                       >
                         <Form.Label className="style-crud">Autor</Form.Label>
                         <Form.Control
+                          maxLength={31}
                           type="text"
                           placeholder="Nombre del autor"
                           value={editAuthor}
@@ -232,6 +247,7 @@ const ArticleDetail = ({
                       >
                         <Form.Label className="style-crud">Titulo</Form.Label>
                         <Form.Control
+                          maxLength={31}
                           type="text"
                           defaultValue={editTitle}
                           value={editTitle}
@@ -243,6 +259,7 @@ const ArticleDetail = ({
                       <Form.Group className="mb-3">
                         <Form.Label className="style-crud">URL</Form.Label>
                         <Form.Control
+                          maxLength={31}
                           type="text"
                           placeholder="Ingrese URL de imagen"
                           defaultValue={editImage}
@@ -260,6 +277,7 @@ const ArticleDetail = ({
                           Subtitulo
                         </Form.Label>
                         <Form.Control
+                          maxLength={31}
                           type="text"
                           placeholder="Ingrese subtitulo"
                           defaultValue={editSubtitulo}
@@ -268,7 +286,7 @@ const ArticleDetail = ({
                           autoFocus
                         />
                       </Form.Group>
-                      {/* data.description */}
+
                       <Form.Group
                         className="mb-3"
                         controlId="exampleForm.ControlInput1"
@@ -321,6 +339,32 @@ const ArticleDetail = ({
                   </Form.Group>
                 </Modal.Footer>
               </Modal>
+              {/* <Button
+                variant="danger"
+                onClick={handleShowDelete}
+                className="mt-3"
+              >
+                Eliminar
+              </Button>
+
+              <Modal show={showDelete} onHide={handleCloseDelete}>
+                <Modal.Header closeButton>
+                  <Modal.Title>
+                    ¿Estas Seguro de que quiere eliminar este producto?
+                  </Modal.Title>
+                </Modal.Header>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleCloseDelete}>
+                    NO
+                  </Button>
+                  <Button
+                    variant="primary"
+                    onClick={() => handleDeleteOneArticle(data._id)}
+                  >
+                    SI, estoy seguro
+                  </Button>
+                </Modal.Footer>
+              </Modal> */}
 
               {/* <aside className="carousel-advertisement-container">
               <AsideAdvertisement />
