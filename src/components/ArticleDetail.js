@@ -1,4 +1,5 @@
-import React, { useEffect, useState, Navigate } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AsideAdvertisement from "./AsideAdvertisement";
 
@@ -115,6 +116,8 @@ const ArticleDetail = ({
       .then((json) => setDeletetOk(true))
       .catch((error) => setDeletetOk(false));
   };
+
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -373,6 +376,7 @@ const ArticleDetail = ({
                       handleCloseDelete();
                       setTimeout(() => {
                         setChangeData(changeData + 1);
+                        navigate("/");
                       }, 1000);
                     }}
                   >
