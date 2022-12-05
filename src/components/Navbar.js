@@ -76,7 +76,7 @@ const Navbar = ({
             className="justify-content-end"
           >
             <Nav className="d-flex align-items-center">
-              {auth.user === "user" && (
+              {auth.role === "user" && (
                 <Nav.Link onClick={handleShow}>
                   <Link className="link-nav" style={{ textDecoration: "none" }}>
                     Favoritos
@@ -98,7 +98,7 @@ const Navbar = ({
               </Nav.Link>
 
               {!auth.user ||
-                (auth.user === "user" && (
+                (auth.role === "user" && (
                   <Nav.Link>
                     <Link
                       to="/contacto"
@@ -120,7 +120,7 @@ const Navbar = ({
                   <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
                 </Link>
               </Nav.Link>
-              {auth.user === "admin" && (
+              {auth.role === "admin" && (
                 <Nav.Link>
                   {" "}
                   <Link
