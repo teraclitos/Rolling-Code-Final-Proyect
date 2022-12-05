@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/allcss.css";
-
+import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,26 +11,6 @@ import {
 
 const Contact = ({ toastSuccess }) => {
   const [formEnviado, cambiarformEnviado] = useState(false);
-
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-
-  //   emailjs
-  //     .send(
-  //       "service_18qr3zl",
-  //       "template_qwmpdwh",
-  //       e.target,
-  //       "nGGAGr3mmxcq7Asha"
-  //     )
-  //     .then(
-  //       (result) => {
-  //         console.log(result.text);
-  //       },
-  //       (error) => {
-  //         console.log(error.text);
-  //       }
-  //     );
-  // };
 
   return (
     <div>
@@ -129,9 +109,6 @@ const Contact = ({ toastSuccess }) => {
                           <Field
                             id="name"
                             name="name"
-                            // value={values.name}
-                            // onChange={handleChange}
-                            // onBlur={handleBlur}
                             type="text"
                             class="form-control"
                             placeholder="Introduce tu nombre"
@@ -163,9 +140,6 @@ const Contact = ({ toastSuccess }) => {
                             placeholder="Introduce tu mail"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
-                            // value={values.mail}
-                            // onChange={handleChange}
-                            // onBlur={handleBlur}
                           />
                         </div>
                         <ErrorMessage
@@ -174,9 +148,7 @@ const Contact = ({ toastSuccess }) => {
                             <div className="error">{errors.mail}</div>
                           )}
                         />
-                        {/* {touched.mail && errors.mail && (
-                          <div className="error">{errors.mail}</div>
-                        )} */}
+
                         <div className="input-group mb-3">
                           <span
                             className="input-group-text color-span"
@@ -193,11 +165,6 @@ const Contact = ({ toastSuccess }) => {
                             as="textarea"
                             class="form-control"
                             placeholder=""
-                            // aria-label="Username"
-                            // aria-describedby="basic-addon1"
-                            // value={values.comment}
-                            // onChange={handleChange}
-                            // onBlur={handleBlur}
                           />
                         </div>
                         <ErrorMessage
@@ -206,12 +173,16 @@ const Contact = ({ toastSuccess }) => {
                             <div className="error">{errors.comment}</div>
                           )}
                         />
-                        {/* {touched.comment && errors.comment && (
-                          <div className="error">{errors.comment}</div>
-                        )} */}
-                        <button className="btn-contact d-flex">Enviar</button>
-                        {formEnviado &&
-                          toastSuccess("Formulario enviado con exito")}
+                        <Link
+                          to="/error404"
+                          className="link-pass"
+                          style={{ textDecoration: "none" }}
+                        >
+                          <button className="btn-pass">Enviar</button>
+
+                          {formEnviado &&
+                            toastSuccess("Formulario enviado con exito")}
+                        </Link>
                       </Form>
                     )}
                   </Formik>
