@@ -4,7 +4,6 @@ import Main from "./views/Main";
 import "react-toastify/dist/ReactToastify.css";
 import { Flip } from "react-toastify";
 import { useEffect, useState } from "react";
-
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -12,41 +11,33 @@ function App() {
       .then((res) => res.json())
       .then((json) => setData(json));
   }, []);
-
   // const [dataUser, setDataUser] = useState([]);
   // useEffect(() => {
   //   fetch("https://backend-news-eight.vercel.app/users/verusuarios")
   //     .then((res) => res.json())
   //     .then((json) => setDataUser(json));
   // }, []);
-
   const handleShowLogin = () => setShowLogin(true);
   const [showLogin, setShowLogin] = useState(false);
-
   const [cart, setCart] = useState([]);
   useEffect(() => {
     console.log(cart);
   }, [cart]);
-
   const add = (p) => {
     setCart([...cart, p]);
     console.log("funcion auth" + auth.user);
   };
-
   const del = (p) => {
     console.log(p);
     setCart(cart.filter((c) => c.id !== p.id));
   };
-
   const clear = () => {
     setCart([]);
   };
-
   // const USERS = [
   //   { user: "admin", pass: "admin", role: "admin" },
   //   { user: "user", pass: "user", role: "user" },
   // ];
-
   //  const validate = (u, p) => {
   //    let userOk = true;
   //    let passOk = false;
@@ -54,7 +45,6 @@ function App() {
   //    user ? (passOk = user.pass === p) : (userOk = false);
   //    return userOk && passOk;
   //  };
-
   const [auth, setAuth] = useState({
     user: "",
     role: "",
@@ -62,28 +52,50 @@ function App() {
   useEffect(() => {
     console.log(auth);
   }, [auth]);
-
   const validate = async (u, p) => {
-    // const response = await fetch(
-    //   "https://backend-news-eight.vercel.app/users/login",
-    //   {
-    //     method: "POST",
-    //     mode: "cors",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({ username: u, password: p }),
-    //   }
-    // );
-    // console.log(response.body);
-    // return response;
-    console.log("validate test");
+    //   const response = await fetch(
+    //     'https://backend-news-eight.vercel.app/users/login',
+    //     {
+    //       method: 'POST',
+    //       mode: 'cors',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify({
+    //         username: u,
+    //         password: p,
+    //       }),
+    //     }
+    //   );
+    //   await fetch(
+    //     'https://localhost:5001/api/values',
+    //     {
+    //       method: 'POST',
+    //       mode: 'cors',
+    //       cache: 'no-cache',
+    //       credentials: 'same-origin',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       redirect: 'follow',
+    //       referrerPolicy: 'no-referrer',
+    //       body: JSON.stringify({
+    //         id: '123',
+    //         name: 'qweq',
+    //       }), // body data type must match "Content-Type" header
+    //     }
+    //   )
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       setData(data.name);
+    //       setId(data.id);
+    //     });
+    //   console.log(response);
+    //   return response;
   };
-
   const login = (u, r) => {
     setAuth({ user: u, role: r });
     console.log(auth);
-    // console.log("seteo login auth role" + auth.role);
   };
   const logout = () => {
     setAuth({ user: "", role: "" });
@@ -99,11 +111,9 @@ function App() {
   //     user: userFound.user,
   //     role: userFound.role,
   //   });
-  //   toastSuccess("👋 Bienvenido! Sesión iniciada correctamente");
+  //   toastSuccess(":hola: Bienvenido! Sesión iniciada correctamente");
   // };
-
   const prevenDuplicateToast = "custom-id-yes";
-
   const toastError = (writte) => {
     toast.error(writte, {
       toastId: prevenDuplicateToast,
@@ -115,7 +125,6 @@ function App() {
     });
   };
   const totalHighlights = data.filter((element) => element.highlight === true);
-
   return (
     <BrowserRouter>
       <Main
@@ -145,5 +154,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;

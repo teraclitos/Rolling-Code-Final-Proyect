@@ -8,13 +8,11 @@ import { Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import {
   faBorderStyle,
   faLock,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-
 const ModalLogin = ({
   showLogin,
   setShowLogin,
@@ -34,33 +32,40 @@ const ModalLogin = ({
   const handleCloseLogin = async () => {
     setShowLogin(false);
   };
-
-  useEffect(() => {
-    console.log("username" + mail);
-    console.log("password" + password);
-  }, [mail, password]);
-
   const navigate = useNavigate();
-  // const handleLogin = (u, p) => {
-  //   if (validate(u, p)) {
-  //     login(u);
-  //     navigate("/");
-  //     console.log("login correcto" + auth.user);
-  //   } else {
-  //     console.log("login incorrecto" + auth.user);
-  //   }
-  const handleLogin = (u, p) => {
-    const result = validate(u, p);
-    console.log(result.role);
-    if (!result.error) {
-      login(u, result.role);
+  useEffect(() => {
+    if (loginOk.role) {
+      login(mail, loginOk.role);
       navigate("/");
       handleCloseLogin();
-      toastSuccess("👋 Bienvenido! Sesión iniciada correctamente");
-    } else {
-      console.log("login incorrecto");
+      toastSuccess(":hola: Bienvenido! Sesión iniciada correctamente");
+    } else if (loginOk.role === false) {
+      handleCloseLogin();
       toastError("no se pudo iniciar sesion");
     }
+  }, [loginOk]);
+  const handleLogin = async (e) => {
+    setLoginOk({ name: null, role: null });
+    fetch("https://backend-news-eight.vercel.app/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: mail,
+        password: password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) =>
+        setLoginOk({
+          username: mail,
+          role: json.role,
+        })
+      )
+      .catch((error) => {
+        setLoginOk({ username: null, role: false });
+      });
   };
   return (
     <div>
@@ -84,7 +89,10 @@ const ModalLogin = ({
               <InputGroup className="mb-3">
                 <InputGroup.Text className="color-login">
                   <FontAwesomeIcon
-                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    style={{
+                      fontSize: "1em",
+                      color: "#FD841F",
+                    }}
                     icon={faUser}
                   />
                 </InputGroup.Text>
@@ -95,7 +103,6 @@ const ModalLogin = ({
                   onInput={(e) => setMail(e.target.value)}
                 />
               </InputGroup>
-
               {/* <Form.Text className="text-danger">Ingrese su mail.</Form.Text> */}
             </Form.Group>
             <Form.Group
@@ -106,7 +113,10 @@ const ModalLogin = ({
               <InputGroup className="mb-3">
                 <InputGroup.Text className="color-login">
                   <FontAwesomeIcon
-                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    style={{
+                      fontSize: "1em",
+                      color: "#FD841F",
+                    }}
                     icon={faLock}
                   />
                 </InputGroup.Text>
@@ -147,7 +157,6 @@ const ModalLogin = ({
                 </span>
               </div>
             </Form.Group>
-
             <Button
               className="mt-3 btn-color fs-5"
               onClick={() => {
@@ -162,5 +171,4 @@ const ModalLogin = ({
     </div>
   );
 };
-
 export default ModalLogin;
