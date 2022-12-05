@@ -76,7 +76,7 @@ const Navbar = ({
             className="justify-content-end"
           >
             <Nav className="d-flex align-items-center">
-              {auth.user == "user" && (
+              {auth.user === "user" && (
                 <Nav.Link onClick={handleShow}>
                   <Link className="link-nav" style={{ textDecoration: "none" }}>
                     Favoritos
@@ -97,18 +97,19 @@ const Navbar = ({
                 </Link>
               </Nav.Link>
 
-              {auth.user !== "admin" && (
-                <Nav.Link>
-                  <Link
-                    to="/contacto"
-                    className="link-nav"
-                    style={{ textDecoration: "none" }}
-                  >
-                    Contacto
-                    <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
-                  </Link>
-                </Nav.Link>
-              )}
+              {!auth.user ||
+                (auth.user === "user" && (
+                  <Nav.Link>
+                    <Link
+                      to="/contacto"
+                      className="link-nav"
+                      style={{ textDecoration: "none" }}
+                    >
+                      Contacto
+                      <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
+                    </Link>
+                  </Nav.Link>
+                ))}
 
               <Nav.Link>
                 <Link
@@ -119,7 +120,7 @@ const Navbar = ({
                   <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
                 </Link>
               </Nav.Link>
-              {auth.user == "admin" && (
+              {auth.user === "admin" && (
                 <Nav.Link>
                   {" "}
                   <Link

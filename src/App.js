@@ -101,7 +101,7 @@ function App() {
     setAuth({ user: "", role: "" });
     console.log("seteo logout auth user" + auth.user);
     console.log("seteo logout auth role" + auth.role);
-    // toastSuccess("Sesión cerrada correctamente");
+    toastSuccess("Sesión cerrada correctamente");
     // const token = JSON.parse(localStorage.getItem("token"));
     localStorage.setItem("token", JSON.stringify(""));
   };

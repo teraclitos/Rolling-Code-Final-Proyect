@@ -25,11 +25,7 @@ const ArticleCard = ({ cart, d, add, auth, toastError, handleShowLogin }) => {
       <Card.Footer className="d-flex justify-content-between p-0 border-0 bg-white card-footer ">
         <Link
           className="btn-reed mb-2"
-          to={
-            auth.user === "admin" || auth.user === "user"
-              ? `/ArticleDetailContainer/${d._id}`
-              : "/"
-          }
+          to={auth.user ? `/ArticleDetailContainer/${d._id}` : "/"}
           onClick={() => {
             !auth.user && handleShowLogin();
           }}
