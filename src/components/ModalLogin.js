@@ -17,7 +17,6 @@ const ModalLogin = ({
   showLogin,
   setShowLogin,
   auth,
-  validate,
   login,
   showRegister,
   setShowRegister,
@@ -25,7 +24,6 @@ const ModalLogin = ({
   toastError,
   toastSuccess,
 }) => {
-  // const handleCloseLogin = () => setShowLogin(false);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [loginOk, setLoginOk] = useState("");

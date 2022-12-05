@@ -10,9 +10,9 @@ import Highlights from "../components/Highlights";
 import ArticleFound from "../components/ArticleFound";
 import RecoverPass from "../components/RecoverPass";
 import Error404 from "../components/Error404";
-import Loader from "../components/Loader";
+
 import { Route, Routes } from "react-router-dom";
-import { Container, Row, Form, InputGroup } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 const Main = ({
   toastError,
   toastSuccess,

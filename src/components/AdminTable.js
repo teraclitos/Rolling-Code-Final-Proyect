@@ -54,7 +54,7 @@ function AdminTable(toastSuccess, toastError) {
     console.log("enviado");
     e.preventDefault();
 
-    fetch(`http://localhost:3001/users/edituser/` + id, {
+    fetch(`https://backend-news-eight.vercel.app/users/edituser/` + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
