@@ -13,6 +13,10 @@ function App() {
     fetch("https://backend-news-eight.vercel.app/news/news")
       .then((res) => res.json())
       .then((json) => setData(json));
+
+  }, [data]);
+
+
     console.log(data);
   }, [changeData]);
   // const [dataUser, setDataUser] = useState([]);
@@ -21,6 +25,7 @@ function App() {
   //     .then((res) => res.json())
   //     .then((json) => setDataUser(json));
   // }, []);
+
   const handleShowLogin = () => setShowLogin(true);
   const [showLogin, setShowLogin] = useState(false);
   const [cart, setCart] = useState([]);
@@ -38,17 +43,7 @@ function App() {
   const clear = () => {
     setCart([]);
   };
-  // const USERS = [
-  //   { user: "admin", pass: "admin", role: "admin" },
-  //   { user: "user", pass: "user", role: "user" },
-  // ];
-  //  const validate = (u, p) => {
-  //    let userOk = true;
-  //    let passOk = false;
-  //    let user = USERS.find((user) => user.user === u);
-  //    user ? (passOk = user.pass === p) : (userOk = false);
-  //    return userOk && passOk;
-  //  };
+
   const [auth, setAuth] = useState({
     user: "",
     role: "",
@@ -56,47 +51,7 @@ function App() {
   useEffect(() => {
     console.log(auth);
   }, [auth]);
-  const validate = async (u, p) => {
-    //   const response = await fetch(
-    //     'https://backend-news-eight.vercel.app/users/login',
-    //     {
-    //       method: 'POST',
-    //       mode: 'cors',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify({
-    //         username: u,
-    //         password: p,
-    //       }),
-    //     }
-    //   );
-    //   await fetch(
-    //     'https://localhost:5001/api/values',
-    //     {
-    //       method: 'POST',
-    //       mode: 'cors',
-    //       cache: 'no-cache',
-    //       credentials: 'same-origin',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       redirect: 'follow',
-    //       referrerPolicy: 'no-referrer',
-    //       body: JSON.stringify({
-    //         id: '123',
-    //         name: 'qweq',
-    //       }), // body data type must match "Content-Type" header
-    //     }
-    //   )
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       setData(data.name);
-    //       setId(data.id);
-    //     });
-    //   console.log(response);
-    //   return response;
-  };
+
   const login = (u, r) => {
     setAuth({ user: u, role: r });
     console.log(auth);
@@ -109,14 +64,7 @@ function App() {
     // const token = JSON.parse(localStorage.getItem("token"));
     localStorage.setItem("token", JSON.stringify(""));
   };
-  // const login = (u) => {
-  //   const userFound = USERS.find((user) => user.user === u);
-  //   setAuth({
-  //     user: userFound.user,
-  //     role: userFound.role,
-  //   });
-  //   toastSuccess(":hola: Bienvenido! Sesión iniciada correctamente");
-  // };
+
   const prevenDuplicateToast = "custom-id-yes";
   const toastError = (writte) => {
     toast.error(writte, {
@@ -140,7 +88,6 @@ function App() {
         clear={clear}
         data={data}
         auth={auth}
-        validate={validate}
         login={login}
         logout={logout}
         handleShowLogin={handleShowLogin}
