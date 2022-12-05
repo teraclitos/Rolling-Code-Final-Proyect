@@ -97,19 +97,18 @@ const Navbar = ({
                 </Link>
               </Nav.Link>
 
-              {!auth.user ||
-                (auth.role === "user" && (
-                  <Nav.Link>
-                    <Link
-                      to="/contacto"
-                      className="link-nav"
-                      style={{ textDecoration: "none" }}
-                    >
-                      Contacto
-                      <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
-                    </Link>
-                  </Nav.Link>
-                ))}
+              {(!auth.user || auth.role === "user") && (
+                <Nav.Link>
+                  <Link
+                    to="/contacto"
+                    className="link-nav"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Contacto
+                    <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
+                  </Link>
+                </Nav.Link>
+              )}
 
               <Nav.Link>
                 <Link

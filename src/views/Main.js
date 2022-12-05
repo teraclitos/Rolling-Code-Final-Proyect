@@ -22,7 +22,6 @@ const Main = ({
   data,
   dataUser,
   auth,
-  validate,
   login,
   logout,
   handleShowLogin,
@@ -45,7 +44,6 @@ const Main = ({
           data={data}
           dataUser={dataUser}
           auth={auth}
-          validate={validate}
           login={login}
           logout={logout}
           handleShowLogin={handleShowLogin}
@@ -74,7 +72,6 @@ const Main = ({
                 add={add}
                 cart={cart}
                 auth={auth}
-                validate={validate}
                 login={login}
                 logout={logout}
               />
@@ -88,7 +85,6 @@ const Main = ({
                 add={add}
                 cart={cart}
                 auth={auth}
-                validate={validate}
                 login={login}
                 logout={logout}
                 toastError={toastError}
@@ -120,7 +116,6 @@ const Main = ({
                 add={add}
                 cart={cart}
                 auth={auth}
-                validate={validate}
                 login={login}
                 logout={logout}
               />
@@ -134,7 +129,6 @@ const Main = ({
                 add={add}
                 cart={cart}
                 auth={auth}
-                validate={validate}
                 login={login}
                 logout={logout}
                 toastError={toastError}
