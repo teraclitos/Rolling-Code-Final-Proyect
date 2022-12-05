@@ -10,7 +10,7 @@ function App() {
     fetch("https://backend-news-eight.vercel.app/news/news")
       .then((res) => res.json())
       .then((json) => setData(json));
-  }, []);
+  }, [data]);
   // const [dataUser, setDataUser] = useState([]);
   // useEffect(() => {
   //   fetch("https://backend-news-eight.vercel.app/users/verusuarios")
