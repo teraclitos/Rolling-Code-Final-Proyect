@@ -10,9 +10,9 @@
     grid-template-columns: 1fr;
   }
   .grid-header {
-    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-columns: 1fr 11fr 1fr;
   }
-  @keyframes slideingheader {
+  @keyframes slideinheader {
     from {
       left: 200%;
     }
