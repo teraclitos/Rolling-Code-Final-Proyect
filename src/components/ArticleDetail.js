@@ -1,27 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import AsideAdvertisement from "./AsideAdvertisement";
-
-import {
-  Button,
-  Card,
-  Container,
-  Row,
-  Modal,
-  Form,
-  Col,
-  Pagination,
-  Alert,
-} from "react-bootstrap";
+import { Button, Card, Container, Row, Modal, Form } from "react-bootstrap";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
   faTwitter,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-import Categorias from "./Categorias";
+
 import "../styles/allcss.css";
-import { Route, Routes, Link, useParams } from "react-router-dom";
 
 const ArticleDetail = ({
   data,
@@ -107,7 +94,7 @@ const ArticleDetail = ({
     }
   };
   // const handleDeleteOneArticle = (id) => {
-  //   fetch("https://backend-news-eight.vercel.app/news/editnews/" + data._id, {
+  //   fetch("https://backend-news-eight.vercel.app/news/deletenews/" + data._id, {
   //     method: "DELETE",
   //     headers: {
   //       "Content-type": "application/json",
