@@ -11,6 +11,7 @@
   filter: contrast(1.1);
 
   min-height: 450px;
+  max-height: 800px;
 }
 
 .img-header {
