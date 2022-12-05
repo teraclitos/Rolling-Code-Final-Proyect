@@ -147,7 +147,6 @@ function App() {
         showLogin={showLogin}
         setShowLogin={setShowLogin}
         totalHighlights={totalHighlights}
-        setData={setData}
         changeData={changeData}
         setChangeData={setChangeData}
       />
