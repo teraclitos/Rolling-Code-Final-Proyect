@@ -369,14 +369,16 @@ const ArticleDetail = ({
                     NO
                   </Button>
                   <Button
-                    className="btn-delete"
+                    className="btn-delete btn-delete-yes"
                     onClick={() => {
                       handleDeleteOneArticle();
                       handleCloseDelete();
                       setTimeout(() => {
                         setChangeData(changeData + 1);
-                        navigate("/");
                       }, 1000);
+                      setTimeout(() => {
+                        navigate("/");
+                      }, 1500);
                     }}
                   >
                     SÍ
