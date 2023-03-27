@@ -23,11 +23,11 @@
 
 @keyframes slideinheader {
   from {
-    bottom: 200%;
+    transform: translateY(-1000px);
   }
 
   to {
-    bottom: 0%;
+    transform: translateY(0);
   }
 }
 
@@ -41,6 +41,7 @@
   margin-top: 1em;
   margin-bottom: 2em;
   gap: 1em;
+  overflow: hidden;
 }
 .icon-container {
   color: rgb(255, 255, 255);

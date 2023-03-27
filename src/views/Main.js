@@ -155,7 +155,7 @@ const Main = ({
             }
           />
           <Route path="/recuperarContraseña" element={<RecoverPass />} />
-          <Route path="/error404" element={<Error404 />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
       </Container>
