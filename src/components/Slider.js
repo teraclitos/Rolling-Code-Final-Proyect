@@ -16,7 +16,7 @@ const Slider = ({
     <Carousel
       indicators={false}
       pause={false}
-      className=" d-none d-lg-block slider-container"
+      className=" d-none d-lg-block slider-container overlayed-background-slider-container"
     >
       {totalHighlights.map((d, i) => (
         <Carousel.Item interval={3000}>
@@ -25,7 +25,7 @@ const Slider = ({
             src={d.img_URL}
             alt="First slide"
           />
-          <Carousel.Caption>
+          <Carousel.Caption className="text-slider-container">
             <Link
               className="text-slider"
               to={
@@ -38,10 +38,11 @@ const Slider = ({
               }}
               style={{ textDecoration: "none" }}
             >
-              <h3>{d.title}</h3>
-              <p>{d.description}</p>
+              <h3 className="fs-2 mb-3">{d.title}</h3>
+              <p className="fs-5">{d.description}</p>
             </Link>
           </Carousel.Caption>
+          <div className="overlayed-background-slider"></div>
         </Carousel.Item>
       ))}
     </Carousel>

@@ -56,15 +56,18 @@ const ModalLogin = ({
         password: password,
       }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        res.json();
+      })
 
-      .then((json) =>
+      .then((json) => {
+        console.log(json.data.token);
         setLoginOk({
           username: mail,
           role: json.role,
-          token: json.tokens,
-        })
-      )
+          token: json.data.token,
+        });
+      })
       .catch((error) => {
         setLoginOk({ username: null, role: false });
       });
