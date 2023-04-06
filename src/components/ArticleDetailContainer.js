@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import ArticleDetail from "./ArticleDetail";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
-import { toast, ToastContainer } from "react-toastify";
 
 const ArticleDetailContainer = ({
   add,

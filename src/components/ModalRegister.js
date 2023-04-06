@@ -131,7 +131,7 @@ const ModalRegister = ({
     let error;
     if (!value) {
       error = "Campo obligatorio";
-    } else if (value.length < 9) {
+    } else if (value.length < 8) {
       error = "Debe tener al menos 8 caracteres";
     } else if (value.length > 30) {
       error = "Debe tener menos de 31 caracteres";

@@ -24,18 +24,59 @@ const ModalLogin = ({
   toastError,
   toastSuccess,
 }) => {
-  const [mail, setMail] = useState("");
+  const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [loginOk, setLoginOk] = useState("");
+  const [borderUser, setBorderUser] = useState("outline-input");
+  const [firstValidationUser, setFirstValidationUser] = useState(false);
+  const [firstValidationPassword, setFirstValidationPassword] = useState(false);
+  const [borderPassword, setBorderPassword] = useState("outline-input");
+
+  const validateUserLogin = (value) => {
+    if (value.trim() === "") {
+      return "Campo vacío";
+    } else {
+      return "";
+    }
+  };
+  const validateUserPassword = (value) => {
+    if (value.trim() === "") {
+      return "Campo vacío";
+    } else {
+      return "";
+    }
+  };
+
+  useEffect(() => {
+    if (!password && firstValidationPassword) {
+      setBorderPassword("outline-input wrong-border");
+    } else {
+      setBorderPassword("outline-input");
+    }
+  }, [firstValidationPassword, password]);
+
+  useEffect(() => {
+    if (!user && firstValidationUser) {
+      setBorderUser("outline-input wrong-border");
+    } else {
+      setBorderUser("outline-input");
+    }
+  }, [user, firstValidationUser]);
 
   const handleCloseLogin = async () => {
     setShowLogin(false);
+    setUser("");
+    setPassword("");
+    setBorderPassword("outline-input");
+    setBorderUser("outline-input");
+    setFirstValidationPassword(false);
+    setFirstValidationUser(false);
   };
   const navigate = useNavigate();
   useEffect(() => {
     if (loginOk.role) {
       localStorage.setItem("token", JSON.stringify(loginOk.token));
-      login(mail, loginOk.role);
+      login(user, loginOk.role);
       navigate("/");
       handleCloseLogin();
       toastSuccess(":hola: Bienvenido! Sesión iniciada correctamente");
@@ -52,19 +93,22 @@ const ModalLogin = ({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: mail,
+        username: user,
         password: password,
       }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        res.json();
+      })
 
-      .then((json) =>
+      .then((json) => {
+        console.log(json.data.token);
         setLoginOk({
-          username: mail,
+          username: user,
           role: json.role,
-          // token: json.tokens,
-        })
-      )
+          token: json.data.token,
+        });
+      })
       .catch((error) => {
         setLoginOk({ username: null, role: false });
       });
@@ -88,7 +132,7 @@ const ModalLogin = ({
               controlId="mailUserLogin"
             >
               <Form.Label></Form.Label>
-              <InputGroup className="mb-3">
+              <InputGroup className="">
                 <InputGroup.Text className="color-login">
                   <FontAwesomeIcon
                     style={{
@@ -99,20 +143,36 @@ const ModalLogin = ({
                   />
                 </InputGroup.Text>
                 <Form.Control
+                  className={borderUser}
                   maxLength={31}
-                  type="mail"
+                  type="text"
                   placeholder="usuario"
-                  onInput={(e) => setMail(e.target.value)}
+                  onInput={(e) => setUser(e.target.value)}
+                  onBlur={() => {
+                    setFirstValidationUser(true);
+                  }}
                 />
               </InputGroup>
-              {/* <Form.Text className="text-danger">Ingrese su mail.</Form.Text> */}
+              <div className="d-flex ">
+                <InputGroup.Text className="color-login opacity-0 height-invisible">
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faLock}
+                  />
+                </InputGroup.Text>
+                {firstValidationUser && (
+                  <Form.Text className="wrong ">
+                    {validateUserLogin(user)}
+                  </Form.Text>
+                )}
+              </div>
             </Form.Group>
             <Form.Group
               className="mb-2 d-flex flex-column align-items-start"
               controlId="passwordLogin"
             >
               <Form.Label></Form.Label>
-              <InputGroup className="mb-3">
+              <InputGroup className="">
                 <InputGroup.Text className="color-login">
                   <FontAwesomeIcon
                     style={{
@@ -123,15 +183,30 @@ const ModalLogin = ({
                   />
                 </InputGroup.Text>
                 <Form.Control
+                  className={borderPassword}
                   maxLength={31}
                   type="password"
                   onInput={(e) => setPassword(e.target.value)}
+                  onBlur={() => {
+                    setFirstValidationPassword(true);
+                  }}
                   placeholder="Contraseña"
                 />
               </InputGroup>
-              {/* <Form.Text className="text-danger">
-              Ingrese su contraseña.
-            </Form.Text> */}
+              <div className="d-flex ">
+                <InputGroup.Text className="color-login opacity-0 height-invisible">
+                  <FontAwesomeIcon
+                    style={{ fontSize: "1em", color: "#fd841f" }}
+                    icon={faLock}
+                  />
+                </InputGroup.Text>
+                {firstValidationPassword && (
+                  <Form.Text className="wrong ">
+                    {validateUserPassword(password)}
+                  </Form.Text>
+                )}
+              </div>
+
               <div className="d-flex justify-content-center w-100">
                 <span className="mt-2">
                   Si no recuerda su contraseña, ingrese
@@ -162,7 +237,13 @@ const ModalLogin = ({
             <Button
               className="mt-3 btn-color fs-5"
               onClick={() => {
-                handleLogin(mail, password);
+                if (!user || !password) {
+                  toastError("Debe completar todos los campos obligatorios");
+                  setFirstValidationPassword(true);
+                  setFirstValidationUser(true);
+                } else {
+                  handleLogin(user, password);
+                }
               }}
             >
               Iniciar sesión

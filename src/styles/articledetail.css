@@ -80,8 +80,11 @@
   font-family: "Anton";
   margin-top: 30px;
   background-color: #fd841f;
-  animation-duration: 3s;
+  animation-duration: 1.5s;
   animation-name: slidein;
+}
+.container-highlights-list {
+  overflow: hidden;
 }
 @keyframes slidein {
   from {

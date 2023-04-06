@@ -53,6 +53,7 @@
 .card-container {
   transition: all 400ms ease;
   box-shadow: 0px, 1px, 10px, rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .card-container:hover {
@@ -73,11 +74,4 @@
 .btn-reed:hover {
   color: #0e185f;
   background-color: #fd841f;
-}
-.text-slider {
-  font-family: "Anton";
-  color: #0e185f;
-}
-.text-slider:hover {
-  color: #fd841f;
 }
