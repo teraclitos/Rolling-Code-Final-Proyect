@@ -62,7 +62,7 @@ const ModalLogin = ({
         setLoginOk({
           username: mail,
           role: json.role,
-          token: json.tokens,
+          // token: json.tokens,
         })
       )
       .catch((error) => {
