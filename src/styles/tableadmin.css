@@ -9,6 +9,7 @@
 }
 .edit-label {
   font-family: "Anton";
+  justify-content: center;
 }
 .btn-icon {
   color: #fd841f;
