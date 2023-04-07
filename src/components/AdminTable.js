@@ -126,7 +126,9 @@ function AdminTable(toastSuccess, toastError) {
                       )}
                       <Modal centered show={show} onHide={handleClose}>
                         <Modal.Header className="card-crud" closeButton>
-                          <Modal.Title>Modificar Usuario</Modal.Title>
+                          <Modal.Title className="edit-label ">
+                            Modificar Usuario
+                          </Modal.Title>
                         </Modal.Header>
                         <Modal.Body className="card-crud">
                           <Form>
