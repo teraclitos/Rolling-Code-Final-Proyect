@@ -14,9 +14,9 @@ function AdminTable(toastSuccess, toastError) {
   const [submitUser, setSubmitUser] = useState(null);
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
-  const [editName, setEditName] = useState();
-  const [editUserName, setEditUserName] = useState();
-  const [editEmail, setEditEmail] = useState();
+  const [editName, setEditName] = useState("");
+  const [editUserName, setEditUserName] = useState("");
+  const [editEmail, setEditEmail] = useState("");
   const [submit, setSubmit] = useState(null);
   const handleClose = () => setShow(false);
   const handleCloseDel = () => setOpen(false);
