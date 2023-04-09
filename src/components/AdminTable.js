@@ -2,7 +2,6 @@ import { Container, Button } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/allcss.css";
-
 import { faUserSlash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
@@ -15,9 +14,9 @@ function AdminTable(toastSuccess, toastError) {
   const [submitUser, setSubmitUser] = useState(null);
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
-  const [editName, setEditName] = useState("");
-  const [editUserName, setEditUserName] = useState("");
-  const [editEmail, setEditEmail] = useState("");
+  const [editName, setEditName] = useState();
+  const [editUserName, setEditUserName] = useState();
+  const [editEmail, setEditEmail] = useState();
   const [submit, setSubmit] = useState(null);
   const handleClose = () => setShow(false);
   const handleCloseDel = () => setOpen(false);
