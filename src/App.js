@@ -45,6 +45,7 @@ function App() {
     setAuth({ user: u, role: r });
     console.log(auth);
   };
+
   const logout = () => {
     setAuth({ user: "", role: "" });
     console.log("seteo logout auth user" + auth.user);

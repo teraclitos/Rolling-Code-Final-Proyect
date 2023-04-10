@@ -26,7 +26,7 @@ const ModalLogin = ({
 }) => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [loginOk, setLoginOk] = useState("");
+  const [loginOk, setLoginOk] = useState(null);
   const [borderUser, setBorderUser] = useState("outline-input");
   const [firstValidationUser, setFirstValidationUser] = useState(false);
   const [firstValidationPassword, setFirstValidationPassword] = useState(false);
@@ -74,15 +74,16 @@ const ModalLogin = ({
   };
   const navigate = useNavigate();
   useEffect(() => {
-    if (loginOk.role) {
-      localStorage.setItem("token", JSON.stringify(loginOk.token));
-      login(user, loginOk.role);
+    if (setLoginOk) {
+      // login(user, loginOk.role);
       navigate("/");
       handleCloseLogin();
       toastSuccess(":hola: Bienvenido! Sesión iniciada correctamente");
-    } else if (loginOk.role === false) {
-      handleCloseLogin();
+      setLoginOk(null);
+    } else if (setLoginOk === false) {
+      // handleCloseLogin();
       toastError("no se pudo iniciar sesion");
+      setLoginOk(null);
     }
   }, [loginOk]);
   const handleLogin = async (e) => {
@@ -102,13 +103,15 @@ const ModalLogin = ({
       })
 
       .then((json) => {
-        console.log(json.data.token);
-        setLoginOk({
-          username: user,
-          role: json.role,
-          token: json.data.token,
-        });
+        if (json.token) {
+          localStorage.setItem("token", JSON.stringify(loginOk.token));
+          console.log(json.token);
+          setLoginOk(true);
+        } else {
+          setLoginOk(false);
+        }
       })
+
       .catch((error) => {
         setLoginOk({ username: null, role: false });
       });
