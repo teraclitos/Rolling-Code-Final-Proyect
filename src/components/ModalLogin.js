@@ -102,7 +102,7 @@ const ModalLogin = ({
   };
   useEffect(() => {
     if (loginOk === true) {
-      // login(user, loginOk.role);
+      login();
       navigate("/");
       handleCloseLogin();
       toastSuccess(":hola: Bienvenido! Sesión iniciada correctamente");

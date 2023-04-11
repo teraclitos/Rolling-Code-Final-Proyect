@@ -42,9 +42,12 @@ function App() {
     console.log(auth);
   }, [auth]);
 
-  const login = (u, r) => {
-    setAuth({ user: u, role: r });
-    console.log(auth);
+  const login = () => {
+    setAuth({
+      user: JSON.parse(localStorage.getItem("username")),
+      role: JSON.parse(localStorage.getItem("role")),
+      token: JSON.parse(localStorage.getItem("token")),
+    });
   };
 
   const logout = () => {
