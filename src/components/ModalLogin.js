@@ -73,19 +73,7 @@ const ModalLogin = ({
     setFirstValidationUser(false);
   };
   const navigate = useNavigate();
-  useEffect(() => {
-    if (setLoginOk) {
-      // login(user, loginOk.role);
-      navigate("/");
-      handleCloseLogin();
-      toastSuccess(":hola: Bienvenido! Sesión iniciada correctamente");
-      setLoginOk(null);
-    } else if (setLoginOk === false) {
-      // handleCloseLogin();
-      toastError("no se pudo iniciar sesion");
-      setLoginOk(null);
-    }
-  }, [loginOk]);
+
   const handleLogin = async (e) => {
     setLoginOk({ name: null, role: null });
     fetch("https://backend-news-eight.vercel.app/users/login", {
@@ -98,24 +86,31 @@ const ModalLogin = ({
         password: password,
       }),
     })
-      .then((res) => {
-        res.json();
-      })
-
+      .then((res) => res.json())
       .then((json) => {
         if (json.token) {
-          localStorage.setItem("token", JSON.stringify(loginOk.token));
-          console.log(json.token);
+          localStorage.setItem("token", JSON.stringify(json.token));
           setLoginOk(true);
         } else {
           setLoginOk(false);
         }
       })
 
-      .catch((error) => {
-        setLoginOk({ username: null, role: false });
-      });
+      .catch((error) => setLoginOk(false));
   };
+  useEffect(() => {
+    if (loginOk === true) {
+      // login(user, loginOk.role);
+      navigate("/");
+      handleCloseLogin();
+      toastSuccess(":hola: Bienvenido! Sesión iniciada correctamente");
+      setLoginOk(null);
+    } else if (loginOk === false) {
+      // handleCloseLogin();
+      toastError("Usuario o contraseña incorrectos");
+      setLoginOk(null);
+    }
+  }, [loginOk]);
   return (
     <div>
       <Modal centered show={showLogin} onHide={handleCloseLogin}>
