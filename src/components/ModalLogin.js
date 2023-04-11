@@ -90,6 +90,7 @@ const ModalLogin = ({
       .then((json) => {
         if (json.token) {
           localStorage.setItem("token", JSON.stringify(json.token));
+          localStorage.setItem("role", JSON.stringify(json.role));
           setLoginOk(true);
         } else {
           setLoginOk(false);
@@ -106,7 +107,6 @@ const ModalLogin = ({
       toastSuccess(":hola: Bienvenido! Sesión iniciada correctamente");
       setLoginOk(null);
     } else if (loginOk === false) {
-      // handleCloseLogin();
       toastError("Usuario o contraseña incorrectos");
       setLoginOk(null);
     }
