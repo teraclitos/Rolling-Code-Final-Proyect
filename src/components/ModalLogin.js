@@ -91,6 +91,7 @@ const ModalLogin = ({
         if (json.token) {
           localStorage.setItem("token", JSON.stringify(json.token));
           localStorage.setItem("role", JSON.stringify(json.role));
+          localStorage.setItem("username", JSON.stringify(json.username));
           setLoginOk(true);
         } else {
           setLoginOk(false);

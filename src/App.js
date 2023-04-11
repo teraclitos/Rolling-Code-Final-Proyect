@@ -34,8 +34,9 @@ function App() {
   };
 
   const [auth, setAuth] = useState({
-    user: "",
-    role: "",
+    user: JSON.parse(localStorage.getItem("username")),
+    role: JSON.parse(localStorage.getItem("role")),
+    token: JSON.parse(localStorage.getItem("token")),
   });
   useEffect(() => {
     console.log(auth);
