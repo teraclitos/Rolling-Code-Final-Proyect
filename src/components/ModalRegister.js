@@ -112,12 +112,12 @@ const ModalRegister = ({
     } else if (!/^[a-zA-ZÀ-ÿ]{1}$/i.test(value.trim().charAt(0))) {
       error = "El primer caracter debe ser una letra";
     } else if (
-      !/^[a-zA-ZÀ-ÿ\s0-9-_]{3,30}$/i.test(
+      !/^[a-zA-ZÀ-ÿ\s0-9-_]{2,30}$/i.test(
         value.trim().slice(1, value.trim().length)
       )
     ) {
       error = "Sólo guiones como símbolos";
-    } else if (!/^[\S]{2,30}$/i.test(value.trim())) {
+    } else if (!/^[\S]{3,30}$/i.test(value.trim())) {
       error = "No debe llevar espacios ";
     } else {
       error = true;
