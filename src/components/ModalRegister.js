@@ -117,7 +117,7 @@ const ModalRegister = ({
       )
     ) {
       error = "Sólo guiones como símbolos";
-    } else if (!/^[\S]{3,30}$/i.test(value.trim())) {
+    } else if (!/^[\S]{2,30}$/i.test(value.trim())) {
       error = "No debe llevar espacios ";
     } else {
       error = true;
