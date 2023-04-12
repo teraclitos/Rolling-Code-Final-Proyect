@@ -18,6 +18,7 @@ function AdminTable({ toastSuccess, toastError, auth }) {
   const [editName, setEditName] = useState("");
   const [editUserName, setEditUserName] = useState("");
   const [editEmail, setEditEmail] = useState("");
+  const [idF, setId] = useState("");
   const [submit, setSubmit] = useState(null);
   const handleClose = () => setShow(false);
   const handleCloseDel = () => setOpen(false);
@@ -35,10 +36,11 @@ function AdminTable({ toastSuccess, toastError, auth }) {
     })
       .then((res) => res.json())
       .then((json) => setDataUser(json));
+
+    console.log(dataUser);
   }, [ChangeDataUser]);
 
   const handleShow = () => setShow(true);
-  const token = JSON.parse(localStorage.getItem("token"));
 
   const handleDel = (e, id) => {
     fetch("https://backend-news-eight.vercel.app/users/deleteuser/" + id, {
@@ -70,9 +72,6 @@ function AdminTable({ toastSuccess, toastError, auth }) {
         name: editName,
         username: editUserName,
         email: editEmail,
-        role: dataUser.role,
-        token: dataUser.token,
-        id: dataUser._id,
       }),
     })
       .then((res) => res.json())
@@ -81,16 +80,12 @@ function AdminTable({ toastSuccess, toastError, auth }) {
   };
 
   useEffect(() => {
-    setEditName(dataUser.name);
-    setEditEmail(dataUser.email);
-    setEditUserName(dataUser.username);
-  }, [dataUser]);
-
-  useEffect(() => {
-    if (submit) {
+    if (submit === true) {
       toastSuccess("Modificado");
+      setSubmit(null);
     } else if (submit === false) {
       toastError("Algo ha salido mal");
+      setSubmit(null);
     }
   }, []);
 
@@ -125,7 +120,16 @@ function AdminTable({ toastSuccess, toastError, auth }) {
                       {dataUser.role !== "admin" && (
                         <FontAwesomeIcon
                           className="btn-icon"
-                          onClick={handleShow}
+                          onClick={() => {
+                            handleShow();
+                            setEditName(dataUser.name);
+                            setEditEmail(dataUser.email);
+                            setEditUserName(dataUser.username);
+                            setId(dataUser._id);
+                            // setToken(dataUser.token);
+                            // setPassword(dataUser.password);
+                            // setRole(dataUser.role);
+                          }}
                           style={{ fontSize: "2em" }}
                           icon={faPenToSquare}
                         />
@@ -203,7 +207,8 @@ function AdminTable({ toastSuccess, toastError, auth }) {
                           <Button
                             className="btn-detail"
                             onClick={(e) => {
-                              handleSubmitUser(e, dataUser._id);
+                              handleSubmitUser(e, idF);
+
                               handleClose();
                               setTimeout(() => {
                                 setChangeDataUser(ChangeDataUser + 1);
@@ -219,7 +224,10 @@ function AdminTable({ toastSuccess, toastError, auth }) {
                       {dataUser.role !== "admin" && (
                         <FontAwesomeIcon
                           className="btn-icon"
-                          onClick={handleOpen}
+                          onClick={() => {
+                            handleOpen();
+                            setId(dataUser._id);
+                          }}
                           style={{ fontSize: "2em" }}
                           icon={faUserSlash}
                         />
@@ -242,7 +250,7 @@ function AdminTable({ toastSuccess, toastError, auth }) {
                           <Button
                             className="btn-detail"
                             onClick={(e) => {
-                              handleDel(e, dataUser._id);
+                              handleDel(e, idF);
                               setTimeout(() => {
                                 setChangeDataUser(ChangeDataUser + 1);
                               }, 1000);
