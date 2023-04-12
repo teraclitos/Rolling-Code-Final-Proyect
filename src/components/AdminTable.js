@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useParams, useRouteLoaderData } from "react-router-dom";
 
-function AdminTable(toastSuccess, toastError) {
+function AdminTable({ toastSuccess, toastError, auth }) {
   const [dataUser, setDataUser] = useState([]);
 
   const [submitUser, setSubmitUser] = useState(null);
@@ -26,7 +26,13 @@ function AdminTable(toastSuccess, toastError) {
 
   const [ChangeDataUser, setChangeDataUser] = useState(1);
   useEffect(() => {
-    fetch("https://backend-news-eight.vercel.app/users/verusuarios")
+    fetch("https://backend-news-eight.vercel.app/users/verusuarios", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: auth.token,
+      },
+    })
       .then((res) => res.json())
       .then((json) => setDataUser(json));
   }, [ChangeDataUser]);
@@ -39,7 +45,7 @@ function AdminTable(toastSuccess, toastError) {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": token,
+        authorization: auth.token,
       },
       body: JSON.stringify({
         name: editName,
@@ -58,7 +64,7 @@ function AdminTable(toastSuccess, toastError) {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": token,
+        authorization: auth.token,
       },
       body: JSON.stringify({
         name: editName,

@@ -51,11 +51,12 @@ function App() {
   };
 
   const logout = () => {
-    setAuth({ user: "", role: "" });
-    console.log("seteo logout auth user" + auth.user);
-    console.log("seteo logout auth role" + auth.role);
-    toastSuccess("Sesión cerrada correctamente");
     localStorage.setItem("token", JSON.stringify(""));
+    localStorage.setItem("role", JSON.stringify(""));
+    localStorage.setItem("username", JSON.stringify(""));
+    setAuth({ user: "", role: "", token: "" });
+
+    toastSuccess("Sesión cerrada correctamente");
   };
 
   const prevenDuplicateToast = "custom-id-yes";
@@ -81,6 +82,7 @@ function App() {
         clear={clear}
         data={data}
         auth={auth}
+        setAuth={setAuth}
         login={login}
         logout={logout}
         handleShowLogin={handleShowLogin}

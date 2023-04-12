@@ -33,6 +33,7 @@ const Navbar = ({
   dataUser,
   validate,
   auth,
+  setAuth,
   login,
   logout,
   toastError,
@@ -47,6 +48,21 @@ const Navbar = ({
   const handleShow = () => setShow(true);
   const [showRegister, setShowRegister] = useState(false);
   const handleShowRegister = () => setShowRegister(true);
+  const handleLogout = async (e) => {
+    fetch("https://backend-news-eight.vercel.app/users/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: auth.token,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        logout();
+      })
+
+      .catch((error) => toastError(error));
+  };
 
   return (
     <>
@@ -159,7 +175,7 @@ const Navbar = ({
                     to="/"
                     className="link-nav"
                     style={{ textDecoration: "none" }}
-                    onClick={() => logout()}
+                    onClick={() => handleLogout()}
                   >
                     Cerrar sesión
                     <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />

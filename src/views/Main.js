@@ -31,6 +31,7 @@ const Main = ({
   add,
   changeData,
   setChangeData,
+  setAuth,
 }) => {
   return (
     <>
@@ -44,6 +45,7 @@ const Main = ({
           data={data}
           dataUser={dataUser}
           auth={auth}
+          setAuth={setAuth}
           login={login}
           logout={logout}
           handleShowLogin={handleShowLogin}
@@ -105,6 +107,7 @@ const Main = ({
                   dataUser={dataUser}
                   toastError={toastError}
                   toastSuccess={toastSuccess}
+                  auth={auth}
                 />
               ) : (
                 <Articlepublicitygrid
