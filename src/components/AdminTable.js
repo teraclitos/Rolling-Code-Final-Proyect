@@ -7,7 +7,6 @@ import { faUserSlash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { useParams, useRouteLoaderData } from "react-router-dom";
 
 function AdminTable({ toastSuccess, toastError, auth }) {
   const [dataUser, setDataUser] = useState([]);
@@ -22,8 +21,87 @@ function AdminTable({ toastSuccess, toastError, auth }) {
   const [submit, setSubmit] = useState(null);
   const handleClose = () => setShow(false);
   const handleCloseDel = () => setOpen(false);
+  const [borderUser, setBorderUser] = useState("outline-input");
+  const [borderName, setBorderName] = useState("outline-input");
+  const [borderMail, setBorderMail] = useState("outline-input");
+  useEffect(() => {
+    if (validateName(editName) !== true) {
+      setBorderName("outline-input wrong-border");
+    } else {
+      setBorderName("outline-input");
+    }
+  }, [editName]);
+  useEffect(() => {
+    if (validateUser(editUserName) !== true) {
+      setBorderUser("outline-input wrong-border");
+    } else {
+      setBorderUser("outline-input");
+    }
+  }, [editUserName]);
+  useEffect(() => {
+    if (validateEmail(editEmail) !== true) {
+      setBorderMail("outline-input wrong-border");
+    } else {
+      setBorderMail("outline-input");
+    }
+  }, [editEmail]);
 
-  const params = useParams();
+  const validateEmail = (value) => {
+    let error;
+    if (!value) {
+      error = "Campo obligatorio";
+    } else if (value.length < 9) {
+      error = "Debe tener al menos 8 caracteres";
+    } else if (value.length > 30) {
+      error = "Debe tener menos de 31 caracteres";
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value.trim())
+    ) {
+      error = "Email incorrecto";
+    } else {
+      error = true;
+    }
+    return error;
+  };
+
+  const validateName = (value) => {
+    let error;
+    if (!value) {
+      error = "Campo obligatorio";
+    } else if (value.trim().length < 3) {
+      error = "Debe tener al menos 3 caracteres";
+    } else if (value.trim().length > 30) {
+      error = "Debe tener menos de 31 caracteres";
+    } else if (!/^[a-zA-ZÀ-ÿ\s]{3,30}$/i.test(value.trim())) {
+      error = "Sólo puede llevar letras";
+    } else {
+      error = true;
+    }
+    return error;
+  };
+  const validateUser = (value) => {
+    let error;
+    if (!value) {
+      error = "Campo obligatorio";
+    } else if (value.trim().length < 3) {
+      error = "Debe tener al menos 3 caracteres";
+    } else if (value.trim().length > 30) {
+      error = "Debe tener menos de 31 caracteres";
+    } else if (!/^[a-zA-ZÀ-ÿ]{1}$/i.test(value.trim().charAt(0))) {
+      error = "El primer caracter debe ser una letra";
+    } else if (
+      !/^[a-zA-ZÀ-ÿ\s0-9-_]{3,30}$/i.test(
+        value.trim().slice(1, value.trim().length)
+      )
+    ) {
+      error = "Sólo guiones como símbolos";
+    } else if (!/^[\S]{3,30}$/i.test(value.trim())) {
+      error = "No debe llevar espacios ";
+    } else {
+      error = true;
+    }
+    return error;
+  };
 
   const [ChangeDataUser, setChangeDataUser] = useState(1);
   useEffect(() => {
@@ -36,8 +114,6 @@ function AdminTable({ toastSuccess, toastError, auth }) {
     })
       .then((res) => res.json())
       .then((json) => setDataUser(json));
-
-    console.log(dataUser);
   }, [ChangeDataUser]);
 
   const handleShow = () => setShow(true);
@@ -49,11 +125,6 @@ function AdminTable({ toastSuccess, toastError, auth }) {
         "Content-Type": "application/json",
         authorization: auth.token,
       },
-      body: JSON.stringify({
-        name: editName,
-        username: editUserName,
-        email: editEmail,
-      }),
     })
       .then((res) => res.json())
       .then((json) => setSubmitUser(true))
@@ -62,6 +133,13 @@ function AdminTable({ toastSuccess, toastError, auth }) {
   const handleOpen = () => setOpen(true);
 
   const handleSubmitUser = (e, id) => {
+    if (
+      validateEmail(editEmail) !== true ||
+      validateName(editName) !== true ||
+      validateUser(editUserName) !== true
+    ) {
+      return toastError("Debe completar correctamente todos los campos");
+    }
     fetch(`https://backend-news-eight.vercel.app/users/edituser/` + id, {
       method: "PUT",
       headers: {
@@ -75,19 +153,39 @@ function AdminTable({ toastSuccess, toastError, auth }) {
       }),
     })
       .then((res) => res.json())
-      .then((json) => setSubmit(true))
+      .then((json) => {
+        setSubmit(true);
+      })
+      .then(() => handleClose())
       .catch((error) => setSubmit(false));
   };
 
   useEffect(() => {
     if (submit === true) {
-      toastSuccess("Modificado");
+      setTimeout(() => {
+        toastSuccess("Modificado");
+      }, 100);
+
       setSubmit(null);
     } else if (submit === false) {
       toastError("Algo ha salido mal");
       setSubmit(null);
     }
-  }, []);
+  }, [submit]);
+
+  useEffect(() => {
+    if (submitUser === true) {
+      setTimeout(() => {
+        toastSuccess("Eliminado");
+      }, 100);
+      setSubmitUser(null);
+    } else if (submitUser === false) {
+      setTimeout(() => {
+        toastSuccess("Ha ocurrido un error");
+      }, 100);
+      setSubmitUser(null);
+    }
+  }, [submitUser]);
 
   return (
     <body className="body-recover">
@@ -126,9 +224,6 @@ function AdminTable({ toastSuccess, toastError, auth }) {
                             setEditEmail(dataUser.email);
                             setEditUserName(dataUser.username);
                             setId(dataUser._id);
-                            // setToken(dataUser.token);
-                            // setPassword(dataUser.password);
-                            // setRole(dataUser.role);
                           }}
                           style={{ fontSize: "2em" }}
                           icon={faPenToSquare}
@@ -151,12 +246,18 @@ function AdminTable({ toastSuccess, toastError, auth }) {
                               </Form.Label>
                               <Form.Control
                                 placeholder="Ingrese nuevo nombre"
+                                className={borderName}
                                 maxLength={31}
                                 type="text"
                                 value={editName}
                                 onChange={(e) => setEditName(e.target.value)}
                                 autoFocus
                               />
+                              {validateName(editName) && (
+                                <Form.Text className="wrong ">
+                                  {validateName(editName)}
+                                </Form.Text>
+                              )}
                             </Form.Group>
                             <Form.Group
                               className="mb-3"
@@ -168,6 +269,7 @@ function AdminTable({ toastSuccess, toastError, auth }) {
                               <Form.Control
                                 maxLength={31}
                                 type="text"
+                                className={borderUser}
                                 placeholder="Ingrese nuevo user name"
                                 value={editUserName}
                                 onChange={(e) =>
@@ -175,6 +277,11 @@ function AdminTable({ toastSuccess, toastError, auth }) {
                                 }
                                 autoFocus
                               />
+                              {validateUser(editUserName) && (
+                                <Form.Text className="wrong ">
+                                  {validateUser(editUserName)}
+                                </Form.Text>
+                              )}
                             </Form.Group>
                             <Form.Group
                               className="mb-3"
@@ -190,7 +297,13 @@ function AdminTable({ toastSuccess, toastError, auth }) {
                                 value={editEmail}
                                 onChange={(e) => setEditEmail(e.target.value)}
                                 autoFocus
+                                className={borderMail}
                               />
+                              {validateEmail(editEmail) && (
+                                <Form.Text className="wrong ">
+                                  {validateEmail(editEmail)}
+                                </Form.Text>
+                              )}
                             </Form.Group>
                           </Form>
                         </Modal.Body>
@@ -209,7 +322,6 @@ function AdminTable({ toastSuccess, toastError, auth }) {
                             onClick={(e) => {
                               handleSubmitUser(e, idF);
 
-                              handleClose();
                               setTimeout(() => {
                                 setChangeDataUser(ChangeDataUser + 1);
                               }, 1000);

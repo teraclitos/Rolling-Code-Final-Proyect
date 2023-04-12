@@ -128,15 +128,13 @@
 
 .title-detail {
   font-family: "anton";
-  font-size: 35px;
 }
 .title-description {
   font-family: "Anton";
-  font-size: 20px;
+
   color: #5a5858;
 }
 .content {
-  font-size: 20px;
   text-align: justify;
 }
 

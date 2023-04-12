@@ -82,7 +82,6 @@ const ModalRegister = ({
       error = "Email incorrecto";
     } else {
       error = true;
-      // setWrongBorderMail(false);
     }
     return error;
   };
@@ -99,7 +98,6 @@ const ModalRegister = ({
       error = "Sólo puede llevar letras";
     } else {
       error = true;
-      // setWrongBorderName(false);
     }
     return error;
   };
@@ -123,7 +121,6 @@ const ModalRegister = ({
       error = "No debe llevar espacios ";
     } else {
       error = true;
-      // setWrongBorderUser(false);
     }
     return error;
   };
@@ -144,7 +141,6 @@ const ModalRegister = ({
         "Debe llevar al menos una mayúscula, un caracter especial y un dígito";
     } else {
       error = true;
-      // setWrongBorderPassword(false);
     }
     return error;
   };
@@ -156,7 +152,6 @@ const ModalRegister = ({
       error = "Las contraseñas deben coincidir";
     } else {
       error = true;
-      // setWrongBorderrepeatPassword(false);
     }
     return error;
   };

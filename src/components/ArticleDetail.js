@@ -47,6 +47,7 @@ const ArticleDetail = ({
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        authorization: auth.token,
       },
       body: JSON.stringify({
         category: editSection,
@@ -109,6 +110,7 @@ const ArticleDetail = ({
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
+        authorization: auth.token,
       },
     })
       .then((res) => res.json())
@@ -166,7 +168,7 @@ const ArticleDetail = ({
 
                     <div className="col-12 linea-style" />
                   </Card.Text>
-                  <Card.Title className="text-center title-detail">
+                  <Card.Title className="text-center title-detail fs-4">
                     {data.title}
                   </Card.Title>
                 </Card.Body>
@@ -174,11 +176,11 @@ const ArticleDetail = ({
               <Card border="0">
                 <Card.Img src={data.img_URL} width={40} />
                 <Card.Body>
-                  <Card.Title className="title-description">
-                    {data.description}{" "}
+                  <Card.Title className="title-description fs-4 my-3">
+                    {data.description}
                   </Card.Title>
 
-                  <Card.Text className="content">{data.content}</Card.Text>
+                  <Card.Text className="content fs-6">{data.content}</Card.Text>
 
                   {auth.role === "admin" ? (
                     <div className="mt-4">
