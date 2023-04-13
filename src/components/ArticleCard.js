@@ -7,7 +7,15 @@ import { toast, ToastContainer } from "react-toastify";
 
 import React from "react";
 
-const ArticleCard = ({ cart, d, add, auth, toastError, handleShowLogin }) => {
+const ArticleCard = ({
+  cart,
+  d,
+  add,
+  auth,
+  toastError,
+  handleShowLogin,
+  setIsLoading,
+}) => {
   return (
     <Card className=" h-100 card-container border-0 px-2">
       <Card.Img src={d.img_URL} variant="top" className=" img-card" />
@@ -28,6 +36,7 @@ const ArticleCard = ({ cart, d, add, auth, toastError, handleShowLogin }) => {
           to={auth.user ? `/ArticleDetailContainer/${d._id}` : "/"}
           onClick={() => {
             !auth.user && handleShowLogin();
+            setIsLoading(true);
           }}
         >
           {/* <Button className="py-1 px-2 btn-color ">Leer más</Button> */}

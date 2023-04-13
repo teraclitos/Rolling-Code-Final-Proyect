@@ -7,12 +7,14 @@ import { useEffect, useState } from "react";
 function App() {
   const [data, setData] = useState([]);
   const [changeData, setChangeData] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   const editButtom = document.getElementById("edit-buttom");
   useEffect(() => {
     fetch("https://backend-news-eight.vercel.app/news/news")
       .then((res) => res.json())
-      .then((json) => setData(json));
+      .then((json) => setData(json))
+      .finally(() => setIsLoading(false));
   }, [changeData]);
 
   const handleShowLogin = () => setShowLogin(true);
@@ -38,9 +40,6 @@ function App() {
     role: JSON.parse(localStorage.getItem("role")),
     token: JSON.parse(localStorage.getItem("token")),
   });
-  useEffect(() => {
-    console.log(auth);
-  }, [auth]);
 
   const login = () => {
     setAuth({
@@ -91,6 +90,8 @@ function App() {
         totalHighlights={totalHighlights}
         changeData={changeData}
         setChangeData={setChangeData}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
       />
       <ToastContainer
         transition={Flip}

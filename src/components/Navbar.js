@@ -41,6 +41,8 @@ const Navbar = ({
   handleShowLogin,
   showLogin,
   setShowLogin,
+  isLoading,
+  setIsLoading,
 }) => {
   const [show, setShow] = useState(false);
 
@@ -137,8 +139,10 @@ const Navbar = ({
               </Nav.Link>
               {auth.role === "admin" && (
                 <Nav.Link>
-                  {" "}
                   <Link
+                    onClick={() => {
+                      setIsLoading(true);
+                    }}
                     to="/usertable"
                     className="link-nav"
                     style={{ textDecoration: "none" }}

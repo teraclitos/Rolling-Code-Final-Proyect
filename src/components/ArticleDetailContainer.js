@@ -13,9 +13,11 @@ const ArticleDetailContainer = ({
   dataTotal,
   changeData,
   setChangeData,
+  isLoading,
+  setIsLoading,
 }) => {
   const params = useParams();
-  const [isLoading, setIsLoading] = useState(true);
+
   console.log("params" + params);
   const [data, setData] = useState([]);
 

@@ -20,6 +20,7 @@ const Articlepublicitygrid = ({
   totalHighlights,
   handleShowLogin,
   d,
+  setIsLoading,
 }) => {
   return (
     <>
@@ -48,6 +49,7 @@ const Articlepublicitygrid = ({
                 auth={auth}
                 toastError={toastError}
                 handleShowLogin={handleShowLogin}
+                setIsLoading={setIsLoading}
               />
             </div>
           ))}

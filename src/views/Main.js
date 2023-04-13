@@ -10,6 +10,7 @@ import Highlights from "../components/Highlights";
 import ArticleFound from "../components/ArticleFound";
 import RecoverPass from "../components/RecoverPass";
 import Error404 from "../components/Error404";
+import Loader from "../components/Loader";
 
 import { Route, Routes } from "react-router-dom";
 import { Container } from "react-bootstrap";
@@ -32,6 +33,8 @@ const Main = ({
   changeData,
   setChangeData,
   setAuth,
+  isLoading,
+  setIsLoading,
 }) => {
   return (
     <>
@@ -51,6 +54,8 @@ const Main = ({
           handleShowLogin={handleShowLogin}
           showLogin={showLogin}
           setShowLogin={setShowLogin}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
         />
         <Routes>
           <Route
@@ -82,17 +87,24 @@ const Main = ({
           <Route
             path="/"
             element={
-              <Articlepublicitygrid
-                data={data}
-                add={add}
-                cart={cart}
-                auth={auth}
-                login={login}
-                logout={logout}
-                toastError={toastError}
-                totalHighlights={totalHighlights}
-                handleShowLogin={handleShowLogin}
-              />
+              <>
+                {isLoading ? (
+                  <Loader />
+                ) : (
+                  <Articlepublicitygrid
+                    data={data}
+                    add={add}
+                    cart={cart}
+                    auth={auth}
+                    login={login}
+                    logout={logout}
+                    toastError={toastError}
+                    totalHighlights={totalHighlights}
+                    handleShowLogin={handleShowLogin}
+                    setIsLoading={setIsLoading}
+                  />
+                )}
+              </>
             }
           />
           <Route
@@ -108,6 +120,8 @@ const Main = ({
                   toastError={toastError}
                   toastSuccess={toastSuccess}
                   auth={auth}
+                  setIsLoading={setIsLoading}
+                  isLoading={isLoading}
                 />
               ) : (
                 <Articlepublicitygrid
@@ -143,6 +157,8 @@ const Main = ({
             path="/ArticleDetailContainer/:id"
             element={
               <ArticleDetailContainer
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
                 add={add}
                 cart={cart}
                 auth={auth}
