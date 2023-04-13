@@ -64,7 +64,7 @@
 .btn-reed {
   background: #1986a0;
   color: rgb(73, 71, 71);
-  padding: 5px 5px;
+
   display: inline-block;
   border-radius: 4px;
   font-size: 15px;
@@ -74,4 +74,16 @@
 .btn-reed:hover {
   color: #0e185f;
   background-color: #fd841f;
+}
+
+.icon-heart-container {
+  background-color: #1986a0;
+  border: 0;
+}
+.icon-heart-container:hover {
+  background-color: #0f5d70;
+}
+
+.heart-favorite {
+  color: #ff0000;
 }

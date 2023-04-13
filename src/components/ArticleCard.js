@@ -5,13 +5,15 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const ArticleCard = ({
   cart,
   d,
+  i,
   add,
   auth,
+  del,
   toastError,
   handleShowLogin,
   setIsLoading,
@@ -32,24 +34,28 @@ const ArticleCard = ({
       </Card.Body>
       <Card.Footer className="d-flex justify-content-between p-0 border-0 bg-white card-footer ">
         <Link
-          className="btn-reed mb-2"
+          className="btn-reed px-3 py-2 align-self-center "
           to={auth.user ? `/ArticleDetailContainer/${d._id}` : "/"}
           onClick={() => {
             !auth.user && handleShowLogin();
             setIsLoading(true);
           }}
         >
-          {/* <Button className="py-1 px-2 btn-color ">Leer más</Button> */}
           Leer más
         </Link>
         {auth.role === "user" && (
           <Button
-            disabled={cart.includes(d)}
-            onClick={() => add(d)}
-            className="btn-like "
+            onClick={() => {
+              !cart.includes(d) ? add(d) : del(d);
+            }}
+            className=" px-2 pt-2 pb-1   icon-heart-container "
           >
             <FontAwesomeIcon
-              className="align-self-center fs-5 text-danger"
+              className={
+                !cart.includes(d)
+                  ? "align-self-center fs-5 icon-heart "
+                  : "align-self-center fs-5 icon-heart heart-favorite"
+              }
               icon={faHeart}
             />
           </Button>

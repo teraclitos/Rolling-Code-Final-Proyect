@@ -21,10 +21,11 @@ const Articlepublicitygrid = ({
   handleShowLogin,
   d,
   setIsLoading,
+  del,
 }) => {
   return (
     <>
-      <Advertising />
+      {auth.role !== "admin" && <Advertising />}
       <Header />
       <Slider
         totalHighlights={totalHighlights}
@@ -46,10 +47,12 @@ const Articlepublicitygrid = ({
                 cart={cart}
                 d={d}
                 add={add}
+                del={del}
                 auth={auth}
                 toastError={toastError}
                 handleShowLogin={handleShowLogin}
                 setIsLoading={setIsLoading}
+                i={i}
               />
             </div>
           ))}

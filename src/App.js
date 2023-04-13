@@ -25,11 +25,9 @@ function App() {
   }, [cart]);
   const add = (p) => {
     setCart([...cart, p]);
-    console.log("funcion auth" + auth.user);
   };
   const del = (p) => {
-    console.log(p);
-    setCart(cart.filter((c) => c.id !== p.id));
+    setCart(cart.filter((c) => c._id !== p._id));
   };
   const clear = () => {
     setCart([]);

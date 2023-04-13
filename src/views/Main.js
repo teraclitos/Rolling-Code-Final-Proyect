@@ -94,6 +94,7 @@ const Main = ({
                   <Articlepublicitygrid
                     data={data}
                     add={add}
+                    del={del}
                     cart={cart}
                     auth={auth}
                     login={login}
