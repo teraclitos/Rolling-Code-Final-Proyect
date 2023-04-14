@@ -62,10 +62,7 @@ const OffcanvasFav = ({
             ? cart.map((c, i) => (
                 <Row key={i}>
                   <Col className="d-flex justify-content-between py-3">
-                    <Link
-                      className=""
-                      href={`/ArticleDetailContainer/${c._id}`}
-                    >
+                    <Link className="" to={`/ArticleDetailContainer/${c._id}`}>
                       <Card className="img-favorite-card bg-dark text-white rounded-0 border-0  me-4">
                         <Card.Img src={c.img_URL} alt="Card image" />
                         <Card.ImgOverlay className="d-flex align-items-center img-overlayed-favorite">
