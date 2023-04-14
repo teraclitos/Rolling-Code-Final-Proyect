@@ -58,21 +58,21 @@ const RecoverPass = (toastSuccess) => {
                       handleBlur,
                     }) => (
                       <Form>
-                        <div class="input-group mb-3">
-                          <span
-                            class="input-group-text color-span"
+                        <div className="input-group mb-3">
+                          <div
+                            className="input-group-text color-span"
                             id="basic-addon1"
                           >
                             <FontAwesomeIcon
                               style={{ fontSize: "2em", color: "#1986a0" }}
                               icon={faEnvelope}
                             />
-                          </span>
+                          </div>
                           <Field
                             id="mail"
                             name="mail"
                             type="mail"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Introduce tu mail"
                             aria-label="Username"
                             aria-describedby="basic-addon1"

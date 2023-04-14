@@ -205,11 +205,11 @@ function AdminTable({
       {isLoading ? (
         <Loader />
       ) : (
-        <body className="body-recover">
+        <div className="body-recover">
           <Container fluid className="resposive-table">
             <div className="d-flex flex-column">
               <div className="d-flex flex-column align-items-center">
-                <h3 class="text-center pb-2 pt-3 title-table ">
+                <h3 className="text-center pb-2 pt-3 title-table ">
                   ADMINISTRAR USUARIO
                 </h3>
 
@@ -226,7 +226,7 @@ function AdminTable({
                   </thead>
                   <tbody>
                     {dataUser.map((dataUser, i) => (
-                      <tr>
+                      <tr key={"user" + i}>
                         <td>{i + 1}</td>
                         <td>{dataUser._id}</td>
 
@@ -405,7 +405,7 @@ function AdminTable({
               </div>
             </div>
           </Container>
-        </body>
+        </div>
       )}
     </>
   );

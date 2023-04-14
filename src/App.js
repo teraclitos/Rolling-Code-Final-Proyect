@@ -45,9 +45,6 @@ function App() {
       .finally(() => setIsLoading(false));
   }, [changeData]);
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
   const add = (p) => {
     setCart((cart) => [...cart, p]);
   };

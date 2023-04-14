@@ -58,9 +58,9 @@ const ArticleCard = ({
         <Card.Title className="mt-2 mb-0 card-title text-start">
           {d.title}
         </Card.Title>
-        <Card.Text className="mt-1 mb-0 text-card-container ">
+        <div className="mt-1 mb-0 text-card-container ">
           <p className="text-card text-start">{d.description}</p>
-        </Card.Text>
+        </div>
       </Card.Body>
       <Card.Footer className="d-flex justify-content-between p-0 border-0 bg-white card-footer ">
         <Link

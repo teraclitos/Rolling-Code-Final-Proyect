@@ -37,7 +37,7 @@ const Footer = () => {
                       icon={faInstagram}
                     />
                   </div>
-                  <div class="col-3 btn-footer">
+                  <div className="col-3 btn-footer">
                     <FontAwesomeIcon
                       style={{ fontSize: "2em" }}
                       className="icon-tw"

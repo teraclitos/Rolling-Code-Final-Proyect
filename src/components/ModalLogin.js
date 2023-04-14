@@ -210,7 +210,7 @@ const ModalLogin = ({
               </div>
 
               <div className="d-flex justify-content-center w-100">
-                <span className="mt-2">
+                <div className="mt-2">
                   Si no recuerda su contraseña, ingrese
                   <Link
                     className="ms-2"
@@ -219,10 +219,10 @@ const ModalLogin = ({
                   >
                     aquí
                   </Link>
-                </span>
+                </div>
               </div>
               <div className="d-flex justify-content-center w-100">
-                <span className="mt-2">
+                <div className="mt-2">
                   Aún no estás registrado, pues qué esperas
                   <Link
                     className="ms-2"
@@ -233,7 +233,7 @@ const ModalLogin = ({
                   >
                     regístrate
                   </Link>
-                </span>
+                </div>
               </div>
             </Form.Group>
             <Button

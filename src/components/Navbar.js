@@ -114,7 +114,7 @@ const Navbar = ({
                 </Nav>
               )}
 
-              <Nav>
+              <Nav className="me-0 me-lg-3 mb-1 mb-lg-0">
                 <Link
                   to="/highlights"
                   className="link-nav "
@@ -126,7 +126,7 @@ const Navbar = ({
               </Nav>
 
               {(!auth.user || auth.role === "user") && (
-                <Nav>
+                <Nav className="me-0 me-lg-3 mb-0 mb-lg-0">
                   <Link
                     to="/contacto"
                     className="link-nav"
@@ -138,7 +138,7 @@ const Navbar = ({
                 </Nav>
               )}
 
-              <Nav>
+              <Nav className="me-0 me-lg-3 mb-1 mb-lg-0">
                 <Link
                   to="/articlefound"
                   className="link-nav"
@@ -148,7 +148,7 @@ const Navbar = ({
                 </Link>
               </Nav>
               {auth.role === "admin" && (
-                <Nav>
+                <Nav className="me-0 me-lg-3 mb-3 mb-lg-0">
                   <Link
                     onClick={() => {
                       setIsLoading(true);
@@ -165,7 +165,7 @@ const Navbar = ({
                   </Link>
                 </Nav>
               )}
-              <Nav>
+              <Nav className="me-0 me-lg-3 mb-3 mb-lg-0">
                 {auth.user ? (
                   <Button className="btn-useradmin ">
                     {auth.user}
@@ -184,7 +184,7 @@ const Navbar = ({
               </Nav>
 
               {auth.user && (
-                <Nav>
+                <Nav className="me-0 me-lg-3 mb-3 mb-lg-0">
                   <Link
                     to="/"
                     className="link-nav"
