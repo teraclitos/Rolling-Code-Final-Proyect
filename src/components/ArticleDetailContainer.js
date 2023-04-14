@@ -24,7 +24,6 @@ const ArticleDetailContainer = ({
 }) => {
   const params = useParams();
 
-  console.log("params" + params);
   const [data, setData] = useState([]);
 
   useEffect(() => {
