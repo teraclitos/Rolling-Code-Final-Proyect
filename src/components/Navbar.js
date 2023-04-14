@@ -43,6 +43,9 @@ const Navbar = ({
   setShowLogin,
   isLoading,
   setIsLoading,
+    deleteFavorite,
+        setDeleteFavorite,
+        modifyFavoriteFetch
 }) => {
   const [show, setShow] = useState(false);
 
@@ -226,6 +229,9 @@ const Navbar = ({
         show={show}
         setShow={setShow}
         handleClose={handleClose}
+        deleteFavorite={deleteFavorite}
+        setDeleteFavorite={setDeleteFavorite}
+        modifyFavoriteFetch={modifyFavoriteFetch}
       />
     </>
   );

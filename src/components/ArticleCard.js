@@ -18,29 +18,33 @@ const ArticleCard = ({
   toastError,
   handleShowLogin,
   setIsLoading,
+  deleteFavorite,
+  setDeleteFavorite,
+  modifyFavorite,
+  setModifyFavorite,
+  modifyFavoriteFetch,
 }) => {
-  const [modifyFavorite, setModifyFavorite] = useState(null);
+  const adding = (p) => {
+    setModifyFavorite(true);
+    add(p);
+  };
+
+  const deleting = (p) => {
+    setDeleteFavorite(true);
+
+    del(p);
+  };
+
   useEffect(() => {
     if (modifyFavorite === true) {
-      fetch(
-        `https://backend-news-eight.vercel.app/users/favoritecreate?id=${auth.id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: auth.token,
-          },
-
-          body: JSON.stringify({
-            favorites: cart,
-          }),
-        }
-      )
-        .then((res) => res.json())
-        .then((json) => {
-          setModifyFavorite(null);
-        })
-        .catch((error) => console.log(error));
+      modifyFavoriteFetch();
+      setModifyFavorite(null);
+    }
+  }, [cart]);
+  useEffect(() => {
+    if (deleteFavorite === true) {
+      modifyFavoriteFetch();
+      setDeleteFavorite(null);
     }
   }, [cart]);
 
@@ -72,10 +76,9 @@ const ArticleCard = ({
         {auth.role === "user" && (
           <Button
             onClick={() => {
-              setModifyFavorite(true);
               cart.filter((element) => element._id === d._id).length !== 1
-                ? add(d)
-                : del(d);
+                ? adding(d)
+                : deleting(d);
             }}
             className=" px-2 pt-2 pb-1   icon-heart-container "
           >

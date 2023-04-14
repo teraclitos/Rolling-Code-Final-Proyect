@@ -12,9 +12,31 @@ function App() {
   const handleShowLogin = () => setShowLogin(true);
   const [showLogin, setShowLogin] = useState(false);
   const [cart, setCart] = useState([]);
+  const [modifyFavorite, setModifyFavorite] = useState(null);
+  const [deleteFavorite, setDeleteFavorite] = useState(null);
 
   const editButtom = document.getElementById("edit-buttom");
-  const params = useParams();
+  const modifyFavoriteFetch = () => {
+    fetch(
+      `https://backend-news-eight.vercel.app/users/favoritecreate?id=${auth.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: auth.token,
+        },
+
+        body: JSON.stringify({
+          favorites: cart,
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        setModifyFavorite(null);
+      })
+      .catch((error) => console.log(error));
+  };
   useEffect(() => {
     fetch("https://backend-news-eight.vercel.app/news/news")
       .then((res) => res.json())
@@ -116,6 +138,11 @@ function App() {
         setChangeData={setChangeData}
         isLoading={isLoading}
         setIsLoading={setIsLoading}
+        deleteFavorite={deleteFavorite}
+        setDeleteFavorite={setDeleteFavorite}
+        modifyFavorite={modifyFavorite}
+        setModifyFavorite={setModifyFavorite}
+        modifyFavoriteFetch={modifyFavoriteFetch}
       />
       <ToastContainer
         transition={Flip}

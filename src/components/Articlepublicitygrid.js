@@ -23,6 +23,11 @@ const Articlepublicitygrid = ({
   d,
   setIsLoading,
   del,
+  deleteFavorite,
+  setDeleteFavorite,
+  modifyFavorite,
+  setModifyFavorite,
+  modifyFavoriteFetch,
 }) => {
   return (
     <>
@@ -55,6 +60,11 @@ const Articlepublicitygrid = ({
                 setIsLoading={setIsLoading}
                 i={i}
                 setCart={setCart}
+                deleteFavorite={deleteFavorite}
+                setDeleteFavorite={setDeleteFavorite}
+                modifyFavorite={modifyFavorite}
+                setModifyFavorite={setModifyFavorite}
+                modifyFavoriteFetch={modifyFavoriteFetch}
               />
             </div>
           ))}

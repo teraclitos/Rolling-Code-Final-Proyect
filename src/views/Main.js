@@ -36,6 +36,11 @@ const Main = ({
   setAuth,
   isLoading,
   setIsLoading,
+  deleteFavorite,
+  setDeleteFavorite,
+  modifyFavorite,
+  setModifyFavorite,
+  modifyFavoriteFetch,
 }) => {
   return (
     <>
@@ -57,6 +62,9 @@ const Main = ({
           setShowLogin={setShowLogin}
           isLoading={isLoading}
           setIsLoading={setIsLoading}
+          deleteFavorite={deleteFavorite}
+          setDeleteFavorite={setDeleteFavorite}
+          modifyFavoriteFetch={modifyFavoriteFetch}
         />
         <Routes>
           <Route
@@ -105,6 +113,11 @@ const Main = ({
                     totalHighlights={totalHighlights}
                     handleShowLogin={handleShowLogin}
                     setIsLoading={setIsLoading}
+                    deleteFavorite={deleteFavorite}
+                    setDeleteFavorite={setDeleteFavorite}
+                    modifyFavorite={modifyFavorite}
+                    setModifyFavorite={setModifyFavorite}
+                    modifyFavoriteFetch={modifyFavoriteFetch}
                   />
                 )}
               </>
@@ -117,7 +130,7 @@ const Main = ({
           <Route
             path="/usertable"
             element={
-              auth.role === "admin" ? (
+              auth.role === "admin" && (
                 <AdminTable
                   dataUser={dataUser}
                   toastError={toastError}
@@ -125,18 +138,6 @@ const Main = ({
                   auth={auth}
                   setIsLoading={setIsLoading}
                   isLoading={isLoading}
-                />
-              ) : (
-                <Articlepublicitygrid
-                  data={data}
-                  add={add}
-                  cart={cart}
-                  auth={auth}
-                  login={login}
-                  logout={logout}
-                  toastError={toastError}
-                  totalHighlights={totalHighlights}
-                  handleShowLogin={handleShowLogin}
                 />
               )
             }
