@@ -1,6 +1,11 @@
 .loader {
   color: linear-gradient(to right, #0b19da, #ee8e12);
 }
+
+.loader-favorite {
+  width: 1em;
+  height: 1em;
+}
 .loader-container {
   position: fixed;
   background-color: #ffffff;

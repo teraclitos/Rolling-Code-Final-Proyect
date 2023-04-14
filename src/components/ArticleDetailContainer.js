@@ -5,6 +5,7 @@ import Loader from "./Loader";
 
 const ArticleDetailContainer = ({
   add,
+  del,
   cart,
   auth,
   totalHighlights,
@@ -15,6 +16,11 @@ const ArticleDetailContainer = ({
   setChangeData,
   isLoading,
   setIsLoading,
+  setDeleteFavorite,
+  setModifyFavorite,
+  deleteFavorite,
+  modifyFavorite,
+  modifyFavoriteFetch,
 }) => {
   const params = useParams();
 
@@ -35,6 +41,7 @@ const ArticleDetailContainer = ({
       ) : (
         <ArticleDetail
           add={add}
+          del={del}
           auth={auth}
           data={data}
           cart={cart}
@@ -44,6 +51,11 @@ const ArticleDetailContainer = ({
           dataTotal={dataTotal}
           changeData={changeData}
           setChangeData={setChangeData}
+          setDeleteFavorite={setDeleteFavorite}
+          setModifyFavorite={setModifyFavorite}
+          deleteFavorite={deleteFavorite}
+          modifyFavorite={modifyFavorite}
+          modifyFavoriteFetch={modifyFavoriteFetch}
         />
       )}
     </>

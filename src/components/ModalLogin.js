@@ -23,6 +23,7 @@ const ModalLogin = ({
   handleShowRegister,
   toastError,
   toastSuccess,
+  setLoadFavorite,
 }) => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
@@ -94,6 +95,7 @@ const ModalLogin = ({
           localStorage.setItem("username", JSON.stringify(json.username));
           localStorage.setItem("id", JSON.stringify(json.id));
           setLoginOk(true);
+          setLoadFavorite(true);
         } else {
           setLoginOk(false);
         }

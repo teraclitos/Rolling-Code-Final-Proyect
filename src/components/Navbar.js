@@ -7,6 +7,7 @@ import Nav from "react-bootstrap/Nav";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 
 import Badge from "react-bootstrap/Badge";
 import ModalRegister from "./ModalRegister";
@@ -43,9 +44,11 @@ const Navbar = ({
   setShowLogin,
   isLoading,
   setIsLoading,
-    deleteFavorite,
-        setDeleteFavorite,
-        modifyFavoriteFetch
+  deleteFavorite,
+  setDeleteFavorite,
+  modifyFavoriteFetch,
+  loadFavorite,
+  setLoadFavorite,
 }) => {
   const [show, setShow] = useState(false);
 
@@ -102,7 +105,11 @@ const Navbar = ({
                   <Link className="link-nav" style={{ textDecoration: "none" }}>
                     Favoritos
                     <FontAwesomeIcon icon={faHeart} className="mx-2" />
-                    <Badge bg="none">{cart.length}</Badge>
+                    {loadFavorite ? (
+                      <Spinner animation="grow" className="loader-favorite" />
+                    ) : (
+                      <Badge bg="none">{cart.length}</Badge>
+                    )}
                   </Link>
                 </Nav.Link>
               )}
@@ -221,6 +228,7 @@ const Navbar = ({
         showRegister={showRegister}
         setShowRegister={setShowRegister}
         handleShowRegister={handleShowRegister}
+        setLoadFavorite={setLoadFavorite}
       />
       <OffcanvasFav
         cart={cart}

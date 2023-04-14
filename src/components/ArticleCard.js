@@ -67,8 +67,7 @@ const ArticleCard = ({
           className="btn-reed px-3 py-2 align-self-center "
           to={auth.user ? `/ArticleDetailContainer/${d._id}` : "/"}
           onClick={() => {
-            !auth.user && handleShowLogin();
-            setIsLoading(true);
+            !auth.user ? handleShowLogin() : setIsLoading(true);
           }}
         >
           Leer más

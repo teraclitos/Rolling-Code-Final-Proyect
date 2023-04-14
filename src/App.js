@@ -14,6 +14,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [modifyFavorite, setModifyFavorite] = useState(null);
   const [deleteFavorite, setDeleteFavorite] = useState(null);
+  const [loadFavorite, setLoadFavorite] = useState(true);
 
   const editButtom = document.getElementById("edit-buttom");
   const modifyFavoriteFetch = () => {
@@ -43,25 +44,6 @@ function App() {
       .then((json) => setData(json))
       .finally(() => setIsLoading(false));
   }, [changeData]);
-
-  useEffect(() => {
-    if (auth.id && auth.role === "user") {
-      fetch(
-        `https://backend-news-eight.vercel.app/users/favorite?id=${auth.id}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: auth.token,
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then((json) => {
-          setCart(json);
-        });
-    }
-  }, []);
 
   useEffect(() => {
     console.log(cart);
@@ -102,6 +84,25 @@ function App() {
 
     toastSuccess("Sesión cerrada correctamente");
   };
+  useEffect(() => {
+    if (auth.id && auth.role === "user") {
+      fetch(
+        `https://backend-news-eight.vercel.app/users/favorite?id=${auth.id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: auth.token,
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((json) => {
+          setCart(json);
+        })
+        .finally(() => setLoadFavorite(false));
+    }
+  }, [auth]);
 
   const prevenDuplicateToast = "custom-id-yes";
   const toastError = (writte) => {
@@ -143,6 +144,8 @@ function App() {
         modifyFavorite={modifyFavorite}
         setModifyFavorite={setModifyFavorite}
         modifyFavoriteFetch={modifyFavoriteFetch}
+        loadFavorite={loadFavorite}
+        setLoadFavorite={setLoadFavorite}
       />
       <ToastContainer
         transition={Flip}

@@ -41,6 +41,8 @@ const Main = ({
   modifyFavorite,
   setModifyFavorite,
   modifyFavoriteFetch,
+  loadFavorite,
+  setLoadFavorite,
 }) => {
   return (
     <>
@@ -65,6 +67,8 @@ const Main = ({
           deleteFavorite={deleteFavorite}
           setDeleteFavorite={setDeleteFavorite}
           modifyFavoriteFetch={modifyFavoriteFetch}
+          loadFavorite={loadFavorite}
+          setLoadFavorite={setLoadFavorite}
         />
         <Routes>
           <Route
@@ -164,6 +168,7 @@ const Main = ({
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
                 add={add}
+                del={del}
                 cart={cart}
                 auth={auth}
                 login={login}
@@ -174,6 +179,12 @@ const Main = ({
                 dataTotal={data}
                 changeData={changeData}
                 setChangeData={setChangeData}
+                setDeleteFavorite={setDeleteFavorite}
+                setModifyFavorite={setModifyFavorite}
+                deleteFavorite={deleteFavorite}
+                modifyFavorite={modifyFavorite}
+                modifyFavoriteFetch={modifyFavoriteFetch}
+                
               />
             }
           />

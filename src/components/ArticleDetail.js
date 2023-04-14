@@ -15,6 +15,7 @@ import "../styles/allcss.css";
 const ArticleDetail = ({
   data,
   add,
+  del,
   cart,
   auth,
   toastSuccess,
@@ -23,6 +24,11 @@ const ArticleDetail = ({
   dataTotal,
   changeData,
   setChangeData,
+  setDeleteFavorite,
+  setModifyFavorite,
+  deleteFavorite,
+  modifyFavorite,
+  modifyFavoriteFetch,
 }) => {
   const [show, setShow] = useState(false);
   const [editSection, setEditSection] = useState(data.category);
@@ -118,7 +124,28 @@ const ArticleDetail = ({
       .catch((error) => setDeletetOk(false));
   };
   const navigate = useNavigate("/");
+  const adding = (p) => {
+    setModifyFavorite(true);
+    add(p);
+  };
 
+  const deleting = (p) => {
+    setDeleteFavorite(true);
+
+    del(p);
+  };
+  useEffect(() => {
+    if (modifyFavorite === true) {
+      modifyFavoriteFetch();
+      setModifyFavorite(null);
+    }
+  }, [cart]);
+  useEffect(() => {
+    if (deleteFavorite === true) {
+      modifyFavoriteFetch();
+      setDeleteFavorite(null);
+    }
+  }, [cart]);
   return (
     <div>
       {render === true && (
@@ -195,10 +222,28 @@ const ArticleDetail = ({
                     <Button
                       className="mt-2 mb-2"
                       variant="warning"
-                      onClick={() => add(data)}
-                      disabled={cart.includes(data)}
+                      onClick={() => {
+                        cart.filter((element) => element._id === data._id)
+                          .length !== 1
+                          ? adding(data)
+                          : deleting(data);
+                      }}
                     >
-                      Agregar a favoritos <FontAwesomeIcon icon={faHeart} />
+                      {cart.filter((element) => element._id === data._id)
+                        .length !== 1 ? (
+                        <span> Agregar a favoritos</span>
+                      ) : (
+                        <span>Eliminar de favoritos</span>
+                      )}
+                      <FontAwesomeIcon
+                        className={
+                          cart.filter((element) => element._id === data._id)
+                            .length !== 1
+                            ? "ms-1 align-self-center fs-5 icon-heart "
+                            : "ms-1 align-self-center fs-5 icon-heart heart-favorite"
+                        }
+                        icon={faHeart}
+                      />
                     </Button>
                   )}
                 </Card.Body>
