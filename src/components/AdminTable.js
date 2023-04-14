@@ -121,7 +121,9 @@ function AdminTable({
       },
     })
       .then((res) => res.json())
-      .then((json) => setDataUser(json))
+      .then((json) => {
+        setDataUser(json);
+      })
       .finally(() => {
         setIsLoading(false);
       });
