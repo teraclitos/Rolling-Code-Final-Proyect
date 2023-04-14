@@ -48,7 +48,7 @@ const Articlepublicitygrid = ({
       <div className="container grid-articles-publicity mt-5  mb-5  ">
         <div className="grid-articles">
           {data.map((d, i) => (
-            <div className="mb-3  ">
+            <div key={"mainnotice" + i} className="mb-3  ">
               <ArticleCard
                 cart={cart}
                 d={d}

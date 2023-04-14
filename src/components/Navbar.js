@@ -101,7 +101,7 @@ const Navbar = ({
           >
             <Nav className="d-flex align-items-center">
               {auth.role === "user" && (
-                <Nav.Link onClick={handleShow}>
+                <Nav onClick={handleShow}>
                   <Link className="link-nav" style={{ textDecoration: "none" }}>
                     Favoritos
                     <FontAwesomeIcon icon={faHeart} className="mx-2" />
@@ -111,10 +111,10 @@ const Navbar = ({
                       <Badge bg="none">{cart.length}</Badge>
                     )}
                   </Link>
-                </Nav.Link>
+                </Nav>
               )}
 
-              <Nav.Link>
+              <Nav>
                 <Link
                   to="/highlights"
                   className="link-nav "
@@ -123,10 +123,10 @@ const Navbar = ({
                   Destacados
                   <FontAwesomeIcon icon={faStar} className="mx-2" />
                 </Link>
-              </Nav.Link>
+              </Nav>
 
               {(!auth.user || auth.role === "user") && (
-                <Nav.Link>
+                <Nav>
                   <Link
                     to="/contacto"
                     className="link-nav"
@@ -135,10 +135,10 @@ const Navbar = ({
                     Contacto
                     <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
                   </Link>
-                </Nav.Link>
+                </Nav>
               )}
 
-              <Nav.Link>
+              <Nav>
                 <Link
                   to="/articlefound"
                   className="link-nav"
@@ -146,9 +146,9 @@ const Navbar = ({
                 >
                   <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
                 </Link>
-              </Nav.Link>
+              </Nav>
               {auth.role === "admin" && (
-                <Nav.Link>
+                <Nav>
                   <Link
                     onClick={() => {
                       setIsLoading(true);
@@ -163,9 +163,9 @@ const Navbar = ({
                       className="mx-2"
                     />
                   </Link>
-                </Nav.Link>
+                </Nav>
               )}
-              <Nav.Link>
+              <Nav>
                 {auth.user ? (
                   <Button className="btn-useradmin ">
                     {auth.user}
@@ -181,10 +181,10 @@ const Navbar = ({
                     <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
                   </Link>
                 )}
-              </Nav.Link>
+              </Nav>
 
               {auth.user && (
-                <Nav.Link>
+                <Nav>
                   <Link
                     to="/"
                     className="link-nav"
@@ -194,16 +194,16 @@ const Navbar = ({
                     Cerrar sesión
                     <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
                   </Link>
-                </Nav.Link>
+                </Nav>
               )}
 
               {!auth.user && (
-                <Nav.Link onClick={handleShowRegister}>
+                <Nav onClick={handleShowRegister}>
                   <Link className="link-nav" style={{ textDecoration: "none" }}>
                     Regístrate
                     <FontAwesomeIcon icon={faUser} className="mx-2" />
                   </Link>
-                </Nav.Link>
+                </Nav>
               )}
             </Nav>
           </BSNavbar.Collapse>

@@ -19,7 +19,7 @@ const Slider = ({
       className=" d-none d-lg-block slider-container overlayed-background-slider-container"
     >
       {totalHighlights.map((d, i) => (
-        <Carousel.Item interval={3000}>
+        <Carousel.Item key={"carousel" + i} interval={3000}>
           <img
             className="d-block w-100 slider-img"
             src={d.img_URL}
