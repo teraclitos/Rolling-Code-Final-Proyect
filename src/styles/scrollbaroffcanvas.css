@@ -1,0 +1,17 @@
+.bg-offcanvas-favorite::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+/* Customize the background color of the scrollbar track */
+.bg-offcanvas-favorite::-webkit-scrollbar-track {
+  background-color: #1986a0;
+  margin-top: 5px;
+}
+
+/* Customize the color and shape of the scrollbar thumb */
+.bg-offcanvas-favorite::-webkit-scrollbar-thumb {
+  background-color: #fd841f;
+
+  border-radius: 6px;
+}

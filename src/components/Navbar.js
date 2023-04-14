@@ -240,6 +240,7 @@ const Navbar = ({
         deleteFavorite={deleteFavorite}
         setDeleteFavorite={setDeleteFavorite}
         modifyFavoriteFetch={modifyFavoriteFetch}
+        auth={auth}
       />
     </>
   );

@@ -1,22 +1,43 @@
 .bg-nav {
   background: linear-gradient(to right, #001253, #1986a0);
 }
-
+.bg-offcanvas-favorite {
+  background-color: #1986a0;
+}
+.bg-offcanvas-favorite-header {
+  background-color: #1986a0;
+  border-bottom: #001253 solid 5px;
+}
+.img-favorite-card {
+  cursor: pointer;
+}
+.img-overlayed-favorite {
+  background-color: rgba(0, 0, 0, 0.5);
+}
 .btn-trash {
   background: transparent;
   border-color: red;
+  width: 2.5em;
+  height: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.text-card-favorite {
+  color: #ffffffb2;
+  font-weight: 600;
+}
 .btn-trash:hover {
   background: transparent;
   border-color: transparent;
-  border-color: red;
+  border-color: rgb(165, 9, 9);
+  transform: scale(1.02);
 }
 
 .btn-trash:active {
-  background: white;
+  background-color: rgb(255, 255, 255) !important;
   border-color: transparent;
-  border-color: red;
+  border-color: rgb(165, 9, 9) !important;
 }
 .link-nav {
   text-decoration: none;
@@ -53,14 +74,17 @@
 }
 
 .btn-favorite {
-  background-color: #1986a0;
-  border: 0;
-  color: black;
+  border: 1px solid #000000;
+  color: #000000;
   border-radius: 4px;
+  font-weight: 600;
+  background-color: #1986a0;
 }
 
 .btn-favorite:hover {
-  background-color: #fd841f;
+  background-color: #1986a0;
+  border: 1px solid #001253;
+  color: #001253;
 }
 
 .btn-useradmin {
