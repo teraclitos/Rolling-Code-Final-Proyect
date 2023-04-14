@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 
 const ArticleCard = ({
   cart,
+  setCart,
   d,
   i,
   add,
@@ -18,6 +19,31 @@ const ArticleCard = ({
   handleShowLogin,
   setIsLoading,
 }) => {
+  const [modifyFavorite, setModifyFavorite] = useState(null);
+  useEffect(() => {
+    if (modifyFavorite === true) {
+      fetch(
+        `https://backend-news-eight.vercel.app/users/favoritecreate?id=${auth.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: auth.token,
+          },
+
+          body: JSON.stringify({
+            favorites: cart,
+          }),
+        }
+      )
+        .then((res) => res.json())
+        .then((json) => {
+          setModifyFavorite(null);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [cart]);
+
   return (
     <Card className=" h-100 card-container border-0 px-2">
       <Card.Img src={d.img_URL} variant="top" className=" img-card" />
@@ -46,13 +72,16 @@ const ArticleCard = ({
         {auth.role === "user" && (
           <Button
             onClick={() => {
-              !cart.includes(d) ? add(d) : del(d);
+              setModifyFavorite(true);
+              cart.filter((element) => element._id === d._id).length !== 1
+                ? add(d)
+                : del(d);
             }}
             className=" px-2 pt-2 pb-1   icon-heart-container "
           >
             <FontAwesomeIcon
               className={
-                !cart.includes(d)
+                cart.filter((element) => element._id === d._id).length !== 1
                   ? "align-self-center fs-5 icon-heart "
                   : "align-self-center fs-5 icon-heart heart-favorite"
               }

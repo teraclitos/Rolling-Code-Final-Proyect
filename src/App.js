@@ -45,26 +45,7 @@ function App() {
     console.log(cart);
   }, [cart]);
   const add = (p) => {
-    setCart([...cart, p]);
-    fetch(
-      `https://backend-news-eight.vercel.app/users/favoritecreate?id=${auth.id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: auth.token,
-        },
-
-        body: JSON.stringify({
-          favorites: cart,
-        }),
-      }
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-      })
-      .catch((error) => console.log(error));
+    setCart((cart) => [...cart, p]);
   };
   const del = (p) => {
     setCart(cart.filter((c) => c._id !== p._id));
@@ -118,6 +99,7 @@ function App() {
         toastError={toastError}
         toastSuccess={toastSuccess}
         cart={cart}
+        setCart={setCart}
         del={del}
         add={add}
         clear={clear}

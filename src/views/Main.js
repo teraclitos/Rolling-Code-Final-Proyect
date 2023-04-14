@@ -18,6 +18,7 @@ const Main = ({
   toastError,
   toastSuccess,
   cart,
+  setCart,
   del,
   clear,
   data,
@@ -96,6 +97,7 @@ const Main = ({
                     add={add}
                     del={del}
                     cart={cart}
+                    setCart={setCart}
                     auth={auth}
                     login={login}
                     logout={logout}

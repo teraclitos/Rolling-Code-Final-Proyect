@@ -15,6 +15,7 @@ const Articlepublicitygrid = ({
   data,
   add,
   cart,
+  setCart,
   auth,
   toastError,
   totalHighlights,
@@ -53,6 +54,7 @@ const Articlepublicitygrid = ({
                 handleShowLogin={handleShowLogin}
                 setIsLoading={setIsLoading}
                 i={i}
+                setCart={setCart}
               />
             </div>
           ))}
