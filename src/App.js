@@ -4,6 +4,7 @@ import Main from "./views/Main";
 import "react-toastify/dist/ReactToastify.css";
 import { Flip } from "react-toastify";
 import { useEffect, useState } from "react";
+
 import { useParams } from "react-router-dom";
 function App() {
   const [data, setData] = useState([]);
@@ -18,6 +19,7 @@ function App() {
   const [newLoad, setNewLoad] = useState(0);
 
   const editButtom = document.getElementById("edit-buttom");
+  // const navigation = useNavigate();
   const modifyFavoriteFetch = () => {
     fetch(
       `https://backend-news-eight.vercel.app/users/favoritecreate?id=${auth.id}`,
@@ -79,11 +81,12 @@ function App() {
     localStorage.setItem("id", JSON.stringify(""));
 
     setAuth({ user: "", role: "", token: "", id: "" });
+    
 
-    toastSuccess("Sesión cerrada correctamente");
+
   };
   useEffect(() => {
-    if (auth.id && auth.role === "user" && auth.token) {
+    if (auth.id && auth.role === "user") {
       fetch(
         `https://backend-news-eight.vercel.app/users/favorite?id=${auth.id}`,
         {

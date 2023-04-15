@@ -69,6 +69,7 @@ const Navbar = ({
       .then((res) => res.json())
       .then((json) => {
         logout();
+        toastSuccess("Sesión cerrada correctamente");
       })
 
       .catch((error) => toastError(error));

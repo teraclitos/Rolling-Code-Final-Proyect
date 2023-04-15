@@ -8,6 +8,7 @@ import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Loader from "./Loader";
+import { useNavigate } from "react-router-dom";
 
 function AdminTable({
   toastSuccess,
@@ -31,6 +32,7 @@ function AdminTable({
   const [submit, setSubmit] = useState(null);
   const handleClose = () => setShow(false);
   const handleCloseDel = () => setOpen(false);
+  const navigation = useNavigate();
   const [borderUser, setBorderUser] = useState("outline-input");
   const [borderName, setBorderName] = useState("outline-input");
   const [borderMail, setBorderMail] = useState("outline-input");
@@ -125,12 +127,16 @@ function AdminTable({
     })
       .then((res) => res.json())
       .then((json) => {
-        setDataUser(json);
+        if (json) {
+          setDataUser(json);
+        } else {
+          logout();
+          navigation("/");
+        }
       })
       .finally(() => {
         setIsLoading(false);
-      })
-      .catch((error) => logout());
+      });
   }, [ChangeDataUser, newLoad]);
 
   const handleShow = () => setShow(true);
@@ -144,8 +150,7 @@ function AdminTable({
       },
     })
       .then((res) => res.json())
-      .then((json) => setSubmitUser(true))
-      .catch((error) => setSubmitUser(false));
+      .then((json) => setSubmitUser(true));
   };
   const handleOpen = () => setOpen(true);
 
