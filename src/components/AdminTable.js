@@ -127,7 +127,7 @@ function AdminTable({
       .finally(() => {
         setIsLoading(false);
       });
-  }, [ChangeDataUser]);
+  }, [ChangeDataUser, isLoading]);
 
   const handleShow = () => setShow(true);
 
