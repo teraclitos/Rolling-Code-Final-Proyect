@@ -56,3 +56,6 @@
 .text-slider:hover {
   color: #fdfdfd;
 }
+.slider-img {
+  filter: brightness(1.1);
+}
