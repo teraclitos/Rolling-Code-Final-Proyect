@@ -19,10 +19,11 @@
   color: white;
 }
 
-/* .table-responsive {
-  max-height: 390px;
-  overflow: auto;
-} */
+.table-responsive {
+  max-width: 100%;
+  overflow-x: auto;
+  background-color: rgba(17, 17, 17, 0.829);
+}
 
 /* @media (max-width: 580px) {
   .div-administrador > div {

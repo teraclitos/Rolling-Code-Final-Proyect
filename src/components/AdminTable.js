@@ -214,22 +214,15 @@ function AdminTable({
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="body-recover">
-          <Container fluid className="resposive-table ">
+        <div className="body-recover ">
+          <Container fluid className="table-responsive py-4">
             <div className="d-flex flex-column">
               <div className="d-flex flex-column align-items-center">
                 <h3 className="text-center pb-2 pt-3 title-table ">
                   ADMINISTRAR USUARIO
                 </h3>
 
-                <Table
-                  striped
-                  bordered
-                  responsive
-                  scrollX
-                  hover
-                  className="color-table  "
-                >
+                <Table striped bordered hover className="color-table  ">
                   <thead>
                     <tr>
                       <th>N°</th>
