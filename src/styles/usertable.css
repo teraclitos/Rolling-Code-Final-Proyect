@@ -21,7 +21,7 @@
 
 .table-responsive {
   background-color: rgba(17, 17, 17, 0.829);
-  width: 100%;
+  max-width: 100%;
 }
 
 /* @media (max-width: 580px) {

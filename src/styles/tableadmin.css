@@ -17,3 +17,6 @@
   font-family: "anton";
   color: white;
 }
+.admin-table {
+  overflow-x: visible !important;
+}
