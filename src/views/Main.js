@@ -44,7 +44,7 @@ const Main = ({
   loadFavorite,
   setLoadFavorite,
   newLoad,
-  setNewLoad
+  setNewLoad,
 }) => {
   return (
     <>
@@ -148,6 +148,7 @@ const Main = ({
                   isLoading={isLoading}
                   newLoad={newLoad}
                   setNewLoad={setNewLoad}
+                  logout={logout}
                 />
               )
             }
