@@ -127,7 +127,7 @@ function AdminTable({
     })
       .then((res) => res.json())
       .then((json) => {
-        if (json) {
+        if (!json.error) {
           setDataUser(json);
         } else {
           logout();
