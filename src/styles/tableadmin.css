@@ -18,11 +18,11 @@
   color: white;
 }
 .table-container {
-  width: 90vw;
-  overflow-x: auto;
+  width: 90vw !important;
+  overflow-x: auto !important;
   display: flex;
   justify-content: center;
 }
 .admin-table {
-  width: 1000px;
+  width: 1000px !important;
 }
