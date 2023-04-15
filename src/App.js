@@ -81,9 +81,6 @@ function App() {
     localStorage.setItem("id", JSON.stringify(""));
 
     setAuth({ user: "", role: "", token: "", id: "" });
-    
-
-
   };
   useEffect(() => {
     if (auth.id && auth.role === "user") {
@@ -99,7 +96,11 @@ function App() {
       )
         .then((res) => res.json())
         .then((json) => {
-          setCart(json);
+          if (!json.error) {
+            setCart(json);
+          } else {
+            logout();
+          }
         })
         .finally(() => setLoadFavorite(false));
     }
