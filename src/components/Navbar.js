@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import { Row, Col } from "react-bootstrap";
 import BSNavbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
-
+import Modal from "react-bootstrap/Modal";
 import Badge from "react-bootstrap/Badge";
 import ModalRegister from "./ModalRegister";
 import ModalLogin from "./ModalLogin";
 import OffcanvasFav from "./OffcanvasFav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import {
   faStar,
   faUser,
@@ -53,7 +51,11 @@ const Navbar = ({
   setNewLoad,
 }) => {
   const [show, setShow] = useState(false);
-
+  const [openLogout, setOpenLogout] = useState(false);
+  const logoutModal = () => {
+    setOpenLogout(false);
+  };
+  const navigation = useNavigate();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [showRegister, setShowRegister] = useState(false);
@@ -189,15 +191,14 @@ const Navbar = ({
 
               {auth.user && (
                 <Nav className="me-0 me-lg-3 mb-3 mb-lg-0">
-                  <Link
-                    to="/"
+                  <div
                     className="link-nav"
-                    style={{ textDecoration: "none" }}
-                    onClick={() => handleLogout()}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setOpenLogout(true)}
                   >
                     Cerrar sesión
                     <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
-                  </Link>
+                  </div>
                 </Nav>
               )}
 
@@ -246,6 +247,32 @@ const Navbar = ({
         modifyFavoriteFetch={modifyFavoriteFetch}
         auth={auth}
       />
+      <Modal centered show={openLogout} onHide={logoutModal}>
+        <Modal.Header className="card-crud h-0  "></Modal.Header>
+        <Modal.Body className="card-crud ">
+          ¿Estas seguro que quieres cerrar sesión?
+        </Modal.Body>
+        <Modal.Footer className="card-crud d-flex justify-content-center ">
+          <Button
+            className="btn-detail"
+            onClick={() => {
+              logoutModal();
+            }}
+          >
+            Cerrar
+          </Button>
+          <Button
+            className="btn-detail"
+            onClick={() => {
+              handleLogout();
+              setOpenLogout(false);
+              navigation("/");
+            }}
+          >
+            Cerrar sesión
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
