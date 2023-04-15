@@ -22,6 +22,7 @@
 .table-responsive {
   background-color: rgba(17, 17, 17, 0.829);
   max-width: 100%;
+  overflow-x: visible;
 }
 
 /* @media (max-width: 580px) {
