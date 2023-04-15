@@ -21,15 +21,28 @@ const ArticleDetailContainer = ({
   deleteFavorite,
   modifyFavorite,
   modifyFavoriteFetch,
+  logout,
 }) => {
   const params = useParams();
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`https://backend-news-eight.vercel.app/news/news/${params.id}`)
+    fetch(`https://backend-news-eight.vercel.app/news/news/${params.id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: auth.token,
+      },
+    })
       .then((res) => res.json())
-      .then((json) => setData(json))
+      .then((json) => {
+        if (!json.error) {
+          setData(json);
+        } else {
+          logout();
+        }
+      })
       .finally(() => setIsLoading(false));
   }, [dataTotal]);
 
