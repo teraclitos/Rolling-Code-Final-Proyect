@@ -50,7 +50,14 @@ const ArticleCard = ({
 
   return (
     <Card className=" h-100 card-container border-0 px-2">
-      <Card.Img src={d.img_URL} variant="top" className=" img-card" />
+      <Link
+        to={auth.user ? `/ArticleDetailContainer/${d._id}` : "/"}
+        onClick={() => {
+          !auth.user ? handleShowLogin() : setIsLoading(true);
+        }}
+      >
+        <Card.Img src={d.img_URL} variant="top" className=" img-card" />
+      </Link>
       <Card.Body className="p-0  card-body  ">
         <h3 className="category-title fs-6 mt-2 mb-0 ps-2 text-start">
           {d.category}

@@ -10,9 +10,10 @@
 }
 .img-favorite-card {
   cursor: pointer;
+  filter: brightness(1.7);
 }
 .img-overlayed-favorite {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .btn-trash {
   background: transparent;

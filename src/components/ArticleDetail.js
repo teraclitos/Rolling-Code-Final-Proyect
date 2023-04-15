@@ -165,7 +165,7 @@ const ArticleDetail = ({
 
                   <div className="col-12 linea-style" />
 
-                  <Card.Text>
+                  <div>
                     <div className="social-media">
                       <div className="red-social">
                         <FontAwesomeIcon
@@ -194,7 +194,7 @@ const ArticleDetail = ({
                     </div>
 
                     <div className="col-12 linea-style" />
-                  </Card.Text>
+                  </div>
                   <Card.Title className="text-center title-detail fs-4">
                     {data.title}
                   </Card.Title>
