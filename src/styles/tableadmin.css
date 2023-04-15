@@ -17,12 +17,11 @@
   font-family: "anton";
   color: white;
 }
-.table-container {
-  width: 90vw !important;
-  overflow-x: auto !important;
-  display: flex;
-  justify-content: center;
+.table-responsive {
+  overflow-x: auto;
+  width: 90vw;
 }
 .admin-table {
-  width: 1000px !important;
+  width: 1000px;
+  margin: auto;
 }
