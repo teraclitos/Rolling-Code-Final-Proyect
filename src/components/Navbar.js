@@ -49,6 +49,8 @@ const Navbar = ({
   modifyFavoriteFetch,
   loadFavorite,
   setLoadFavorite,
+  newLoad,
+  setNewLoad,
 }) => {
   const [show, setShow] = useState(false);
 
@@ -152,6 +154,7 @@ const Navbar = ({
                   <Link
                     onClick={() => {
                       setIsLoading(true);
+                      setNewLoad(newLoad + 1);
                     }}
                     to="/usertable"
                     className="link-nav"

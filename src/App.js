@@ -15,6 +15,7 @@ function App() {
   const [modifyFavorite, setModifyFavorite] = useState(null);
   const [deleteFavorite, setDeleteFavorite] = useState(null);
   const [loadFavorite, setLoadFavorite] = useState(true);
+  const [newLoad, setNewLoad] = useState(0);
 
   const editButtom = document.getElementById("edit-buttom");
   const modifyFavoriteFetch = () => {
@@ -143,6 +144,8 @@ function App() {
         modifyFavoriteFetch={modifyFavoriteFetch}
         loadFavorite={loadFavorite}
         setLoadFavorite={setLoadFavorite}
+        newLoad={newLoad}
+        setNewLoad={setNewLoad}
       />
       <ToastContainer
         transition={Flip}

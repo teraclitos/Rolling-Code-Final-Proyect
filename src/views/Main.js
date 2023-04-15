@@ -43,6 +43,8 @@ const Main = ({
   modifyFavoriteFetch,
   loadFavorite,
   setLoadFavorite,
+  newLoad,
+  setNewLoad
 }) => {
   return (
     <>
@@ -69,6 +71,8 @@ const Main = ({
           modifyFavoriteFetch={modifyFavoriteFetch}
           loadFavorite={loadFavorite}
           setLoadFavorite={setLoadFavorite}
+          newLoad={newLoad}
+          setNewLoad={setNewLoad}
         />
         <Routes>
           <Route
@@ -142,6 +146,8 @@ const Main = ({
                   auth={auth}
                   setIsLoading={setIsLoading}
                   isLoading={isLoading}
+                  newLoad={newLoad}
+                  setNewLoad={setNewLoad}
                 />
               )
             }
@@ -184,7 +190,6 @@ const Main = ({
                 deleteFavorite={deleteFavorite}
                 modifyFavorite={modifyFavorite}
                 modifyFavoriteFetch={modifyFavoriteFetch}
-                
               />
             }
           />

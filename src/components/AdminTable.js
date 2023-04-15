@@ -15,6 +15,8 @@ function AdminTable({
   auth,
   setIsLoading,
   isLoading,
+  newLoad,
+  setNewLoad,
 }) {
   const [dataUser, setDataUser] = useState([]);
 
@@ -127,7 +129,7 @@ function AdminTable({
       .finally(() => {
         setIsLoading(false);
       });
-  }, [ChangeDataUser, isLoading]);
+  }, [ChangeDataUser, newLoad]);
 
   const handleShow = () => setShow(true);
 
