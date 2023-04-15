@@ -222,7 +222,13 @@ function AdminTable({
                   ADMINISTRAR USUARIO
                 </h3>
 
-                <Table striped bordered hover className="color-table  ">
+                <Table
+                  striped
+                  bordered
+                  hover
+                  responsive
+                  className="color-table table-admin  "
+                >
                   <thead>
                     <tr>
                       <th>N°</th>
