@@ -83,7 +83,7 @@ function App() {
     toastSuccess("Sesión cerrada correctamente");
   };
   useEffect(() => {
-    if (auth.id && auth.role === "user") {
+    if (auth.id && auth.role === "user" && auth.token) {
       fetch(
         `https://backend-news-eight.vercel.app/users/favorite?id=${auth.id}`,
         {
