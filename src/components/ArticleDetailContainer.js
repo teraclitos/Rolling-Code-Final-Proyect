@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ArticleDetail from "./ArticleDetail";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
+import { useNavigate } from "react-router-dom";
 
 const ArticleDetailContainer = ({
   add,
@@ -24,6 +25,7 @@ const ArticleDetailContainer = ({
   logout,
 }) => {
   const params = useParams();
+  const navigation = useNavigate();
 
   const [data, setData] = useState([]);
 
@@ -41,6 +43,7 @@ const ArticleDetailContainer = ({
           setData(json);
         } else {
           logout();
+          navigation("/");
         }
       })
       .finally(() => setIsLoading(false));
