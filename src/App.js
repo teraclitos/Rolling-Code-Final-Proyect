@@ -57,10 +57,10 @@ function App() {
   };
 
   const [auth, setAuth] = useState({
-    user: JSON.parse(localStorage.getItem("username")),
-    role: JSON.parse(localStorage.getItem("role")),
-    token: JSON.parse(localStorage.getItem("token")),
-    id: JSON.parse(localStorage.getItem("id")),
+    user: JSON.parse(localStorage.getItem("username")) || "",
+    role: JSON.parse(localStorage.getItem("role")) || "",
+    token: JSON.parse(localStorage.getItem("token")) || "",
+    id: JSON.parse(localStorage.getItem("id")) || "",
   });
 
   const login = () => {

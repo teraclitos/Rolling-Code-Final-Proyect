@@ -218,8 +218,9 @@ function AdminTable({
                 <Table
                   striped
                   bordered
+                  responsive
                   hover
-                  className="color-table responsive table"
+                  className="color-table  "
                 >
                   <thead>
                     <tr>
