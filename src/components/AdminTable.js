@@ -226,6 +226,7 @@ function AdminTable({
                   striped
                   bordered
                   responsive
+                  scrollX
                   hover
                   className="color-table  "
                 >
