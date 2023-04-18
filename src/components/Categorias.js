@@ -14,7 +14,7 @@ const Categorias = ({ auth, setIsLoading, handleShowLogin }) => {
           className="item-list-categories link-category "
         >
           <Link
-            to="/category/Mundial"
+            to={auth.user && "/category/Mundial"}
             style={{ textDecoration: "none" }}
             className="text-white"
           >
@@ -28,7 +28,7 @@ const Categorias = ({ auth, setIsLoading, handleShowLogin }) => {
           className="item-list-categories link-category "
         >
           <Link
-            to="/category/Liga-Argentina"
+            to={auth.user && "/category/Liga-Argentina"}
             style={{ textDecoration: "none" }}
             className="text-white"
           >
@@ -42,7 +42,7 @@ const Categorias = ({ auth, setIsLoading, handleShowLogin }) => {
           className="item-list-categories link-category"
         >
           <Link
-            to="/category/Tenis"
+            to={auth.user && "/category/Tenis"}
             style={{ textDecoration: "none" }}
             className="text-white"
           >
@@ -56,7 +56,7 @@ const Categorias = ({ auth, setIsLoading, handleShowLogin }) => {
           className="item-list-categories link-category"
         >
           <Link
-            to="/category/Basquet"
+            to={auth.user && "/category/Basquet"}
             style={{ textDecoration: "none" }}
             className="text-white"
           >

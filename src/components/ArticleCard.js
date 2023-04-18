@@ -9,13 +9,13 @@ import React, { useEffect, useState } from "react";
 
 const ArticleCard = ({
   cart,
-  
+
   d,
 
   add,
   auth,
   del,
-  
+
   handleShowLogin,
   setIsLoading,
   deleteFavorite,
@@ -51,7 +51,7 @@ const ArticleCard = ({
   return (
     <Card className=" h-100 card-container border-0 px-2">
       <Link
-        to={auth.user ? `/ArticleDetailContainer/${d._id}` : "/"}
+        to={auth.user && `/ArticleDetailContainer/${d._id}`}
         onClick={() => {
           !auth.user ? handleShowLogin() : setIsLoading(true);
         }}
