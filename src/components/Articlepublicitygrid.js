@@ -24,8 +24,6 @@ const Articlepublicitygrid = ({
   modifyFavorite,
   setModifyFavorite,
   modifyFavoriteFetch,
-  category,
-  setCategory
 }) => {
   return (
     <>
@@ -41,7 +39,11 @@ const Articlepublicitygrid = ({
         handleShowLogin={handleShowLogin}
       />
       <div>
-        <Categorias category={category} setCategory={setCategory} />
+        <Categorias
+          auth={auth}
+          setIsLoading={setIsLoading}
+          handleShowLogin={handleShowLogin}
+        />
       </div>
       <div className="container grid-articles-publicity mt-5  mb-5  ">
         <div className="grid-articles">
@@ -56,7 +58,6 @@ const Articlepublicitygrid = ({
                 toastError={toastError}
                 handleShowLogin={handleShowLogin}
                 setIsLoading={setIsLoading}
-                i={i}
                 setCart={setCart}
                 deleteFavorite={deleteFavorite}
                 setDeleteFavorite={setDeleteFavorite}

@@ -9,13 +9,13 @@ import React, { useEffect, useState } from "react";
 
 const ArticleCard = ({
   cart,
-  setCart,
+  
   d,
-  i,
+
   add,
   auth,
   del,
-  toastError,
+  
   handleShowLogin,
   setIsLoading,
   deleteFavorite,

@@ -3,11 +3,16 @@ import { Link, NavLink } from "react-router-dom";
 
 import "../styles/allcss.css";
 
-const Categorias = ({ data, category, setCategory }) => {
+const Categorias = ({ auth, setIsLoading, handleShowLogin }) => {
   return (
     <div className="container categories-container mt-5 d-none d-lg-grid   ">
       <ul className="d-flex justify-content-center categories-list-container px-0   ">
-        <li className="item-list-categories link-category ">
+        <li
+          onClick={() => {
+            !auth.user ? handleShowLogin() : setIsLoading(true);
+          }}
+          className="item-list-categories link-category "
+        >
           <Link
             to="/category/Mundial"
             style={{ textDecoration: "none" }}
@@ -16,7 +21,12 @@ const Categorias = ({ data, category, setCategory }) => {
             Mundial
           </Link>
         </li>
-        <li className="item-list-categories link-category ">
+        <li
+          onClick={() => {
+            !auth.user ? handleShowLogin() : setIsLoading(true);
+          }}
+          className="item-list-categories link-category "
+        >
           <Link
             to="/category/Liga-Argentina"
             style={{ textDecoration: "none" }}
@@ -25,7 +35,12 @@ const Categorias = ({ data, category, setCategory }) => {
             Liga Argentina
           </Link>
         </li>
-        <li className="item-list-categories link-category">
+        <li
+          onClick={() => {
+            !auth.user ? handleShowLogin() : setIsLoading(true);
+          }}
+          className="item-list-categories link-category"
+        >
           <Link
             to="/category/Tenis"
             style={{ textDecoration: "none" }}
@@ -34,7 +49,12 @@ const Categorias = ({ data, category, setCategory }) => {
             Tenis
           </Link>
         </li>
-        <li className="item-list-categories link-category">
+        <li
+          onClick={() => {
+            !auth.user ? handleShowLogin() : setIsLoading(true);
+          }}
+          className="item-list-categories link-category"
+        >
           <Link
             to="/category/Basquet"
             style={{ textDecoration: "none" }}

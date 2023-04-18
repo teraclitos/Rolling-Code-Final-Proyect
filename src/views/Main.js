@@ -169,8 +169,15 @@ const Main = ({
                 auth={auth}
                 login={login}
                 logout={logout}
-                category={category}
-                setCategory={setCategory}
+                setIsLoading={setIsLoading}
+                isLoading={isLoading}
+                del={del}
+                handleShowLogin={handleShowLogin}
+                deleteFavorite={deleteFavorite}
+                setDeleteFavorite={setDeleteFavorite}
+                modifyFavorite={modifyFavorite}
+                setModifyFavorite={setModifyFavorite}
+                modifyFavoriteFetch={modifyFavoriteFetch}
               />
             }
           />
