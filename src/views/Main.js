@@ -45,6 +45,8 @@ const Main = ({
   setLoadFavorite,
   newLoad,
   setNewLoad,
+  category,
+  setCategory,
 }) => {
   return (
     <>
@@ -73,6 +75,7 @@ const Main = ({
           setLoadFavorite={setLoadFavorite}
           newLoad={newLoad}
           setNewLoad={setNewLoad}
+          setCategory={setCategory}
         />
         <Routes>
           <Route
@@ -126,6 +129,8 @@ const Main = ({
                     modifyFavorite={modifyFavorite}
                     setModifyFavorite={setModifyFavorite}
                     modifyFavoriteFetch={modifyFavoriteFetch}
+                    category={category}
+                    setCategory={setCategory}
                   />
                 )}
               </>
@@ -155,7 +160,7 @@ const Main = ({
           />
 
           <Route
-            path="/category"
+            path={`/category/:category`}
             element={
               <CategoryDetail
                 data={data}
@@ -164,6 +169,8 @@ const Main = ({
                 auth={auth}
                 login={login}
                 logout={logout}
+                category={category}
+                setCategory={setCategory}
               />
             }
           />

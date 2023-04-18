@@ -18,8 +18,10 @@ function App() {
   const [loadFavorite, setLoadFavorite] = useState(true);
   const [newLoad, setNewLoad] = useState(0);
 
+  const [category, setCategory] = useState("");
+
   const editButtom = document.getElementById("edit-buttom");
-  // const navigation = useNavigate();
+
   const modifyFavoriteFetch = () => {
     fetch(
       `https://backend-news-eight.vercel.app/users/favoritecreate?id=${auth.id}`,
@@ -42,11 +44,11 @@ function App() {
       .catch((error) => console.log(error));
   };
   useEffect(() => {
-    fetch("https://backend-news-eight.vercel.app/news/news")
+    fetch(`https://backend-news-eight.vercel.app/news/news`)
       .then((res) => res.json())
       .then((json) => setData(json))
       .finally(() => setIsLoading(false));
-  }, [changeData]);
+  }, [changeData, category]);
 
   const add = (p) => {
     setCart((cart) => [...cart, p]);
@@ -150,6 +152,8 @@ function App() {
         setLoadFavorite={setLoadFavorite}
         newLoad={newLoad}
         setNewLoad={setNewLoad}
+        category={category}
+        setCategory={setCategory}
       />
       <ToastContainer
         transition={Flip}

@@ -1,11 +1,7 @@
 import { React, useState } from "react";
 import "../styles/allcss.css";
 import Categorias from "../components/Categorias";
-import { Button, Card, Pagination } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Slider from "./Slider";
-import { Route, Routes, Link, useParams } from "react-router-dom";
 import Advertising from "./Advertising";
 import Header from "../components/Header";
 import AsideAdvertisement from "./AsideAdvertisement";
@@ -28,6 +24,8 @@ const Articlepublicitygrid = ({
   modifyFavorite,
   setModifyFavorite,
   modifyFavoriteFetch,
+  category,
+  setCategory
 }) => {
   return (
     <>
@@ -43,7 +41,7 @@ const Articlepublicitygrid = ({
         handleShowLogin={handleShowLogin}
       />
       <div>
-        <Categorias />
+        <Categorias category={category} setCategory={setCategory} />
       </div>
       <div className="container grid-articles-publicity mt-5  mb-5  ">
         <div className="grid-articles">

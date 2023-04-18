@@ -3,62 +3,40 @@ import { Link, NavLink } from "react-router-dom";
 
 import "../styles/allcss.css";
 
-const Categorias = (data) => {
-  const [open, setOpen] = useState(false);
-
+const Categorias = ({ data, category, setCategory }) => {
   return (
     <div className="container categories-container mt-5 d-none d-lg-grid   ">
       <ul className="d-flex justify-content-center categories-list-container px-0   ">
-        <li
-          onClick={() => {
-            localStorage.setItem("category", JSON.stringify({ id: 1 }));
-          }}
-          className="item-list-categories link-category "
-        >
+        <li className="item-list-categories link-category ">
           <Link
-            to="/category"
+            to="/category/Mundial"
             style={{ textDecoration: "none" }}
             className="text-white"
           >
             Mundial
           </Link>
         </li>
-        <li
-          onClick={() => {
-            localStorage.setItem("category", JSON.stringify({ id: 2 }));
-          }}
-          className="item-list-categories link-category "
-        >
+        <li className="item-list-categories link-category ">
           <Link
-            to="/category"
+            to="/category/Liga-Argentina"
             style={{ textDecoration: "none" }}
             className="text-white"
           >
             Liga Argentina
           </Link>
         </li>
-        <li
-          onClick={() => {
-            localStorage.setItem("category", JSON.stringify({ id: 3 }));
-          }}
-          className="item-list-categories link-category"
-        >
+        <li className="item-list-categories link-category">
           <Link
-            to="/category"
+            to="/category/Tenis"
             style={{ textDecoration: "none" }}
             className="text-white"
           >
             Tenis
           </Link>
         </li>
-        <li
-          onClick={() => {
-            localStorage.setItem("category", JSON.stringify({ id: 4 }));
-          }}
-          className="item-list-categories link-category"
-        >
+        <li className="item-list-categories link-category">
           <Link
-            to="/category"
+            to="/category/Basquet"
             style={{ textDecoration: "none" }}
             className="text-white"
           >
