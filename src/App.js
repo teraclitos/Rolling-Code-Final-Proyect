@@ -5,11 +5,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { Flip } from "react-toastify";
 import { useEffect, useState } from "react";
 
-import { useParams } from "react-router-dom";
 function App() {
   const [data, setData] = useState([]);
   const [changeData, setChangeData] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingHighlight, setIsLoadingHighlight] = useState(true);
   const handleShowLogin = () => setShowLogin(true);
   const [showLogin, setShowLogin] = useState(false);
   const [cart, setCart] = useState([]);
@@ -17,6 +17,7 @@ function App() {
   const [deleteFavorite, setDeleteFavorite] = useState(null);
   const [loadFavorite, setLoadFavorite] = useState(true);
   const [newLoad, setNewLoad] = useState(0);
+  const [totalHighlights, setTotalHighlights] = useState([]);
 
   const [category, setCategory] = useState("");
 
@@ -49,6 +50,13 @@ function App() {
       .then((json) => setData(json))
       .finally(() => setIsLoading(false));
   }, [changeData, category]);
+
+  useEffect(() => {
+    fetch(`https://backend-news-eight.vercel.app/news/highlight?highlight=true`)
+      .then((res) => res.json())
+      .then((json) => setTotalHighlights(json))
+      .finally(() => setIsLoadingHighlight(false));
+  }, []);
 
   const add = (p) => {
     setCart((cart) => [...cart, p]);
@@ -119,7 +127,7 @@ function App() {
       toastId: prevenDuplicateToast,
     });
   };
-  const totalHighlights = data.filter((element) => element.highlight === true);
+
   return (
     <BrowserRouter>
       <Main
@@ -154,6 +162,7 @@ function App() {
         setNewLoad={setNewLoad}
         category={category}
         setCategory={setCategory}
+        isLoadingHighlight={isLoadingHighlight}
       />
       <ToastContainer
         transition={Flip}

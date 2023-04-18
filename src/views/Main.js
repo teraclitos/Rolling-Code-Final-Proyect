@@ -47,6 +47,7 @@ const Main = ({
   setNewLoad,
   category,
   setCategory,
+  isLoadingHighlight,
 }) => {
   return (
     <>
@@ -108,7 +109,7 @@ const Main = ({
             path="/"
             element={
               <>
-                {isLoading ? (
+                {isLoading && isLoadingHighlight ? (
                   <Loader />
                 ) : (
                   <Articlepublicitygrid
