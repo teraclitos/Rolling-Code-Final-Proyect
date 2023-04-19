@@ -54,7 +54,9 @@ const CategoryDetail = ({
         <Loader />
       ) : (
         <Container className="mb-5">
-          <h2 className="title-category">{params.category}</h2>
+          <h2 className="title-category">
+            {params.category.replace("-", " ")}
+          </h2>
           <Row>
             {dataCategory.map((d, i) => (
               <Col key={d.category + i} className="col-12 col-lg-6 mb-5">

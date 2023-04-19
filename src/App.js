@@ -21,8 +21,6 @@ function App() {
 
   const [category, setCategory] = useState("");
 
-  const editButtom = document.getElementById("edit-buttom");
-
   const modifyFavoriteFetch = () => {
     fetch(
       `https://backend-news-eight.vercel.app/users/favoritecreate?id=${auth.id}`,
