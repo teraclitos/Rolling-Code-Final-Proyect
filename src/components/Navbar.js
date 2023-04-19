@@ -145,8 +145,16 @@ const Navbar = ({
 
               <Nav className="me-0 me-lg-3 mb-1 mb-lg-0">
                 <Link
-                  to="/articlefound"
+                  to={auth.user && "/articlefound"}
                   className="link-nav"
+                  onClick={() => {
+                    if (auth.user) {
+                      setIsLoading(true);
+                      setNewLoad(newLoad + 1);
+                    } else {
+                      handleShowLogin();
+                    }
+                  }}
                   style={{ textDecoration: "none" }}
                 >
                   <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
@@ -259,7 +267,7 @@ const Navbar = ({
               logoutModal();
             }}
           >
-            Cerrar
+            No
           </Button>
           <Button
             className="btn-detail"

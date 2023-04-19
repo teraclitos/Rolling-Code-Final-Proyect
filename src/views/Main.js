@@ -102,6 +102,16 @@ const Main = ({
                 auth={auth}
                 login={login}
                 logout={logout}
+                del={del}
+                handleShowLogin={handleShowLogin}
+                setIsLoading={setIsLoading}
+                isLoading={isLoading}
+                deleteFavorite={deleteFavorite}
+                setDeleteFavorite={setDeleteFavorite}
+                modifyFavorite={modifyFavorite}
+                setModifyFavorite={setModifyFavorite}
+                modifyFavoriteFetch={modifyFavoriteFetch}
+                newLoad={newLoad}
               />
             }
           />
