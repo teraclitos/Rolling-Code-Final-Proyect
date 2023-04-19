@@ -42,11 +42,38 @@ const ArticleDetail = ({
   const [showDelete, setShowDelete] = useState(false);
   const [render, setRender] = useState(true);
   const [deleteOk, setDeletetOk] = useState(null);
-
   const handleClose = () => setShow(false);
   const handleCloseDelete = () => setShowDelete(false);
   const handleShowDelete = () => setShowDelete(true);
   const handleShow = () => setShow(true);
+
+  const fields = [
+    editAuthor,
+    editDescription,
+    editImage,
+    editSection,
+    editSubtitulo,
+    editTitle,
+  ];
+
+  const checkAllFields = () => {
+    const check = fields.map((element) => validateField(element));
+
+    return check.filter((element) => element !== true);
+  };
+
+  const validateField = (value) => {
+    let error;
+    if (!value) {
+      error = "Campo obligatorio";
+    } else if (value.trim().length < 3) {
+      error = "Debe tener al menos 3 caracteres";
+    } else {
+      error = true;
+    }
+    return error;
+  };
+
   const handleSubmit = (e) => {
     setSubmitOk(null);
     fetch("https://backend-news-eight.vercel.app/news/editnews/" + data._id, {
@@ -298,8 +325,16 @@ const ArticleDetail = ({
                           placeholder="Nombre del autor"
                           value={editAuthor}
                           onInput={(e) => setEditAuthor(e.target.value)}
+                          className={
+                            validateField(editAuthor) !== true
+                              ? "outline-input wrong-border"
+                              : "outline-input "
+                          }
                           autoFocus
                         />
+                        <Form.Text className="wrong ">
+                          {validateField(editAuthor)}
+                        </Form.Text>
                       </Form.Group>
 
                       <Form.Group
@@ -313,8 +348,15 @@ const ArticleDetail = ({
                           defaultValue={editTitle}
                           value={editTitle}
                           onChange={(e) => setEditTitle(e.target.value)}
-                          autoFocus
+                          className={
+                            validateField(editTitle) !== true
+                              ? "outline-input wrong-border"
+                              : "outline-input "
+                          }
                         />
+                        <Form.Text className="wrong ">
+                          {validateField(editTitle)}
+                        </Form.Text>
                       </Form.Group>
 
                       <Form.Group className="mb-3">
@@ -326,8 +368,15 @@ const ArticleDetail = ({
                           defaultValue={editImage}
                           value={editImage}
                           onChange={(e) => setEditImage(e.target.value)}
-                          autoFocus
+                          className={
+                            validateField(editImage) !== true
+                              ? "outline-input wrong-border"
+                              : "outline-input "
+                          }
                         />
+                        <Form.Text className="wrong ">
+                          {validateField(editImage)}
+                        </Form.Text>
                       </Form.Group>
 
                       <Form.Group
@@ -344,8 +393,15 @@ const ArticleDetail = ({
                           defaultValue={editSubtitulo}
                           value={editSubtitulo}
                           onInput={(e) => setEditSubtitulo(e.target.value)}
-                          autoFocus
+                          className={
+                            validateField(editSubtitulo) !== true
+                              ? "outline-input wrong-border"
+                              : "outline-input "
+                          }
                         />
+                        <Form.Text className="wrong ">
+                          {validateField(editSubtitulo)}
+                        </Form.Text>
                       </Form.Group>
 
                       <Form.Group
@@ -361,8 +417,15 @@ const ArticleDetail = ({
                           defaultValue={editDescription}
                           value={editDescription}
                           onInput={(e) => setEditDescription(e.target.value)}
-                          autoFocus
+                          className={
+                            validateField(editDescription) !== true
+                              ? "outline-input wrong-border"
+                              : "outline-input "
+                          }
                         />
+                        <Form.Text className="wrong ">
+                          {validateField(editDescription)}
+                        </Form.Text>
                       </Form.Group>
                     </Form.Group>
                   </Form>
@@ -387,19 +450,25 @@ const ArticleDetail = ({
                       id="edit-Buttom"
                       className="btn-detail"
                       onClick={(e) => {
-                        if (highlightFilter() === true) {
-                          handleSubmit(e);
-
-                          setTimeout(() => {
-                            setChangeData(changeData + 1);
-                          }, 1000);
-
-                          handleClose();
+                        if (checkAllFields().length > 0) {
+                          toastError(
+                            "Debe completar correctamente todos los campos obligatorios"
+                          );
                         } else {
-                          toastError("Sólo puede haber tres destacados");
-                        }
+                          if (highlightFilter() === true) {
+                            handleSubmit(e);
 
-                        setRender(true);
+                            setTimeout(() => {
+                              setChangeData(changeData + 1);
+                            }, 1000);
+
+                            handleClose();
+                          } else {
+                            toastError("Sólo puede haber tres destacados");
+                          }
+
+                          setRender(true);
+                        }
                       }}
                     >
                       Guardar cambios
