@@ -271,10 +271,18 @@ const ArticleDetail = ({
                         onChange={(e) => setEditSection(e.target.value)}
                       >
                         <option value={editSection}>{editSection}</option>
-                        <option value="Mundial">Mundial</option>
-                        <option value="Liga Argentina">Liga Argentina</option>
-                        <option value="Tenis">Tenis</option>
-                        <option value="Basquet">Basquet</option>
+                        {editSection !== "Mundial" && (
+                          <option value="Mundial">Mundial</option>
+                        )}
+                        {editSection !== "Liga Argentina" && (
+                          <option value="Liga Argentina">Liga Argentina</option>
+                        )}
+                        {editSection !== "Tenis" && (
+                          <option value="Tenis">Tenis</option>
+                        )}
+                        {editSection !== "Basquet" && (
+                          <option value="Basquet">Basquet</option>
+                        )}
                       </Form.Select>
 
                       <Form.Group />
