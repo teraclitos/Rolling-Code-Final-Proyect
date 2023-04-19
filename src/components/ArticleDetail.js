@@ -266,13 +266,17 @@ const ArticleDetail = ({
                       controlId="exampleForm.ControlInput1"
                     >
                       <Form.Label className="style-crud">Categoria</Form.Label>
-                      <Form.Control
-                        maxLength={31}
-                        type="text"
-                        value={editSection}
+                      <Form.Select
+                        aria-label="Default select example"
                         onChange={(e) => setEditSection(e.target.value)}
-                        autoFocus
-                      />
+                      >
+                        <option value={editSection}>{editSection}</option>
+                        <option value="Mundial">Mundial</option>
+                        <option value="Liga Argentina">Liga Argentina</option>
+                        <option value="Tenis">Tenis</option>
+                        <option value="Basquet">Basquet</option>
+                      </Form.Select>
+
                       <Form.Group />
 
                       <Form.Group

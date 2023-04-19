@@ -4,12 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import "../styles/allcss.css";
 
 const Categorias = ({ auth, setIsLoading, handleShowLogin }) => {
-  const [categories, setCategories] = useState([
-    "Mundial",
-    "Liga-Argentina",
-    "Tenis",
-    "Basquet",
-  ]);
+  const categories = ["Mundial", "Liga-Argentina", "Tenis", "Basquet"];
   return (
     <div className="container categories-container mt-5 d-none d-lg-grid   ">
       <ul className="d-flex justify-content-center categories-list-container px-0   ">
