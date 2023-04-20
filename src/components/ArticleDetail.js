@@ -302,7 +302,7 @@ const ArticleDetail = ({
             <Modal.Body className="card-crud modal-crud">
               <Form>
                 <Form.Group
-                  className="mb-3"
+                  className="mb-3 group-container-crud"
                   controlId="exampleForm.ControlInput1"
                 >
                   <Form.Label className="style-crud">Categoria</Form.Label>
@@ -328,7 +328,7 @@ const ArticleDetail = ({
                   <Form.Group />
 
                   <Form.Group
-                    className="mb-3"
+                    className="mb-3 group-container-crud"
                     controlId="exampleForm.ControlInput1"
                   >
                     <Form.Label className="style-crud">Autor</Form.Label>
@@ -351,7 +351,7 @@ const ArticleDetail = ({
                   </Form.Group>
 
                   <Form.Group
-                    className="mb-3"
+                    className="mb-3 group-container-crud"
                     controlId="exampleForm.ControlInput1"
                   >
                     <Form.Label className="style-crud">Titulo</Form.Label>
@@ -372,7 +372,7 @@ const ArticleDetail = ({
                     </Form.Text>
                   </Form.Group>
 
-                  <Form.Group className="mb-3">
+                  <Form.Group className="mb-3 group-container-crud">
                     <Form.Label className="style-crud">URL</Form.Label>
                     <Form.Control
                       maxLength={31}
@@ -393,7 +393,7 @@ const ArticleDetail = ({
                   </Form.Group>
 
                   <Form.Group
-                    className="mb-3"
+                    className="mb-3 group-container-crud"
                     controlId="exampleForm.ControlInput1"
                   >
                     <Form.Label className="style-crud">Subtitulo</Form.Label>
@@ -416,7 +416,7 @@ const ArticleDetail = ({
                   </Form.Group>
 
                   <Form.Group
-                    className="mb-3"
+                    className="mb-3 group-container-crud"
                     controlId="exampleForm.ControlInput1"
                   >
                     <Form.Label className="style-crud">Descripcion</Form.Label>
