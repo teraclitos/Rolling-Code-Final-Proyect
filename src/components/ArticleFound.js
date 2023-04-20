@@ -26,7 +26,14 @@ const ArticleFound = ({
 
   useEffect(() => {
     fetch(
-      `https://backend-news-eight.vercel.app/news/search?characters=${search}`
+      `https://backend-news-eight.vercel.app/news/search?characters=${search}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: auth.token,
+        },
+      }
     )
       .then((res) => res.json())
       .then((json) => setStock(json))
