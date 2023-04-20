@@ -345,7 +345,7 @@ const ArticleDetail = ({
                       }
                       autoFocus
                     />
-                    <Form.Text className="wrong ">
+                    <Form.Text className="wrong text-start ps-3 ">
                       {validateField(editAuthor)}
                     </Form.Text>
                   </Form.Group>
@@ -367,7 +367,7 @@ const ArticleDetail = ({
                           : "outline-input "
                       }
                     />
-                    <Form.Text className="wrong ">
+                    <Form.Text className="wrong text-start ps-3 ">
                       {validateField(editTitle)}
                     </Form.Text>
                   </Form.Group>
@@ -387,7 +387,7 @@ const ArticleDetail = ({
                           : "outline-input "
                       }
                     />
-                    <Form.Text className="wrong ">
+                    <Form.Text className="wrong text-start ps-3 ">
                       {validateField(editImage)}
                     </Form.Text>
                   </Form.Group>
@@ -410,7 +410,7 @@ const ArticleDetail = ({
                           : "outline-input "
                       }
                     />
-                    <Form.Text className="wrong ">
+                    <Form.Text className="wrong text-start ps-3 ">
                       {validateField(editSubtitulo)}
                     </Form.Text>
                   </Form.Group>
@@ -433,7 +433,7 @@ const ArticleDetail = ({
                           : "outline-input text-area-description-input"
                       }
                     />
-                    <Form.Text className="wrong ">
+                    <Form.Text className="wrong text-start ps-3 ">
                       {validateField(editDescription)}
                     </Form.Text>
                   </Form.Group>
