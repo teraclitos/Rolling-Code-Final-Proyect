@@ -4,13 +4,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: #000;
   margin-right: 1em;
   background-color: #1986a0;
   cursor: pointer;
 }
 .pagination-item-news:hover {
   background-color: #fd841f;
+  color: #fff;
 }
 
 .pagination-item-news-active {
