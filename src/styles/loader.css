@@ -13,3 +13,11 @@
   height: 100vh;
   z-index: 1000000;
 }
+
+.loader-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}

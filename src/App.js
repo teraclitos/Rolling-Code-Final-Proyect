@@ -50,7 +50,6 @@ function App() {
     )
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         setData(json.docs);
         setTotalPages(json.totalPages);
       })
@@ -62,7 +61,7 @@ function App() {
       .then((res) => res.json())
       .then((json) => setTotalHighlights(json))
       .finally(() => setIsLoadingHighlight(false));
-  }, [changeData]);
+  }, [changeData, page]);
 
   const add = (p) => {
     setCart((cart) => [...cart, p]);
@@ -172,6 +171,7 @@ function App() {
         page={page}
         setPage={setPage}
         totalPages={totalPages}
+        setIsLoadingHighlight={setIsLoadingHighlight}
       />
       <ToastContainer
         transition={Flip}

@@ -47,6 +47,7 @@ const Main = ({
   setNewLoad,
   category,
   setCategory,
+  setIsLoadingHighlight,
   isLoadingHighlight,
   page,
   setPage,
@@ -138,6 +139,7 @@ const Main = ({
                     totalHighlights={totalHighlights}
                     handleShowLogin={handleShowLogin}
                     setIsLoading={setIsLoading}
+                    isLoading={isLoading}
                     deleteFavorite={deleteFavorite}
                     setDeleteFavorite={setDeleteFavorite}
                     modifyFavorite={modifyFavorite}
@@ -148,6 +150,7 @@ const Main = ({
                     page={page}
                     setPage={setPage}
                     totalPages={totalPages}
+                    setIsLoadingHighlight={setIsLoadingHighlight}
                   />
                 )}
               </>

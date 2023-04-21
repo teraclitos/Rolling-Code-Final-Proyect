@@ -7,6 +7,8 @@ import Header from "../components/Header";
 import AsideAdvertisement from "./AsideAdvertisement";
 import ArticleCard from "./ArticleCard";
 import PaginationNew from "./PaginationNew";
+import Loader from "./Loader";
+import LoaderPage from "./LoaderPage";
 
 const Articlepublicitygrid = ({
   data,
@@ -19,6 +21,7 @@ const Articlepublicitygrid = ({
   handleShowLogin,
   d,
   setIsLoading,
+  isLoading,
   del,
   deleteFavorite,
   setDeleteFavorite,
@@ -28,6 +31,7 @@ const Articlepublicitygrid = ({
   page,
   setPage,
   totalPages,
+  setIsLoadingHighlight,
 }) => {
   return (
     <>
@@ -50,29 +54,34 @@ const Articlepublicitygrid = ({
           handleShowLogin={handleShowLogin}
         />
       </div>
+
       <div className="container grid-articles-publicity mt-5  mb-5  ">
-        <div className="grid-articles">
-          {data.map((d, i) => (
-            <div key={"mainnotice" + i} className="mb-3  ">
-              <ArticleCard
-                cart={cart}
-                d={d}
-                add={add}
-                del={del}
-                auth={auth}
-                toastError={toastError}
-                handleShowLogin={handleShowLogin}
-                setIsLoading={setIsLoading}
-                setCart={setCart}
-                deleteFavorite={deleteFavorite}
-                setDeleteFavorite={setDeleteFavorite}
-                modifyFavorite={modifyFavorite}
-                setModifyFavorite={setModifyFavorite}
-                modifyFavoriteFetch={modifyFavoriteFetch}
-              />
-            </div>
-          ))}
-        </div>
+        {isLoading ? (
+          <LoaderPage />
+        ) : (
+          <div className="grid-articles">
+            {data.map((d, i) => (
+              <div key={"mainnotice" + i} className="mb-3  ">
+                <ArticleCard
+                  cart={cart}
+                  d={d}
+                  add={add}
+                  del={del}
+                  auth={auth}
+                  toastError={toastError}
+                  handleShowLogin={handleShowLogin}
+                  setIsLoading={setIsLoading}
+                  setCart={setCart}
+                  deleteFavorite={deleteFavorite}
+                  setDeleteFavorite={setDeleteFavorite}
+                  modifyFavorite={modifyFavorite}
+                  setModifyFavorite={setModifyFavorite}
+                  modifyFavoriteFetch={modifyFavoriteFetch}
+                />
+              </div>
+            ))}
+          </div>
+        )}
         <div className="grid-publicity d-none d-lg-grid ">
           <aside className="carousel-advertisement-container">
             <AsideAdvertisement />
@@ -83,6 +92,8 @@ const Articlepublicitygrid = ({
             page={page}
             setPage={setPage}
             totalPages={totalPages}
+            setIsLoading={setIsLoading}
+            setIsLoadingHighlight={setIsLoadingHighlight}
           />
         </div>
       </div>
