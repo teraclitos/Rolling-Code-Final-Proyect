@@ -439,52 +439,52 @@ const ArticleDetail = ({
                   </Form.Group>
                 </Form.Group>
               </Form>
-            </Modal.Body>
 
-            <Modal.Footer className="card-crud d-flex justify-content-center">
-              <Button className="btn-detail" onClick={handleClose}>
-                Cerrar
-              </Button>
-              <Form.Group className=" btn-detail">
-                <Form.Check
-                  type="checkbox"
-                  label="Destacar"
-                  onClick={() => {
-                    addHighlight();
-                  }}
-                  checked={editHighlight}
-                />
-              </Form.Group>
-              <Form.Group className="">
-                <Button
-                  id="edit-Buttom"
-                  className="btn-detail"
-                  onClick={(e) => {
-                    if (checkAllFields().length > 0) {
-                      toastError(
-                        "Debe completar correctamente todos los campos obligatorios"
-                      );
-                    } else {
-                      if (highlightFilter() === true) {
-                        handleSubmit(e);
-
-                        setTimeout(() => {
-                          setChangeData(changeData + 1);
-                        }, 1000);
-
-                        handleClose();
-                      } else {
-                        toastError("Sólo puede haber tres destacados");
-                      }
-
-                      setRender(true);
-                    }
-                  }}
-                >
-                  Guardar cambios
+              <Modal.Footer className="card-crud d-flex justify-content-center">
+                <Button className="btn-detail" onClick={handleClose}>
+                  Cerrar
                 </Button>
-              </Form.Group>
-            </Modal.Footer>
+                <Form.Group className=" btn-detail">
+                  <Form.Check
+                    type="checkbox"
+                    label="Destacar"
+                    onClick={() => {
+                      addHighlight();
+                    }}
+                    checked={editHighlight}
+                  />
+                </Form.Group>
+                <Form.Group className="">
+                  <Button
+                    id="edit-Buttom"
+                    className="btn-detail"
+                    onClick={(e) => {
+                      if (checkAllFields().length > 0) {
+                        toastError(
+                          "Debe completar correctamente todos los campos obligatorios"
+                        );
+                      } else {
+                        if (highlightFilter() === true) {
+                          handleSubmit(e);
+
+                          setTimeout(() => {
+                            setChangeData(changeData + 1);
+                          }, 1000);
+
+                          handleClose();
+                        } else {
+                          toastError("Sólo puede haber tres destacados");
+                        }
+
+                        setRender(true);
+                      }
+                    }}
+                  >
+                    Guardar cambios
+                  </Button>
+                </Form.Group>
+              </Modal.Footer>
+            </Modal.Body>
           </Modal>
 
           <Modal
