@@ -52,6 +52,9 @@ const Main = ({
   page,
   setPage,
   totalPages,
+  pageH,
+  setPageH,
+  totalPagesH,
 }) => {
   return (
     <>
@@ -98,6 +101,10 @@ const Main = ({
                     add={add}
                     cart={cart}
                     totalHighlights={totalHighlights}
+                    pageH={pageH}
+                    setPageH={setPageH}
+                    totalPagesH={totalPagesH}
+                    isLoadingHighlight={isLoadingHighlight}
                   />
                 )}
               </>
@@ -238,7 +245,12 @@ const Main = ({
           <Route path="/recuperarContraseña" element={<RecoverPass />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
-        <Footer />
+        <Footer
+          setNewLoad={setNewLoad}
+          newLoad={newLoad}
+          setIsLoading={setIsLoading}
+          setIsLoadingHighlight={setIsLoadingHighlight}
+        />
       </Container>
     </>
   );

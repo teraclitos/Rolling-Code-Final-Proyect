@@ -97,6 +97,11 @@ const Navbar = ({
                 width="75"
                 height="75"
                 className="d-inline-block align-top"
+                onClick={() => {
+                  setIsLoading(true);
+                  setIsLoadingHighlight(true);
+                  setNewLoad(newLoad + 1);
+                }}
               />
             </BSNavbar.Brand>
           </Link>
@@ -127,6 +132,7 @@ const Navbar = ({
                   onClick={() => {
                     if (auth.user) {
                       setIsLoadingHighlight(true);
+
                       setNewLoad(newLoad + 1);
                     } else {
                       handleShowLogin();

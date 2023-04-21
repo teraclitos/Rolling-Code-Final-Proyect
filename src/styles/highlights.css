@@ -62,3 +62,13 @@
 .container-row-highlight {
   padding: 0 7em;
 }
+.arrow-page {
+  color: #1986a0;
+  cursor: pointer;
+}
+.arrow-page-left {
+  transform: rotate(180deg);
+}
+.number-highlight {
+  user-select: none;
+}

@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import "../styles/allcss.css";
 
-import {
-  Button,
-  Card,
-  Container,
-  Row,
-  Modal,
-  Form,
-  Col,
-  Pagination,
-} from "react-bootstrap";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { Card, Container, Row } from "react-bootstrap";
+import { faStar, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
   faTwitter,
@@ -28,7 +20,24 @@ const Highlights = ({
   toastError,
   toastSuccess,
   totalHighlights,
+  setPageH,
+  pageH,
+  totalPagesH,
 }) => {
+  const changePageR = () => {
+    if (pageH !== totalPagesH) {
+      setPageH(pageH + 1);
+    } else {
+      setPageH(1);
+    }
+  };
+  const changePageL = () => {
+    if (pageH !== 1) {
+      setPageH(pageH - 1);
+    } else {
+      setPageH(totalPagesH);
+    }
+  };
   return (
     <div>
       <Container
@@ -105,6 +114,24 @@ const Highlights = ({
             </div>
           </Row>
         ))}
+
+        <div className="my-3 d-flex justify-content-center align-items-center">
+          <FontAwesomeIcon
+            icon={faArrowRight}
+            className="me-2 arrow-page fs-4 arrow-page-left"
+            onClick={() => {
+              changePageL();
+            }}
+          />
+          <span className="number-highlight">{pageH}</span>
+          <FontAwesomeIcon
+            onClick={() => {
+              changePageR();
+            }}
+            icon={faArrowRight}
+            className="ms-2 fs-4 arrow-page "
+          />
+        </div>
       </Container>
     </div>
   );

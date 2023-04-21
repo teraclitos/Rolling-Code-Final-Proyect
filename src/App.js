@@ -9,6 +9,9 @@ function App() {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState("");
+  const [pageH, setPageH] = useState(1);
+
+  const [totalPagesH, setTotalPagesH] = useState("");
   const [changeData, setChangeData] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingHighlight, setIsLoadingHighlight] = useState(true);
@@ -54,14 +57,21 @@ function App() {
         setTotalPages(json.totalPages);
       })
       .finally(() => setIsLoading(false));
-  }, [changeData, page]);
+  }, [changeData, page, newLoad]);
 
   useEffect(() => {
-    fetch(`https://backend-news-eight.vercel.app/news/highlight?highlight=true`)
+    fetch(
+      `https://backend-news-eight.vercel.app/news/highlight?highlight=true&limit=${
+        window.location.pathname === "/" ? 3 : 1
+      }&page=${pageH}`
+    )
       .then((res) => res.json())
-      .then((json) => setTotalHighlights(json))
+      .then((json) => {
+        setTotalHighlights(json.docs);
+        setTotalPagesH(json.totalPages);
+      })
       .finally(() => setIsLoadingHighlight(false));
-  }, [changeData, page, newLoad]);
+  }, [changeData, page, newLoad, pageH]);
 
   const add = (p) => {
     setCart((cart) => [...cart, p]);
@@ -172,6 +182,9 @@ function App() {
         setPage={setPage}
         totalPages={totalPages}
         setIsLoadingHighlight={setIsLoadingHighlight}
+        pageH={pageH}
+        setPageH={setPageH}
+        totalPagesH={totalPagesH}
       />
       <ToastContainer
         transition={Flip}

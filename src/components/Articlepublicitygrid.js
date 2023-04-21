@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect } from "react";
 import "../styles/allcss.css";
 import Categorias from "../components/Categorias";
 import Slider from "./Slider";
