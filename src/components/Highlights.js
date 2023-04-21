@@ -31,12 +31,12 @@ const Highlights = ({
 }) => {
   return (
     <div>
-      <Container className="my-5 container-highlights-list min-vh-100">
+      <Container fluid className="my-5  min-vh-100">
         <h2 className="title-news text-center">Noticias de la Semana</h2>
         {totalHighlights.map((d, i) => (
           <Row
             key={"highlight" + i}
-            className="container me-auto ms-auto"
+            className=" px-0 px-sm-5 me-auto ms-auto"
             xs={1}
             md={2}
           >
