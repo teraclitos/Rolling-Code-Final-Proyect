@@ -1,0 +1,20 @@
+.pagination-item-news {
+  width: 2.5em;
+  height: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin-right: 1em;
+  background-color: #1986a0;
+  cursor: pointer;
+}
+.pagination-item-news:hover {
+  background-color: #fd841f;
+}
+
+.pagination-item-news-active {
+  pointer-events: none;
+  background-color: #fd841f;
+  color: #fff;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import Pagination from "react-bootstrap/Pagination";
+import "../styles/allcss.css";
 
 const PaginationNew = ({
   page,
@@ -12,7 +13,12 @@ const PaginationNew = ({
   let items = [];
   for (let number = 1; number <= totalPages; number++) {
     items.push(
-      <Pagination.Item
+      <div
+        className={
+          number !== active
+            ? "pagination-item-news"
+            : "pagination-item-news pagination-item-news-active"
+        }
         onClick={() => {
           setIsLoading(true);
 
@@ -22,7 +28,7 @@ const PaginationNew = ({
         active={number === active}
       >
         {number}
-      </Pagination.Item>
+      </div>
     );
   }
   return (
