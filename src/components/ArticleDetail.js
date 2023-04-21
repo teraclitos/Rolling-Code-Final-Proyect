@@ -228,7 +228,7 @@ const ArticleDetail = ({
 
                       <div className="col-12 linea-style" />
                     </div>
-                    <Card.Title className="text-center title-detail fs-4">
+                    <Card.Title className="text-center title-detail fs-1 py-3">
                       {data.title}
                     </Card.Title>
                   </Card.Body>
@@ -236,11 +236,11 @@ const ArticleDetail = ({
                 <Card border="0">
                   <Card.Img src={data.img_URL} width={40} />
                   <Card.Body>
-                    <Card.Title className="title-description fs-4 my-3">
+                    <Card.Title className="title-description fs-4 my-4">
                       {data.description}
                     </Card.Title>
 
-                    <Card.Text className="content fs-6">
+                    <Card.Text className="content py-4 fs-6">
                       {data.content}
                     </Card.Text>
 

@@ -42,7 +42,7 @@ const Highlights = ({
           >
             <div className="col-12 col-md-12">
               <Card border="0" className="mt-5 card-highlights">
-                <Card.Header className="title-section d-flex align-items-center justify-content-center">
+                <Card.Header className="title-section  d-flex align-items-center justify-content-center">
                   {d.category}
                 </Card.Header>
 
@@ -79,16 +79,22 @@ const Highlights = ({
                   </div>
                   <div className="col-12 linea-style" />
 
-                  <Card.Title className="text-center">{d.title}</Card.Title>
+                  <Card.Title className="text-center fs-1 py-3">
+                    {d.title}
+                  </Card.Title>
                 </Card.Body>
               </Card>
               <Card border="0">
                 <Card.Img src={d.img_URL} />
 
-                <Card.Body className="card-destacado">
-                  <Card.Title>{d.description}</Card.Title>
+                <Card.Body className="">
+                  <Card.Title className="title-description fs-4 my-4">
+                    {d.description}
+                  </Card.Title>
 
-                  <Card.Text>{d.content}</Card.Text>
+                  <Card.Text className="content fs-6 py-4">
+                    {d.content}
+                  </Card.Text>
                 </Card.Body>
               </Card>
 
