@@ -47,6 +47,7 @@ const Navbar = ({
   modifyFavoriteFetch,
   loadFavorite,
   setLoadFavorite,
+  setIsLoadingHighlight,
   newLoad,
   setNewLoad,
 }) => {
@@ -121,8 +122,16 @@ const Navbar = ({
 
               <Nav className="me-0 me-lg-3 mb-1 mb-lg-0">
                 <Link
-                  to="/highlights"
+                  to={auth.user && "/highlights"}
                   className="link-nav "
+                  onClick={() => {
+                    if (auth.user) {
+                      setIsLoadingHighlight(true);
+                      setNewLoad(newLoad + 1);
+                    } else {
+                      handleShowLogin();
+                    }
+                  }}
                   style={{ textDecoration: "none" }}
                 >
                   Destacados

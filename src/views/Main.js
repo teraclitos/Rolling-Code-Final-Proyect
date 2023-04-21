@@ -81,19 +81,26 @@ const Main = ({
           newLoad={newLoad}
           setNewLoad={setNewLoad}
           setCategory={setCategory}
+          setIsLoadingHighlight={setIsLoadingHighlight}
         />
         <Routes>
           <Route
             path="/highlights"
             element={
-              <Highlights
-                toastError={toastError}
-                toastSuccess={toastSuccess}
-                data={data}
-                add={add}
-                cart={cart}
-                totalHighlights={totalHighlights}
-              />
+              <>
+                {isLoadingHighlight ? (
+                  <Loader />
+                ) : (
+                  <Highlights
+                    toastError={toastError}
+                    toastSuccess={toastSuccess}
+                    data={data}
+                    add={add}
+                    cart={cart}
+                    totalHighlights={totalHighlights}
+                  />
+                )}
+              </>
             }
           />
           <Route

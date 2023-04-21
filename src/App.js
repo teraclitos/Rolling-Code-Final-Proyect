@@ -61,7 +61,7 @@ function App() {
       .then((res) => res.json())
       .then((json) => setTotalHighlights(json))
       .finally(() => setIsLoadingHighlight(false));
-  }, [changeData, page]);
+  }, [changeData, page, newLoad]);
 
   const add = (p) => {
     setCart((cart) => [...cart, p]);
