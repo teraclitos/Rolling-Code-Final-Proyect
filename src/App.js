@@ -15,6 +15,7 @@ function App() {
   const [changeData, setChangeData] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingHighlight, setIsLoadingHighlight] = useState(true);
+  const [isLoadingHighlightPage, setIsLoadingHighlightPage] = useState(true);
   const handleShowLogin = () => setShowLogin(true);
   const [showLogin, setShowLogin] = useState(false);
   const [cart, setCart] = useState([]);
@@ -70,7 +71,10 @@ function App() {
         setTotalHighlights(json.docs);
         setTotalPagesH(json.totalPages);
       })
-      .finally(() => setIsLoadingHighlight(false));
+      .finally(() => {
+        setIsLoadingHighlight(false);
+        setIsLoadingHighlightPage(false);
+      });
   }, [changeData, page, newLoad, pageH]);
 
   const add = (p) => {
@@ -185,6 +189,8 @@ function App() {
         pageH={pageH}
         setPageH={setPageH}
         totalPagesH={totalPagesH}
+        setIsLoadingHighlightPage={setIsLoadingHighlightPage}
+        isLoadingHighlightPage={isLoadingHighlightPage}
       />
       <ToastContainer
         transition={Flip}

@@ -49,6 +49,8 @@ const Main = ({
   setCategory,
   setIsLoadingHighlight,
   isLoadingHighlight,
+  setIsLoadingHighlightPage,
+  isLoadingHighlightPage,
   page,
   setPage,
   totalPages,
@@ -104,7 +106,8 @@ const Main = ({
                     pageH={pageH}
                     setPageH={setPageH}
                     totalPagesH={totalPagesH}
-                    isLoadingHighlight={isLoadingHighlight}
+                    isLoadingHighlightPage={isLoadingHighlightPage}
+                    setIsLoadingHighlightPage={setIsLoadingHighlightPage}
                   />
                 )}
               </>
