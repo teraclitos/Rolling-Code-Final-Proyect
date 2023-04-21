@@ -30,4 +30,8 @@
   .grid-articles {
     grid-template-columns: 1fr;
   }
+
+  .card-crud-footer {
+    padding-bottom: 3em;
+  }
 }

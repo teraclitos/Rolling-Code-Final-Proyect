@@ -440,7 +440,7 @@ const ArticleDetail = ({
                 </Form.Group>
               </Form>
 
-              <Modal.Footer className="card-crud d-flex justify-content-center">
+              <Modal.Footer className="card-crud card-crud-footer d-flex  justify-content-center">
                 <Button className="btn-detail" onClick={handleClose}>
                   Cerrar
                 </Button>
