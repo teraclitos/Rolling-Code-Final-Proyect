@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState("");
   const [changeData, setChangeData] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingHighlight, setIsLoadingHighlight] = useState(true);
@@ -43,11 +45,17 @@ function App() {
       .catch((error) => console.log(error));
   };
   useEffect(() => {
-    fetch(`https://backend-news-eight.vercel.app/news/news`)
+    fetch(
+      `https://backend-news-eight.vercel.app/news/news?limit=6&page=${page}`
+    )
       .then((res) => res.json())
-      .then((json) => setData(json))
+      .then((json) => {
+        console.log(json);
+        setData(json.docs);
+        setTotalPages(json.totalPages);
+      })
       .finally(() => setIsLoading(false));
-  }, [changeData, category]);
+  }, [changeData, page]);
 
   useEffect(() => {
     fetch(`https://backend-news-eight.vercel.app/news/highlight?highlight=true`)
@@ -161,6 +169,9 @@ function App() {
         category={category}
         setCategory={setCategory}
         isLoadingHighlight={isLoadingHighlight}
+        page={page}
+        setPage={setPage}
+        totalPages={totalPages}
       />
       <ToastContainer
         transition={Flip}

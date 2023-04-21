@@ -48,6 +48,9 @@ const Main = ({
   category,
   setCategory,
   isLoadingHighlight,
+  page,
+  setPage,
+  totalPages,
 }) => {
   return (
     <>
@@ -142,6 +145,9 @@ const Main = ({
                     modifyFavoriteFetch={modifyFavoriteFetch}
                     category={category}
                     setCategory={setCategory}
+                    page={page}
+                    setPage={setPage}
+                    totalPages={totalPages}
                   />
                 )}
               </>

@@ -6,6 +6,7 @@ import Advertising from "./Advertising";
 import Header from "../components/Header";
 import AsideAdvertisement from "./AsideAdvertisement";
 import ArticleCard from "./ArticleCard";
+import PaginationNew from "./PaginationNew";
 
 const Articlepublicitygrid = ({
   data,
@@ -24,6 +25,9 @@ const Articlepublicitygrid = ({
   modifyFavorite,
   setModifyFavorite,
   modifyFavoriteFetch,
+  page,
+  setPage,
+  totalPages,
 }) => {
   return (
     <>
@@ -73,6 +77,13 @@ const Articlepublicitygrid = ({
           <aside className="carousel-advertisement-container">
             <AsideAdvertisement />
           </aside>
+        </div>
+        <div className="d-flex justify-content-center px-3">
+          <PaginationNew
+            page={page}
+            setPage={setPage}
+            totalPages={totalPages}
+          />
         </div>
       </div>
     </>
