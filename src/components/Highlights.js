@@ -31,7 +31,10 @@ const Highlights = ({
 }) => {
   return (
     <div>
-      <Container fluid className="my-5 p-0  min-vh-100">
+      <Container
+        fluid
+        className="my-5 p-0 container-highlights-list min-vh-100"
+      >
         <h2 className="title-news text-center">Noticias de la Semana</h2>
         {totalHighlights.map((d, i) => (
           <Row
