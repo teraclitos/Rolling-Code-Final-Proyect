@@ -287,6 +287,7 @@ const ModalRegister = ({
                   />
                 </InputGroup.Text>
                 <Form.Control
+                  autoFocus
                   maxLength={31}
                   value={name}
                   autoComplete="off"
