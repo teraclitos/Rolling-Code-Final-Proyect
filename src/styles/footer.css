@@ -38,3 +38,6 @@ footer {
 .text-footer {
   font-size: 20px;
 }
+.logo-footer {
+  cursor: pointer;
+}

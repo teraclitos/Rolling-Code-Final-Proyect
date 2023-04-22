@@ -23,10 +23,11 @@ const ModalLogin = ({
   handleShowRegister,
   toastError,
   toastSuccess,
+  setLoadFavorite,
 }) => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [loginOk, setLoginOk] = useState("");
+  const [loginOk, setLoginOk] = useState(null);
   const [borderUser, setBorderUser] = useState("outline-input");
   const [firstValidationUser, setFirstValidationUser] = useState(false);
   const [firstValidationPassword, setFirstValidationPassword] = useState(false);
@@ -73,18 +74,7 @@ const ModalLogin = ({
     setFirstValidationUser(false);
   };
   const navigate = useNavigate();
-  useEffect(() => {
-    if (loginOk.role) {
-      localStorage.setItem("token", JSON.stringify(loginOk.token));
-      login(user, loginOk.role);
-      navigate("/");
-      handleCloseLogin();
-      toastSuccess(":hola: Bienvenido! Sesión iniciada correctamente");
-    } else if (loginOk.role === false) {
-      handleCloseLogin();
-      toastError("no se pudo iniciar sesion");
-    }
-  }, [loginOk]);
+
   const handleLogin = async (e) => {
     setLoginOk({ name: null, role: null });
     fetch("https://backend-news-eight.vercel.app/users/login", {
@@ -97,22 +87,34 @@ const ModalLogin = ({
         password: password,
       }),
     })
-      .then((res) => {
-        res.json();
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.token) {
+          localStorage.setItem("token", JSON.stringify(json.token));
+          localStorage.setItem("role", JSON.stringify(json.role));
+          localStorage.setItem("username", JSON.stringify(json.username));
+          localStorage.setItem("id", JSON.stringify(json.id));
+          setLoginOk(true);
+          setLoadFavorite(true);
+        } else {
+          setLoginOk(false);
+        }
       })
 
-      .then((json) => {
-        console.log(json.data.token);
-        setLoginOk({
-          username: user,
-          role: json.role,
-          token: json.data.token,
-        });
-      })
-      .catch((error) => {
-        setLoginOk({ username: null, role: false });
-      });
+      .catch((error) => setLoginOk(false));
   };
+  useEffect(() => {
+    if (loginOk === true) {
+      login();
+      navigate("/");
+      handleCloseLogin();
+      toastSuccess(":hola: Bienvenido! Sesión iniciada correctamente");
+      setLoginOk(null);
+    } else if (loginOk === false) {
+      toastError("Usuario o contraseña incorrectos");
+      setLoginOk(null);
+    }
+  }, [loginOk]);
   return (
     <div>
       <Modal centered show={showLogin} onHide={handleCloseLogin}>
@@ -208,7 +210,7 @@ const ModalLogin = ({
               </div>
 
               <div className="d-flex justify-content-center w-100">
-                <span className="mt-2">
+                <div className="mt-2">
                   Si no recuerda su contraseña, ingrese
                   <Link
                     className="ms-2"
@@ -217,10 +219,10 @@ const ModalLogin = ({
                   >
                     aquí
                   </Link>
-                </span>
+                </div>
               </div>
               <div className="d-flex justify-content-center w-100">
-                <span className="mt-2">
+                <div className="mt-2">
                   Aún no estás registrado, pues qué esperas
                   <Link
                     className="ms-2"
@@ -231,7 +233,7 @@ const ModalLogin = ({
                   >
                     regístrate
                   </Link>
-                </span>
+                </div>
               </div>
             </Form.Group>
             <Button

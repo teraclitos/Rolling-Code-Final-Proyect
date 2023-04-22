@@ -1,0 +1,31 @@
+.bg-offcanvas-favorite::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.bg-offcanvas-favorite::-webkit-scrollbar-track {
+  background-color: #1986a0;
+  margin-top: 5px;
+}
+
+.bg-offcanvas-favorite::-webkit-scrollbar-thumb {
+  background-color: #fd841f;
+
+  border-radius: 6px;
+}
+
+.modal-crud::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.modal-crud::-webkit-scrollbar-track {
+  background-color: #1986a0;
+  margin-top: 5px;
+}
+
+.modal-crud::-webkit-scrollbar-thumb {
+  background-color: #fd841f;
+
+  border-radius: 6px;
+}
