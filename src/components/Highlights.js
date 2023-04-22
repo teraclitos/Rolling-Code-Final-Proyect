@@ -71,12 +71,11 @@ const Highlights = ({
         <h2 className="title-news text-center">Noticias de la Semana</h2>
 
         {totalHighlights.map((d, i) => (
-          <>
+          <div key={"highlightdetail" + d._id}>
             {isLoadingHighlightPage ? (
               <LoaderPage />
             ) : (
               <Row
-                key={"highlight" + i}
                 className="  container-row-highlight me-auto ms-auto"
                 xs={1}
                 md={2}
@@ -143,7 +142,7 @@ const Highlights = ({
                 </div>
               </Row>
             )}
-          </>
+          </div>
         ))}
 
         <div className="mt-5 mb-3 d-flex justify-content-center align-items-center">
