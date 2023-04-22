@@ -19,6 +19,7 @@ import {
   faEnvelope,
   faRightToBracket,
   faRightFromBracket,
+  faSquarePen,
   faMagnifyingGlass,
   faScrewdriverWrench,
 } from "@fortawesome/free-solid-svg-icons";
@@ -124,7 +125,6 @@ const Navbar = ({
                   </Link>
                 </Nav>
               )}
-
               <Nav className="me-0 me-lg-3 mb-1 mb-lg-0">
                 <Link
                   to={auth.user && "/highlights"}
@@ -144,7 +144,6 @@ const Navbar = ({
                   <FontAwesomeIcon icon={faStar} className="mx-2" />
                 </Link>
               </Nav>
-
               {(!auth.user || auth.role === "user") && (
                 <Nav className="me-0 me-lg-3 mb-0 mb-lg-0">
                   <Link
@@ -157,7 +156,6 @@ const Navbar = ({
                   </Link>
                 </Nav>
               )}
-
               <Nav className="me-0 me-lg-3 mb-1 mb-lg-0">
                 <Link
                   to={auth.user && "/articlefound"}
@@ -194,6 +192,22 @@ const Navbar = ({
                   </Link>
                 </Nav>
               )}
+              {auth.role === "admin" && (
+                <Nav className="me-0 me-lg-3 mb-3 mb-lg-0">
+                  <Link
+                    onClick={() => {
+                      setIsLoading(true);
+                      setNewLoad(newLoad + 1);
+                    }}
+                    to="/usertable"
+                    className="link-nav"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Crear Noticia
+                    <FontAwesomeIcon icon={faSquarePen} className="mx-2" />
+                  </Link>
+                </Nav>
+              )}
               <Nav className="me-0 me-lg-3 mb-3 mb-lg-0">
                 {auth.user ? (
                   <Button className="btn-useradmin ">
@@ -211,7 +225,6 @@ const Navbar = ({
                   </Link>
                 )}
               </Nav>
-
               {auth.user && (
                 <Nav className="me-0 me-lg-3 mb-3 mb-lg-0">
                   <div
@@ -224,7 +237,6 @@ const Navbar = ({
                   </div>
                 </Nav>
               )}
-
               {!auth.user && (
                 <Nav onClick={handleShowRegister}>
                   <Link className="link-nav" style={{ textDecoration: "none" }}>
