@@ -37,20 +37,22 @@ const Articlepublicitygrid = ({
 }) => {
   const navigation = useNavigate();
   useEffect(() => {
-    fetch(`https://backend-news-eight.vercel.app/users/control`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: auth.token,
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.error) {
-          logout();
-          navigation("/");
-        }
-      });
+    if (auth.user) {
+      fetch(`https://backend-news-eight.vercel.app/users/control`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: auth.token,
+        },
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.error) {
+            logout();
+            navigation("/");
+          }
+        });
+    }
   }, []);
 
   return (

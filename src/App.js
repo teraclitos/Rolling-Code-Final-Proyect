@@ -10,7 +10,6 @@ function App() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState("");
   const [pageH, setPageH] = useState(1);
-
   const [totalPagesH, setTotalPagesH] = useState("");
   const [changeData, setChangeData] = useState(1);
   const [isLoading, setIsLoading] = useState(true);

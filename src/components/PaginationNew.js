@@ -25,7 +25,6 @@ const PaginationNew = ({
           setPage(number);
         }}
         key={number + "pagination"}
-        active={number === active}
       >
         {number}
       </div>
