@@ -1,7 +1,8 @@
 import { React, useEffect, useState } from "react";
 import "../styles/allcss.css";
-import { Animated } from "react-animated-css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import {
   faFacebook,
   faTwitter,
@@ -9,6 +10,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const Header = () => {
+  const navigation = useNavigate();
   const navHeight = () => {
     let navBarHeight = document.getElementById("nav-bar-logo").clientHeight;
     return navBarHeight;
@@ -39,9 +41,27 @@ const Header = () => {
       className="container-fluid containerbg grid-header pt-4 "
     >
       <div className="fs-1 d-flex flex-column justify-content-center align-items-center icon-container">
-        <FontAwesomeIcon className="icon-fb" icon={faFacebook} />
-        <FontAwesomeIcon className="icon-tw" icon={faTwitter} />
-        <FontAwesomeIcon className="icon-ig" icon={faInstagram} />
+        <FontAwesomeIcon
+          onClick={() => {
+            navigation("*");
+          }}
+          className="icon-fb"
+          icon={faFacebook}
+        />
+        <FontAwesomeIcon
+          onClick={() => {
+            navigation("*");
+          }}
+          className="icon-tw"
+          icon={faTwitter}
+        />
+        <FontAwesomeIcon
+          onClick={() => {
+            navigation("*");
+          }}
+          className="icon-ig"
+          icon={faInstagram}
+        />
       </div>
       <div className=" text-center d-none d-lg-flex justify-content-center align-items-center ">
         <h3 className="text-header   fs-1 ">

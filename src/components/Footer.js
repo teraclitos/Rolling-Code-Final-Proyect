@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/allcss.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import {
   faFacebook,
   faTwitter,
@@ -13,6 +14,7 @@ const Footer = ({
   setIsLoading,
   setIsLoadingHighlight,
 }) => {
+  const navigation = useNavigate();
   return (
     <div>
       <footer className="mt-auto background-footer">
@@ -21,6 +23,7 @@ const Footer = ({
             <div className="col-12 col-sm-6 col-md-3 p-2 mt-4 d-flex justify-content-center w-auto align-items-center m-2">
               <img
                 onClick={() => {
+                  navigation("/");
                   setNewLoad(newLoad + 1);
                   setIsLoading(true);
                   setIsLoadingHighlight(true);
@@ -40,6 +43,9 @@ const Footer = ({
 
                   <div className="col-3 btn-footer">
                     <FontAwesomeIcon
+                      onClick={() => {
+                        navigation("*");
+                      }}
                       style={{ fontSize: "2em" }}
                       className="icon-fb"
                       icon={faFacebook}
@@ -47,6 +53,9 @@ const Footer = ({
                   </div>
                   <div className="col-3 btn-footer">
                     <FontAwesomeIcon
+                      onClick={() => {
+                        navigation("*");
+                      }}
                       style={{ fontSize: "2em" }}
                       className="icon-ig"
                       icon={faInstagram}
@@ -54,6 +63,9 @@ const Footer = ({
                   </div>
                   <div className="col-3 btn-footer">
                     <FontAwesomeIcon
+                      onClick={() => {
+                        navigation("*");
+                      }}
                       style={{ fontSize: "2em" }}
                       className="icon-tw"
                       icon={faTwitter}

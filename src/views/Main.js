@@ -248,7 +248,17 @@ const Main = ({
             }
           />
           <Route path="/recuperarContraseña" element={<RecoverPass />} />
-          <Route path="*" element={<Error404 />} />
+          <Route
+            path="*"
+            element={
+              <Error404
+                setIsLoading={setIsLoading}
+                setNewLoad={setNewLoad}
+                newLoad={newLoad}
+                setIsLoadingHighlight={setIsLoadingHighlight}
+              />
+            }
+          />
         </Routes>
         <Footer
           setNewLoad={setNewLoad}
