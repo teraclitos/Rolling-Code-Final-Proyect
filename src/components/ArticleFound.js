@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import ArticleCard from "./ArticleCard";
 import Loader from "./Loader";
+import { useNavigate } from "react-router-dom";
 
 const ArticleFound = ({
   data,
@@ -20,9 +21,11 @@ const ArticleFound = ({
   setModifyFavorite,
   modifyFavoriteFetch,
   newLoad,
+  logout,
 }) => {
   const [stock, setStock] = useState([]);
   const [search, setSearch] = useState("");
+  const navigation = useNavigate();
 
   useEffect(() => {
     fetch(
@@ -36,7 +39,14 @@ const ArticleFound = ({
       }
     )
       .then((res) => res.json())
-      .then((json) => setStock(json))
+      .then((json) => {
+        if (!json.error) {
+          setStock(json);
+        } else {
+          logout();
+          navigation("/");
+        }
+      })
       .finally(() => setIsLoading(false));
   }, [search, newLoad]);
 

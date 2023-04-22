@@ -7,8 +7,9 @@ import Header from "../components/Header";
 import AsideAdvertisement from "./AsideAdvertisement";
 import ArticleCard from "./ArticleCard";
 import PaginationNew from "./PaginationNew";
-import Loader from "./Loader";
+
 import LoaderPage from "./LoaderPage";
+import { useNavigate } from "react-router-dom";
 
 const Articlepublicitygrid = ({
   data,
@@ -32,7 +33,26 @@ const Articlepublicitygrid = ({
   setPage,
   totalPages,
   setIsLoadingHighlight,
+  logout,
 }) => {
+  const navigation = useNavigate();
+  useEffect(() => {
+    fetch(`https://backend-news-eight.vercel.app/users/control`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: auth.token,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.error) {
+          logout();
+          navigation("/");
+        }
+      });
+  }, []);
+
   return (
     <>
       {auth.role !== "admin" && <Advertising />}

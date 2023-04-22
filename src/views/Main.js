@@ -108,6 +108,8 @@ const Main = ({
                     totalPagesH={totalPagesH}
                     isLoadingHighlightPage={isLoadingHighlightPage}
                     setIsLoadingHighlightPage={setIsLoadingHighlightPage}
+                    logout={logout}
+                    auth={auth}
                   />
                 )}
               </>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/allcss.css";
 
@@ -10,8 +11,7 @@ import {
   faTwitter,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-import Categorias from "./Categorias";
-import { Route, Routes, Link, useParams } from "react-router-dom";
+
 import LoaderPage from "./LoaderPage";
 
 const Highlights = ({
@@ -26,7 +26,26 @@ const Highlights = ({
   totalPagesH,
   setIsLoadingHighlightPage,
   isLoadingHighlightPage,
+  logout,
+  auth,
 }) => {
+  const navigation = useNavigate();
+  useEffect(() => {
+    fetch(`https://backend-news-eight.vercel.app/users/control`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: auth.token,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.error) {
+          logout();
+          navigation("/");
+        }
+      });
+  }, []);
   const changePageR = () => {
     setIsLoadingHighlightPage(true);
     if (pageH !== totalPagesH) {
