@@ -19,12 +19,12 @@
   color: white;
 }
 
-.table-responsive {
-  max-height: 390px;
-  overflow: auto;
+.table-bg-color {
+  background-color: rgba(17, 17, 17, 0.829);
+  max-width: 100%;
 }
 
-@media (max-width: 580px) {
+/* @media (max-width: 580px) {
   .div-administrador > div {
     width: 95%;
   }
@@ -45,7 +45,7 @@
   .table-color th {
     font-size: 70% !important;
   }
-}
+} */
 .table-color {
   background-color: #d8d8d8;
 }

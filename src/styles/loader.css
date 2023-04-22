@@ -1,3 +1,23 @@
 .loader {
   color: linear-gradient(to right, #0b19da, #ee8e12);
 }
+
+.loader-favorite {
+  width: 1em;
+  height: 1em;
+}
+.loader-container {
+  position: fixed;
+  background-color: #ffffff;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000000;
+}
+
+.loader-page {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}

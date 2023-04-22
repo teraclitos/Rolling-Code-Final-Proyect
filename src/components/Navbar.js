@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import { Row, Col } from "react-bootstrap";
 import BSNavbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
+import Spinner from "react-bootstrap/Spinner";
+import Modal from "react-bootstrap/Modal";
 import Badge from "react-bootstrap/Badge";
 import ModalRegister from "./ModalRegister";
 import ModalLogin from "./ModalLogin";
 import OffcanvasFav from "./OffcanvasFav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import {
   faStar,
   faUser,
@@ -33,6 +32,7 @@ const Navbar = ({
   dataUser,
   validate,
   auth,
+  setAuth,
   login,
   logout,
   toastError,
@@ -40,13 +40,43 @@ const Navbar = ({
   handleShowLogin,
   showLogin,
   setShowLogin,
+  isLoading,
+  setIsLoading,
+  deleteFavorite,
+  setDeleteFavorite,
+  modifyFavoriteFetch,
+  loadFavorite,
+  setLoadFavorite,
+  setIsLoadingHighlight,
+  newLoad,
+  setNewLoad,
 }) => {
   const [show, setShow] = useState(false);
-
+  const [openLogout, setOpenLogout] = useState(false);
+  const logoutModal = () => {
+    setOpenLogout(false);
+  };
+  const navigation = useNavigate();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [showRegister, setShowRegister] = useState(false);
   const handleShowRegister = () => setShowRegister(true);
+  const handleLogout = async (e) => {
+    fetch("https://backend-news-eight.vercel.app/users/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: auth.token,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        logout();
+        toastSuccess("Sesión cerrada correctamente");
+      })
+
+      .catch((error) => toastError(error));
+  };
 
   return (
     <>
@@ -67,6 +97,11 @@ const Navbar = ({
                 width="75"
                 height="75"
                 className="d-inline-block align-top"
+                onClick={() => {
+                  setIsLoading(true);
+                  setIsLoadingHighlight(true);
+                  setNewLoad(newLoad + 1);
+                }}
               />
             </BSNavbar.Brand>
           </Link>
@@ -77,28 +112,41 @@ const Navbar = ({
           >
             <Nav className="d-flex align-items-center">
               {auth.role === "user" && (
-                <Nav.Link onClick={handleShow}>
+                <Nav onClick={handleShow}>
                   <Link className="link-nav" style={{ textDecoration: "none" }}>
                     Favoritos
                     <FontAwesomeIcon icon={faHeart} className="mx-2" />
-                    <Badge bg="none">{cart.length}</Badge>
+                    {loadFavorite ? (
+                      <Spinner animation="grow" className="loader-favorite" />
+                    ) : (
+                      <Badge bg="none">{cart.length}</Badge>
+                    )}
                   </Link>
-                </Nav.Link>
+                </Nav>
               )}
 
-              <Nav.Link>
+              <Nav className="me-0 me-lg-3 mb-1 mb-lg-0">
                 <Link
-                  to="/highlights"
+                  to={auth.user && "/highlights"}
                   className="link-nav "
+                  onClick={() => {
+                    if (auth.user) {
+                      setIsLoadingHighlight(true);
+
+                      setNewLoad(newLoad + 1);
+                    } else {
+                      handleShowLogin();
+                    }
+                  }}
                   style={{ textDecoration: "none" }}
                 >
                   Destacados
                   <FontAwesomeIcon icon={faStar} className="mx-2" />
                 </Link>
-              </Nav.Link>
+              </Nav>
 
               {(!auth.user || auth.role === "user") && (
-                <Nav.Link>
+                <Nav className="me-0 me-lg-3 mb-0 mb-lg-0">
                   <Link
                     to="/contacto"
                     className="link-nav"
@@ -107,22 +155,33 @@ const Navbar = ({
                     Contacto
                     <FontAwesomeIcon icon={faEnvelope} className="mx-2" />
                   </Link>
-                </Nav.Link>
+                </Nav>
               )}
 
-              <Nav.Link>
+              <Nav className="me-0 me-lg-3 mb-1 mb-lg-0">
                 <Link
-                  to="/articlefound"
+                  to={auth.user && "/articlefound"}
                   className="link-nav"
+                  onClick={() => {
+                    if (auth.user) {
+                      setIsLoading(true);
+                      setNewLoad(newLoad + 1);
+                    } else {
+                      handleShowLogin();
+                    }
+                  }}
                   style={{ textDecoration: "none" }}
                 >
                   <FontAwesomeIcon icon={faMagnifyingGlass} className="mx-2" />
                 </Link>
-              </Nav.Link>
+              </Nav>
               {auth.role === "admin" && (
-                <Nav.Link>
-                  {" "}
+                <Nav className="me-0 me-lg-3 mb-3 mb-lg-0">
                   <Link
+                    onClick={() => {
+                      setIsLoading(true);
+                      setNewLoad(newLoad + 1);
+                    }}
                     to="/usertable"
                     className="link-nav"
                     style={{ textDecoration: "none" }}
@@ -133,9 +192,9 @@ const Navbar = ({
                       className="mx-2"
                     />
                   </Link>
-                </Nav.Link>
+                </Nav>
               )}
-              <Nav.Link>
+              <Nav className="me-0 me-lg-3 mb-3 mb-lg-0">
                 {auth.user ? (
                   <Button className="btn-useradmin ">
                     {auth.user}
@@ -151,29 +210,28 @@ const Navbar = ({
                     <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
                   </Link>
                 )}
-              </Nav.Link>
+              </Nav>
 
               {auth.user && (
-                <Nav.Link>
-                  <Link
-                    to="/"
+                <Nav className="me-0 me-lg-3 mb-3 mb-lg-0">
+                  <div
                     className="link-nav"
-                    style={{ textDecoration: "none" }}
-                    onClick={() => logout()}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setOpenLogout(true)}
                   >
                     Cerrar sesión
                     <FontAwesomeIcon icon={faRightToBracket} className="mx-2" />
-                  </Link>
-                </Nav.Link>
+                  </div>
+                </Nav>
               )}
 
               {!auth.user && (
-                <Nav.Link onClick={handleShowRegister}>
+                <Nav onClick={handleShowRegister}>
                   <Link className="link-nav" style={{ textDecoration: "none" }}>
                     Regístrate
                     <FontAwesomeIcon icon={faUser} className="mx-2" />
                   </Link>
-                </Nav.Link>
+                </Nav>
               )}
             </Nav>
           </BSNavbar.Collapse>
@@ -198,6 +256,7 @@ const Navbar = ({
         showRegister={showRegister}
         setShowRegister={setShowRegister}
         handleShowRegister={handleShowRegister}
+        setLoadFavorite={setLoadFavorite}
       />
       <OffcanvasFav
         cart={cart}
@@ -206,7 +265,37 @@ const Navbar = ({
         show={show}
         setShow={setShow}
         handleClose={handleClose}
+        deleteFavorite={deleteFavorite}
+        setDeleteFavorite={setDeleteFavorite}
+        modifyFavoriteFetch={modifyFavoriteFetch}
+        auth={auth}
       />
+      <Modal centered show={openLogout} onHide={logoutModal}>
+        <Modal.Header className="card-crud h-0  "></Modal.Header>
+        <Modal.Body className="card-crud ">
+          ¿Estas seguro que quieres cerrar sesión?
+        </Modal.Body>
+        <Modal.Footer className="card-crud d-flex justify-content-center ">
+          <Button
+            className="btn-detail"
+            onClick={() => {
+              logoutModal();
+            }}
+          >
+            No
+          </Button>
+          <Button
+            className="btn-detail"
+            onClick={() => {
+              handleLogout();
+              setOpenLogout(false);
+              navigation("/");
+            }}
+          >
+            Cerrar sesión
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

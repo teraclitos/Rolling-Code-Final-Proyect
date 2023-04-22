@@ -1,57 +1,85 @@
-import { React, useState, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import "../styles/allcss.css";
 import ArticleCard from "./ArticleCard";
 import { Container, Row, Col } from "react-bootstrap";
-import { Button, Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 
-const CategoryDetail = ({ data, add, cart, auth }) => {
-  const [category, setCategory] = useState("Basquet");
-  const [dataFilter, setDataFilter] = useState([]);
-
-  const categories = () => {
-    const localSTGCategories =
-      JSON.parse(localStorage.getItem("category")) || {};
-
-    if (localSTGCategories.id === 1) {
-      setCategory("Mundial");
-    } else if (localSTGCategories.id === 2) {
-      setCategory("Liga Argentina");
-    } else if (localSTGCategories.id === 3) {
-      setCategory("Tenis");
-    } else {
-      setCategory("Basquet");
-    }
-  };
-
-  const dataFilterFunction = () => {
-    setDataFilter(data.filter((element) => element.category === category));
-
-    const newData = dataFilter;
-
-    return newData;
-  };
+const CategoryDetail = ({
+  add,
+  cart,
+  auth,
+  setIsLoading,
+  logout,
+  isLoading,
+  del,
+  handleShowLogin,
+  deleteFavorite,
+  setDeleteFavorite,
+  modifyFavorite,
+  setModifyFavorite,
+  modifyFavoriteFetch,
+}) => {
+  const params = useParams();
+  const navigation = useNavigate();
+  const [dataCategory, setDataCategory] = useState([]);
 
   useEffect(() => {
-    categories();
-    dataFilterFunction();
-  }, [data, category]);
-
+    fetch(
+      `https://backend-news-eight.vercel.app/news/category/${params.category}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: auth.token,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        if (!json.error) {
+          console.log(json);
+          setDataCategory(json);
+        } else {
+          logout();
+          navigation("/");
+        }
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
   return (
-    <div>
-      <Container className="mb-5">
-        <h2 className="title-category">{category}</h2>
-        <Row>
-          {dataFilter.map((d, i) => (
-            <Col className="col-12 col-lg-6 mb-5">
-              <ArticleCard cart={cart} d={d} add={add} auth={auth} />
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </div>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Container className="mb-5">
+          <h2 className="title-category">
+            {params.category.replace("-", " ")}
+          </h2>
+          <Row>
+            {dataCategory.map((d, i) => (
+              <Col key={d.category + i} className="col-12 col-lg-6 mb-5">
+                <ArticleCard
+                  cart={cart}
+                  d={d}
+                  add={add}
+                  del={del}
+                  auth={auth}
+                  handleShowLogin={handleShowLogin}
+                  setIsLoading={setIsLoading}
+                  deleteFavorite={deleteFavorite}
+                  setDeleteFavorite={setDeleteFavorite}
+                  modifyFavorite={modifyFavorite}
+                  setModifyFavorite={setModifyFavorite}
+                  modifyFavoriteFetch={modifyFavoriteFetch}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      )}
+    </>
   );
 };
 

@@ -5,11 +5,9 @@ import "../styles/allcss.css";
 
 const Slider = ({
   totalHighlights,
-  cart,
-  d,
-  add,
+  setIsLoading,
   auth,
-  toastError,
+
   handleShowLogin,
 }) => {
   return (
@@ -19,7 +17,7 @@ const Slider = ({
       className=" d-none d-lg-block slider-container overlayed-background-slider-container"
     >
       {totalHighlights.map((d, i) => (
-        <Carousel.Item interval={3000}>
+        <Carousel.Item key={"carousel" + i} interval={3000}>
           <img
             className="d-block w-100 slider-img"
             src={d.img_URL}
@@ -28,13 +26,9 @@ const Slider = ({
           <Carousel.Caption className="text-slider-container">
             <Link
               className="text-slider"
-              to={
-                auth.role === "admin" || auth.role === "user"
-                  ? `/ArticleDetailContainer/${d._id}`
-                  : "/"
-              }
+              to={auth.role && `/ArticleDetailContainer/${d._id}`}
               onClick={() => {
-                !auth.user && handleShowLogin();
+                !auth.user ? handleShowLogin() : setIsLoading(true);
               }}
               style={{ textDecoration: "none" }}
             >

@@ -31,6 +31,7 @@ const ModalRegister = ({
   };
 
   const saveUser = () => {
+    console.log(conditions);
     fetch("https://backend-news-eight.vercel.app/users/register", {
       method: "POST",
       headers: {
@@ -41,6 +42,7 @@ const ModalRegister = ({
         name: name,
         email: mails,
         password: password,
+        termsandconditions: conditions,
       }),
     })
       .then((res) => res.json())
@@ -82,7 +84,6 @@ const ModalRegister = ({
       error = "Email incorrecto";
     } else {
       error = true;
-      // setWrongBorderMail(false);
     }
     return error;
   };
@@ -99,7 +100,6 @@ const ModalRegister = ({
       error = "Sólo puede llevar letras";
     } else {
       error = true;
-      // setWrongBorderName(false);
     }
     return error;
   };
@@ -114,7 +114,7 @@ const ModalRegister = ({
     } else if (!/^[a-zA-ZÀ-ÿ]{1}$/i.test(value.trim().charAt(0))) {
       error = "El primer caracter debe ser una letra";
     } else if (
-      !/^[a-zA-ZÀ-ÿ\s0-9-_]{3,30}$/i.test(
+      !/^[a-zA-ZÀ-ÿ\s0-9-_]{2,30}$/i.test(
         value.trim().slice(1, value.trim().length)
       )
     ) {
@@ -123,7 +123,6 @@ const ModalRegister = ({
       error = "No debe llevar espacios ";
     } else {
       error = true;
-      // setWrongBorderUser(false);
     }
     return error;
   };
@@ -144,7 +143,6 @@ const ModalRegister = ({
         "Debe llevar al menos una mayúscula, un caracter especial y un dígito";
     } else {
       error = true;
-      // setWrongBorderPassword(false);
     }
     return error;
   };
@@ -156,7 +154,6 @@ const ModalRegister = ({
       error = "Las contraseñas deben coincidir";
     } else {
       error = true;
-      // setWrongBorderrepeatPassword(false);
     }
     return error;
   };

@@ -1,10 +1,13 @@
 import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
-import "../styles/loader.css";
+import "../styles/allcss.css";
 
 const Loader = () => {
   return (
-    <Container className="d-flex justify-content-center align-items-center flex-column m-auto">
+    <Container
+      fluid
+      className="d-flex justify-content-center align-items-center flex-column loader-container"
+    >
       <Spinner animation="grow" className="loader" />
       <span>Cargando ...</span>
     </Container>

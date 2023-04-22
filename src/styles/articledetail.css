@@ -107,6 +107,13 @@
 .style-crud {
   font-family: "Anton";
   margin-block-start: 20px;
+  align-self: flex-start;
+  padding-left: 1.1em;
+  font-size: 1.2em;
+}
+.group-container-crud {
+  display: flex;
+  flex-direction: column;
 }
 
 .icon-tw:hover {
@@ -128,15 +135,13 @@
 
 .title-detail {
   font-family: "anton";
-  font-size: 35px;
 }
 .title-description {
   font-family: "Anton";
-  font-size: 20px;
+
   color: #5a5858;
 }
 .content {
-  font-size: 20px;
   text-align: justify;
 }
 
@@ -166,4 +171,7 @@
 .btn-close-delete {
   width: auto;
   padding: 0.4em 0.8em;
+}
+.text-area-description-input {
+  height: 20em;
 }

@@ -3,68 +3,28 @@ import { Link, NavLink } from "react-router-dom";
 
 import "../styles/allcss.css";
 
-const Categorias = (data) => {
-  const [open, setOpen] = useState(false);
-
+const Categorias = ({ auth, setIsLoading, handleShowLogin }) => {
+  const categories = ["Mundial", "Liga-Argentina", "Tenis", "Basquet"];
   return (
     <div className="container categories-container mt-5 d-none d-lg-grid   ">
       <ul className="d-flex justify-content-center categories-list-container px-0   ">
-        <li
-          onClick={() => {
-            localStorage.setItem("category", JSON.stringify({ id: 1 }));
-          }}
-          className="item-list-categories link-category "
-        >
-          <Link
-            to="/category"
-            style={{ textDecoration: "none" }}
-            className="text-white"
+        {categories.map((c, i) => (
+          <li
+            key={c + i}
+            onClick={() => {
+              !auth.user ? handleShowLogin() : setIsLoading(true);
+            }}
+            className="item-list-categories link-category "
           >
-            Mundial
-          </Link>
-        </li>
-        <li
-          onClick={() => {
-            localStorage.setItem("category", JSON.stringify({ id: 2 }));
-          }}
-          className="item-list-categories link-category "
-        >
-          <Link
-            to="/category"
-            style={{ textDecoration: "none" }}
-            className="text-white"
-          >
-            Liga Argentina
-          </Link>
-        </li>
-        <li
-          onClick={() => {
-            localStorage.setItem("category", JSON.stringify({ id: 3 }));
-          }}
-          className="item-list-categories link-category"
-        >
-          <Link
-            to="/category"
-            style={{ textDecoration: "none" }}
-            className="text-white"
-          >
-            Tenis
-          </Link>
-        </li>
-        <li
-          onClick={() => {
-            localStorage.setItem("category", JSON.stringify({ id: 4 }));
-          }}
-          className="item-list-categories link-category"
-        >
-          <Link
-            to="/category"
-            style={{ textDecoration: "none" }}
-            className="text-white"
-          >
-            Basquet
-          </Link>
-        </li>
+            <Link
+              to={auth.user && `/category/${c}`}
+              style={{ textDecoration: "none" }}
+              className="text-white"
+            >
+              {c.replace("-", " ")}
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
