@@ -63,7 +63,7 @@ function App() {
     fetch(
       `https://backend-news-eight.vercel.app/news/highlight?highlight=true&limit=${
         window.location.pathname === "/" ? 3 : 1
-      }&page=${pageH}`
+      }&page=${window.location.pathname === "/" ? 1 : pageH}`
     )
       .then((res) => res.json())
       .then((json) => {
