@@ -8,8 +8,12 @@ const Loader = () => {
       fluid
       className="d-flex justify-content-center align-items-center flex-column loader-container"
     >
-      <Spinner animation="grow" className="loader" />
-      <span>Cargando ...</span>
+      <div className="load-wrapp">
+        <div className="load-4">
+          <p>Cargando...</p>
+          <div className="ring-1"></div>
+        </div>
+      </div>
     </Container>
   );
 };

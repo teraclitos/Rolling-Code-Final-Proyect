@@ -199,7 +199,7 @@ const Navbar = ({
                       setIsLoading(true);
                       setNewLoad(newLoad + 1);
                     }}
-                    to="/usertable"
+                    to="/CreateNew"
                     className="link-nav"
                     style={{ textDecoration: "none" }}
                   >
