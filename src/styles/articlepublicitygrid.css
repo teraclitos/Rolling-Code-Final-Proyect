@@ -89,3 +89,10 @@
 .img-card {
   cursor: pointer;
 }
+.title-searcher {
+  color: rgb(24, 22, 22);
+  font-family: "Anton";
+}
+.no-result {
+  height: 40vh;
+}

@@ -45,9 +45,12 @@ const ArticleFound = ({
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="min-vh-100">
+        <div className="min-vh-100 ">
           <div className="body-found">
             <Container>
+              <h2 className=" my-5 fs-2 title-searcher">
+                Buscar por nombre o categoría o descripción
+              </h2>
               <Form className="my-5">
                 <InputGroup className="mb-3">
                   <InputGroup.Text className="color-span">
@@ -57,8 +60,8 @@ const ArticleFound = ({
                     />
                   </InputGroup.Text>
                   <Form.Control
+                    autoFocus
                     value={search}
-                    placeholder="Buscar por nombre o categoría o descripción"
                     className="me-2"
                     aria-label="Search"
                     onInput={(e) => setSearch(e.target.value)}
@@ -66,37 +69,34 @@ const ArticleFound = ({
                 </InputGroup>
               </Form>
             </Container>
-            <Container>
-              <h3 className="card-title card-title-found mb-5">
-                Resultados de Búsqueda
-              </h3>
 
-              <Container>
-                {stock.length === 0 ? (
-                  <h2>No hay resultados</h2>
-                ) : (
-                  <Row lg={4}>
-                    {stock.map((d, i) => (
-                      <div key={"search" + i} className="mb-5  ">
-                        <ArticleCard
-                          cart={cart}
-                          d={d}
-                          add={add}
-                          auth={auth}
-                          del={del}
-                          handleShowLogin={handleShowLogin}
-                          setIsLoading={setIsLoading}
-                          deleteFavorite={deleteFavorite}
-                          setDeleteFavorite={setDeleteFavorite}
-                          modifyFavorite={modifyFavorite}
-                          setModifyFavorite={setModifyFavorite}
-                          modifyFavoriteFetch={modifyFavoriteFetch}
-                        />
-                      </div>
-                    ))}
-                  </Row>
-                )}
-              </Container>
+            <Container className="d-flex justify-content-center align-items-center ">
+              {stock.length === 0 ? (
+                <h2 className="no-result d-flex align-items-center justify-content-center">
+                  No hay resultados
+                </h2>
+              ) : (
+                <Row className="my-4" lg={4}>
+                  {stock.map((d, i) => (
+                    <div key={"search" + i} className="mb-5  ">
+                      <ArticleCard
+                        cart={cart}
+                        d={d}
+                        add={add}
+                        auth={auth}
+                        del={del}
+                        handleShowLogin={handleShowLogin}
+                        setIsLoading={setIsLoading}
+                        deleteFavorite={deleteFavorite}
+                        setDeleteFavorite={setDeleteFavorite}
+                        modifyFavorite={modifyFavorite}
+                        setModifyFavorite={setModifyFavorite}
+                        modifyFavoriteFetch={modifyFavoriteFetch}
+                      />
+                    </div>
+                  ))}
+                </Row>
+              )}
             </Container>
           </div>
         </div>
