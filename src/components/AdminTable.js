@@ -2,7 +2,6 @@ import { Container, Button } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/allcss.css";
-
 import { faUserSlash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
