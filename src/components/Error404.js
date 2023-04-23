@@ -11,7 +11,7 @@ const Error404 = ({
 }) => {
   return (
     <>
-      <body className="body-error d-flex justify-content-center align-items-center">
+      <div className="body-error d-flex justify-content-center align-items-center">
         <Container>
           <section className="error 404 mb-5">
             <h1 className="text-404 ">404</h1>
@@ -30,7 +30,7 @@ const Error404 = ({
             Go back home
           </Link>
         </Container>
-      </body>
+      </div>
     </>
   );
 };

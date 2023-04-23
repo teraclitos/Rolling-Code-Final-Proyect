@@ -127,7 +127,7 @@ const Navbar = ({
               )}
               <Nav className="me-0 me-lg-3 mb-1 mb-lg-0">
                 <Link
-                  to={auth.user && "/highlights"}
+                  to={auth.user ? "/highlights" : window.location.pathname}
                   className="link-nav "
                   onClick={() => {
                     if (auth.user) {
@@ -158,7 +158,7 @@ const Navbar = ({
               )}
               <Nav className="me-0 me-lg-3 mb-1 mb-lg-0">
                 <Link
-                  to={auth.user && "/articlefound"}
+                  to={auth.user ? "/articlefound" : window.location.pathname}
                   className="link-nav"
                   onClick={() => {
                     if (auth.user) {
