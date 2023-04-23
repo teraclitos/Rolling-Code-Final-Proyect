@@ -57,7 +57,7 @@ const Articlepublicitygrid = ({
 
   return (
     <>
-      {auth.role !== "admin" && <Advertising />}
+      {auth.role !== "admin" && <Advertising navigation={navigation} />}
       <Header />
       <Slider
         totalHighlights={totalHighlights}
@@ -106,7 +106,7 @@ const Articlepublicitygrid = ({
         )}
         <div className="grid-publicity d-none d-lg-grid ">
           <aside className="carousel-advertisement-container">
-            <AsideAdvertisement />
+            <AsideAdvertisement navigation={navigation} />
           </aside>
         </div>
         <div className="d-flex justify-content-center px-3">

@@ -43,6 +43,10 @@ body {
 .btn-close:focus {
   box-shadow: none;
 }
+.publicity-aside {
+  cursor: pointer !important;
+  user-select: none;
+}
 
 @keyframes modal {
   100% {
