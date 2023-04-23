@@ -151,7 +151,7 @@ const ArticleDetail = ({
       .then((json) => setDeletetOk(true))
       .catch((error) => setDeletetOk(false));
   };
-  const navigate = useNavigate("/");
+  const navigation = useNavigate();
   const adding = (p) => {
     setModifyFavorite(true);
     add(p);
@@ -202,6 +202,9 @@ const ArticleDetail = ({
                       <div className="social-media">
                         <div className="red-social">
                           <FontAwesomeIcon
+                            onClick={() => {
+                              navigation("*");
+                            }}
                             className="icon-fb"
                             style={{ fontSize: "3em" }}
                             icon={faFacebook}
@@ -209,6 +212,9 @@ const ArticleDetail = ({
                         </div>
                         <div className="red-social">
                           <FontAwesomeIcon
+                            onClick={() => {
+                              navigation("*");
+                            }}
                             className="icon-ig"
                             icon={faInstagram}
                             style={{ fontSize: "3em" }}
@@ -216,13 +222,13 @@ const ArticleDetail = ({
                         </div>
                         <div className="red-social">
                           <FontAwesomeIcon
+                            onClick={() => {
+                              navigation("*");
+                            }}
                             className="icon-tw"
                             style={{ fontSize: "3em" }}
                             icon={faTwitter}
                           />
-                        </div>
-                        <div className="red-social">
-                          {/* <h5 className="mt-4">{data.date}</h5> */}
                         </div>
                       </div>
 
@@ -514,7 +520,7 @@ const ArticleDetail = ({
                     setChangeData(changeData + 1);
                   }, 1000);
                   setTimeout(() => {
-                    navigate("/");
+                    navigation("/");
                   }, 1500);
                 }}
               >

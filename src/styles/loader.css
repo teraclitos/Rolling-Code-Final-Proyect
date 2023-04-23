@@ -49,7 +49,7 @@
 }
 
 @keyframes loadingD {
-  0 {
+  0% {
     transform: rotate(0deg);
   }
   50% {
@@ -58,4 +58,7 @@
   100% {
     transform: rotate(360deg);
   }
+}
+.text-loader {
+  font-family: anton;
 }

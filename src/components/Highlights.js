@@ -97,6 +97,9 @@ const Highlights = ({
                       <div className="social-media">
                         <div className="red-social">
                           <FontAwesomeIcon
+                            onClick={() => {
+                              navigation("*");
+                            }}
                             className="icon-fb"
                             style={{ fontSize: "3em" }}
                             icon={faFacebook}
@@ -104,6 +107,9 @@ const Highlights = ({
                         </div>
                         <div className="red-social">
                           <FontAwesomeIcon
+                            onClick={() => {
+                              navigation("*");
+                            }}
                             className="icon-tw"
                             icon={faTwitter}
                             style={{ fontSize: "3em" }}
@@ -111,6 +117,9 @@ const Highlights = ({
                         </div>
                         <div className="red-social">
                           <FontAwesomeIcon
+                            onClick={() => {
+                              navigation("*");
+                            }}
                             className="icon-ig"
                             style={{ fontSize: "3em" }}
                             icon={faInstagram}

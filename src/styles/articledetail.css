@@ -43,13 +43,11 @@
   border-top: 1px solid #001253;
 }
 .social-media {
+  width: 100%;
   display: flex;
-  margin-bottom: 20px;
-}
-
-.red-social {
-  margin-right: 20px;
-  padding-left: 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
 }
 
 .btn-detail {
