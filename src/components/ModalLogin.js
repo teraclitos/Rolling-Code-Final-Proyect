@@ -146,7 +146,7 @@ const ModalLogin = ({
                 </InputGroup.Text>
                 <Form.Control
                   className={borderUser}
-                  autoFocus
+               
                   maxLength={31}
                   type="text"
                   placeholder="usuario"
