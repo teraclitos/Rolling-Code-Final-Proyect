@@ -65,7 +65,12 @@ body {
 }
 
 .text-contact {
-  color: #fd841f;
+  color: rgb(255, 8, 8);
+  text-align: start;
+  position: relative;
+  left: 56px;
+  bottom: 15px;
+  margin-bottom: 0;
 }
 
 .loader {

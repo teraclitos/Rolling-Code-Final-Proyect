@@ -45,7 +45,7 @@ const Contact = ({ toastSuccess }) => {
                       let errores = {};
                       if (!valores.name) {
                         errores.name = (
-                          <p className="text-contact">Escribe tu nombre</p>
+                          <p className="text-contact ">Escribe tu nombre</p>
                         );
                       } else if (!/^[a-zA-ZÀ-ÿ\s]{3,30}$/.test(valores.name)) {
                         errores.name = (
@@ -95,7 +95,7 @@ const Contact = ({ toastSuccess }) => {
                       handleBlur,
                     }) => (
                       <Form>
-                        <div className="input-group mb-3">
+                        <div className="input-group mb-3 ">
                           <div
                             className="input-group-text color-span"
                             id="basic-addon1"
@@ -109,7 +109,7 @@ const Contact = ({ toastSuccess }) => {
                             id="name"
                             name="name"
                             type="text"
-                            className="form-control"
+                            className="form-control "
                             placeholder="Introduce tu nombre"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
@@ -118,12 +118,12 @@ const Contact = ({ toastSuccess }) => {
                         <ErrorMessage
                           name="name"
                           component={() => (
-                            <div className="error">{errors.name}</div>
+                            <div className="error ">{errors.name}</div>
                           )}
                         />
                         <div className="input-group mb-3">
                           <div
-                            className="input-group-text color-span"
+                            className="input-group-text  color-span"
                             id="basic-addon1"
                           >
                             <FontAwesomeIcon
@@ -150,7 +150,7 @@ const Contact = ({ toastSuccess }) => {
 
                         <div className="input-group mb-3">
                           <div
-                            className="input-group-text color-span"
+                            className="input-group-text color-span "
                             id="basic-addon1"
                           >
                             <FontAwesomeIcon
@@ -174,7 +174,7 @@ const Contact = ({ toastSuccess }) => {
                         />
 
                         <Link
-                          to="/error404"
+                          to="*"
                           className="link-pass"
                           style={{ textDecoration: "none" }}
                         >
