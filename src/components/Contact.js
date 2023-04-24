@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/allcss.css";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -118,7 +118,7 @@ const Contact = ({ toastSuccess }) => {
                             name="name"
                             type="text"
                             className={
-                              errors.name
+                              errors.name && touched.name
                                 ? "form-control outline-input wrong-border"
                                 : "form-control outline-input "
                             }
@@ -148,7 +148,7 @@ const Contact = ({ toastSuccess }) => {
                             name="mail"
                             type="mail"
                             className={
-                              errors.mail
+                              errors.mail && touched.mail
                                 ? "form-control outline-input wrong-border"
                                 : "form-control outline-input "
                             }
@@ -179,7 +179,7 @@ const Contact = ({ toastSuccess }) => {
                             name="comment"
                             as="textarea"
                             className={
-                              errors.comment
+                              errors.comment && touched.comment
                                 ? "form-control outline-input wrong-border"
                                 : "form-control outline-input "
                             }
