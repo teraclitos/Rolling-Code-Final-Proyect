@@ -47,7 +47,15 @@ const Contact = ({ toastSuccess }) => {
                         errores.name = (
                           <p className="text-contact ">Escribe tu nombre</p>
                         );
-                      } else if (!/^[a-zA-ZÀ-ÿ\s]{3,30}$/.test(valores.name)) {
+                      } else if (valores.name.trim().length < 3) {
+                        errores.name = (
+                          <p className="text-contact">
+                            El nombre debe tener al menos 3 caracteres
+                          </p>
+                        );
+                      } else if (
+                        !/^[a-zA-ZÀ-ÿ\s]{3,30}$/.test(valores.name.trim())
+                      ) {
                         errores.name = (
                           <p className="text-contact">
                             El nombre solo puede contener letras y espacios
@@ -95,7 +103,7 @@ const Contact = ({ toastSuccess }) => {
                       handleBlur,
                     }) => (
                       <Form>
-                        <div className="input-group mb-3 ">
+                        <div className="input-group mb-3  ">
                           <div
                             className="input-group-text color-span"
                             id="basic-addon1"
@@ -109,7 +117,11 @@ const Contact = ({ toastSuccess }) => {
                             id="name"
                             name="name"
                             type="text"
-                            className="form-control "
+                            className={
+                              errors.name
+                                ? "form-control outline-input wrong-border"
+                                : "form-control outline-input "
+                            }
                             placeholder="Introduce tu nombre"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
@@ -135,7 +147,11 @@ const Contact = ({ toastSuccess }) => {
                             id="mail"
                             name="mail"
                             type="mail"
-                            className="form-control"
+                            className={
+                              errors.mail
+                                ? "form-control outline-input wrong-border"
+                                : "form-control outline-input "
+                            }
                             placeholder="Introduce tu mail"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
@@ -162,7 +178,11 @@ const Contact = ({ toastSuccess }) => {
                             id="comment"
                             name="comment"
                             as="textarea"
-                            className="form-control"
+                            className={
+                              errors.comment
+                                ? "form-control outline-input wrong-border"
+                                : "form-control outline-input "
+                            }
                             placeholder=""
                           />
                         </div>
