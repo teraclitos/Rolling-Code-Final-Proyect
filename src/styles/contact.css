@@ -58,6 +58,10 @@ body {
 .color-span {
   background-color: #fd841f;
   border: 0;
+  width: 3.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .mapa {
   width: 100%;
