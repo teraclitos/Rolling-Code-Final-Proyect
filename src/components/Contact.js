@@ -9,9 +9,27 @@ import {
   faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Contact = ({ toastSuccess }) => {
-  const [formEnviado, cambiarformEnviado] = useState(false);
-
+const Contact = ({ toastSuccess, toastError }) => {
+  const contactMessage = (name, mail, message) => {
+    fetch("https://backend-news-eight.vercel.app/users/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        email: mail,
+        message: message,
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        if (!json.error) {
+          toastSuccess("Mensaje enviado con exito");
+        }
+      });
+  };
   return (
     <div>
       <div className="body-contacto ">
@@ -89,10 +107,11 @@ const Contact = ({ toastSuccess }) => {
                       return errores;
                     }}
                     onSubmit={(valores, { resetForm }) => {
-                      resetForm();
+                      const { comment, mail, name } = valores;
 
-                      cambiarformEnviado(true);
-                      setTimeout(() => cambiarformEnviado(false), 3000);
+                      contactMessage(name, mail, comment);
+
+                      resetForm();
                     }}
                   >
                     {({
@@ -193,15 +212,19 @@ const Contact = ({ toastSuccess }) => {
                           )}
                         />
 
-                        <Link
-                          to="*"
-                          className="link-pass"
-                          style={{ textDecoration: "none" }}
+                        <button
+                          onClick={() => {
+                            if (errors.name || errors.mail || errors.comment) {
+                              toastError(
+                                "Debe completar correctamente todos los campos obligatorios"
+                              );
+                            }
+                          }}
+                          type="submit"
+                          className="btn-pass"
                         >
-                          <button className="btn-pass">Enviar</button>
-                          {formEnviado &&
-                            toastSuccess("Formulario enviado con exito")}
-                        </Link>
+                          Enviar
+                        </button>
                       </Form>
                     )}
                   </Formik>

@@ -15,6 +15,7 @@ import CreateNew from "../components/CreateNew";
 
 import { Route, Routes } from "react-router-dom";
 import { Container } from "react-bootstrap";
+import { toast } from "react-toastify";
 const Main = ({
   toastError,
   toastSuccess,
@@ -178,7 +179,9 @@ const Main = ({
           />
           <Route
             path="/contacto"
-            element={<Contact toastSuccess={toastSuccess} />}
+            element={
+              <Contact toastError={toastError} toastSuccess={toastSuccess} />
+            }
           />
           <Route
             path="/usertable"

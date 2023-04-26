@@ -31,7 +31,7 @@ const ModalRegister = ({
   };
 
   const saveUser = () => {
-    console.log(conditions);
+   
     fetch("https://backend-news-eight.vercel.app/users/register", {
       method: "POST",
       headers: {
