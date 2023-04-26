@@ -24,7 +24,7 @@ const Contact = ({ toastSuccess, toastError }) => {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
+        
         if (!json.error) {
           toastSuccess("Mensaje enviado con exito");
         }
@@ -88,6 +88,12 @@ const Contact = ({ toastSuccess, toastError }) => {
                             Por favor introduce tu mail
                           </p>
                         );
+                      } else if (valores.mail.trim().length < 3) {
+                        errores.mail = (
+                          <p className="text-contact">
+                            Debe tener al menos 3 caracetres
+                          </p>
+                        );
                       } else if (
                         !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
                           valores.mail
@@ -102,6 +108,12 @@ const Contact = ({ toastSuccess, toastError }) => {
                       if (!valores.comment) {
                         errores.comment = (
                           <p className="text-contact"> Escribe tu comentario</p>
+                        );
+                      } else if (valores.comment.trim().length < 3) {
+                        errores.comment = (
+                          <p className="text-contact">
+                            Debe tener al menos 3 caracetres
+                          </p>
                         );
                       }
                       return errores;

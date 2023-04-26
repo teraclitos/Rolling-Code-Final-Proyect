@@ -268,7 +268,19 @@ const Main = ({
               />
             }
           />
-          <Route path="/recuperarContraseña" element={<RecoverPass />} />
+          <Route
+            path="/recuperarContraseña"
+            element={
+              <RecoverPass
+                toastSuccess={toastSuccess}
+                toastError={toastError}
+                setIsLoading={setIsLoading}
+                setNewLoad={setNewLoad}
+                newLoad={newLoad}
+                setIsLoadingHighlight={setIsLoadingHighlight}
+              />
+            }
+          />
           <Route
             path="*"
             element={
