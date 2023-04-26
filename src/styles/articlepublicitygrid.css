@@ -3,6 +3,10 @@
   grid-template-columns: 3fr 1fr;
   gap: 4em;
 }
+.grid-articles-publicity-admin {
+  display: grid;
+  grid-template-columns: 1fr;
+}
 .grid-articles {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

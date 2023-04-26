@@ -6,7 +6,13 @@ import "../styles/allcss.css";
 const Categorias = ({ auth, setIsLoading, handleShowLogin }) => {
   const categories = ["Mundial", "Liga-Argentina", "Tenis", "Basquet"];
   return (
-    <div className="container categories-container mt-5 d-none d-lg-grid   ">
+    <div
+      className={
+        auth.role === "admin"
+          ? "container categories-container-admin mt-5 d-none d-lg-grid   "
+          : "container categories-container mt-5 d-none d-lg-grid   "
+      }
+    >
       <ul className="d-flex justify-content-center categories-list-container px-0   ">
         {categories.map((c, i) => (
           <li

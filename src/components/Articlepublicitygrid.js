@@ -77,7 +77,13 @@ const Articlepublicitygrid = ({
         />
       </div>
 
-      <div className="container grid-articles-publicity mt-5  mb-5  ">
+      <div
+        className={
+          auth.role === "admin"
+            ? "container grid-articles-publicity grid-articles-publicity-admin  mt-5  mb-5 "
+            : "container grid-articles-publicity mt-5  mb-5  "
+        }
+      >
         {isLoading ? (
           <LoaderPage />
         ) : (
@@ -104,11 +110,14 @@ const Articlepublicitygrid = ({
             ))}
           </div>
         )}
-        <div className="grid-publicity d-none d-lg-grid ">
-          <aside className="carousel-advertisement-container">
-            <AsideAdvertisement navigation={navigation} />
-          </aside>
-        </div>
+
+        {auth.role !== "admin" && (
+          <div className="grid-publicity d-none d-lg-grid ">
+            <aside className="carousel-advertisement-container">
+              <AsideAdvertisement navigation={navigation} />
+            </aside>
+          </div>
+        )}
         <div className="d-flex justify-content-center px-3">
           <PaginationNew
             page={page}
