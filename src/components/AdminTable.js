@@ -29,12 +29,21 @@ function AdminTable({
   const [editEmail, setEditEmail] = useState("");
   const [idF, setId] = useState("");
   const [submit, setSubmit] = useState(null);
-  const handleClose = () => setShow(false);
-  const handleCloseDel = () => setOpen(false);
+
   const navigation = useNavigate();
   const [borderUser, setBorderUser] = useState("outline-input");
   const [borderName, setBorderName] = useState("outline-input");
   const [borderMail, setBorderMail] = useState("outline-input");
+
+  let copyArrayFirstStateModals = [];
+
+  useEffect(() => {
+    copyArrayFirstStateModals = dataUser.map((element) => false);
+    copyArrayFirstStateModals.pop();
+    setShow(copyArrayFirstStateModals);
+    setOpen(copyArrayFirstStateModals);
+  }, [dataUser]);
+
   useEffect(() => {
     if (validateName(editName) !== true) {
       setBorderName("outline-input wrong-border");
@@ -138,8 +147,16 @@ function AdminTable({
       });
   }, [ChangeDataUser, newLoad]);
 
-  const handleShow = () => setShow(true);
+  const handleShow = (i) => {
+    const copyArray = show.slice();
+    copyArray[i] = true;
+    setShow(copyArray);
+  };
+  const handleClose = () => {
+    const copyArray = show.map((element) => false);
 
+    setShow(copyArray);
+  };
   const handleDel = (e, id) => {
     fetch("https://backend-news-eight.vercel.app/users/deleteuser/" + id, {
       method: "DELETE",
@@ -151,7 +168,16 @@ function AdminTable({
       .then((res) => res.json())
       .then((json) => setSubmitUser(true));
   };
-  const handleOpen = () => setOpen(true);
+  const handleOpen = (i) => {
+    const copyArray = open.slice();
+    copyArray[i] = true;
+    setOpen(copyArray);
+  };
+  const handleCloseDel = () => {
+    const copyArray = open.map((element) => false);
+
+    setOpen(copyArray);
+  };
 
   const handleSubmitUser = (e, id) => {
     if (
@@ -249,7 +275,7 @@ function AdminTable({
                               <FontAwesomeIcon
                                 className="btn-icon"
                                 onClick={() => {
-                                  handleShow();
+                                  handleShow(i - 1);
                                   setEditName(dataUser.name);
                                   setEditEmail(dataUser.email);
                                   setEditUserName(dataUser.username);
@@ -259,157 +285,170 @@ function AdminTable({
                                 icon={faPenToSquare}
                               />
                             )}
-                            <Modal centered show={show} onHide={handleClose}>
-                              <Modal.Header className="card-crud" closeButton>
-                                <Modal.Title className="edit-label ">
-                                  Modificar Usuario
-                                </Modal.Title>
-                              </Modal.Header>
-                              <Modal.Body className="card-crud">
-                                <Form>
-                                  <Form.Group
-                                    className="mb-3"
-                                    controlId="exampleForm.ControlInput1"
+
+                            {dataUser.role !== "admin" && (
+                              <Modal
+                                centered
+                                show={show[i - 1]}
+                                onHide={handleClose}
+                              >
+                                <Modal.Header className="card-crud" closeButton>
+                                  <Modal.Title className="edit-label ">
+                                    Modificar Usuario
+                                  </Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body className="card-crud">
+                                  <Form>
+                                    <Form.Group
+                                      className="mb-3"
+                                      controlId="exampleForm.ControlInput1"
+                                    >
+                                      <Form.Label className="edit-label">
+                                        Nombre
+                                      </Form.Label>
+                                      <Form.Control
+                                        placeholder="Ingrese nuevo nombre"
+                                        className={borderName}
+                                        maxLength={31}
+                                        type="text"
+                                        value={editName}
+                                        onChange={(e) =>
+                                          setEditName(e.target.value)
+                                        }
+                                        autoFocus
+                                      />
+                                      {validateName(editName) && (
+                                        <Form.Text className="wrong ">
+                                          {validateName(editName)}
+                                        </Form.Text>
+                                      )}
+                                    </Form.Group>
+                                    <Form.Group
+                                      className="mb-3"
+                                      controlId="exampleForm.ControlInput1"
+                                    >
+                                      <Form.Label className="edit-label">
+                                        Nombre de Usuario
+                                      </Form.Label>
+                                      <Form.Control
+                                        maxLength={31}
+                                        type="text"
+                                        className={borderUser}
+                                        placeholder="Ingrese nuevo user name"
+                                        value={editUserName}
+                                        onChange={(e) =>
+                                          setEditUserName(e.target.value)
+                                        }
+                                        autoFocus
+                                      />
+                                      {validateUser(editUserName) && (
+                                        <Form.Text className="wrong ">
+                                          {validateUser(editUserName)}
+                                        </Form.Text>
+                                      )}
+                                    </Form.Group>
+                                    <Form.Group
+                                      className="mb-3"
+                                      controlId="exampleForm.ControlInput1"
+                                    >
+                                      <Form.Label className="edit-label">
+                                        Email
+                                      </Form.Label>
+                                      <Form.Control
+                                        maxLength={31}
+                                        type="email"
+                                        placeholder="name@example.com"
+                                        value={editEmail}
+                                        onChange={(e) =>
+                                          setEditEmail(e.target.value)
+                                        }
+                                        autoFocus
+                                        className={borderMail}
+                                      />
+                                      {validateEmail(editEmail) && (
+                                        <Form.Text className="wrong ">
+                                          {validateEmail(editEmail)}
+                                        </Form.Text>
+                                      )}
+                                    </Form.Group>
+                                  </Form>
+                                </Modal.Body>
+                                <Modal.Footer className="card-crud d-flex justify-content-center">
+                                  <Button
+                                    className="btn-detail"
+                                    onClick={(i) => handleClose()}
                                   >
-                                    <Form.Label className="edit-label">
-                                      Nombre
-                                    </Form.Label>
-                                    <Form.Control
-                                      placeholder="Ingrese nuevo nombre"
-                                      className={borderName}
-                                      maxLength={31}
-                                      type="text"
-                                      value={editName}
-                                      onChange={(e) =>
-                                        setEditName(e.target.value)
-                                      }
-                                      autoFocus
-                                    />
-                                    {validateName(editName) && (
-                                      <Form.Text className="wrong ">
-                                        {validateName(editName)}
-                                      </Form.Text>
-                                    )}
-                                  </Form.Group>
-                                  <Form.Group
-                                    className="mb-3"
-                                    controlId="exampleForm.ControlInput1"
-                                  >
-                                    <Form.Label className="edit-label">
-                                      Nombre de Usuario
-                                    </Form.Label>
-                                    <Form.Control
-                                      maxLength={31}
-                                      type="text"
-                                      className={borderUser}
-                                      placeholder="Ingrese nuevo user name"
-                                      value={editUserName}
-                                      onChange={(e) =>
-                                        setEditUserName(e.target.value)
-                                      }
-                                      autoFocus
-                                    />
-                                    {validateUser(editUserName) && (
-                                      <Form.Text className="wrong ">
-                                        {validateUser(editUserName)}
-                                      </Form.Text>
-                                    )}
-                                  </Form.Group>
-                                  <Form.Group
-                                    className="mb-3"
-                                    controlId="exampleForm.ControlInput1"
-                                  >
-                                    <Form.Label className="edit-label">
-                                      Email
-                                    </Form.Label>
-                                    <Form.Control
-                                      maxLength={31}
-                                      type="email"
-                                      placeholder="name@example.com"
-                                      value={editEmail}
-                                      onChange={(e) =>
-                                        setEditEmail(e.target.value)
-                                      }
-                                      autoFocus
-                                      className={borderMail}
-                                    />
-                                    {validateEmail(editEmail) && (
-                                      <Form.Text className="wrong ">
-                                        {validateEmail(editEmail)}
-                                      </Form.Text>
-                                    )}
-                                  </Form.Group>
-                                </Form>
-                              </Modal.Body>
-                              <Modal.Footer className="card-crud d-flex justify-content-center">
-                                <Button
-                                  className="btn-detail"
-                                  onClick={handleClose}
-                                >
-                                  Cerrar
-                                </Button>
-                                {/* <Button
+                                    Cerrar
+                                  </Button>
+                                  {/* <Button
                             className="btn-detail"
                             onClick={(e) => handleCerrar(e)}
                           >
                             Cerrar
                           </Button> */}
-                                <Button
-                                  className="btn-detail"
-                                  onClick={(e) => {
-                                    handleSubmitUser(e, idF);
+                                  <Button
+                                    className="btn-detail"
+                                    onClick={(e) => {
+                                      handleSubmitUser(e, idF);
 
-                                    setTimeout(() => {
-                                      setChangeDataUser(ChangeDataUser + 1);
-                                    }, 1000);
-                                  }}
-                                >
-                                  Guardar cambios
-                                </Button>
-                              </Modal.Footer>
-                            </Modal>
+                                      setTimeout(() => {
+                                        setChangeDataUser(ChangeDataUser + 1);
+                                      }, 1000);
+                                    }}
+                                  >
+                                    Guardar cambios
+                                  </Button>
+                                </Modal.Footer>
+                              </Modal>
+                            )}
                           </td>
                           <td>
                             {dataUser.role !== "admin" && (
                               <FontAwesomeIcon
                                 className="btn-icon"
                                 onClick={() => {
-                                  handleOpen();
+                                  handleOpen(i - 1);
                                   setId(dataUser._id);
                                 }}
                                 style={{ fontSize: "2em" }}
                                 icon={faUserSlash}
                               />
                             )}
-
-                            <Modal centered show={open} onHide={handleCloseDel}>
-                              <Modal.Header className="card-crud h-0 "></Modal.Header>
-                              <Modal.Body className="card-crud ">
-                                ¿Estas seguro que quieres eliminar este usuario?
-                              </Modal.Body>
-                              <Modal.Footer className="card-crud d-flex justify-content-center">
-                                <Button
-                                  className="btn-detail"
-                                  onClick={() => {
-                                    handleCloseDel();
-                                  }}
-                                >
-                                  Cerrar
-                                </Button>
-                                <Button
-                                  className="btn-detail"
-                                  onClick={(e) => {
-                                    handleDel(e, idF);
-                                    setTimeout(() => {
-                                      setChangeDataUser(ChangeDataUser + 1);
-                                    }, 1000);
-                                    handleCloseDel();
-                                  }}
-                                >
-                                  Eliminar
-                                </Button>
-                              </Modal.Footer>
-                            </Modal>
+                            {dataUser.role !== "admin" && (
+                              <Modal
+                                centered
+                                show={open[i - 1]}
+                                onHide={handleCloseDel}
+                              >
+                                <Modal.Header className="card-crud h-0 "></Modal.Header>
+                                <Modal.Body className="card-crud ">
+                                  ¿Estas seguro que quieres eliminar este
+                                  usuario?
+                                </Modal.Body>
+                                <Modal.Footer className="card-crud d-flex justify-content-center">
+                                  <Button
+                                    className="btn-detail"
+                                    onClick={() => {
+                                      handleCloseDel();
+                                    }}
+                                  >
+                                    Cerrar
+                                  </Button>
+                                  <Button
+                                    className="btn-detail"
+                                    onClick={(e) => {
+                                      handleDel(e, idF);
+                                      setTimeout(() => {
+                                        setChangeDataUser(ChangeDataUser + 1);
+                                      }, 1000);
+                                      handleCloseDel();
+                                    }}
+                                  >
+                                    Eliminar
+                                  </Button>
+                                </Modal.Footer>
+                              </Modal>
+                            )}
                           </td>
                         </tr>
                       ))}
