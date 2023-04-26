@@ -339,7 +339,6 @@ function AdminTable({
                                         onChange={(e) =>
                                           setEditUserName(e.target.value)
                                         }
-                                        autoFocus
                                       />
                                       {validateUser(editUserName) && (
                                         <Form.Text className="wrong ">
@@ -362,7 +361,6 @@ function AdminTable({
                                         onChange={(e) =>
                                           setEditEmail(e.target.value)
                                         }
-                                        autoFocus
                                         className={borderMail}
                                       />
                                       {validateEmail(editEmail) && (
