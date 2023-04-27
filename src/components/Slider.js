@@ -14,6 +14,7 @@ const Slider = ({
     <Carousel
       indicators={false}
       pause={false}
+      controls={totalHighlights.length > 1 ? true : false}
       className=" d-none d-lg-block slider-container overlayed-background-slider-container"
     >
       {totalHighlights.map((d, i) => (

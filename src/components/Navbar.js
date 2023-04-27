@@ -51,6 +51,7 @@ const Navbar = ({
   setIsLoadingHighlight,
   newLoad,
   setNewLoad,
+  totalHighlights,
 }) => {
   const [show, setShow] = useState(false);
   const [openLogout, setOpenLogout] = useState(false);
@@ -125,25 +126,28 @@ const Navbar = ({
                   </Link>
                 </Nav>
               )}
-              <Nav className="me-0 me-lg-3 mb-1 mb-lg-0">
-                <Link
-                  to={auth.user ? "/highlights" : window.location.pathname}
-                  className="link-nav "
-                  onClick={() => {
-                    if (auth.user) {
-                      setIsLoadingHighlight(true);
 
-                      setNewLoad(newLoad + 1);
-                    } else {
-                      handleShowLogin();
-                    }
-                  }}
-                  style={{ textDecoration: "none" }}
-                >
-                  Destacados
-                  <FontAwesomeIcon icon={faStar} className="mx-2" />
-                </Link>
-              </Nav>
+              {totalHighlights.length > 0 && (
+                <Nav className="me-0 me-lg-3 mb-1 mb-lg-0">
+                  <Link
+                    to={auth.user ? "/highlights" : window.location.pathname}
+                    className="link-nav "
+                    onClick={() => {
+                      if (auth.user) {
+                        setIsLoadingHighlight(true);
+
+                        setNewLoad(newLoad + 1);
+                      } else {
+                        handleShowLogin();
+                      }
+                    }}
+                    style={{ textDecoration: "none" }}
+                  >
+                    Destacados
+                    <FontAwesomeIcon icon={faStar} className="mx-2" />
+                  </Link>
+                </Nav>
+              )}
               {(!auth.user || auth.role === "user") && (
                 <Nav className="me-0 me-lg-3 mb-0 mb-lg-0">
                   <Link

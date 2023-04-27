@@ -59,16 +59,19 @@ const Articlepublicitygrid = ({
     <>
       {auth.role !== "admin" && <Advertising navigation={navigation} />}
       <Header />
-      <Slider
-        totalHighlights={totalHighlights}
-        cart={cart}
-        d={d}
-        add={add}
-        auth={auth}
-        toastError={toastError}
-        handleShowLogin={handleShowLogin}
-        setIsLoading={setIsLoading}
-      />
+
+      {totalHighlights.length > 0 && (
+        <Slider
+          totalHighlights={totalHighlights}
+          cart={cart}
+          d={d}
+          add={add}
+          auth={auth}
+          toastError={toastError}
+          handleShowLogin={handleShowLogin}
+          setIsLoading={setIsLoading}
+        />
+      )}
       <div>
         <Categorias
           auth={auth}

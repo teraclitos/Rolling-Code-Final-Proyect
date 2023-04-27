@@ -89,6 +89,7 @@ const Main = ({
           setNewLoad={setNewLoad}
           setCategory={setCategory}
           setIsLoadingHighlight={setIsLoadingHighlight}
+          totalHighlights={totalHighlights}
         />
         <Routes>
           <Route
