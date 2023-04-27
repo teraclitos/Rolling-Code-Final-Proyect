@@ -240,7 +240,7 @@ function AdminTable({
         <Loader />
       ) : (
         <div className="body-recover ">
-          <Container fluid className="table-bg-color py-4">
+          <Container fluid className="table-bg-color py-4 min-vh-100">
             <div className="d-flex flex-column">
               <div className="d-flex flex-column align-items-center">
                 <h3 className="text-center pb-2 pt-3 title-table ">

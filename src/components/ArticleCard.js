@@ -77,7 +77,7 @@ const ArticleCard = ({
             !auth.user ? handleShowLogin() : setIsLoading(true);
           }}
         >
-          Leer más
+          {auth.role === "admin" ? "Editar o eliminar" : "Leer más"}
         </Link>
         {auth.role === "user" && (
           <Button
