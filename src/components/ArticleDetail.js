@@ -69,6 +69,13 @@ const ArticleDetail = ({
       error = "Campo obligatorio";
     } else if (value.trim().length < 3) {
       error = "Debe tener al menos 3 caracteres";
+    } else if (value === editImage) {
+      const image = value.trim().split(".")[value.trim().split(".").length - 1];
+      if (!(image === "png" || image === "jpg" || image === "jpeg")) {
+        error = "La imagen debe ser formato png o jpg o jpeg";
+      } else {
+        error = true;
+      }
     } else {
       error = true;
     }
@@ -381,7 +388,7 @@ const ArticleDetail = ({
                   <Form.Group className="mb-3 group-container-crud">
                     <Form.Label className="style-crud">URL</Form.Label>
                     <Form.Control
-                      maxLength={31}
+                      maxLength={200}
                       type="text"
                       placeholder="Ingrese URL de imagen"
                       defaultValue={editImage}
@@ -404,7 +411,7 @@ const ArticleDetail = ({
                   >
                     <Form.Label className="style-crud">Subtitulo</Form.Label>
                     <Form.Control
-                      maxLength={31}
+                      maxLength={200}
                       type="text"
                       placeholder="Ingrese subtitulo"
                       defaultValue={editSubtitulo}
