@@ -18,10 +18,10 @@ const ModalCreateNew = ({
   const [editTitle, setEditTitle] = useState("");
   const [editSubtitulo, setEditSubtitulo] = useState("");
   const [editDescription, setEditDescription] = useState("");
-  const [editHighlight, setEditHighlight] = useState("");
+  const [editHighlight, setEditHighlight] = useState(false);
   const [post, setPost] = useState(null);
   const handlePost = (e) => {
-    fetch("https://backend-news-eight.vercel.app/news/load/", {
+    fetch("https://backend-news-eight.vercel.app/news/load", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +34,7 @@ const ModalCreateNew = ({
         title: editTitle,
         description: editSubtitulo,
         content: editDescription,
-        highlight: editHighlight,
+        highlight: false,
       }),
     })
       .then((res) => res.json())
