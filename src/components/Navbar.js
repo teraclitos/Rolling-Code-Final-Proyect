@@ -294,6 +294,9 @@ const Navbar = ({
         setShowNew={setShowNew}
         handleShowNew={handleShowNew}
         handleCloseNew={handleCloseNew}
+        toastError={toastError}
+        toastSuccess={toastSuccess}
+        totalHighlights={totalHighlights}
       />
       <Modal centered show={openLogout} onHide={logoutModal}>
         <Modal.Header className="card-crud h-0  "></Modal.Header>

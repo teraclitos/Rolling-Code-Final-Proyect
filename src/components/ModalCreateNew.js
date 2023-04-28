@@ -5,9 +5,11 @@ import { Button, Modal, Form } from "react-bootstrap";
 
 const ModalCreateNew = ({
   showNew,
-  setShowNew,
-  handleShowNew,
+
   handleCloseNew,
+  toastError,
+  toastSuccess,
+  totalHighlights,
 }) => {
   const [editSection, setEditSection] = useState("Mundial");
   const [editAuthor, setEditAuthor] = useState("");
@@ -18,6 +20,34 @@ const ModalCreateNew = ({
   const [editHighlight, setEditHighlight] = useState("");
 
   const [touched, setTouched] = useState([false, false, false, false, false]);
+  const fields = [
+    editAuthor,
+    editDescription,
+    editImage,
+    editSection,
+    editSubtitulo,
+    editTitle,
+  ];
+
+  const checkAllFields = () => {
+    const check = fields.map((element) => validateField(element));
+
+    return check.filter((element) => element !== true);
+  };
+  const highlightFilter = () => {
+    if (totalHighlights.length > 2 && editHighlight === true) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+  const addHighlight = () => {
+    if (!editHighlight) {
+      setEditHighlight(true);
+    } else {
+      setEditHighlight(false);
+    }
+  };
   const validateField = (value) => {
     let error;
     if (!value) {
@@ -225,38 +255,35 @@ const ModalCreateNew = ({
             <Form.Check
               type="checkbox"
               label="Destacar"
-
-              //   onClick={() => {
-              //     addHighlight();
-              //   }}
-              //   checked={editHighlight}
+              onClick={() => {
+                addHighlight();
+              }}
+              checked={editHighlight}
             />
           </Form.Group>
           <Form.Group className="">
             <Button
               id="edit-Buttom"
               className="btn-detail"
-              //   onClick={(e) => {
-              //     if (checkAllFields().length > 0) {
-              //       toastError(
-              //         "Debe completar correctamente todos los campos obligatorios"
-              //       );
-              //     } else {
-              //       if (highlightFilter() === true) {
-              //         handleSubmit(e);
+              onClick={(e) => {
+                if (checkAllFields().length > 0) {
+                  toastError(
+                    "Debe completar correctamente todos los campos obligatorios"
+                  );
+                } else {
+                  if (highlightFilter() === true) {
+                    // handleSubmit(e);
 
-              //         setTimeout(() => {
-              //           setChangeData(changeData + 1);
-              //         }, 1000);
+                    // setTimeout(() => {
+                    //   setChangeData(changeData + 1);
+                    // }, 1000);
 
-              //         handleClose();
-              //       } else {
-              //         toastError("Sólo puede haber tres destacados");
-              //       }
-
-              //       setRender(true);
-              //     }
-              //   }}
+                    handleCloseNew();
+                  } else {
+                    toastError("Sólo puede haber tres destacados");
+                  }
+                }
+              }}
             >
               Crear
             </Button>
