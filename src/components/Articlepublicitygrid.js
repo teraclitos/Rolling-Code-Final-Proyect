@@ -121,15 +121,18 @@ const Articlepublicitygrid = ({
             </aside>
           </div>
         )}
-        <div className="d-flex justify-content-center px-3">
-          <PaginationNew
-            page={page}
-            setPage={setPage}
-            totalPages={totalPages}
-            setIsLoading={setIsLoading}
-            setIsLoadingHighlight={setIsLoadingHighlight}
-          />
-        </div>
+
+        {totalPages > 1 && (
+          <div className="d-flex justify-content-center px-3">
+            <PaginationNew
+              page={page}
+              setPage={setPage}
+              totalPages={totalPages}
+              setIsLoading={setIsLoading}
+              setIsLoadingHighlight={setIsLoadingHighlight}
+            />
+          </div>
+        )}
       </div>
     </>
   );

@@ -153,24 +153,25 @@ const Highlights = ({
             )}
           </div>
         ))}
-
-        <div className="mt-5 mb-3 d-flex justify-content-center align-items-center">
-          <FontAwesomeIcon
-            icon={faArrowRight}
-            className="me-2 arrow-page fs-4 arrow-page-left"
-            onClick={() => {
-              changePageL();
-            }}
-          />
-          <span className="number-highlight">{pageH}</span>
-          <FontAwesomeIcon
-            onClick={() => {
-              changePageR();
-            }}
-            icon={faArrowRight}
-            className="ms-2 fs-4 arrow-page "
-          />
-        </div>
+        {totalPagesH > 1 && (
+          <div className="mt-5 mb-3 d-flex justify-content-center align-items-center">
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              className="me-2 arrow-page fs-4 arrow-page-left"
+              onClick={() => {
+                changePageL();
+              }}
+            />
+            <span className="number-highlight">{pageH}</span>
+            <FontAwesomeIcon
+              onClick={() => {
+                changePageR();
+              }}
+              icon={faArrowRight}
+              className="ms-2 fs-4 arrow-page "
+            />
+          </div>
+        )}
       </Container>
     </div>
   );
