@@ -5,6 +5,7 @@ import { Button, Modal, Form } from "react-bootstrap";
 
 const ModalCreateNew = ({
   showNew,
+  auth,
 
   handleCloseNew,
   toastError,
@@ -18,6 +19,43 @@ const ModalCreateNew = ({
   const [editSubtitulo, setEditSubtitulo] = useState("");
   const [editDescription, setEditDescription] = useState("");
   const [editHighlight, setEditHighlight] = useState("");
+  const [post, setPost] = useState(null);
+  const handlePost = (e) => {
+    fetch("https://backend-news-eight.vercel.app/news/load/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: auth.token,
+      },
+      body: JSON.stringify({
+        category: editSection,
+        author: editAuthor,
+        img_URL: editImage,
+        title: editTitle,
+        description: editSubtitulo,
+        content: editDescription,
+        highlight: editHighlight,
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (!json.error) {
+          setPost(true);
+          handleCloseNew();
+        } else {
+          setPost(false);
+        }
+      })
+      .catch((error) => setPost(false));
+  };
+
+  useEffect(() => {
+    if (post === true) {
+      toastSuccess("se ha creado la noticia exitosamente");
+    } else if (post === false) {
+      toastError("se ha producido un error");
+    }
+  }, [post]);
 
   const [touched, setTouched] = useState([false, false, false, false, false]);
   const fields = [
@@ -272,13 +310,11 @@ const ModalCreateNew = ({
                   );
                 } else {
                   if (highlightFilter() === true) {
-                    // handleSubmit(e);
+                    handlePost(e);
 
                     // setTimeout(() => {
                     //   setChangeData(changeData + 1);
                     // }, 1000);
-
-                    handleCloseNew();
                   } else {
                     toastError("Sólo puede haber tres destacados");
                   }
