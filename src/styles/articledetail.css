@@ -56,11 +56,10 @@
   color: black;
   border-radius: 4px;
   font-family: "Anton";
-  width: 110px;
-  padding: 1%;
+  padding: 1em 2em;
 }
 .btn-detail:hover {
-  background-color: #fd841f;
+  background-color: #084858;
 }
 
 .title-crud {
@@ -146,8 +145,8 @@
 .btn-delete {
   background-color: #fd841f;
   border-radius: 4px;
-  width: 110px;
-  padding: 1%;
+
+  padding: 1em 2em;
   border: 0;
   color: black;
   font-family: "Anton";
