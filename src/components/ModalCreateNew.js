@@ -70,7 +70,9 @@ const ModalCreateNew = ({
               <Form.Label className="style-crud">Autor</Form.Label>
               <Form.Control
                 onBlur={() => {
-                  const touchedI = touched.map((el, i) => i === 0 && true);
+                  const touchedI = touched.map((el, i) =>
+                    i === 0 ? true : el
+                  );
                   setTouched(touchedI);
                 }}
                 maxLength={31}
@@ -98,7 +100,9 @@ const ModalCreateNew = ({
               <Form.Label className="style-crud">Titulo</Form.Label>
               <Form.Control
                 onBlur={() => {
-                  const touchedI = touched.map((el, i) => i === 1 && true);
+                  const touchedI = touched.map((el, i) =>
+                    i === 1 ? true : el
+                  );
                   setTouched(touchedI);
                 }}
                 placeholder="Título"
@@ -123,7 +127,9 @@ const ModalCreateNew = ({
               <Form.Label className="style-crud">URL</Form.Label>
               <Form.Control
                 onBlur={() => {
-                  const touchedI = touched.map((el, i) => i === 2 && true);
+                  const touchedI = touched.map((el, i) =>
+                    i === 2 ? true : el
+                  );
                   setTouched(touchedI);
                 }}
                 maxLength={200}
@@ -151,7 +157,9 @@ const ModalCreateNew = ({
               <Form.Label className="style-crud">Subtitulo</Form.Label>
               <Form.Control
                 onBlur={() => {
-                  const touchedI = touched.map((el, i) => i === 3 && true);
+                  const touchedI = touched.map((el, i) =>
+                    i === 3 ? true : el
+                  );
                   setTouched(touchedI);
                 }}
                 maxLength={200}
@@ -179,7 +187,9 @@ const ModalCreateNew = ({
               <Form.Label className="style-crud">Descripcion</Form.Label>
               <Form.Control
                 onBlur={() => {
-                  const touchedI = touched.map((el, i) => i === 4 && true);
+                  const touchedI = touched.map((el, i) =>
+                    i === 4 ? true : el
+                  );
                   setTouched(touchedI);
                 }}
                 type="text"
