@@ -310,7 +310,7 @@ const ArticleDetail = ({
 
           <Modal fullscreen={true} show={show} onHide={handleClose}>
             <Modal.Header className="card-crud" closeButton>
-              <Modal.Title className="title-crud">CRUD ARTICULOS</Modal.Title>
+              <Modal.Title className="title-crud">Editar Noticia</Modal.Title>
             </Modal.Header>
             <Modal.Body className="card-crud modal-crud">
               <Form>
@@ -457,7 +457,7 @@ const ArticleDetail = ({
                 <Button className="btn-detail" onClick={handleClose}>
                   Cerrar
                 </Button>
-                <Form.Group className=" btn-detail">
+                <Form.Group className=" btn-detail ">
                   <Form.Check
                     type="checkbox"
                     label="Destacar"
@@ -493,7 +493,7 @@ const ArticleDetail = ({
                       }
                     }}
                   >
-                    Guardar cambios
+                    Guardar Cambios
                   </Button>
                 </Form.Group>
               </Modal.Footer>

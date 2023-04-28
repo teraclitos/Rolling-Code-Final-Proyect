@@ -9,6 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import Badge from "react-bootstrap/Badge";
 import ModalRegister from "./ModalRegister";
 import ModalLogin from "./ModalLogin";
+import ModalCreateNew from "./ModalCreateNew";
 import OffcanvasFav from "./OffcanvasFav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
@@ -52,6 +53,10 @@ const Navbar = ({
   newLoad,
   setNewLoad,
   totalHighlights,
+  showNew,
+  setShowNew,
+  handleShowNew,
+  handleCloseNew,
 }) => {
   const [show, setShow] = useState(false);
   const [openLogout, setOpenLogout] = useState(false);
@@ -197,19 +202,16 @@ const Navbar = ({
                 </Nav>
               )}
               {auth.role === "admin" && (
-                <Nav className="me-0 me-lg-3 mb-3 mb-lg-0">
-                  <Link
-                    onClick={() => {
-                      setIsLoading(true);
-                      setNewLoad(newLoad + 1);
-                    }}
-                    to="/CreateNew"
-                    className="link-nav"
-                    style={{ textDecoration: "none" }}
-                  >
+                <Nav
+                  onClick={() => {
+                    handleShowNew();
+                  }}
+                  className="me-0 me-lg-3 mb-3 mb-lg-0"
+                >
+                  <div className="link-nav" style={{ cursor: "pointer" }}>
                     Crear Noticia
                     <FontAwesomeIcon icon={faSquarePen} className="mx-2" />
-                  </Link>
+                  </div>
                 </Nav>
               )}
               <Nav className="me-0 me-lg-3 mb-3 mb-lg-0">
@@ -285,6 +287,13 @@ const Navbar = ({
         setDeleteFavorite={setDeleteFavorite}
         modifyFavoriteFetch={modifyFavoriteFetch}
         auth={auth}
+      />
+
+      <ModalCreateNew
+        showNew={showNew}
+        setShowNew={setShowNew}
+        handleShowNew={handleShowNew}
+        handleCloseNew={handleCloseNew}
       />
       <Modal centered show={openLogout} onHide={logoutModal}>
         <Modal.Header className="card-crud h-0  "></Modal.Header>

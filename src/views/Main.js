@@ -11,7 +11,6 @@ import ArticleFound from "../components/ArticleFound";
 import RecoverPass from "../components/RecoverPass";
 import Error404 from "../components/Error404";
 import Loader from "../components/Loader";
-import CreateNew from "../components/CreateNew";
 
 import { Route, Routes } from "react-router-dom";
 import { Container } from "react-bootstrap";
@@ -59,6 +58,10 @@ const Main = ({
   pageH,
   setPageH,
   totalPagesH,
+  showNew,
+  setShowNew,
+  handleShowNew,
+  handleCloseNew,
 }) => {
   return (
     <>
@@ -90,6 +93,10 @@ const Main = ({
           setCategory={setCategory}
           setIsLoadingHighlight={setIsLoadingHighlight}
           totalHighlights={totalHighlights}
+          showNew={showNew}
+          setShowNew={setShowNew}
+          handleShowNew={handleShowNew}
+          handleCloseNew={handleCloseNew}
         />
         <Routes>
           <Route
@@ -202,24 +209,7 @@ const Main = ({
               )
             }
           />
-          <Route
-            path="/CreateNew"
-            element={
-              auth.role === "admin" && (
-                <CreateNew
-                  dataUser={dataUser}
-                  toastError={toastError}
-                  toastSuccess={toastSuccess}
-                  auth={auth}
-                  setIsLoading={setIsLoading}
-                  isLoading={isLoading}
-                  newLoad={newLoad}
-                  setNewLoad={setNewLoad}
-                  logout={logout}
-                />
-              )
-            }
-          />
+
           <Route
             path={`/category/:category`}
             element={

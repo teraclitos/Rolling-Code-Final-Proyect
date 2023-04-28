@@ -25,6 +25,9 @@ function App() {
   const [totalHighlights, setTotalHighlights] = useState([]);
 
   const [category, setCategory] = useState("");
+  const [showNew, setShowNew] = useState(false);
+  const handleCloseNew = () => setShowNew(false);
+  const handleShowNew = () => setShowNew(true);
 
   const modifyFavoriteFetch = () => {
     fetch(
@@ -190,6 +193,10 @@ function App() {
         totalPagesH={totalPagesH}
         setIsLoadingHighlightPage={setIsLoadingHighlightPage}
         isLoadingHighlightPage={isLoadingHighlightPage}
+        showNew={showNew}
+        setShowNew={setShowNew}
+        handleShowNew={handleShowNew}
+        handleCloseNew={handleCloseNew}
       />
       <ToastContainer
         transition={Flip}

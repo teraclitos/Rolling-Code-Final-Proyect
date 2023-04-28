@@ -173,3 +173,7 @@
 .text-area-description-input {
   height: 20em;
 }
+
+.pointer {
+  cursor: pointer;
+}
