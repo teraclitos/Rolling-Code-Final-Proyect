@@ -9,6 +9,33 @@ const ModalCreateNew = ({
   handleShowNew,
   handleCloseNew,
 }) => {
+  const [editSection, setEditSection] = useState("Mundial");
+  const [editAuthor, setEditAuthor] = useState("");
+  const [editImage, setEditImage] = useState("");
+  const [editTitle, setEditTitle] = useState("");
+  const [editSubtitulo, setEditSubtitulo] = useState("");
+  const [editDescription, setEditDescription] = useState("");
+  const [editHighlight, setEditHighlight] = useState("");
+
+  const [touched, setTouched] = useState([false, false, false, false, false]);
+  const validateField = (value) => {
+    let error;
+    if (!value) {
+      error = "Campo obligatorio";
+    } else if (value.trim().length < 3) {
+      error = "Debe tener al menos 3 caracteres";
+    } else if (value === editImage) {
+      const image = value.trim().split(".")[value.trim().split(".").length - 1];
+      if (!(image === "png" || image === "jpg" || image === "jpeg")) {
+        error = "La imagen debe ser formato png o jpg o jpeg";
+      } else {
+        error = true;
+      }
+    } else {
+      error = true;
+    }
+    return error;
+  };
   return (
     <Modal fullscreen={true} show={showNew} onHide={handleCloseNew}>
       <Modal.Header className="card-crud" closeButton>
@@ -23,19 +50,15 @@ const ModalCreateNew = ({
             <Form.Label className="style-crud">Categoria</Form.Label>
             <Form.Select
               aria-label="Default select example"
-              //   onChange={(e) => setEditSection(e.target.value)}
+              onChange={(e) => setEditSection(e.target.value)}
             >
-              {/* <option value={editSection}>{editSection}</option>
-              {editSection !== "Mundial" && (
-                <option value="Mundial">Mundial</option>
-              )}
-              {editSection !== "Liga Argentina" && (
-                <option value="Liga Argentina">Liga Argentina</option>
-              )}
-              {editSection !== "Tenis" && <option value="Tenis">Tenis</option>}
-              {editSection !== "Basquet" && (
-                <option value="Basquet">Basquet</option>
-              )} */}
+              <option value={editSection}>{editSection}</option>
+
+              <option value="Liga Argentina">Liga Argentina</option>
+
+              <option value="Tenis">Tenis</option>
+
+              <option value="Basquet">Basquet</option>
             </Form.Select>
 
             <Form.Group />
@@ -46,21 +69,26 @@ const ModalCreateNew = ({
             >
               <Form.Label className="style-crud">Autor</Form.Label>
               <Form.Control
+                onBlur={() => {
+                  const touchedI = touched.map((el, i) => i === 0 && true);
+                  setTouched(touchedI);
+                }}
                 maxLength={31}
                 type="text"
                 placeholder="Nombre del autor"
-                // value={editAuthor}
-                // onInput={(e) => setEditAuthor(e.target.value)}
-                // className={
-                //   validateField(editAuthor) !== true
-                //     ? "outline-input wrong-border"
-                //     : "outline-input "
-                // }
-                // autoFocus
+                value={editAuthor}
+                onInput={(e) => setEditAuthor(e.target.value)}
+                className={
+                  validateField(editAuthor) !== true && touched[0] === true
+                    ? "outline-input wrong-border"
+                    : "outline-input "
+                }
               />
-              <Form.Text className="wrong text-start ps-3 ">
-                {/* {validateField(editAuthor)} */}
-              </Form.Text>
+              {touched[0] === true && (
+                <Form.Text className="wrong text-start ps-3 ">
+                  {validateField(editAuthor)}
+                </Form.Text>
+              )}
             </Form.Group>
 
             <Form.Group
@@ -69,40 +97,51 @@ const ModalCreateNew = ({
             >
               <Form.Label className="style-crud">Titulo</Form.Label>
               <Form.Control
+                onBlur={() => {
+                  const touchedI = touched.map((el, i) => i === 1 && true);
+                  setTouched(touchedI);
+                }}
+                placeholder="Título"
                 maxLength={31}
                 type="text"
-                // defaultValue={editTitle}
-                // value={editTitle}
-                // onChange={(e) => setEditTitle(e.target.value)}
-                // className={
-                //   validateField(editTitle) !== true
-                //     ? "outline-input wrong-border"
-                //     : "outline-input "
-                // }
+                value={editTitle}
+                onChange={(e) => setEditTitle(e.target.value)}
+                className={
+                  validateField(editTitle) !== true && touched[1] === true
+                    ? "outline-input wrong-border"
+                    : "outline-input "
+                }
               />
-              <Form.Text className="wrong text-start ps-3 ">
-                {/* {validateField(editTitle)} */}
-              </Form.Text>
+              {touched[1] === true && (
+                <Form.Text className="wrong text-start ps-3 ">
+                  {validateField(editTitle)}
+                </Form.Text>
+              )}
             </Form.Group>
 
             <Form.Group className="mb-3 group-container-crud">
               <Form.Label className="style-crud">URL</Form.Label>
               <Form.Control
+                onBlur={() => {
+                  const touchedI = touched.map((el, i) => i === 2 && true);
+                  setTouched(touchedI);
+                }}
                 maxLength={200}
                 type="text"
                 placeholder="Ingrese URL de imagen"
-                // defaultValue={editImage}
-                // value={editImage}
-                // onChange={(e) => setEditImage(e.target.value)}
-                // className={
-                //   validateField(editImage) !== true
-                //     ? "outline-input wrong-border"
-                //     : "outline-input "
-                // }
+                value={editImage}
+                onChange={(e) => setEditImage(e.target.value)}
+                className={
+                  validateField(editImage) !== true && touched[2] === true
+                    ? "outline-input wrong-border"
+                    : "outline-input "
+                }
               />
-              <Form.Text className="wrong text-start ps-3 ">
-                {/* {validateField(editImage)} */}
-              </Form.Text>
+              {touched[2] === true && (
+                <Form.Text className="wrong text-start ps-3 ">
+                  {validateField(editImage)}
+                </Form.Text>
+              )}
             </Form.Group>
 
             <Form.Group
@@ -111,21 +150,26 @@ const ModalCreateNew = ({
             >
               <Form.Label className="style-crud">Subtitulo</Form.Label>
               <Form.Control
+                onBlur={() => {
+                  const touchedI = touched.map((el, i) => i === 3 && true);
+                  setTouched(touchedI);
+                }}
                 maxLength={200}
                 type="text"
                 placeholder="Ingrese subtitulo"
-                // defaultValue={editSubtitulo}
-                // value={editSubtitulo}
-                // onInput={(e) => setEditSubtitulo(e.target.value)}
-                // className={
-                //   validateField(editSubtitulo) !== true
-                //     ? "outline-input wrong-border"
-                //     : "outline-input "
-                // }
+                value={editSubtitulo}
+                onInput={(e) => setEditSubtitulo(e.target.value)}
+                className={
+                  validateField(editSubtitulo) !== true && touched[3] === true
+                    ? "outline-input wrong-border"
+                    : "outline-input "
+                }
               />
-              <Form.Text className="wrong text-start ps-3 ">
-                {/* {validateField(editSubtitulo)} */}
-              </Form.Text>
+              {touched[3] === true && (
+                <Form.Text className="wrong text-start ps-3 ">
+                  {validateField(editSubtitulo)}
+                </Form.Text>
+              )}
             </Form.Group>
 
             <Form.Group
@@ -134,21 +178,26 @@ const ModalCreateNew = ({
             >
               <Form.Label className="style-crud">Descripcion</Form.Label>
               <Form.Control
+                onBlur={() => {
+                  const touchedI = touched.map((el, i) => i === 4 && true);
+                  setTouched(touchedI);
+                }}
                 type="text"
                 as="textarea"
                 placeholder=""
-                // defaultValue={editDescription}
-                // value={editDescription}
-                // onInput={(e) => setEditDescription(e.target.value)}
-                // className={
-                //   validateField(editDescription) !== true
-                //     ? "outline-input wrong-border text-area-description-input"
-                //     : "outline-input text-area-description-input"
-                // }
+                value={editDescription}
+                onInput={(e) => setEditDescription(e.target.value)}
+                className={
+                  validateField(editDescription) !== true && touched[4] === true
+                    ? "outline-input wrong-border text-area-description-input"
+                    : "outline-input text-area-description-input"
+                }
               />
-              <Form.Text className="wrong text-start ps-3 ">
-                {/* {validateField(editDescription)} */}
-              </Form.Text>
+              {touched[4] === true && (
+                <Form.Text className="wrong text-start ps-3 ">
+                  {validateField(editDescription)}
+                </Form.Text>
+              )}
             </Form.Group>
           </Form.Group>
         </Form>

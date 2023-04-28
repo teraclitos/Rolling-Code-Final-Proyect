@@ -94,12 +94,11 @@ const ArticleDetail = ({
         category: editSection,
         author: editAuthor,
         img_URL: editImage,
-        avatar_URL: data.avatar_URL,
+
         title: editTitle,
         description: editSubtitulo,
         content: editDescription,
         highlight: editHighlight,
-        date: data.date,
       }),
     })
       .then((res) => res.json())
@@ -371,7 +370,6 @@ const ArticleDetail = ({
                     <Form.Control
                       maxLength={31}
                       type="text"
-                      defaultValue={editTitle}
                       value={editTitle}
                       onChange={(e) => setEditTitle(e.target.value)}
                       className={
@@ -391,7 +389,6 @@ const ArticleDetail = ({
                       maxLength={200}
                       type="text"
                       placeholder="Ingrese URL de imagen"
-                      defaultValue={editImage}
                       value={editImage}
                       onChange={(e) => setEditImage(e.target.value)}
                       className={
@@ -414,7 +411,6 @@ const ArticleDetail = ({
                       maxLength={200}
                       type="text"
                       placeholder="Ingrese subtitulo"
-                      defaultValue={editSubtitulo}
                       value={editSubtitulo}
                       onInput={(e) => setEditSubtitulo(e.target.value)}
                       className={
@@ -437,7 +433,6 @@ const ArticleDetail = ({
                       type="text"
                       as="textarea"
                       placeholder=""
-                      defaultValue={editDescription}
                       value={editDescription}
                       onInput={(e) => setEditDescription(e.target.value)}
                       className={
