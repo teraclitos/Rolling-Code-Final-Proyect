@@ -78,11 +78,11 @@ const Header = () => {
           tu pasión
         </h3>
         <img className="img-header" src="\logoheader.png" alt="logo-hero" />
-        <h3 className="text-header  d-block d-lg-none fs-1   text-center">
+        <h1 className="text-header  d-block d-lg-none fs-1   text-center">
           El diario deportivo
           <br />
           número 1
-        </h3>
+        </h1>
       </div>
 
       <div className=" text-center d-none d-lg-flex justify-content-start align-items-center ">

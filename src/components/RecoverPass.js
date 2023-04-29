@@ -52,7 +52,7 @@ const RecoverPass = ({
             <div className="row m-0 flex-row justify-content-between h-75">
               <div className="col-12 col-md-12 d-flex flex-column justify-content-center mb-5">
                 <div className="row align-items-center">
-                  <h1 className="recover-pass">Recuperar contraseña</h1>
+                  <h2 className="recover-pass">Recuperar contraseña</h2>
 
                   <Formik
                     initialValues={{

@@ -15,7 +15,7 @@ const Error404 = ({
       <div className="body-error d-flex justify-content-center align-items-center">
         <Container>
           <section className="error 404 mb-5">
-            <h1 className="text-404 ">404</h1>
+            <h2 className="text-404 ">404</h2>
             <h2 className="p-404">Pagina no encontrada</h2>
           </section>
           <Link
