@@ -304,6 +304,7 @@ const ModalCreateNew = ({
               id="edit-Buttom"
               className="btn-detail"
               onClick={(e) => {
+                setTouched([true, true, true, true, true]);
                 if (checkAllFields().length > 0) {
                   toastError(
                     "Debe completar correctamente todos los campos obligatorios"
