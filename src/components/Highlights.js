@@ -29,6 +29,7 @@ const Highlights = ({
   logout,
   auth,
 }) => {
+    const titleDoc = (document.title = `LA ROLLINGNETA | Destacados`);
   const navigation = useNavigate();
   useEffect(() => {
     fetch(`https://backend-news-eight.vercel.app/users/control`, {

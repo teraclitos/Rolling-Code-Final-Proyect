@@ -35,6 +35,7 @@ const Articlepublicitygrid = ({
   setIsLoadingHighlight,
   logout,
 }) => {
+  const titleDoc = (document.title = `LA ROLLINGNETA `);
   const navigation = useNavigate();
   useEffect(() => {
     if (auth.user) {

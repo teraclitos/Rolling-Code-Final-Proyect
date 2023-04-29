@@ -6,11 +6,12 @@ import { Button, Modal, Form } from "react-bootstrap";
 const ModalCreateNew = ({
   showNew,
   auth,
-
   handleCloseNew,
   toastError,
   toastSuccess,
   totalHighlights,
+  newLoad,
+  setNewLoad,
 }) => {
   const [editSection, setEditSection] = useState("Mundial");
   const [editAuthor, setEditAuthor] = useState("");
@@ -41,6 +42,7 @@ const ModalCreateNew = ({
       .then((json) => {
         if (!json.error) {
           setPost(true);
+          setNewLoad(newLoad + 1);
           handleCloseNew();
         } else {
           setPost(false);
@@ -312,10 +314,6 @@ const ModalCreateNew = ({
                 } else {
                   if (highlightFilter() === true) {
                     handlePost(e);
-
-                    // setTimeout(() => {
-                    //   setChangeData(changeData + 1);
-                    // }, 1000);
                   } else {
                     toastError("Sólo puede haber tres destacados");
                   }

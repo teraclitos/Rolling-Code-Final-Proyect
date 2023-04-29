@@ -19,6 +19,7 @@ function AdminTable({
   setNewLoad,
   logout,
 }) {
+  const titleDoc = (document.title = "LA ROLLINGNETA | Administrar Usuarios");
   const [dataUser, setDataUser] = useState([]);
 
   const [submitUser, setSubmitUser] = useState(null);

@@ -31,6 +31,7 @@ const ArticleDetail = ({
   modifyFavorite,
   modifyFavoriteFetch,
 }) => {
+  const titleDoc = (document.title = "LA ROLLINGNETA | Noticias");
   const [show, setShow] = useState(false);
   const [editSection, setEditSection] = useState(data.category);
   const [editAuthor, setEditAuthor] = useState(data.author);

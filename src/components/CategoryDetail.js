@@ -24,6 +24,8 @@ const CategoryDetail = ({
   const params = useParams();
   const navigation = useNavigate();
   const [dataCategory, setDataCategory] = useState([]);
+  const titleDoc =
+    (document.title = `LA ROLLINGNETA | ${params.category.replace("-", " ")}`);
 
   useEffect(() => {
     fetch(

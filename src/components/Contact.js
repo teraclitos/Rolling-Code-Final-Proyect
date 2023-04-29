@@ -10,6 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Contact = ({ toastSuccess, toastError }) => {
+  const titleDoc = (document.title = `LA ROLLINGNETA | Contacto`);
+
   const contactMessage = (name, mail, message) => {
     fetch("https://backend-news-eight.vercel.app/users/contact", {
       method: "POST",
@@ -24,7 +26,6 @@ const Contact = ({ toastSuccess, toastError }) => {
     })
       .then((res) => res.json())
       .then((json) => {
-        
         if (!json.error) {
           toastSuccess("Mensaje enviado con exito");
         }

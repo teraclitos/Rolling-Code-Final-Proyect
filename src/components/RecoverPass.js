@@ -13,6 +13,7 @@ const RecoverPass = ({
   newLoad,
   setIsLoadingHighlight,
 }) => {
+  const titleDoc = (document.title = `LA ROLLINGNETA | Recuperar Contraseña`);
   const navigation = useNavigate();
   const [recoverOK, setRecoverOK] = useState(null);
   const recoverPassword = (mail) => {

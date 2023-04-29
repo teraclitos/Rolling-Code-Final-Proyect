@@ -9,6 +9,7 @@ const Error404 = ({
   newLoad,
   setIsLoadingHighlight,
 }) => {
+  const titleDoc = (document.title = `LA ROLLINGNETA | ERROR 404`);
   return (
     <>
       <div className="body-error d-flex justify-content-center align-items-center">

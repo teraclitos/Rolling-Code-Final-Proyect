@@ -23,6 +23,7 @@ const ArticleFound = ({
   newLoad,
   logout,
 }) => {
+  const titleDoc = (document.title = "LA ROLLINGNETA | Buscador");
   const [stock, setStock] = useState([]);
   const [search, setSearch] = useState("");
   const navigation = useNavigate();
