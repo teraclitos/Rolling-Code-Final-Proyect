@@ -45,6 +45,7 @@ const ModalCreateNew = ({
           setNewLoad(newLoad + 1);
           handleCloseNew();
           resetFields();
+          setTouched([false, false, false, false, false]);
         } else {
           setPost(false);
         }
