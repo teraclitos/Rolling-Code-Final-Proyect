@@ -94,14 +94,16 @@ const ModalCreateNew = ({
       error = "Campo obligatorio";
     } else if (value.trim().length < 3) {
       error = "Debe tener al menos 3 caracteres";
-    } else if (value === editImage) {
-      const image = value.trim().split(".")[value.trim().split(".").length - 1];
-      if (!(image === "png" || image === "jpg" || image === "jpeg")) {
-        error = "La imagen debe ser formato png o jpg o jpeg";
-      } else {
-        error = true;
-      }
-    } else {
+    }
+    // else if (value === editImage) {
+    //   const image = value.trim().split(".")[value.trim().split(".").length - 1];
+    //   if (!(image === "png" || image === "jpg" || image === "jpeg")) {
+    //     error = "La imagen debe ser formato png o jpg o jpeg";
+    //   } else {
+    //     error = true;
+    //   }
+    // }
+    else {
       error = true;
     }
     return error;
