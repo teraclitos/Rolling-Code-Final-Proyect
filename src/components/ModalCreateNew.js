@@ -74,7 +74,7 @@ const ModalCreateNew = ({
     setEditAuthor,
     setEditDescription,
     setEditImage,
-    setEditSection,
+
     setEditSubtitulo,
     setEditTitle,
   ];
