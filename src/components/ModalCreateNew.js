@@ -44,6 +44,7 @@ const ModalCreateNew = ({
           setPost(true);
           setNewLoad(newLoad + 1);
           handleCloseNew();
+          resetFields();
         } else {
           setPost(false);
         }
@@ -68,6 +69,20 @@ const ModalCreateNew = ({
     editSubtitulo,
     editTitle,
   ];
+  const setFields = [
+    setEditAuthor,
+    setEditDescription,
+    setEditImage,
+    setEditSection,
+    setEditSubtitulo,
+    setEditTitle,
+  ];
+
+  const resetFields = () => {
+    setFields.forEach((element) => {
+      element("");
+    });
+  };
 
   const checkAllFields = () => {
     const check = fields.map((element) => validateField(element));
