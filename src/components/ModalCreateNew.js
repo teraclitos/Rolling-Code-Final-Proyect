@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { Button, Modal, Form } from "react-bootstrap";
 
@@ -20,7 +19,9 @@ const ModalCreateNew = ({
   const [editSubtitulo, setEditSubtitulo] = useState("");
   const [editDescription, setEditDescription] = useState("");
   const [editHighlight, setEditHighlight] = useState(false);
-  const [post, setPost] = useState(null);
+  const [postNew, setPostNew] = useState(null);
+  const [jsonError, setJsonError] = useState("");
+  const [changePost, setChangePost] = useState(1);
   const handlePost = (e) => {
     fetch("https://backend-news-eight.vercel.app/news/load", {
       method: "POST",
@@ -41,25 +42,30 @@ const ModalCreateNew = ({
       .then((res) => res.json())
       .then((json) => {
         if (!json.error) {
-          setPost(true);
+          setPostNew(true);
           setNewLoad(newLoad + 1);
           handleCloseNew();
           resetFields();
           setTouched([false, false, false, false, false]);
         } else {
-          setPost(false);
+          setPostNew(false);
+          setJsonError(json.msg);
         }
+        setChangePost(changePost + 1);
       })
-      .catch((error) => setPost(false));
+      .catch((error) => {
+        setPostNew(false);
+        setChangePost(changePost + 1);
+      });
   };
 
   useEffect(() => {
-    if (post === true) {
-      toastSuccess("se ha creado la noticia exitosamente");
-    } else if (post === false) {
-      toastError("se ha producido un error");
+    if (postNew === true) {
+      toastSuccess("Se ha creado la noticia exitosamente");
+    } else if (postNew === false) {
+      toastError(jsonError);
     }
-  }, [post]);
+  }, [postNew, changePost]);
 
   const [touched, setTouched] = useState([false, false, false, false, false]);
   const fields = [
