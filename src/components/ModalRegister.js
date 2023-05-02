@@ -31,7 +31,6 @@ const ModalRegister = ({
   };
 
   const saveUser = () => {
-   
     fetch("https://backend-news-eight.vercel.app/users/register", {
       method: "POST",
       headers: {
@@ -46,7 +45,25 @@ const ModalRegister = ({
       }),
     })
       .then((res) => res.json())
-      .then((json) => console.log(json));
+      .then((json) => {
+        if (json.error) {
+          toastError(json.message);
+        } else {
+          saveUser();
+          setMails("");
+          setName("");
+          setUser("");
+          setPassword("");
+          setRepeatPassword("");
+          setFirstValidationMail(true);
+          setFirstValidationName(true);
+          setFirstValidationUser(true);
+          setFirstValidationPassword(true);
+          setFirstValidationRepeatPassword(true);
+          handleCloseRegister();
+          toastSuccess("Se ha registrado correctamente");
+        }
+      });
   };
 
   const [mails, setMails] = useState("");
@@ -511,19 +528,6 @@ const ModalRegister = ({
                 ) {
                   if (conditions) {
                     saveUser();
-                    setMails("");
-                    setName("");
-                    setUser("");
-                    setPassword("");
-                    setRepeatPassword("");
-                    setFirstValidationMail(true);
-                    setFirstValidationName(true);
-                    setFirstValidationUser(true);
-                    setFirstValidationPassword(true);
-                    setFirstValidationRepeatPassword(true);
-
-                    handleCloseRegister();
-                    toastSuccess("Se ha registrado correctamente");
                   } else {
                     toastError("acepte los terminos y condiciones");
                   }
