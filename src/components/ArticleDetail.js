@@ -44,6 +44,7 @@ const ArticleDetail = ({
   const [showDelete, setShowDelete] = useState(false);
   const [render, setRender] = useState(true);
   const [deleteOk, setDeletetOk] = useState(null);
+  const [jsonError, setJsonError] = useState("");
   const handleClose = () => setShow(false);
   const handleCloseDelete = () => setShowDelete(false);
   const handleShowDelete = () => setShowDelete(true);
@@ -96,7 +97,14 @@ const ArticleDetail = ({
       }),
     })
       .then((res) => res.json())
-      .then((json) => setSubmitOk(true))
+      .then((json) => {
+        if (!json.error) {
+          setSubmitOk(true);
+        } else {
+          setSubmitOk(false);
+          setJsonError(json.msg);
+        }
+      })
       .catch((error) => setSubmitOk(false));
   };
 
@@ -106,9 +114,10 @@ const ArticleDetail = ({
 
   useEffect(() => {
     if (submitOk) {
+      handleClose();
       toastSuccess("Modificado!");
     } else if (submitOk === false) {
-      toastError("Algo ha salido mal ...");
+      toastError(jsonError);
     }
   }, [submitOk]);
   useEffect(() => {
@@ -472,8 +481,6 @@ const ArticleDetail = ({
                           setTimeout(() => {
                             setChangeData(changeData + 1);
                           }, 1000);
-
-                          handleClose();
                         } else {
                           toastError("Sólo puede haber tres destacados");
                         }
