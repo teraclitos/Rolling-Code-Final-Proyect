@@ -436,7 +436,7 @@ function AdminTable({
                                   <Button
                                     className="btn-detail"
                                     onClick={(e) => {
-                                      handleDel(e, idF);
+                                      handleDel(e, dataUser._id);
                                       setTimeout(() => {
                                         setChangeDataUser(ChangeDataUser + 1);
                                       }, 1000);
