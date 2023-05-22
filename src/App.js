@@ -29,10 +29,6 @@ function App() {
   const handleCloseNew = () => setShowNew(false);
   const handleShowNew = () => setShowNew(true);
 
-  useEffect(() => {
-    console.log(isLoading);
-  }, [isLoading]);
-
   const modifyFavoriteFetch = () => {
     fetch(
       `https://backend-news-eight.vercel.app/users/favoritecreate?id=${auth.id}`,

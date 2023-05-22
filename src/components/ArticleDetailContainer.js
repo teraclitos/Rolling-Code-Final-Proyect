@@ -3,6 +3,7 @@ import ArticleDetail from "./ArticleDetail";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
 import { useNavigate } from "react-router-dom";
+import { getNewsDetail } from "./Services";
 
 const ArticleDetailContainer = ({
   add,
@@ -26,32 +27,18 @@ const ArticleDetailContainer = ({
 }) => {
   const params = useParams();
   const navigation = useNavigate();
-  const urlNewsDetail = "https://backend-news-eight.vercel.app/news/news";
 
   const [data, setData] = useState([]);
 
-  const getNewsDetail = () => {
-    fetch(`${urlNewsDetail}/${params.id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: auth.token,
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        if (!json.error) {
-          setData(json);
-        } else {
-          logout();
-          navigation("/");
-        }
-      })
-      .finally(() => setIsLoading(false));
-  };
-
   useEffect(() => {
-    getNewsDetail();
+    getNewsDetail(
+      params.id,
+      auth.token,
+      logout,
+      setIsLoading,
+      setData,
+      navigation
+    );
   }, [dataTotal]);
 
   return (
