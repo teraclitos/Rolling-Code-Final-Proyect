@@ -257,7 +257,6 @@ function AdminTable({
                     <thead>
                       <tr>
                         <th>N°</th>
-                        <th>Id</th>
 
                         <th>Usuario</th>
                         <th>Modificar</th>
@@ -268,7 +267,6 @@ function AdminTable({
                       {dataUser.map((dataUser, i) => (
                         <tr key={"user" + i}>
                           <td>{i + 1}</td>
-                          <td>{dataUser._id}</td>
 
                           <td>{dataUser.username}</td>
                           <td>
@@ -379,12 +377,7 @@ function AdminTable({
                                   >
                                     Cerrar
                                   </Button>
-                                  {/* <Button
-                            className="btn-detail"
-                            onClick={(e) => handleCerrar(e)}
-                          >
-                            Cerrar
-                          </Button> */}
+
                                   <Button
                                     className="btn-detail"
                                     onClick={(e) => {
