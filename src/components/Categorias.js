@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/allcss.css";
 
 const Categorias = ({ auth, setIsLoading, handleShowLogin }) => {
   const categories = ["Mundial", "Liga-Argentina", "Tenis", "Basquet"];
+  const navigation = useNavigate();
+  const categorieNavigation = (c) => {
+    setIsLoading(true);
+    navigation(`/category/${c}`);
+  };
   return (
     <div
       className={
@@ -18,17 +24,11 @@ const Categorias = ({ auth, setIsLoading, handleShowLogin }) => {
           <li
             key={c + i}
             onClick={() => {
-              !auth.user ? handleShowLogin() : setIsLoading(true);
+              !auth.user ? handleShowLogin() : categorieNavigation(c);
             }}
             className="item-list-categories link-category "
           >
-            <Link
-              to={auth.user && `/category/${c}`}
-              style={{ textDecoration: "none" }}
-              className="text-white"
-            >
-              {c.replace("-", " ")}
-            </Link>
+            {c.replace("-", " ")}
           </li>
         ))}
       </ul>
