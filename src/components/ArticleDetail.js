@@ -519,9 +519,7 @@ const ArticleDetail = ({
                 onClick={() => {
                   handleDeleteOneArticle();
                   handleCloseDelete();
-                  setTimeout(() => {
-                    setChangeData(changeData + 1);
-                  }, 1000);
+
                   setTimeout(() => {
                     navigation("/");
                   }, 1500);

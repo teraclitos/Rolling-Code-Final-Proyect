@@ -26,11 +26,12 @@ const ArticleDetailContainer = ({
 }) => {
   const params = useParams();
   const navigation = useNavigate();
+  const urlNewsDetail = "https://backend-news-eight.vercel.app/news/news";
 
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    fetch(`https://backend-news-eight.vercel.app/news/news/${params.id}`, {
+  const getNewsDetail = () => {
+    fetch(`${urlNewsDetail}/${params.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -47,6 +48,10 @@ const ArticleDetailContainer = ({
         }
       })
       .finally(() => setIsLoading(false));
+  };
+
+  useEffect(() => {
+    getNewsDetail();
   }, [dataTotal]);
 
   return (

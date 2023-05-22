@@ -41,7 +41,6 @@ const CategoryDetail = ({
       .then((res) => res.json())
       .then((json) => {
         if (!json.error) {
-          console.log(json);
           setDataCategory(json);
         } else {
           logout();

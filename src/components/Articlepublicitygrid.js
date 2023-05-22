@@ -93,7 +93,7 @@ const Articlepublicitygrid = ({
         ) : (
           <div className="grid-articles">
             {data.map((d, i) => (
-              <div key={"mainnotice" + i} className="mb-3  ">
+              <div key={"mainnotice" + i} className="mb-5  ">
                 <ArticleCard
                   cart={cart}
                   d={d}
