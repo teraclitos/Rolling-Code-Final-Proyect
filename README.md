@@ -8,6 +8,4 @@ Final project of the course I did in RollingCode, developed with React.js and No
 - Hongn Andrea
 
 
-## Links
-
 [Proyect link](https://proyecto-final-rolling-code-blog.vercel.app/)
