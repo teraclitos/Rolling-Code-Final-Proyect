@@ -3,7 +3,7 @@ import ArticleDetail from "./ArticleDetail";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
 import { useNavigate } from "react-router-dom";
-import { getNewsDetail } from "./Services";
+import { getNewsDetail } from "../Services";
 
 const ArticleDetailContainer = ({
   add,
@@ -40,7 +40,6 @@ const ArticleDetailContainer = ({
       navigation
     );
   }, [dataTotal]);
-
   return (
     <>
       {isLoading ? (

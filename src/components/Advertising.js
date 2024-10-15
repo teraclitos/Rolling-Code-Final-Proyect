@@ -17,11 +17,12 @@ const Advertising = ({ navigation }) => {
     <div style={{ visibility: modal }} className="modal d-none d-md-flex">
       <div className="contenido">
         <img
+        alt="img publicity"
           onClick={() => {
             navigation("*");
           }}
           className="img-modal-publicity"
-          src="https://marinjavier.com/wp-content/uploads/2020/10/mujeres-nike-anuncios.jpg"
+          src="https://res.cloudinary.com/duuwqmpmn/image/upload/v1729000897/Rolling%20code/publicidad-coca-cola-800x393_mkvsod.jpg"
         />
         <CloseButton
           onClick={() => {
